@@ -1,19 +1,18 @@
 import React from 'react';
 import './ProjectItem.css';
 
-const ProjectItem = ({product, className, onAdd}) => {
-
-    const onAddHandler = () => {
-        onAdd(product);
-    }
+const ProjectItem = (props) => {
 
     return (
-        <div className={'product ' + className}>
-            <div className={'img'}/>
-            <div className={'title'}>{product.title}</div>
-            <div className={'description'}>{product.description}</div>
-            <div className={'price'}>
-                <span>Стоимость: <b>{product.price}</b></span>
+        <div className="post">
+            <div className="post__content">
+                <strong>{props.post.id}. {props.post.title}</strong>
+                <div>
+                    {props.post.body}
+                </div>
+                <div className="post_btns">
+                    <button>Удалить</button>
+                </div>
             </div>
         </div>
     );
