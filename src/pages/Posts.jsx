@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import ProjectForm from "../components/ProjectForm";
+import ProjectForm from "../components/PostForm/ProjectForm";
 import ProjectList from "../components/ProjectList/ProjectList";
 import MyButton from "../components/UI/MyButton/MyButton";
 import {Link} from "react-router-dom";

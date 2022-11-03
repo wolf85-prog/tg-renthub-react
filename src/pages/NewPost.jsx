@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ProjectForm from "../components/ProjectForm";
+import ProjectForm from "../components/PostForm/ProjectForm";
 
 const NewPost = () => {
     const [posts, setPosts] = useState([
