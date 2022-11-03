@@ -49,6 +49,7 @@ const ProjectForm = ({create}) => {
 
         <form>
             {/*Управляемы компонент*/}
+            {/*
             <div className="text-field text-field_floating">
                 <input
                     value={post.title}
@@ -72,7 +73,7 @@ const ProjectForm = ({create}) => {
                 />
                 <label className="text-field__label" htmlFor="date">Укажите геолокацию</label>
             </div>
-
+            */}
             <div className="text-field text-field_floating">
                 <TextField fullWidth
                            id="outlined-basic"
@@ -81,12 +82,11 @@ const ProjectForm = ({create}) => {
             </div>
 
             <div className="text-field text-field_floating">
-                <TextField
+                <TextField fullWidth
                     id="date"
                     label="Дата начала"
                     type="date"
-                    defaultValue="2017-05-24"
-                    sx={{ width: 250 }}
+                    defaultValue=""
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -94,7 +94,7 @@ const ProjectForm = ({create}) => {
             </div>
 
             <div className="text-field text-field_floating">
-                <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
+                <FormControl fullWidth variant="outlined">
                     <InputLabel htmlFor="outlined-adornment-password">Укажите геолокацию</InputLabel>
                     <OutlinedInput
                         id="outlined-adornment-weight"
@@ -109,7 +109,7 @@ const ProjectForm = ({create}) => {
             </div>
 
             <div className="text-field text-field_floating">
-                <TextField
+                <TextField fullWidth
                     id="outlined-multiline-flexible"
                     label="Техническое задание"
                     multiline
@@ -121,10 +121,10 @@ const ProjectForm = ({create}) => {
                 <label>
                     <p>Добавьте специалистов</p>
                     <div className="text-field text-field_floating">
-                        <TextField
+                        <TextField fullWidth
                             id="outlined-select-currency"
                             select
-                            label="Специальность"
+                            label="Категория"
                         >
                             {categories.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
@@ -134,10 +134,10 @@ const ProjectForm = ({create}) => {
                         </TextField>
                     </div>
                     <div>
-                        <TextField
+                        <TextField fullWidth
                             id="outlined-select-currency"
                             select
-                            label="Категория"
+                            label="Специальность"
                         >
                             {categories.map((option) => (
                                 <MenuItem key={option.value} value={option.value}>
