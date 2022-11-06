@@ -5,6 +5,7 @@
 
 .btn-done {
     background: #37833B;
+    border: 1px solid #37833B;
     border-radius: 99px;
     color: #ffffff;
     padding: 5px 10px;
@@ -13,6 +14,7 @@
 
 .btn-efir {
     background: #BB6BD9;
+    border: 1px solid #BB6BD9;
     border-radius: 99px;
     color: #ffffff;
     padding: 5px 10px;
@@ -21,6 +23,7 @@
 
 .btn-obr {
     background: #D1941A;
+    border: 1px solid #D1941A;
     border-radius: 99px;
     color: #ffffff;
     padding: 5px 10px;
@@ -29,6 +32,7 @@
 
 .btn-zaver {
     background: #828282;
+    border: 1px solid #828282;
     border-radius: 99px;
     color: #ffffff;
     padding: 5px 10px;
