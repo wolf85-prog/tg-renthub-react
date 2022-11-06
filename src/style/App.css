@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #17151C;
 }
 
 #root {
@@ -24,8 +23,8 @@
 
 .App {
   width: 350px;
-  color: #ffffff;
   font-family: Arial;
+  text-align: center;
 }
 
 .white-content {

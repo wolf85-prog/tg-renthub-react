@@ -1,12 +1,18 @@
 import React, {useState} from 'react';
-import MyInput from "../UI/Input/MyInput";
 import MyButton from "../UI/MyButton/MyButton";
 import './ProjectForm.css';
-import TextField from '@mui/material/TextField';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import FormHelperText from '@mui/material/FormHelperText';
 import {FormControl, IconButton, InputAdornment, InputLabel, MenuItem, Select} from "@mui/material";
 import NearMeIcon from '@mui/icons-material/NearMe';
+import dayjs from 'dayjs';
+import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 
 const categories = [
@@ -43,7 +49,18 @@ const ProjectForm = ({create}) => {
 
     const [category, setCategory] = React.useState('AUDIO');
 
+    const [value, setValue] = React.useState(dayjs('2022-01-01T0:0:54'));
 
+    const handleChange = (newValue) => {
+        setValue(newValue);
+    };
+
+    const componentDidMount = () => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log("Latitude is :", position.coords.latitude);
+            console.log("Longitude is :", position.coords.longitude);
+        });
+    }
 
     return (
 
@@ -78,19 +95,21 @@ const ProjectForm = ({create}) => {
                 <TextField fullWidth
                            id="outlined-basic"
                     label="Название проекта"
-                    variant="outlined" />
+                    variant="outlined"
+                />
             </div>
 
             <div className="text-field text-field_floating">
-                <TextField fullWidth
-                    id="date"
-                    label="Дата начала"
-                    type="date"
-                    defaultValue=""
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <Stack spacing={3}>
+                        <DateTimePicker
+                            label="Дата начала"
+                            value={value}
+                            onChange={handleChange}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </Stack>
+                </LocalizationProvider>
             </div>
 
             <div className="text-field text-field_floating">
@@ -103,6 +122,7 @@ const ProjectForm = ({create}) => {
                         inputProps={{
                             'aria-label': 'weight',
                         }}
+                        onClick={componentDidMount}
                     />
 
                 </FormControl>
