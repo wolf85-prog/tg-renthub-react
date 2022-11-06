@@ -1,0 +1,41 @@
+.status_el {
+    text-align: left;
+    margin-left: 25px;
+}
+
+.btn-done {
+    background: #37833B;
+    border-radius: 99px;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.btn-efir {
+    background: #BB6BD9;
+    border-radius: 99px;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.btn-obr {
+    background: #D1941A;
+    border-radius: 99px;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.btn-zaver {
+    background: #828282;
+    border-radius: 99px;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.buttons_status {
+    margin: 0 35px;
+    text-align: left;
+}

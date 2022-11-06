@@ -16,9 +16,11 @@ function App() {
         tg.ready();
     }, [])
 
+
     return (
         <div className="App">
             <Header />
+
 
             <Routes>
                 <Route index element={<Posts />}/>

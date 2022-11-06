@@ -1,0 +1,39 @@
+.box {
+    border-radius: 5px;
+    box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+    padding: 30px;
+    margin: 20px;
+    text-align: left;
+}
+
+.red {
+    border-left: 3px solid var(--red);
+}
+
+.post_title {
+    font-size: 20px;
+}
+
+.subscribe {
+    font-size: 16px;
+    color: #9590A0;
+}
+
+.image_comp {
+    padding-right: 5px;
+}
+
+.col_span {
+    background: #828282;
+    border-radius: 99px;
+    margin: 0 10px 0 5px;
+    padding: 0 5px;
+    font-size: 10px;
+}
+
+.find_span {
+    background: #D1941A;
+    font-size: 10px;
+    margin: 8px 0;
+    padding: 3px 25px;
+}
