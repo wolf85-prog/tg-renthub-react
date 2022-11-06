@@ -7,11 +7,12 @@ import AddProject from "../AddProject";
 import ButtonStatus from "../UI/ButtonStatus/ButtonStatus";
 
 
+
 const ProjectList = ({posts, title, remove}) => {
 
     return (
         <div>
-            <h1 style={{textAlign: 'center'}}>
+            <h1>
                 {title}
             </h1>
             <p className="status_el">cтатус</p>
