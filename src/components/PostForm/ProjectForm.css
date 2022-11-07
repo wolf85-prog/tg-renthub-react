@@ -97,3 +97,13 @@ input {
     background-color: #f5f5f5;
     opacity: 1;
 }
+
+.kol_group {
+    align-items: center;
+    display: flex;
+    place-content: center;
+}
+
+.list_spec {
+    margin-top: 10px;
+}
