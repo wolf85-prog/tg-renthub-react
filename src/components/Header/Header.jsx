@@ -5,14 +5,14 @@ import briefcase from "./img/briefcase.svg";
 import CloseButton from "../../img/x.png";
 
 
-const Header = () => {
+const Header = (props) => {
     const {user, onClose} = useTelegram();
 
     return (
         <div className={'header'}>
             <img src = {briefcase} alt="briefcase"/>
             <span className={'title'}>
-                Проекты
+                {props.header.title}
             </span>
             {/*<Button className={'btn-close'} onClick={onClose}>Закрыть</Button>*/}
             <img className={'btn-close'} onClick={onClose} src={CloseButton}/>

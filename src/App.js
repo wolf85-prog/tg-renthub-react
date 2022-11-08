@@ -9,6 +9,7 @@ import ProjectForm from "./components/PostForm/ProjectForm";
 import Posts from "./pages/Posts";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import NewPost from "./pages/NewPost";
 
 function App() {
 
@@ -28,12 +29,10 @@ function App() {
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <div className="App">
-                <Header />
 
                 <Routes>
                     <Route index element={<Posts />}/>
-                    <Route path={'form'} element={<Form />}/>
-                    <Route path={'add-project'} element={<ProjectForm/>}/>
+                    <Route path={'add-project'} element={<NewPost/>}/>
                 </Routes>
 
             </div>

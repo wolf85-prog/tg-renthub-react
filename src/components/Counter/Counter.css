@@ -1,0 +1,13 @@
+.kol_group {
+    align-items: center;
+    display: flex;
+    place-content: center;
+}
+
+.list_spec {
+    margin-top: 10px;
+}
+
+#count_workers_input {
+    text-align: center;
+}

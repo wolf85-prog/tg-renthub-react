@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import ProjectForm from "../components/PostForm/ProjectForm";
+import Header from "../components/Header/Header";
 
 const NewPost = () => {
     const [posts, setPosts] = useState([
@@ -12,8 +13,12 @@ const NewPost = () => {
         setPosts([...posts, newPost])
     }
 
+
     return (
         <div className="App">
+
+            <Header header={{title: 'Новый проект'}}/>
+
             <ProjectForm create={createProject} />
         </div>
     );

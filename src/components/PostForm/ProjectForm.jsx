@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import MyButton from "../UI/MyButton/MyButton";
 import './ProjectForm.css';
-import ButtonPlus from "../../img/plus.png";
-import ButtonMinus from "../../img/minus.png";
 import Comp1 from "../../img/spec/comp1.svg"
 import OutlinedInput from '@mui/material/OutlinedInput';
 import {FormControl, Grid, IconButton, InputAdornment, InputBase, InputLabel, MenuItem, Select} from "@mui/material";
@@ -12,15 +10,12 @@ import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { alpha, styled } from '@mui/material/styles';
-import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
-import Typography from '@mui/material/Typography';
-import DeleteIcon from '@mui/icons-material/Delete';
-
+import Counter from "../Counter/Counter";
+import WorkerItem from "../WorkerItem/WorkerItem";
+import Header from "../Header/Header";
+import WorkerList from "../WorkerList/WorkerList";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -271,6 +266,8 @@ const data = [
     }
 ];
 
+
+
 // компонент пользовательского выпадающего списка
 const CustomSelect = ({ id, options, onChange }) => {
     return (
@@ -301,6 +298,13 @@ const ProjectForm = ({create}) => {
     const [post, setPost] = useState({title: '', body: ''})
     const [categories, setCategories] = useState([]); // хранилище категорий
     const [models, setModels] = useState([]);         // хранилище моделей
+
+    const [workers, setWorkers] = useState([
+        {id: 1, title: 'Звукорежессер', count: '1'},
+        {id: 2, title: 'Верхний риггер', body: '3'},
+        {id: 3, title: 'Отдельные тех. задачи', body: '3'},
+    ])
+
 
     const addNewProject = (e) => {
         e.preventDefault();
@@ -460,82 +464,16 @@ const ProjectForm = ({create}) => {
                             ))}
                         </TextField>
                     </div>
-
                 </label>
 
-                <p style={{marginTop: "15px"}}>
-                    Количество
-                </p>
-                <div className={'kol_group'}>
-                    <img src={ButtonMinus} alt='Минус'/>
-                    <FormControl sx={{ m: 1, width: '65px' , height: '43px'}} variant="outlined">
-                        <OutlinedInput
-                            id="outlined-adornment-weight"
-                            aria-describedby="outlined-weight-helper-text"
-                            inputProps={{
-                                'aria-label': 'weight',
-                            }}
-                        />
-                    </FormControl>
-                    <img src={ButtonPlus} alt='Плюс'/>
-                </div>
 
+                <p style={{marginTop: "15px"}}>Количество</p>
+                <Counter/>
                 <p><MyButton style={{width: "103px", marginBottom: "15px"}}>Добавить</MyButton></p>
+
             </div>
 
-            <div className={'list_spec'}>
-                <img style={{marginTop: "24px"}} src={Comp1} alt='Comp1'/>
-
-                <FormControl sx={{marginLeft: '10px'}} variant="standard">
-                    <InputLabel shrink htmlFor="bootstrap-input">
-                        Sound
-                    </InputLabel>
-                    <BootstrapInput defaultValue="Звукорежессер" id="bootstrap-input" />
-                </FormControl>
-
-                <FormControl sx={{marginLeft: '5px', width: '35px' }} variant="standard">
-                    <InputLabel shrink htmlFor="bootstrap-input" />
-                    <BootstrapInput defaultValue="1" id="bootstrap-input" />
-                </FormControl>
-
-                <DeleteIcon style={{marginBottom: "10px", marginLeft: "10px"}} />
-            </div>
-
-            <div className={'list_spec'}>
-                <img style={{marginTop: "24px"}} src={Comp1} alt='Comp1'/>
-
-                <FormControl sx={{marginLeft: '10px'}} variant="standard">
-                    <InputLabel shrink htmlFor="bootstrap-input">
-                        Sound
-                    </InputLabel>
-                    <BootstrapInput defaultValue="Звукорежессер" id="bootstrap-input" />
-                </FormControl>
-
-                <FormControl sx={{marginLeft: '5px', width: '35px' }} variant="standard">
-                    <InputLabel shrink htmlFor="bootstrap-input" />
-                    <BootstrapInput defaultValue="1" id="bootstrap-input" />
-                </FormControl>
-
-                <DeleteIcon style={{marginBottom: "10px", marginLeft: "10px"}} />
-            </div>
-
-            <div className={'list_spec'}>
-                <img style={{marginTop: "24px"}} src={Comp1} alt='Comp1'/>
-
-                <FormControl sx={{marginLeft: '10px'}} variant="standard">
-                    <InputLabel shrink htmlFor="bootstrap-input">
-                        Sound
-                    </InputLabel>
-                    <BootstrapInput defaultValue="Звукорежессер" id="bootstrap-input" />
-                </FormControl>
-
-                <FormControl sx={{marginLeft: '5px', width: '35px' }} variant="standard">
-                    <InputLabel shrink htmlFor="bootstrap-input" />
-                    <BootstrapInput defaultValue="1" id="bootstrap-input" />
-                </FormControl>
-
-                <DeleteIcon style={{marginBottom: "10px", marginLeft: "10px"}} />
-            </div>
+            <WorkerList workers={workers} />
 
             <MyButton onClick={addNewProject}>Создать проект</MyButton>
         </form>

@@ -3,6 +3,7 @@ import ProjectForm from "../components/PostForm/ProjectForm";
 import ProjectList from "../components/ProjectList/ProjectList";
 import MyButton from "../components/UI/MyButton/MyButton";
 import {Link} from "react-router-dom";
+import Header from "../components/Header/Header";
 
 function Posts() {
     const [posts, setPosts] = useState([
@@ -17,6 +18,8 @@ function Posts() {
 
     return (
         <div className="App">
+
+            <Header header={{title: 'Проекты'}}/>
 
             {posts.length !== 0
                 ? <ProjectList remove={removePost} posts={posts} title=""/>
