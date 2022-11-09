@@ -15,6 +15,7 @@ import { alpha, styled } from '@mui/material/styles';
 import Counter from "../../components/Counter/Counter";
 import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
+import {useNavigate} from "react-router-dom";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -296,6 +297,8 @@ const CustomSelect = ({ id, options, onChange }) => {
 
 const NewPost = ({create}) => {
 
+    const navigate = useNavigate();
+
     const [post, setPost] = useState({title: '', body: ''})
     const [categories, setCategories] = useState([]); // хранилище категорий
     const [models, setModels] = useState([]);         // хранилище моделей
@@ -315,6 +318,8 @@ const NewPost = ({create}) => {
         }
         create(newPost)
         setPost({title: '', body: ''})
+
+        navigate("/");
     }
 
     const addNewWorker = (e) => {
@@ -340,6 +345,7 @@ const NewPost = ({create}) => {
             console.log("Longitude is :", position.coords.longitude);
         });
     }
+
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
