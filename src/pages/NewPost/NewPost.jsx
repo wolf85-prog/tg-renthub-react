@@ -330,7 +330,7 @@ const NewPost = ({create}) => {
     }
 
     const removeWorker = (worker) => {
-        setWorkers(workers.filter(p => p.id !== post.id))
+        setWorkers(workers.filter(p => p.id !== worker.id))
     }
 
     const [value, setValue] = React.useState(dayjs(''));

@@ -66,7 +66,10 @@ const WorkerItem = (props) => {
                 />
             </FormControl>
 
-            <DeleteIcon style={{marginBottom: "10px", marginLeft: "5px"}} />
+            <DeleteIcon
+                style={{marginBottom: "10px", marginLeft: "5px"}}
+                onClick={() => props.remove(props.worker)}
+            />
         </div>
     );
 };
