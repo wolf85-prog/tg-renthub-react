@@ -10,11 +10,15 @@ const Header = (props) => {
 
     return (
         <div className={'header'}>
-            <img src = {briefcase} alt="briefcase"/>
+
+            {props.header.icon !== 'false'
+            ? <img src = {briefcase} alt="briefcase"/> : ""
+            }
+
+
             <span className={'title'}>
                 {props.header.title}
             </span>
-            {/*<Button className={'btn-close'} onClick={onClose}>Закрыть</Button>*/}
             <img className={'btn-close'} onClick={onClose} src={CloseButton}/>
         </div>
     );

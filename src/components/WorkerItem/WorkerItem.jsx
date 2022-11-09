@@ -41,7 +41,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const WorkerItem = () => {
+const WorkerItem = (props) => {
     return (
         <div className="list_spec">
             <img style={{marginTop: "24px"}} src={Comp1} alt='Comp1'/>
@@ -50,15 +50,23 @@ const WorkerItem = () => {
                 <InputLabel shrink htmlFor="bootstrap-input">
                     Sound
                 </InputLabel>
-                <BootstrapInput defaultValue="Звукорежессер" id="bootstrap-input" />
+                <BootstrapInput
+                    defaultValue=""
+                    id="bootstrap-input"
+                    value={props.worker.title}
+                />
             </FormControl>
 
             <FormControl sx={{marginLeft: '5px', width: '35px' }} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input" />
-                <BootstrapInput defaultValue="1" id="bootstrap-input" />
+                <BootstrapInput
+                    defaultValue=""
+                    id="bootstrap-input"
+                    value={props.worker.count}
+                />
             </FormControl>
 
-            <DeleteIcon style={{marginBottom: "10px", marginLeft: "10px"}} />
+            <DeleteIcon style={{marginBottom: "10px", marginLeft: "5px"}} />
         </div>
     );
 };

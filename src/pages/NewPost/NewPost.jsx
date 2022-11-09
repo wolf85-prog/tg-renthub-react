@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import MyButton from "../UI/MyButton/MyButton";
-import './ProjectForm.css';
+import MyButton from "../../components/UI/MyButton/MyButton";
+import './NewPost.css';
 import Comp1 from "../../img/spec/comp1.svg"
 import OutlinedInput from '@mui/material/OutlinedInput';
 import {FormControl, Grid, IconButton, InputAdornment, InputBase, InputLabel, MenuItem, Select} from "@mui/material";
@@ -12,10 +12,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { alpha, styled } from '@mui/material/styles';
-import Counter from "../Counter/Counter";
-import WorkerItem from "../WorkerItem/WorkerItem";
-import Header from "../Header/Header";
-import WorkerList from "../WorkerList/WorkerList";
+import Counter from "../../components/Counter/Counter";
+import Header from "../../components/Header/Header";
+import WorkerList from "../../components/WorkerList/WorkerList";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -283,27 +282,30 @@ const CustomSelect = ({ id, options, onChange }) => {
             ))}
         </TextField>
 
-    /*<select className="custom-select" id={id} onChange={onChange}>
-            { options.map((option, index) =>
-                <option key={id + index} value={option.id}>
-                    {option.name}
-                </option>
-            )}
-        </select>*/
+        /*<select className="custom-select" id={id} onChange={onChange}>
+                { options.map((option, index) =>
+                    <option key={id + index} value={option.id}>
+                        {option.name}
+                    </option>
+                )}
+            </select>*/
     )
 }
 
 
-const ProjectForm = ({create}) => {
+
+const NewPost = ({create}) => {
+
     const [post, setPost] = useState({title: '', body: ''})
     const [categories, setCategories] = useState([]); // хранилище категорий
     const [models, setModels] = useState([]);         // хранилище моделей
 
     const [workers, setWorkers] = useState([
         {id: 1, title: 'Звукорежессер', count: '1'},
-        {id: 2, title: 'Верхний риггер', body: '3'},
-        {id: 3, title: 'Отдельные тех. задачи', body: '3'},
+        {id: 2, title: 'Верхний риггер', count: '3'},
+        {id: 3, title: 'Отдельные тех. задачи', count: '3'},
     ])
+    const [worker, setWorker] = useState({title: '', count: ''})
 
 
     const addNewProject = (e) => {
@@ -315,8 +317,18 @@ const ProjectForm = ({create}) => {
         setPost({title: '', body: ''})
     }
 
+    const addNewWorker = (e) => {
+        e.preventDefault();
 
-    const [value, setValue] = React.useState(dayjs('2022-01-01T0:0:54'));
+        setWorkers([...workers, {...worker, id: Date.now()}])
+        setWorker({title: 'Тех. рабочий', count: '1'})
+    }
+
+    const removeWorker = (worker) => {
+        setWorkers(workers.filter(p => p.id !== post.id))
+    }
+
+    const [value, setValue] = React.useState(dayjs(''));
 
     const handleChange = (newValue) => {
         setValue(newValue);
@@ -360,9 +372,13 @@ const ProjectForm = ({create}) => {
 
     return (
 
-        <form>
-            {/*Управляемы компонент*/}
-            {/*
+        <div className="App">
+
+            <Header header={{title: 'Новый проект', icon: 'false'}}/>
+
+            <form>
+                {/*Управляемы компонент*/}
+                {/*
             <div className="text-field text-field_floating">
                 <input
                     value={post.title}
@@ -388,96 +404,107 @@ const ProjectForm = ({create}) => {
             </div>
             */}
 
-            <div className="text-field text-field_floating">
-                <RedditTextField fullWidth
-                    label="Название проекта"
-                    defaultValue="react-reddit"
-                    id="reddit-input"
-                    variant="filled"
-                />
-            </div>
-
-            <div className="text-field text-field_floating">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <Stack spacing={3}>
-                        <DateTimePicker
-                            label="Дата начала"
-                            value={value}
-                            onChange={handleChange}
-                            renderInput={(params) => <TextField {...params} />}
-                        />
-                    </Stack>
-                </LocalizationProvider>
-            </div>
-
-            <div className="text-field text-field_floating">
-                <FormControl fullWidth variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-password">Укажите геолокацию</InputLabel>
-                    <OutlinedInput
-                        id="outlined-adornment-weight"
-                        endAdornment={<InputAdornment position="end"><NearMeIcon /></InputAdornment>}
-                        aria-describedby="outlined-weight-helper-text"
-                        inputProps={{
-                            'aria-label': 'weight',
-                        }}
-                        onClick={componentDidMount}
+                <div className="text-field text-field_floating">
+                    <RedditTextField fullWidth
+                                     label="Название проекта"
+                                     defaultValue=""
+                                     id="reddit-input"
+                                     variant="filled"
+                                     value={post.title}
+                                     onChange={e => setPost({...post, title: e.target.value})}
                     />
+                </div>
 
-                </FormControl>
-            </div>
+                <div className="text-field text-field_floating">
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <Stack spacing={3}>
+                            <DateTimePicker
+                                label="Дата начала"
+                                value={value}
+                                onChange={handleChange}
+                                renderInput={(params) => <TextField {...params} />}
+                            />
+                        </Stack>
+                    </LocalizationProvider>
+                </div>
 
-            <div className="text-field text-field_floating">
-                <RedditTextField fullWidth
-                    id="outlined-multiline-flexible"
-                    label="Техническое задание"
-                    multiline
-                    rows={4}
-                />
-            </div>
-
-            <div>
-                <label>
-                    <p>Добавьте специалистов</p>
-                    <div className="text-field text-field_floating">
-                        <label htmlFor="category">Категории</label>
-                        <CustomSelect
-                            id="category"
-                            options={data}
-                            onChange={onCategoriesSelectChange}
+                <div className="text-field text-field_floating">
+                    <FormControl fullWidth variant="outlined">
+                        <InputLabel htmlFor="outlined-adornment-password">Укажите геолокацию</InputLabel>
+                        <OutlinedInput
+                            id="outlined-adornment-weight"
+                            endAdornment={<InputAdornment position="end"><NearMeIcon /></InputAdornment>}
+                            aria-describedby="outlined-weight-helper-text"
+                            inputProps={{
+                                'aria-label': 'weight',
+                            }}
+                            onClick={componentDidMount}
                         />
 
-                    </div>
-                    <div>
-                        {/*<CustomSelect
+                    </FormControl>
+                </div>
+
+                <div className="text-field text-field_floating">
+                    <RedditTextField fullWidth
+                                     id="outlined-multiline-flexible"
+                                     label="Техническое задание"
+                                     multiline
+                                     rows={4}
+                    />
+                </div>
+
+                <div>
+                    <label>
+                        <p>Добавьте специалистов</p>
+                        <div className="text-field text-field_floating">
+
+                            <CustomSelect
+                                id="category"
+                                options={data}
+                                onChange={onCategoriesSelectChange}
+                            />
+
+                        </div>
+                        <div>
+                            {/*<CustomSelect
                             id="model"
                             options={models}
                         />*/}
-                        <TextField fullWidth
-                            id="outlined-select-currency"
-                            select
-                            label="Специальность"
-                        >
-                            {data.map((option) => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
-                    </div>
-                </label>
+                            <TextField fullWidth
+                                       id="outlined-select-currency"
+                                       select
+                                       label="Специальность"
+                            >
+                                {data.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </div>
+                    </label>
 
 
-                <p style={{marginTop: "15px"}}>Количество</p>
-                <Counter/>
-                <p><MyButton style={{width: "103px", marginBottom: "15px"}}>Добавить</MyButton></p>
+                    <p style={{marginTop: "15px"}}>Количество</p>
+                    <Counter/>
+                    <p>
+                        <MyButton
+                            style={{width: "103px", marginBottom: "15px"}}
+                            onClick={addNewWorker}
+                        >Добавить
+                        </MyButton>
+                    </p>
 
-            </div>
+                </div>
 
-            <WorkerList workers={workers} />
+                <WorkerList remove={removeWorker} workers={workers} />
 
-            <MyButton onClick={addNewProject}>Создать проект</MyButton>
-        </form>
+                <MyButton onClick={addNewProject}>Создать проект</MyButton>
+            </form>
+
+            {/*<ProjectForm create={createProject} />*/}
+        </div>
     );
 };
 
-export default ProjectForm;
+export default NewPost;

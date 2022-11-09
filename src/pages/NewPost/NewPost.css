@@ -1,3 +1,7 @@
+form {
+    margin: 0 10px;
+}
+
 .text-field_floating {
     position: relative;
 }
@@ -97,5 +101,3 @@ input {
     background-color: #f5f5f5;
     opacity: 1;
 }
-
-

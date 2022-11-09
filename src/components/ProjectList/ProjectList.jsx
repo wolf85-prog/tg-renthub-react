@@ -3,9 +3,7 @@ import './ProjectList.css';
 import ProjectItem from "../ProjectItem/ProjectItem";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
-import AddProject from "../AddProject";
 import ButtonStatus from "../UI/ButtonStatus/ButtonStatus";
-
 
 
 const ProjectList = ({posts, title, remove}) => {

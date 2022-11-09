@@ -1,17 +1,27 @@
 import './style/App.css';
 import React, {useEffect, useState} from "react";
 import {useTelegram} from "./hooks/useTelegram";
-import Header from "./components/Header/Header";
 import {Route, Routes} from 'react-router-dom'
-import ProjectList from "./components/ProjectList/ProjectList";
-import Form from "./components/Form/Form";
-import ProjectForm from "./components/PostForm/ProjectForm";
 import Posts from "./pages/Posts";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import NewPost from "./pages/NewPost";
+import NewPost from "./pages/NewPost/NewPost";
 
 function App() {
+
+    const [posts, setPosts] = useState([
+        {id: 1, title: 'Красная площадь', body: '4 ноября 17:00'},
+        {id: 2, title: 'Новый год', body: '31 декабря 12:00'},
+        {id: 3, title: 'Тестовый проект', body: '1 января 15:00'},
+    ])
+
+    const createPost = (newPost) => {
+        setPosts([...posts, newPost])
+    }
+
+    const removePost = (post) => {
+        setPosts(posts.filter(p => p.id !== post.id))
+    }
 
     const {onToggleButton, tg} = useTelegram();
 
@@ -31,8 +41,8 @@ function App() {
             <div className="App">
 
                 <Routes>
-                    <Route index element={<Posts />}/>
-                    <Route path={'add-project'} element={<NewPost/>}/>
+                    <Route index element={<Posts posts={posts}/>}/>
+                    <Route path={'add-project'} element={<NewPost create={createPost}/>}/>
                 </Routes>
 
             </div>
