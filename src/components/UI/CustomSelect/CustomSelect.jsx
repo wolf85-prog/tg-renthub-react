@@ -1,19 +1,23 @@
 import React from 'react';
+import {MenuItem} from "@mui/material";
+import TextField from "@mui/material/TextField";
 
-const CustomSelect = ({options, defaultValue, value, onChange}) => {
+const CustomSelect = ({options, defaultValue, id, value, onChange}) => {
     return (
         <div>
-            <select
-                value={value}
-                onChange={event => onChange(event.target.value)}
-            >
-                <option value="">{defaultValue}</option>
-                {options.map(option =>
-                        <option key={option.value} value={option.value}>
-                            {option.name}
-                        </option>
-                    )}
-            </select>
+
+            <TextField
+                style={{width: '250px'}}
+                id="outlined-select-currency"
+                select
+                label="Категории"
+                onChange={event => onChange(event.target.value)}>
+                        {options.map((option, index) => (
+                            <MenuItem key={id + index} value={option.id}>
+                                {option.name}
+                            </MenuItem>
+                ))}
+            </TextField>
         </div>
     );
 };

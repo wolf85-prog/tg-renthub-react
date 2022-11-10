@@ -17,6 +17,7 @@ import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import {useNavigate} from "react-router-dom";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
+import {DesktopDateTimePicker} from "@mui/x-date-pickers";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -116,17 +117,7 @@ const data = [
 // компонент пользовательского выпадающего списка
 const CustomSelect2 = ({ id, options, onChange }) => {
     return (
-        // <TextField fullWidth
-        //            id={id}
-        //            select
-        //            label="Категория"
-        //            onChange={onChange}>
-        //     {options.map((option, index) => (
-        //         <MenuItem key={id + index} value={option.id}>
-        //             {option.name}
-        //         </MenuItem>
-        //     ))}
-        // </TextField>
+
 
         <select className="custom-select" id={id} onChange={onChange}>
                 { options.map((option, index) =>
@@ -154,7 +145,7 @@ const NewPost = ({create}) => {
         {id: 3, title: 'Отдельные тех. задачи', count: '3'},
     ])
     const [worker, setWorker] = useState({title: '', count: ''})
-
+    const [selectedSpec, setSelectedSpec] = useState('')
 
     const addNewProject = (e) => {
         e.preventDefault();
@@ -202,9 +193,9 @@ const NewPost = ({create}) => {
         //console.log(categories);
 
         // и модели из первой категории по умолчанию
-        //setModels(data);
+        setModels(data);
 
-        //console.log(models);
+        console.log(models);
 
     }, []);
 
@@ -229,6 +220,11 @@ const NewPost = ({create}) => {
         setModels(models2);
     }
 
+    const sortCategory = (spec) => {
+        setSelectedSpec(spec)
+        console.log(spec)
+    }
+
     return (
 
         <div className="App">
@@ -236,33 +232,8 @@ const NewPost = ({create}) => {
             <Header header={{title: 'Новый проект', icon: 'false'}}/>
 
             <form>
-                {/*Управляемы компонент*/}
-                {/*
-            <div className="text-field text-field_floating">
-                <input
-                    value={post.title}
-                    onChange={e => setPost({...post, title: e.target.value})}
-                    className="text-field__input"
-                    type="text"
-                    id="title_post"
-                    placeholder="Название проекта"
-                />
-                <label className="text-field__label" htmlFor="title_post">Название проекта</label>
-            </div>
 
-            <div className="text-field text-field_floating">
-                <input
-                    value={post.body}
-                    onChange={e => setPost({...post, body: e.target.value})}
-                    className="text-field__input"
-                    type="text"
-                    id="date"
-                    placeholder="Дата начала"
-                />
-                <label className="text-field__label" htmlFor="date">Укажите геолокацию</label>
-            </div>
-            */}
-
+                {/*Название*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                      label="Название проекта"
@@ -274,19 +245,21 @@ const NewPost = ({create}) => {
                     />
                 </div>
 
+                {/*Дата начала*/}
                 <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <Stack spacing={3}>
-                            <DateTimePicker
-                                label="Дата начала"
-                                value={value}
-                                onChange={handleChange}
-                                renderInput={(params) => <TextField {...params} />}
-                            />
-                        </Stack>
+                        <DateTimePicker
+                            label="Дата начала"
+                            value={value}
+                            onChange={handleChange}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+
+
                     </LocalizationProvider>
                 </div>
 
+                {/*Геолокация*/}
                 <div className="text-field text-field_floating">
                     <FormControl fullWidth variant="outlined">
                         <InputLabel htmlFor="outlined-adornment-password">Укажите геолокацию</InputLabel>
@@ -303,6 +276,7 @@ const NewPost = ({create}) => {
                     </FormControl>
                 </div>
 
+                {/*Техническое задание*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                      id="outlined-multiline-flexible"
@@ -314,47 +288,50 @@ const NewPost = ({create}) => {
 
                 <div>
                     <label>
-                        <p>Добавьте специалистов</p>
-                        <div className="text-field text-field_floating">
+                        <p
+                            style={{
+                                margin: '20px 5px',
+                                display: 'flex',
+                                fontSize: '14px'
+                            }}>Добавьте специалистов</p>
 
+                        <div className="text-field text-field_floating">
                             <CustomSelect
                                 id="category"
                                 options={categories}
                                 onChange={onCategoriesSelectChange}
                             />
+                        </div>
 
-                        </div>
-                        <div>
-                            <CustomSelect2
-                                id="model"
-                                options={models}
-                            />
-                            {/*<TextField fullWidth*/}
-                            {/*           id="outlined-select-currency"*/}
-                            {/*           select*/}
-                            {/*           label="Специальность"*/}
-                            {/*>*/}
-                            {/*    {data.map((option) => (*/}
-                            {/*        <MenuItem key={option.value} value={option.value}>*/}
-                            {/*            {option.label}*/}
-                            {/*        </MenuItem>*/}
-                            {/*    ))}*/}
-                            {/*</TextField>*/}
-                        </div>
                         <div>
                             <CustomSelect
-                                defaultValue="Категории"
-                                options={[
-                                    {value: 'Title', name: 'Категория 1'},
-                                    {value: 'Body', name: 'Категория 2'}
-                                ]}
+                                id="model"
+                                options={models}
+                                value={selectedSpec}
+                                onChange={sortCategory}
                             />
                         </div>
+
+                        {/*<div>*/}
+                        {/*    <CustomSelect*/}
+                        {/*        value={selectedSpec}*/}
+                        {/*        onChange={sortCategory}*/}
+                        {/*        defaultValue="Категории"*/}
+                        {/*        options={[*/}
+                        {/*            {id: 1, value: 'Title', name: 'Категория 1'},*/}
+                        {/*            {id: 2, value: 'Body', name: 'Категория 2'}*/}
+                        {/*        ]}*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                     </label>
 
 
-                    <p style={{marginTop: "15px"}}>Количество</p>
+                    <p style={{marginTop: "15px"}}>
+                        Количество
+                    </p>
+
                     <Counter/>
+
                     <p>
                         <MyButton
                             style={{width: "103px", marginBottom: "15px"}}
@@ -370,7 +347,6 @@ const NewPost = ({create}) => {
                 <MyButton onClick={addNewProject}>Создать проект</MyButton>
             </form>
 
-            {/*<ProjectForm create={createProject} />*/}
         </div>
     );
 };
