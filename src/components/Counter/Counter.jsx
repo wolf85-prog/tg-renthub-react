@@ -21,7 +21,7 @@ const Counter = () => {
         <div className={'kol_group'}>
             <img src={ButtonMinus} onClick={decrement} alt='Минус'/>
 
-            <FormControl sx={{ m: 1, width: '65px' , height: '43px'}} variant="outlined">
+            <FormControl sx={{ m: 1, width: '65px' , height: '55px', backgroundColor: '#2A2731'}} variant="outlined">
                 <OutlinedInput
                     id="count_workers_input"
                     value={count}

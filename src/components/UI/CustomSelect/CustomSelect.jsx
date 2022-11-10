@@ -7,7 +7,7 @@ const CustomSelect = ({options, defaultValue, id, value, onChange}) => {
         <div>
 
             <TextField
-                style={{width: '250px'}}
+                style={{width: '250px', backgroundColor: '#2A2731'}}
                 id="outlined-select-currency"
                 select
                 label="Категории"

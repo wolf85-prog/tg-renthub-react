@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPost.css';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import {FormControl, InputAdornment, InputLabel} from "@mui/material";
+import {FormControl, InputAdornment, InputLabel, Stack} from "@mui/material";
 import NearMeIcon from '@mui/icons-material/NearMe';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
@@ -23,7 +23,7 @@ const RedditTextField = styled((props) => (
         border: '1px solid #e2e2e1',
         overflow: 'hidden',
         borderRadius: 4,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
         transition: theme.transitions.create([
             'border-color',
             'background-color',
@@ -127,7 +127,7 @@ const NewPost = ({create}) => {
         setWorkers(workers.filter(p => p.id !== worker.id))
     }
 
-    const [value, setValue] = React.useState(dayjs(''));
+    const [value, setValue] = React.useState(dayjs('11.11.2022'));
 
     const handleChange = (newValue) => {
         setValue(newValue);
@@ -206,18 +206,21 @@ const NewPost = ({create}) => {
                 {/*Дата начала*/}
                 <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DesktopDateTimePicker
-                                label="Дата начала"
-                                value={value}
-                                onChange={handleChange}
-                                renderInput={(params) => <TextField {...params} />}
-                        />
+                        <Stack spacing={3}>
+                            <DesktopDateTimePicker
+                                    style={{backgroundColor: '#2A2731'}}
+                                    label="Дата начала"
+                                    value={value}
+                                    onChange={handleChange}
+                                    renderInput={(params) => <TextField {...params} />}
+                            />
+                        </Stack>
                     </LocalizationProvider>
                 </div>
 
                 {/*Геолокация*/}
                 <div className="text-field text-field_floating">
-                    <FormControl fullWidth variant="outlined">
+                    <FormControl fullWidth variant="outlined" style={{backgroundColor: '#2A2731'}}>
                         <InputLabel htmlFor="outlined-adornment-password">Укажите геолокацию</InputLabel>
                         <OutlinedInput
                             id="outlined-adornment-weight"
@@ -235,6 +238,7 @@ const NewPost = ({create}) => {
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
+                                     style={{backgroundColor: '#2A2731'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      multiline
