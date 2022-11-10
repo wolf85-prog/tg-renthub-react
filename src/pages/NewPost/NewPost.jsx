@@ -16,6 +16,7 @@ import Counter from "../../components/Counter/Counter";
 import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import {useNavigate} from "react-router-dom";
+import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -113,7 +114,7 @@ const data = [
 
 
 // компонент пользовательского выпадающего списка
-const CustomSelect = ({ id, options, onChange }) => {
+const CustomSelect2 = ({ id, options, onChange }) => {
     return (
         // <TextField fullWidth
         //            id={id}
@@ -324,7 +325,7 @@ const NewPost = ({create}) => {
 
                         </div>
                         <div>
-                            <CustomSelect
+                            <CustomSelect2
                                 id="model"
                                 options={models}
                             />
@@ -339,6 +340,15 @@ const NewPost = ({create}) => {
                             {/*        </MenuItem>*/}
                             {/*    ))}*/}
                             {/*</TextField>*/}
+                        </div>
+                        <div>
+                            <CustomSelect
+                                defaultValue="Категории"
+                                options={[
+                                    {value: 'Title', name: 'Категория 1'},
+                                    {value: 'Body', name: 'Категория 2'}
+                                ]}
+                            />
                         </div>
                     </label>
 
