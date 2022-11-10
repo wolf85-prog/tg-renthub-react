@@ -1,16 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPost.css';
-import Comp1 from "../../img/spec/comp1.svg"
 import OutlinedInput from '@mui/material/OutlinedInput';
-import {FormControl, Grid, IconButton, InputAdornment, InputBase, InputLabel, MenuItem, Select} from "@mui/material";
+import {FormControl, InputAdornment, InputLabel} from "@mui/material";
 import NearMeIcon from '@mui/icons-material/NearMe';
 import dayjs from 'dayjs';
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { alpha, styled } from '@mui/material/styles';
 import Counter from "../../components/Counter/Counter";
 import Header from "../../components/Header/Header";
@@ -38,43 +35,6 @@ const RedditTextField = styled((props) => (
         '&.Mui-focused': {
             backgroundColor: 'transparent',
             boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
-
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
-    'label + &': {
-        marginTop: theme.spacing(3),
-    },
-    '& .MuiInputBase-input': {
-        borderRadius: 4,
-        position: 'relative',
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
-        border: '1px solid #ced4da',
-        fontSize: 16,
-        width: 'auto',
-        padding: '10px 12px',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        // Use the system font instead of the default Roboto font.
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(','),
-        '&:focus': {
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
             borderColor: theme.palette.primary.main,
         },
     },
@@ -115,20 +75,18 @@ const data = [
 
 
 // компонент пользовательского выпадающего списка
-const CustomSelect2 = ({ id, options, onChange }) => {
-    return (
-
-
-        <select className="custom-select" id={id} onChange={onChange}>
-                { options.map((option, index) =>
-                    <option key={id + index} value={option.id}>
-                        {option.name}
-                    </option>
-                )}
-            </select>
-    )
-}
-
+// const CustomSelect2 = ({ id, options, onChange }) => {
+//     return (
+//
+//         <select className="custom-select" id={id} onChange={onChange}>
+//                 { options.map((option, index) =>
+//                     <option key={id + index} value={option.id}>
+//                         {option.name}
+//                     </option>
+//                 )}
+//             </select>
+//     )
+// }
 
 
 const NewPost = ({create}) => {
@@ -248,14 +206,12 @@ const NewPost = ({create}) => {
                 {/*Дата начала*/}
                 <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DateTimePicker
-                            label="Дата начала"
-                            value={value}
-                            onChange={handleChange}
-                            renderInput={(params) => <TextField {...params} />}
+                        <DesktopDateTimePicker
+                                label="Дата начала"
+                                value={value}
+                                onChange={handleChange}
+                                renderInput={(params) => <TextField {...params} />}
                         />
-
-
                     </LocalizationProvider>
                 </div>
 
@@ -312,17 +268,6 @@ const NewPost = ({create}) => {
                             />
                         </div>
 
-                        {/*<div>*/}
-                        {/*    <CustomSelect*/}
-                        {/*        value={selectedSpec}*/}
-                        {/*        onChange={sortCategory}*/}
-                        {/*        defaultValue="Категории"*/}
-                        {/*        options={[*/}
-                        {/*            {id: 1, value: 'Title', name: 'Категория 1'},*/}
-                        {/*            {id: 2, value: 'Body', name: 'Категория 2'}*/}
-                        {/*        ]}*/}
-                        {/*    />*/}
-                        {/*</div>*/}
                     </label>
 
 
@@ -349,6 +294,6 @@ const NewPost = ({create}) => {
 
         </div>
     );
-};
+}
 
 export default NewPost;
