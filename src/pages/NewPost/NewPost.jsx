@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPost.css';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import {FormControl, InputAdornment, InputLabel, Stack} from "@mui/material";
+import {FormControl, InputAdornment, InputLabel, MenuItem, Stack} from "@mui/material";
 import NearMeIcon from '@mui/icons-material/NearMe';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
@@ -54,6 +54,18 @@ const data = [
                 id: 2,
                 name: 'RF менеджер',
             },
+            {
+                id: 3,
+                name: 'Backline',
+            },
+            {
+                id: 4,
+                name: 'Roadie',
+            },
+            {
+                id: 5,
+                name: 'Техник по звуку',
+            },
         ]
     },
     {
@@ -68,6 +80,150 @@ const data = [
                 id: 2,
                 name: 'Оператор световой пушки',
             },
+            {
+                id: 3,
+                name: 'Гафер',
+            },
+            {
+                id: 4,
+                name: 'Техник по свету',
+            },
+        ]
+    },
+    {
+        id: 3,
+        name: 'VIDEO',
+        models: [
+            {
+                id: 1,
+                name: 'Инженер VMix',
+            },
+            {
+                id: 2,
+                name: 'Инженер Resolume',
+            },
+            {
+                id: 3,
+                name: 'Инженер Zoom',
+            },
+            {
+                id: 4,
+                name: 'Оператор [сameraman]',
+            },
+            {
+                id: 5,
+                name: 'Гафер',
+            },
+            {
+                id: 6,
+                name: 'IT-специалист',
+            },
+            {
+                id: 7,
+                name: 'Техник монтажа',
+            },
+        ]
+    },
+    {
+        id: 4,
+        name: 'RIGGERS',
+        models: [
+            {
+                id: 1,
+                name: 'High Rigger [???]',
+            },
+            {
+                id: 2,
+                name: 'Lo Rigger [???]',
+            },
+        ]
+    },
+    {
+        id: 5,
+        name: 'STAGEHANDS',
+        models: [
+            {
+                id: 1,
+                name: 'Погрузка / разгрузка',
+            },
+            {
+                id: 2,
+                name: 'Монтаж / демонтаж',
+            },
+        ]
+    },
+    {
+        id: 6,
+        name: 'STAGE GROUND',
+        models: [
+            {
+                id: 1,
+                name: 'High Rigger [???]',
+            },
+            {
+                id: 2,
+                name: 'Lo Rigger [???]',
+            },
+        ]
+    },
+    {
+        id: 7,
+        name: 'TRUCKS',
+        models: [
+            {
+                id: 1,
+                name: 'C личным ТС [B]',
+            },
+            {
+                id: 2,
+                name: 'Без личного ТС [B]',
+            },
+            {
+                id: 3,
+                name: 'С гидролифтом',
+            },
+            {
+                id: 4,
+                name: 'Без гидролифта',
+            },
+            {
+                id: 5,
+                name: 'Грузоподъемность 4 т.',
+            },
+            {
+                id: 6,
+                name: 'Грузоподъемность 6 т.',
+            },
+            {
+                id: 7,
+                name: 'Грузоподъемность 7 т.',
+            },
+            {
+                id: 8,
+                name: 'Грузоподъемность 8 т.',
+            },
+            {
+                id: 9,
+                name: 'Грузоподъемность 10 т.',
+            },
+            {
+                id: 10,
+                name: 'Грузоподъемность 14 т.',
+            },
+        ]
+    },
+    {
+        id: 8,
+        name: 'PRODUCTION',
+        models: [
+            {
+                id: 1,
+                name: 'Мероприятие под ключ',
+            },
+            {
+                id: 2,
+                name: 'Отдельные технические задачи',
+            },
         ]
     }
 ];
@@ -75,18 +231,26 @@ const data = [
 
 
 // компонент пользовательского выпадающего списка
-// const CustomSelect2 = ({ id, options, onChange }) => {
-//     return (
-//
-//         <select className="custom-select" id={id} onChange={onChange}>
-//                 { options.map((option, index) =>
-//                     <option key={id + index} value={option.id}>
-//                         {option.name}
-//                     </option>
-//                 )}
-//             </select>
-//     )
-// }
+const CustomSelect2 = ({ id, options, onChange, title }) => {
+    return (
+
+        <div>
+            <TextField
+                style={{width: '250px', backgroundColor: '#2A2731'}}
+                id={id}
+                select
+                label={title}
+                onChange={onChange}
+            >
+                {options.map((option, index) => (
+                    <MenuItem key={id + index} value={option.id}>
+                        {option.name}
+                    </MenuItem>
+                ))}
+            </TextField>
+        </div>
+    )
+}
 
 
 const NewPost = ({create}) => {
@@ -140,20 +304,29 @@ const NewPost = ({create}) => {
         });
     }
 
+    function ucFirst(str) {
+        if (!str) return str;
+
+        return str[0].toUpperCase() + str.slice(1);
+    }
+
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
         // устанавливаем категории
-        setCategories(data);
-        //setCategories([{id: 1, name: 'Легковые'}, {id: 2, name: 'Грузовые'}]);
+        if (data.length > 0 && data) {
+            setCategories(data);
+        }
 
         //console.log(categories);
 
-        // и модели из первой категории по умолчанию
-        setModels(data);
 
-        console.log(models);
+        // и модели из первой категории по умолчанию
+        if (data.length > 0 && data[0].models && data[0].models.length > 0) {
+            setModels(data[0].models);
+        }
+
 
     }, []);
 
@@ -166,16 +339,15 @@ const NewPost = ({create}) => {
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories.find(item => item.id === categoryId);
 
-        //console.log(category.models);
+        console.log(ucFirst(category.name));
 
         // выбираем все модели в категории, если таковые есть
-        const models2 = category.models && category.models.length > 0
+        const models = category.models && category.models.length > 0
             ? category.models
             : [{ id: 0, name: 'Нет моделей', items: [] }];
 
-        console.log(models2);
         // меняем модели во втором списке
-        setModels(models2);
+        setModels(models);
     }
 
     const sortCategory = (spec) => {
@@ -252,12 +424,14 @@ const NewPost = ({create}) => {
                             style={{
                                 margin: '20px 5px',
                                 display: 'flex',
-                                fontSize: '14px'
+                                fontSize: '14px',
+                                color: '#76A9FF',
                             }}>Добавьте специалистов</p>
 
                         <div className="text-field text-field_floating">
                             <CustomSelect
                                 id="category"
+                                title="Категория"
                                 options={categories}
                                 onChange={onCategoriesSelectChange}
                             />
@@ -266,6 +440,7 @@ const NewPost = ({create}) => {
                         <div>
                             <CustomSelect
                                 id="model"
+                                title="Специальность"
                                 options={models}
                                 value={selectedSpec}
                                 onChange={sortCategory}

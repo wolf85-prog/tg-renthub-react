@@ -1,23 +1,32 @@
 import React from 'react';
-import {MenuItem} from "@mui/material";
-import TextField from "@mui/material/TextField";
+import classes from './CustomSelect.module.css';
 
-const CustomSelect = ({options, defaultValue, id, value, onChange}) => {
+
+
+const CustomSelect = ({id, options, title,  value, onChange}) => {
+
     return (
         <div>
+            {/*<select className="custom-select" id={id} onChange={onChange}>*/}
+            {/*    { options.map((option, index) =>*/}
+            {/*        <option key={id + index} value={option.id}>*/}
+            {/*            {option.name}*/}
+            {/*        </option>*/}
+            {/*    )}*/}
+            {/*</select>*/}
 
-            <TextField
-                style={{width: '250px', backgroundColor: '#2A2731'}}
-                id="outlined-select-currency"
-                select
-                label="Категории"
-                onChange={event => onChange(event.target.value)}>
-                        {options.map((option, index) => (
-                            <MenuItem key={id + index} value={option.id}>
+            <label htmlFor={id}>
+                <select className={classes.mySelect} id={id} onChange={onChange}>
+                    <option value="" disabled selected>{title}</option>
+                    { options.map((option, index) =>
+                            <option key={id + index} value={option.id}>
                                 {option.name}
-                            </MenuItem>
-                ))}
-            </TextField>
+                            </option>
+                        )}
+                </select>
+
+            </label>
+
         </div>
     );
 };
