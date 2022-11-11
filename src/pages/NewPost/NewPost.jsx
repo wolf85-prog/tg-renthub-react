@@ -15,6 +15,9 @@ import WorkerList from "../../components/WorkerList/WorkerList";
 import {useNavigate} from "react-router-dom";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import {DesktopDateTimePicker} from "@mui/x-date-pickers";
+import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
+import ButtonMinus from "../../img/minus.png";
+import ButtonPlus from "../../img/plus.png";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -261,13 +264,22 @@ const NewPost = ({create}) => {
     const [categories, setCategories] = useState([]); // хранилище категорий
     const [models, setModels] = useState([]);         // хранилище моделей
 
+    const [count, setCount] = useState(1)
+
     const [workers, setWorkers] = useState([
-        {id: 1, title: 'Звукорежессер', count: '1'},
-        {id: 2, title: 'Верхний риггер', count: '3'},
-        {id: 3, title: 'Отдельные тех. задачи', count: '3'},
+        {id: 1, cat:'Sound', spec: 'Звукорежессер', count: '1'},
+        {id: 2, cat:'Sound', spec: 'Звукорежессер', count: '1'},
     ])
-    const [worker, setWorker] = useState({title: '', count: ''})
+    const [worker, setWorker] = useState({cat: '', spec: '', count: ''})
     const [selectedSpec, setSelectedSpec] = useState('')
+
+    function increment() {
+        setCount(count + 1)
+    }
+
+    function decrement() {
+        setCount(count - 1)
+    }
 
     const addNewProject = (e) => {
         e.preventDefault();
@@ -284,7 +296,9 @@ const NewPost = ({create}) => {
         e.preventDefault();
 
         setWorkers([...workers, {...worker, id: Date.now()}])
-        setWorker({title: 'Тех. рабочий', count: '1'})
+
+        console.log(worker)
+        setWorker({cat: '', spec: '', count: ''})
     }
 
     const removeWorker = (worker) => {
@@ -304,12 +318,6 @@ const NewPost = ({create}) => {
         });
     }
 
-    function ucFirst(str) {
-        if (!str) return str;
-
-        return str[0].toUpperCase() + str.slice(1);
-    }
-
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
@@ -319,16 +327,16 @@ const NewPost = ({create}) => {
             setCategories(data);
         }
 
-        //console.log(categories);
-
-
         // и модели из первой категории по умолчанию
         if (data.length > 0 && data[0].models && data[0].models.length > 0) {
             setModels(data[0].models);
         }
 
-
     }, []);
+
+    const capitalizeFirst = str => {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    };
 
     // при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
@@ -339,7 +347,9 @@ const NewPost = ({create}) => {
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories.find(item => item.id === categoryId);
 
-        console.log(ucFirst(category.name));
+        const catSelect = capitalizeFirst(category.name);
+
+        setWorker({...worker, cat: catSelect})
 
         // выбираем все модели в категории, если таковые есть
         const models = category.models && category.models.length > 0
@@ -350,9 +360,12 @@ const NewPost = ({create}) => {
         setModels(models);
     }
 
-    const sortCategory = (spec) => {
-        setSelectedSpec(spec)
-        console.log(spec)
+    const onSpecSelectChange = (e) => {
+        const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
+
+        const model = models.find(item => item.id === modelId);
+
+        setWorker({...worker, spec: model.name})
     }
 
     return (
@@ -443,7 +456,7 @@ const NewPost = ({create}) => {
                                 title="Специальность"
                                 options={models}
                                 value={selectedSpec}
-                                onChange={sortCategory}
+                                onChange={onSpecSelectChange}
                             />
                         </div>
 
@@ -454,7 +467,14 @@ const NewPost = ({create}) => {
                         Количество
                     </p>
 
-                    <Counter/>
+                    <div>
+                        <img style={{verticalAlign: 'middle', marginRight: '10px'}} src={ButtonMinus} onClick={decrement} alt='Минус'/>
+                        <Counter
+                            value={worker.count}
+                            onChange={e => setWorker({...worker, count: e.target.value})}
+                        />
+                        <img style={{verticalAlign: 'middle', marginLeft: '10px'}} src={ButtonPlus} onClick={increment} alt='Плюс'/>
+                    </div>
 
                     <p>
                         <MyButton

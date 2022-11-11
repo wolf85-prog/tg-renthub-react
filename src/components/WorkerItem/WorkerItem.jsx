@@ -48,16 +48,16 @@ const WorkerItem = (props) => {
 
             <FormControl sx={{marginLeft: '10px'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input">
-                    Sound
+                    {props.worker.cat}
                 </InputLabel>
                 <BootstrapInput
                     defaultValue=""
                     id="bootstrap-input"
-                    value={props.worker.title}
+                    value={props.worker.spec}
                 />
             </FormControl>
 
-            <FormControl sx={{marginLeft: '5px', width: '35px' }} variant="standard">
+            <FormControl sx={{marginLeft: '5px', width: '45px' }} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input" />
                 <BootstrapInput
                     defaultValue=""
@@ -67,7 +67,7 @@ const WorkerItem = (props) => {
             </FormControl>
 
             <DeleteIcon
-                style={{marginBottom: "10px", marginLeft: "5px"}}
+                style={{marginBottom: "10px", marginLeft: "0"}}
                 onClick={() => props.remove(props.worker)}
             />
         </div>

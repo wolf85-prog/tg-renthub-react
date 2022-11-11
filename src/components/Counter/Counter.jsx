@@ -1,39 +1,10 @@
 import React, {useState} from 'react';
-import {FormControl} from "@mui/material";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import ButtonPlus from "../../img/plus.png";
-import ButtonMinus from "../../img/minus.png";
-import './Counter.css';
+import classes from './Counter.module.css';
 
-const Counter = () => {
-    const [count, setCount] = useState(0)
-
-    function increment() {
-        setCount(count + 1)
-    }
-
-    function decrement() {
-        setCount(count - 1)
-    }
-
+const Counter = (props) => {
 
     return (
-        <div className={'kol_group'}>
-            <img src={ButtonMinus} onClick={decrement} alt='Минус'/>
-
-            <FormControl sx={{ m: 1, width: '65px' , height: '55px', backgroundColor: '#2A2731'}} variant="outlined">
-                <OutlinedInput
-                    id="count_workers_input"
-                    value={count}
-                    aria-describedby="outlined-weight-helper-text"
-                    inputProps={{
-                        'aria-label': 'weight',
-                    }}
-                />
-            </FormControl>
-
-            <img src={ButtonPlus} onClick={increment} alt='Плюс'/>
-        </div>
+        <input className={classes.myInput} {...props}/>
     );
 };
 
