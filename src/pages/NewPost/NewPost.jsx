@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPost.css';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import {FormControl, InputAdornment, InputLabel, MenuItem, Stack} from "@mui/material";
+import {IconButton, InputAdornment, Stack} from "@mui/material";
 import NearMeIcon from '@mui/icons-material/NearMe';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
@@ -14,16 +13,15 @@ import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import {useNavigate} from "react-router-dom";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
-import {DesktopDateTimePicker} from "@mui/x-date-pickers";
-import ButtonStatus from "../../components/UI/ButtonStatus/ButtonStatus";
 import ButtonMinus from "../../img/minus.png";
 import ButtonPlus from "../../img/plus.png";
+import Calendar from "../../img/calendar.svg";
 
 const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props} />
+    <TextField InputProps={{ disableUnderline: true  }} {...props} />
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
-        border: '1px solid #e2e2e1',
+        border: '1px solid #76A9FF',
         overflow: 'hidden',
         borderRadius: 4,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
@@ -42,6 +40,44 @@ const RedditTextField = styled((props) => (
         },
     },
 }));
+
+const RedditTextField2 = styled((props) => (
+    <TextField InputProps={{
+        disableUnderline: true,
+        endAdornment:
+            <InputAdornment position="end">
+                <IconButton onClick={componentDidMount}>
+                    <NearMeIcon />
+                </IconButton>
+            </InputAdornment> }} {...props} />
+))(({ theme }) => ({
+    '& .MuiFilledInput-root': {
+        border: '1px solid #76A9FF',
+        overflow: 'hidden',
+        borderRadius: 4,
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+        transition: theme.transitions.create([
+            'border-color',
+            'background-color',
+            'box-shadow',
+        ]),
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
+        '&.Mui-focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
+
+const componentDidMount = () => {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        console.log("Longitude is :", position.coords.longitude);
+    });
+}
 
 
 const data = [
@@ -232,30 +268,6 @@ const data = [
 ];
 
 
-
-// компонент пользовательского выпадающего списка
-const CustomSelect2 = ({ id, options, onChange, title }) => {
-    return (
-
-        <div>
-            <TextField
-                style={{width: '250px', backgroundColor: '#2A2731'}}
-                id={id}
-                select
-                label={title}
-                onChange={onChange}
-            >
-                {options.map((option, index) => (
-                    <MenuItem key={id + index} value={option.id}>
-                        {option.name}
-                    </MenuItem>
-                ))}
-            </TextField>
-        </div>
-    )
-}
-
-
 const NewPost = ({create}) => {
 
     const navigate = useNavigate();
@@ -265,22 +277,32 @@ const NewPost = ({create}) => {
     const [models, setModels] = useState([]);         // хранилище моделей
 
     const [count, setCount] = useState(1)
+    const [worker, setWorker] = useState({cat: '', spec: '', count: 1})
 
     const [workers, setWorkers] = useState([
         {id: 1, cat:'Sound', spec: 'Звукорежессер', count: '1'},
         {id: 2, cat:'Sound', spec: 'Звукорежессер', count: '1'},
     ])
-    const [worker, setWorker] = useState({cat: '', spec: '', count: ''})
+
     const [selectedSpec, setSelectedSpec] = useState('')
 
-    function increment() {
+    function increment(e) {
+
         setCount(count + 1)
+       // setWorker(...worker, count+1)
+
+        setWorker({...worker, count: count + 1})
+
+        console.log(worker);
+        console.log(count+1);
     }
 
     function decrement() {
         setCount(count - 1)
+        console.log(count-1);
     }
 
+    {/* Добавление проекта */}
     const addNewProject = (e) => {
         e.preventDefault();
         const newPost = {
@@ -292,15 +314,20 @@ const NewPost = ({create}) => {
         navigate("/");
     }
 
+    {/* Добавление работника */}
     const addNewWorker = (e) => {
         e.preventDefault();
 
         setWorkers([...workers, {...worker, id: Date.now()}])
 
         console.log(worker)
-        setWorker({cat: '', spec: '', count: ''})
+        setWorker({cat: '', spec: '', count: 1})
+        //setCategories('');
+        //setModels('');
+
     }
 
+    {/* Удаление работника */}
     const removeWorker = (worker) => {
         setWorkers(workers.filter(p => p.id !== worker.id))
     }
@@ -310,13 +337,6 @@ const NewPost = ({create}) => {
     const handleChange = (newValue) => {
         setValue(newValue);
     };
-
-    const componentDidMount = () => {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log("Latitude is :", position.coords.latitude);
-            console.log("Longitude is :", position.coords.longitude);
-        });
-    }
 
 
     // при первой загрузке приложения выполнится код ниже
@@ -368,6 +388,11 @@ const NewPost = ({create}) => {
         setWorker({...worker, spec: model.name})
     }
 
+    const onCountChange = (e) => {
+        console.log(7)
+        //setWorker({...worker, count: 5})
+    }
+
     return (
 
         <div className="App">
@@ -390,42 +415,50 @@ const NewPost = ({create}) => {
 
                 {/*Дата начала*/}
                 <div className="text-field text-field_floating">
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <Stack spacing={3}>
-                            <DesktopDateTimePicker
-                                    style={{backgroundColor: '#2A2731'}}
-                                    label="Дата начала"
-                                    value={value}
-                                    onChange={handleChange}
-                                    renderInput={(params) => <TextField {...params} />}
+                    <LocalizationProvider dateAdapter={AdapterDayjs} >
+                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '4px'}}>
+                            {/*<DesktopDateTimePicker*/}
+                            {/*        label="Дата начала"*/}
+                            {/*        value={value}*/}
+                            {/*        onChange={handleChange}*/}
+                            {/*        renderInput={(params) => <TextField {...params} />}*/}
+                            {/*/>*/}
+                            <RedditTextField
+                                id="datetime-local"
+                                label="Дата начала"
+                                type="datetime-local"
+                                variant="filled"
+                                defaultValue="2022-11-11T10:30"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
                             />
+                            <span className="open-button">
+                              <button type="button"><img src={Calendar}/></button>
+                            </span>
                         </Stack>
                     </LocalizationProvider>
                 </div>
 
                 {/*Геолокация*/}
                 <div className="text-field text-field_floating">
-                    <FormControl fullWidth variant="outlined" style={{backgroundColor: '#2A2731'}}>
-                        <InputLabel htmlFor="outlined-adornment-password">Укажите геолокацию</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-weight"
-                            endAdornment={<InputAdornment position="end"><NearMeIcon /></InputAdornment>}
-                            aria-describedby="outlined-weight-helper-text"
-                            inputProps={{
-                                'aria-label': 'weight',
-                            }}
-                            onClick={componentDidMount}
+                        <RedditTextField2 fullWidth
+                                         label="Укажите геолокацию"
+                                         defaultValue=""
+                                         id="reddit-input"
+                                         variant="filled"
+                                         value={post.title}
+                                         onChange={e => setPost({...post, title: e.target.value})}
                         />
-
-                    </FormControl>
                 </div>
 
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     style={{backgroundColor: '#2A2731'}}
+                                     style={{backgroundColor: '#2A2731', border: '1px solid #76A9FF', borderRadius: '4px'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
+                                     variant="filled"
                                      multiline
                                      rows={4}
                     />
@@ -459,7 +492,6 @@ const NewPost = ({create}) => {
                                 onChange={onSpecSelectChange}
                             />
                         </div>
-
                     </label>
 
 
@@ -470,8 +502,9 @@ const NewPost = ({create}) => {
                     <div>
                         <img style={{verticalAlign: 'middle', marginRight: '10px'}} src={ButtonMinus} onClick={decrement} alt='Минус'/>
                         <Counter
-                            value={worker.count}
-                            onChange={e => setWorker({...worker, count: e.target.value})}
+                            value={count}
+                            //onChange={e => setWorker({...worker, count: e.target.value})}
+                            onChange={onCountChange}
                         />
                         <img style={{verticalAlign: 'middle', marginLeft: '10px'}} src={ButtonPlus} onClick={increment} alt='Плюс'/>
                     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './CustomSelect.module.css';
+import {BsChevronDown} from "react-icons/bs";
 
 
 
@@ -24,7 +25,7 @@ const CustomSelect = ({id, options, title,  value, onChange}) => {
                             </option>
                         )}
                 </select>
-
+                <BsChevronDown className={'chevron'}/>
             </label>
 
         </div>

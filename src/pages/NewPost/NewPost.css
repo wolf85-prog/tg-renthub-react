@@ -101,3 +101,41 @@ input {
     background-color: #f5f5f5;
     opacity: 1;
 }
+
+.chevron {
+    position: relative;
+    right: 25px;
+    bottom: -4px;
+    stroke-width: 2px;
+    stroke: #76A9FF;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+.sd-container {
+    position: relative;
+    float: left;
+}
+
+.sd {
+    padding: 5px 10px;
+    height: 30px;
+    width: 150px;
+}
+
+.open-button {
+    position: absolute;
+    bottom: 12px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background: #2A2731;
+    pointer-events: none;
+}
+
+.open-button button {
+    border: none;
+    background: transparent;
+}
