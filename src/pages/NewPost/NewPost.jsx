@@ -272,7 +272,7 @@ const NewPost = ({create}) => {
 
     const navigate = useNavigate();
 
-    const [post, setPost] = useState({title: '', body: ''})
+    const [post, setPost] = useState({title: '', time: '', geo: '', teh: ''})
     const [categories, setCategories] = useState([]); // хранилище категорий
     const [models, setModels] = useState([]);         // хранилище моделей
 
@@ -284,22 +284,16 @@ const NewPost = ({create}) => {
         {id: 2, cat:'Sound', spec: 'Звукорежессер', count: '1'},
     ])
 
-    const [selectedSpec, setSelectedSpec] = useState('')
+    const [selectedElement, setSelectedElement] = useState("")
 
     function increment(e) {
-
         setCount(count + 1)
-       // setWorker(...worker, count+1)
-
         setWorker({...worker, count: count + 1})
-
-        console.log(worker);
-        console.log(count+1);
     }
 
     function decrement() {
         setCount(count - 1)
-        console.log(count-1);
+        setWorker({...worker, count: count - 1})
     }
 
     {/* Добавление проекта */}
@@ -318,13 +312,15 @@ const NewPost = ({create}) => {
     const addNewWorker = (e) => {
         e.preventDefault();
 
-        setWorkers([...workers, {...worker, id: Date.now()}])
+        if (worker.cat !== '' || worker.spec !== '') {
+            setWorkers([...workers, {...worker, id: Date.now()}])
+        }
 
         console.log(worker)
         setWorker({cat: '', spec: '', count: 1})
-        //setCategories('');
-        //setModels('');
 
+        setCount(1);
+        setSelectedElement("");
     }
 
     {/* Удаление работника */}
@@ -358,8 +354,14 @@ const NewPost = ({create}) => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     };
 
+    const handleChange2 = e => {
+        setSelectedElement(e.target.value);
+    };
+
     // при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
+
+        setSelectedElement(e.target.options.value);
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
         const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
@@ -378,19 +380,20 @@ const NewPost = ({create}) => {
 
         // меняем модели во втором списке
         setModels(models);
+
+
     }
 
     const onSpecSelectChange = (e) => {
+        setSelectedElement(e.target.options.value);
+
         const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
 
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
-    }
 
-    const onCountChange = (e) => {
-        console.log(7)
-        //setWorker({...worker, count: 5})
+        //setSelectedElement(e.target.value);
     }
 
     return (
@@ -406,7 +409,7 @@ const NewPost = ({create}) => {
                     <RedditTextField fullWidth
                                      label="Название проекта"
                                      defaultValue=""
-                                     id="reddit-input"
+                                     id="project_name"
                                      variant="filled"
                                      value={post.title}
                                      onChange={e => setPost({...post, title: e.target.value})}
@@ -445,10 +448,10 @@ const NewPost = ({create}) => {
                         <RedditTextField2 fullWidth
                                          label="Укажите геолокацию"
                                          defaultValue=""
-                                         id="reddit-input"
+                                         id="project_geo"
                                          variant="filled"
-                                         value={post.title}
-                                         onChange={e => setPost({...post, title: e.target.value})}
+                                         value={post.geo}
+                                         onChange={e => setPost({...post, geo: e.target.value})}
                         />
                 </div>
 
@@ -479,6 +482,8 @@ const NewPost = ({create}) => {
                                 id="category"
                                 title="Категория"
                                 options={categories}
+                                selectedElement={selectedElement}
+                                setSelectedElement={setSelectedElement}
                                 onChange={onCategoriesSelectChange}
                             />
                         </div>
@@ -488,7 +493,8 @@ const NewPost = ({create}) => {
                                 id="model"
                                 title="Специальность"
                                 options={models}
-                                value={selectedSpec}
+                                selectedElement={selectedElement}
+                                setSelectedElement={setSelectedElement}
                                 onChange={onSpecSelectChange}
                             />
                         </div>
@@ -503,8 +509,7 @@ const NewPost = ({create}) => {
                         <img style={{verticalAlign: 'middle', marginRight: '10px'}} src={ButtonMinus} onClick={decrement} alt='Минус'/>
                         <Counter
                             value={count}
-                            //onChange={e => setWorker({...worker, count: e.target.value})}
-                            onChange={onCountChange}
+                            onChange={e => setWorker({...worker, count: e.target.value})}
                         />
                         <img style={{verticalAlign: 'middle', marginLeft: '10px'}} src={ButtonPlus} onClick={increment} alt='Плюс'/>
                     </div>

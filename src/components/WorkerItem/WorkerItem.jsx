@@ -41,6 +41,44 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     },
 }));
 
+const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
+    'label + &': {
+        marginTop: theme.spacing(3),
+    },
+    '& .MuiInputBase-input': {
+        borderRadius: 4,
+        position: 'relative',
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+        border: '1px solid #ced4da',
+        fontSize: 16,
+        textAlign: 'center',
+        width: 'auto',
+        padding: '10px 12px',
+        transition: theme.transitions.create([
+            'border-color',
+            'background-color',
+            'box-shadow',
+        ]),
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+        '&:focus': {
+            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
+
 const WorkerItem = (props) => {
     return (
         <div className="list_spec">
@@ -58,10 +96,11 @@ const WorkerItem = (props) => {
             </FormControl>
 
             <FormControl sx={{marginLeft: '5px', width: '45px' }} variant="standard">
-                <InputLabel shrink htmlFor="bootstrap-input" />
-                <BootstrapInput
+                <InputLabel shrink htmlFor="bootstrap-input2" />
+                <BootstrapInput2
+                    className="inputSpec"
                     defaultValue=""
-                    id="bootstrap-input"
+                    id="bootstrap-input2"
                     value={props.worker.count}
                 />
             </FormControl>

@@ -4,30 +4,21 @@ import {BsChevronDown} from "react-icons/bs";
 
 
 
-const CustomSelect = ({id, options, title,  value, onChange}) => {
+const CustomSelect = ({id, options, title, onChange, selectedElement}) => {
 
     return (
         <div>
-            {/*<select className="custom-select" id={id} onChange={onChange}>*/}
-            {/*    { options.map((option, index) =>*/}
-            {/*        <option key={id + index} value={option.id}>*/}
-            {/*            {option.name}*/}
-            {/*        </option>*/}
-            {/*    )}*/}
-            {/*</select>*/}
-
             <label htmlFor={id}>
-                <select className={classes.mySelect} id={id} onChange={onChange}>
-                    <option value="" disabled selected>{title}</option>
+                <select className={classes.mySelect} id={id} value={selectedElement} onChange={onChange}>
+                    <option disabled value="">{title}</option>
                     { options.map((option, index) =>
-                            <option key={id + index} value={option.id}>
+                            <option key={id + index} value={option.id} >
                                 {option.name}
                             </option>
                         )}
                 </select>
                 <BsChevronDown className={'chevron'}/>
             </label>
-
         </div>
     );
 };
