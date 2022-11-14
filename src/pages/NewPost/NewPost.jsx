@@ -294,15 +294,10 @@ const NewPost = ({create}) => {
         create(newPost)
         console.log(post)
 
-        //для отправки в БД
-        const project_name = post.title
-        console.log('project: ' + project_name)
-
-
         //Установка по-умолчанию
-        setPost({title: '', time: '', geo: '', teh: '', status: ''})
+        //setPost({title: '', time: '', geo: '', teh: '', status: ''})
 
-        navigate("/");
+        //navigate("/");
     }
 
     {/* Добавление работника */}
