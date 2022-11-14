@@ -415,7 +415,7 @@ const NewPost = ({create}) => {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Отправить данные'
+            text: 'Создать проект'
         })
     }, [])
 
@@ -564,7 +564,7 @@ const NewPost = ({create}) => {
 
                 <WorkerList remove={removeWorker} workers={workers} />
 
-                <MyButton onClick={addNewProject}>Создать проект</MyButton>
+                {/*<MyButton onClick={addNewProject}>Создать проект</MyButton>*/}
             </form>
 
         </div>
