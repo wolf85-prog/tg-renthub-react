@@ -389,12 +389,12 @@ const NewPost = ({create}) => {
     }, [onSendData])
 
     useEffect(() => {
-        if(!project_name || !project_date) {
+        if(!post.title || !post.time) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [project_name, project_date])
+    }, [post.title, post.time])
 
     return (
 
