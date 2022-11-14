@@ -246,8 +246,11 @@ const NewPost = ({create}) => {
 
     //проект
     const [post, setPost] = useState({title: '', time: '11.11.2022 10:00', geo: '', teh: '', status: ''})
+
     const [project, setProject] = useState('');
-    const [datestart, setDatestart] = useState('');
+    const [datestart, setDatestart] = useState('11.11.2022 10:00');
+    //const [geodata, setGeodata] = useState('');
+    const [teh, setTeh] = useState('');
 
     //геолокация
     const [geo, setGeo] = useState('');
@@ -373,6 +376,15 @@ const NewPost = ({create}) => {
     const onChangeProject = (e) => {
         setProject(e.target.value)
     }
+    const onChangeTime = (e) => {
+        setDatestart(e.target.value)
+    }
+    const onChangeGeodata = (e) => {
+        setGeo(e.target.value)
+    }
+    const onChangeTeh = (e) => {
+        setTeh(e.target.value)
+    }
 
     const onSpecSelectChange = (e) => {
         setSelectedElement(e.target.options.value);
@@ -387,10 +399,12 @@ const NewPost = ({create}) => {
     const onSendData = useCallback(() => {
         const data = {
             project,
-            datestart
+            datestart,
+            geo,
+            teh
         }
         tg.sendData(JSON.stringify(data));
-    }, [project, post.time])
+    }, [project, datestart, geo, teh])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -450,8 +464,10 @@ const NewPost = ({create}) => {
                                 label="Дата начала"
                                 type="datetime-local"
                                 variant="filled"
-                                defaultValue="2022-11-11T10:30"
-                                onChange={e => setPost({...post, time: e.target.value})}
+                                //defaultValue="2022-11-11T10:30"
+                                // onChange={e => setPost({...post, time: e.target.value})}
+                                value={datestart}
+                                onChange={onChangeTime}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
@@ -468,6 +484,8 @@ const NewPost = ({create}) => {
                         <GeoInput
                             add={addGeo}
                             value={geo}
+                            //value={geodata}
+                            onChange={onChangeGeodata}
                         />
                 </div>
 
@@ -478,8 +496,10 @@ const NewPost = ({create}) => {
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"
-                                     value={post.teh}
-                                     onChange={e => setPost({...post, teh: e.target.value})}
+                                     // value={post.teh}
+                                     // onChange={e => setPost({...post, teh: e.target.value})}
+                                     value={teh}
+                                     onChange={onChangeTeh}
                                      multiline
                                      rows={4}
                     />
