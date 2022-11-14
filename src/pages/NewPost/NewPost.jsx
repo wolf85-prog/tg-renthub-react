@@ -370,6 +370,10 @@ const NewPost = ({create}) => {
 
     }
 
+    const onChangeProject = (e) => {
+        setProject(e.target.value)
+    }
+
     const onSpecSelectChange = (e) => {
         setSelectedElement(e.target.options.value);
 
@@ -386,7 +390,7 @@ const NewPost = ({create}) => {
             datestart
         }
         tg.sendData(JSON.stringify(data));
-    }, ['xcvxcv', 'xcvxcv'])
+    }, [project, post.time])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -402,12 +406,12 @@ const NewPost = ({create}) => {
     }, [])
 
     useEffect(() => {
-        if(!post.title || !post.time) {
+        if(!project) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [post.title, post.time])
+    }, [project])
 
     return (
 
@@ -424,8 +428,10 @@ const NewPost = ({create}) => {
                                      defaultValue=""
                                      id="project_name"
                                      variant="filled"
-                                     value={post.title}
-                                     onChange={e => setPost({...post, title: e.target.value})}
+                                     // value={post.title}
+                                     // onChange={e => setPost({...post, title: e.target.value})}
+                                     value={project}
+                                     onChange={onChangeProject}
                     />
                 </div>
 
