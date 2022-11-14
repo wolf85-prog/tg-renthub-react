@@ -1,5 +1,12 @@
 import React from 'react';
-import Comp1 from "../../img/spec/comp1.svg";
+import Sound1 from "../../img/spec/1_sound.svg";
+import Riggers2 from "../../img/spec/2_riggers.svg";
+import Production3 from "../../img/spec/3_production.svg";
+import StageGround4 from "../../img/spec/4_stage_ground.svg";
+import Video5 from "../../img/spec/5_video.svg";
+import Light6 from "../../img/spec/6_light.svg";
+import Stagehands7 from "../../img/spec/7_stagehands.svg";
+import Tracks8 from "../../img/spec/8_tracks.svg";
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
@@ -82,7 +89,7 @@ const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
 const WorkerItem = (props) => {
     return (
         <div className="list_spec">
-            <img style={{marginTop: "24px"}} src={Comp1} alt='Comp1'/>
+            <img style={{marginTop: "24px"}} src={Sound1} alt='Sound'/>
 
             <FormControl sx={{marginLeft: '10px'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input">
