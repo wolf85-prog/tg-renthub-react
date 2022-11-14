@@ -378,6 +378,7 @@ const NewPost = ({create}) => {
 
 
     const onSendData = useCallback(() => {
+        console.log(post)
         tg.sendData(JSON.stringify(post));
     }, [post.title, post.time, post.geo, post.teh, post.status])
 
