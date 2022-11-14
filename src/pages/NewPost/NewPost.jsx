@@ -247,7 +247,7 @@ const NewPost = ({create}) => {
     //проект
     const [post, setPost] = useState({title: '', time: '11.11.2022 10:00', geo: '', teh: '', status: ''})
     const [project, setProject] = useState('');
-    const [time, setTime] = useState('');
+    const [datestart, setDatestart] = useState('');
 
     //геолокация
     const [geo, setGeo] = useState('');
@@ -296,7 +296,7 @@ const NewPost = ({create}) => {
 
         //для отправки в БД
         setProject(post.title)
-        setTime(post.time)
+        setDatestart(post.time)
 
         //Установка по-умолчанию
         setPost({title: '', time: '', geo: '', teh: '', status: ''})
@@ -387,10 +387,10 @@ const NewPost = ({create}) => {
     const onSendData = useCallback(() => {
         const data = {
             project,
-            time
+            datestart
         }
         tg.sendData(JSON.stringify(data));
-    }, [project, post.time])
+    }, [project, datestart])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
