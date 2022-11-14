@@ -111,7 +111,7 @@ const WorkerItem = (props) => {
         <div className="list_spec">
             <img style={{marginTop: "24px"}} src={image} alt='icon'/>
 
-            <FormControl sx={{marginLeft: '10px'}} variant="standard">
+            <FormControl sx={{marginLeft: '7px', width: '60%'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input">
                     {props.worker.cat}
                 </InputLabel>
