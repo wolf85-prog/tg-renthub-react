@@ -6,6 +6,7 @@ import Posts from "./pages/Posts";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import NewPost from "./pages/NewPost/NewPost";
+import Form from "./components/Form/Form";
 
 function App() {
 
@@ -43,6 +44,7 @@ function App() {
                 <Routes>
                     <Route index element={<Posts posts={posts}/>}/>
                     <Route path={'add-project'} element={<NewPost create={createPost}/>}/>
+                    <Route path={'form'} element={<Form create={createPost}/>}/>
                 </Routes>
 
             </div>

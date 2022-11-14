@@ -389,6 +389,12 @@ const NewPost = ({create}) => {
     }, [onSendData])
 
     useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Отправить данные'
+        })
+    }, [])
+
+    useEffect(() => {
         if(!post.title || !post.time) {
             tg.MainButton.hide();
         } else {
