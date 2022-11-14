@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewPost.css';
-import {IconButton, InputAdornment, Stack} from "@mui/material";
-import NearMeIcon from '@mui/icons-material/NearMe';
-import dayjs from 'dayjs';
+import {Stack} from "@mui/material";
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -17,6 +15,7 @@ import ButtonMinus from "../../img/minus.png";
 import ButtonPlus from "../../img/plus.png";
 import Calendar from "../../img/calendar.svg";
 import GeoInput from "../../components/UI/GeoInput/GeoInput";
+import {useTelegram} from "../../hooks/useTelegram";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true  }} {...props} />
@@ -243,6 +242,8 @@ const NewPost = ({create}) => {
 
     const navigate = useNavigate();
 
+    const {tg} = useTelegram();
+
     //проект
     const [post, setPost] = useState({title: '', time: '11.11.2022 10:00', geo: '', teh: '', status: ''})
     //геолокация
@@ -374,6 +375,32 @@ const NewPost = ({create}) => {
 
         setWorker({...worker, spec: model.name})
     }
+
+
+    const onSendData = useCallback(() => {
+        const data = {
+            project_name,
+            project_date,
+            project_geo,
+            project_teh,
+        }
+        tg.sendData(JSON.stringify(data));
+    }, [project_name, project_date, project_geo, project_teh])
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    useEffect(() => {
+        if(!project_name || !project_date) {
+            tg.MainButton.hide();
+        } else {
+            tg.MainButton.show();
+        }
+    }, [project_name, project_date])
 
     return (
 
