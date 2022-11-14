@@ -378,14 +378,8 @@ const NewPost = ({create}) => {
 
 
     const onSendData = useCallback(() => {
-        const data = {
-            project_name,
-            project_date,
-            project_geo,
-            project_teh,
-        }
-        tg.sendData(JSON.stringify(data));
-    }, [project_name, project_date, project_geo, project_teh])
+        tg.sendData(JSON.stringify(post));
+    }, [post.title, post.time, post.geo, post.teh, post.status])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
