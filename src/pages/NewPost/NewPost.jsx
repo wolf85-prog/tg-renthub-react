@@ -295,8 +295,9 @@ const NewPost = ({create}) => {
         console.log(post)
 
         //для отправки в БД
-        setProject(post.title)
-        setDatestart(post.time)
+        const project_name = post.title
+        console.log('project: ' + project_name)
+
 
         //Установка по-умолчанию
         setPost({title: '', time: '', geo: '', teh: '', status: ''})
@@ -390,7 +391,7 @@ const NewPost = ({create}) => {
             datestart
         }
         tg.sendData(JSON.stringify(data));
-    }, [project, datestart])
+    }, [post.title, post.time])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
