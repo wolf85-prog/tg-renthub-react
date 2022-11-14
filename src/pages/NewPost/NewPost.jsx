@@ -76,6 +76,8 @@ const componentDidMount = () => {
     navigator.geolocation.getCurrentPosition(function(position) {
         console.log("Latitude is :", position.coords.latitude);
         console.log("Longitude is :", position.coords.longitude);
+
+        //setGeo(position.coords.latitude + ', ' + position.coords.longitude);
     });
 }
 
@@ -84,6 +86,7 @@ const data = [
     {
         id: 1,
         name: 'SOUND',
+        icon: 'Sound',
         models: [
             {
                 id: 1,
@@ -110,6 +113,7 @@ const data = [
     {
         id: 2,
         name: 'LIGHT',
+        icon: 'Light',
         models: [
             {
                 id: 1,
@@ -132,6 +136,7 @@ const data = [
     {
         id: 3,
         name: 'VIDEO',
+        icon: 'Video',
         models: [
             {
                 id: 1,
@@ -166,6 +171,7 @@ const data = [
     {
         id: 4,
         name: 'RIGGERS',
+        icon: 'Riggers',
         models: [
             {
                 id: 1,
@@ -180,6 +186,7 @@ const data = [
     {
         id: 5,
         name: 'STAGEHANDS',
+        icon: 'Stagehands',
         models: [
             {
                 id: 1,
@@ -194,6 +201,7 @@ const data = [
     {
         id: 6,
         name: 'STAGE GROUND',
+        icon: 'StageGround',
         models: [
             {
                 id: 1,
@@ -208,6 +216,7 @@ const data = [
     {
         id: 7,
         name: 'TRUCKS',
+        icon: 'Tracks',
         models: [
             {
                 id: 1,
@@ -254,6 +263,7 @@ const data = [
     {
         id: 8,
         name: 'PRODUCTION',
+        icon: 'Production',
         models: [
             {
                 id: 1,
@@ -272,19 +282,31 @@ const NewPost = ({create}) => {
 
     const navigate = useNavigate();
 
+    //проект
     const [post, setPost] = useState({title: '', time: '', geo: '', teh: ''})
-    const [categories, setCategories] = useState([]); // хранилище категорий
-    const [models, setModels] = useState([]);         // хранилище моделей
+    //геолокация
+    const [geo, setGeo] = useState('');
 
+    //категории
+    const [categories, setCategories] = useState([]);
+    //специальности
+    const [models, setModels] = useState([]);
+
+    //количество работников
     const [count, setCount] = useState(1)
-    const [worker, setWorker] = useState({cat: '', spec: '', count: 1})
-
+    //работник
+    const [worker, setWorker] = useState({cat: '', spec: '', count: 1, icon: ''})
+    //работники
     const [workers, setWorkers] = useState([
-        {id: 1, cat:'Sound', spec: 'Звукорежессер', count: '1'},
-        {id: 2, cat:'Sound', spec: 'Звукорежессер', count: '1'},
+        {id: 1, cat:'Sound', spec: 'Звукорежессер', count: '1', icon: 'Sound'},
     ])
-
+    //select
     const [selectedElement, setSelectedElement] = useState("")
+
+    function addGeo () {
+
+    }
+
 
     function increment(e) {
         setCount(count + 1)
@@ -303,7 +325,7 @@ const NewPost = ({create}) => {
             ...post, id: Date.now()
         }
         create(newPost)
-        setPost({title: '', body: ''})
+        setPost({title: '', time: '', geo: '', teh: ''})
 
         navigate("/");
     }
@@ -317,7 +339,7 @@ const NewPost = ({create}) => {
         }
 
         console.log(worker)
-        setWorker({cat: '', spec: '', count: 1})
+        setWorker({cat: '', spec: '', count: 1, icon: ''})
 
         setCount(1);
         setSelectedElement("");
@@ -350,13 +372,11 @@ const NewPost = ({create}) => {
 
     }, []);
 
+    //Название категории с большой буквы
     const capitalizeFirst = str => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     };
 
-    const handleChange2 = e => {
-        setSelectedElement(e.target.value);
-    };
 
     // при выборе нового значения в категории
     const onCategoriesSelectChange = (e) => {
@@ -370,8 +390,10 @@ const NewPost = ({create}) => {
         const category = categories.find(item => item.id === categoryId);
 
         const catSelect = capitalizeFirst(category.name);
+        const iconCatSelect = category.icon;
 
         setWorker({...worker, cat: catSelect})
+        setWorker({...worker, icon: iconCatSelect})
 
         // выбираем все модели в категории, если таковые есть
         const models = category.models && category.models.length > 0
@@ -381,19 +403,15 @@ const NewPost = ({create}) => {
         // меняем модели во втором списке
         setModels(models);
 
-
     }
 
     const onSpecSelectChange = (e) => {
         setSelectedElement(e.target.options.value);
 
         const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
-
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
-
-        //setSelectedElement(e.target.value);
     }
 
     return (

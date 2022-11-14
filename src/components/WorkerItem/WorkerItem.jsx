@@ -1,12 +1,12 @@
 import React from 'react';
-import Sound1 from "../../img/spec/1_sound.svg";
-import Riggers2 from "../../img/spec/2_riggers.svg";
-import Production3 from "../../img/spec/3_production.svg";
-import StageGround4 from "../../img/spec/4_stage_ground.svg";
-import Video5 from "../../img/spec/5_video.svg";
-import Light6 from "../../img/spec/6_light.svg";
-import Stagehands7 from "../../img/spec/7_stagehands.svg";
-import Tracks8 from "../../img/spec/8_tracks.svg";
+import Sound from "../../img/spec/1_sound.svg";
+import Riggers from "../../img/spec/2_riggers.svg";
+import Production from "../../img/spec/3_production.svg";
+import StageGround from "../../img/spec/4_stage_ground.svg";
+import Video from "../../img/spec/5_video.svg";
+import Light from "../../img/spec/6_light.svg";
+import Stagehands from "../../img/spec/7_stagehands.svg";
+import Tracks from "../../img/spec/8_tracks.svg";
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
@@ -87,9 +87,29 @@ const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
 }));
 
 const WorkerItem = (props) => {
+    let image;
+
+    if (props.worker.icon === 'Sound') {
+        image = Sound;
+    } else if (props.worker.icon === 'Riggers') {
+        image = Riggers;
+    } else if (props.worker.icon === 'Production') {
+        image = Production;
+    } else if (props.worker.icon === 'StageGround') {
+        image = StageGround;
+    } else if (props.worker.icon === 'Video') {
+        image = Video;
+    } else if (props.worker.icon === 'Light') {
+        image = Light;
+    } else if (props.worker.icon === 'Stagehands') {
+        image = Stagehands;
+    } else if (props.worker.icon === 'Tracks') {
+        image = Tracks;
+    }
+
     return (
         <div className="list_spec">
-            <img style={{marginTop: "24px"}} src={Sound1} alt='Sound'/>
+            <img style={{marginTop: "24px"}} src={image} alt='icon'/>
 
             <FormControl sx={{marginLeft: '10px'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input">
