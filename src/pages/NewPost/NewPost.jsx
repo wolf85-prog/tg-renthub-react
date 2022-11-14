@@ -386,7 +386,7 @@ const NewPost = ({create}) => {
             datestart
         }
         tg.sendData(JSON.stringify(data));
-    }, [post.title, post.time])
+    }, ['xcvxcv', 'xcvxcv'])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
