@@ -28,22 +28,26 @@ const RedditTextField = styled((props) => (
     },
 }));
 
-const componentDidMount = () => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
+const GeoInput = ({add, value}) => {
 
-        //setGeo(position.coords.latitude + ', ' + position.coords.longitude);
-    });
-}
+    const componentDidMount = () => {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            //console.log("Latitude is :", position.coords.latitude);
+            //console.log("Longitude is :", position.coords.longitude);
 
-const GeoInput = () => {
+            const newGeo = position.coords.latitude + ', ' + position.coords.longitude
+
+            add(newGeo)
+        });
+    }
+
     return (
         <div>
             <RedditTextField fullWidth
                              label="Укажите геолокацию"
                              id="project_geo"
                              variant="filled"
+                             value={value}
                              InputProps={{
                                  endAdornment:
                                      <InputAdornment position="end">

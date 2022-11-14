@@ -10,9 +10,9 @@ import NewPost from "./pages/NewPost/NewPost";
 function App() {
 
     const [posts, setPosts] = useState([
-        {id: 1, title: 'Красная площадь', time: '4 ноября 17:00', geo: '', teh: ''},
-        {id: 2, title: 'Новый год', time: '31 декабря 12:00', geo: '', teh: ''},
-        {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: ''},
+        {id: 1, title: 'Красная площадь', time: '4 ноября 17:00', geo: '', teh: '', status: 'Готов'},
+        {id: 2, title: 'Новый год', time: '31 декабря 12:00', geo: '', teh: '', status: 'В эфире'},
+        {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
 
     const createPost = (newPost) => {

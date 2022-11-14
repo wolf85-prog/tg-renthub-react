@@ -244,7 +244,7 @@ const NewPost = ({create}) => {
     const navigate = useNavigate();
 
     //проект
-    const [post, setPost] = useState({title: '', time: '', geo: '', teh: ''})
+    const [post, setPost] = useState({title: '', time: '11.11.2022 10:00', geo: '', teh: '', status: ''})
     //геолокация
     const [geo, setGeo] = useState('');
 
@@ -259,17 +259,19 @@ const NewPost = ({create}) => {
     const [worker, setWorker] = useState({cat: '', spec: '', count: 1, icon: ''})
     //работники
     const [workers, setWorkers] = useState([
-        {id: 1, cat:'Sound', spec: 'Звукорежессер', count: '1', icon: 'Sound'},
+        {id: 1, cat: 'Sound', spec: 'Звукорежиссер', count: 1, icon: 'Sound'},
     ])
     //select
     const [selectedElement, setSelectedElement] = useState("")
 
     function addGeo (newGeo) {
-        console.log(newGeo)
+        console.log('geo=' + newGeo)
+        setPost({...post, geo: newGeo})
+        setGeo(newGeo)
     }
 
 
-    function increment(e) {
+    function increment() {
         setCount(count + 1)
         setWorker({...worker, count: count + 1})
     }
@@ -286,7 +288,10 @@ const NewPost = ({create}) => {
             ...post, id: Date.now()
         }
         create(newPost)
-        setPost({title: '', time: '', geo: '', teh: ''})
+        console.log(post)
+
+        //Установка по-умолчанию
+        setPost({title: '', time: '', geo: '', teh: '', status: ''})
 
         navigate("/");
     }
@@ -300,6 +305,7 @@ const NewPost = ({create}) => {
         }
 
         console.log(worker)
+        //console.log(workers)
         setWorker({cat: '', spec: '', count: 1, icon: ''})
 
         setCount(1);
@@ -310,12 +316,6 @@ const NewPost = ({create}) => {
     const removeWorker = (worker) => {
         setWorkers(workers.filter(p => p.id !== worker.id))
     }
-
-    const [value, setValue] = React.useState(dayjs('11.11.2022'));
-
-    const handleChange = (newValue) => {
-        setValue(newValue);
-    };
 
 
     // при первой загрузке приложения выполнится код ниже
@@ -351,10 +351,10 @@ const NewPost = ({create}) => {
         const category = categories.find(item => item.id === categoryId);
 
         const catSelect = capitalizeFirst(category.name);
+
         const iconCatSelect = category.icon;
 
-        setWorker({...worker, cat: catSelect})
-        setWorker({...worker, icon: iconCatSelect})
+        setWorker({...worker, cat: catSelect, icon: iconCatSelect})
 
         // выбираем все модели в категории, если таковые есть
         const models = category.models && category.models.length > 0
@@ -411,6 +411,7 @@ const NewPost = ({create}) => {
                                 type="datetime-local"
                                 variant="filled"
                                 defaultValue="2022-11-11T10:30"
+                                onChange={e => setPost({...post, time: e.target.value})}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
@@ -424,7 +425,10 @@ const NewPost = ({create}) => {
 
                 {/*Геолокация*/}
                 <div className="text-field text-field_floating">
-                        <GeoInput/>
+                        <GeoInput
+                            add={addGeo}
+                            value={geo}
+                        />
                 </div>
 
                 {/*Техническое задание*/}
@@ -434,6 +438,8 @@ const NewPost = ({create}) => {
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"
+                                     value={post.teh}
+                                     onChange={e => setPost({...post, teh: e.target.value})}
                                      multiline
                                      rows={4}
                     />

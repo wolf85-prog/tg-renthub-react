@@ -1,12 +1,19 @@
 import React, {useState} from 'react';
 import './ProjectList.css';
 import ProjectItem from "../ProjectItem/ProjectItem";
-import {useTelegram} from "../../hooks/useTelegram";
-import {useCallback, useEffect} from "react";
 import ButtonStatus from "../UI/ButtonStatus/ButtonStatus";
 
 
 const ProjectList = ({posts, title, remove}) => {
+
+    const [status, setStatus] = useState(['В эфире', 'Готов', 'Обработан', 'Завершен'])
+    const [searchQuery, setSearchQuery] = useState('')
+
+    const onChangeFilter = (e) => {
+        //e.preventDefault();
+        console.log(e.target.value)
+        //return status
+    }
 
     return (
         <div>
@@ -15,10 +22,10 @@ const ProjectList = ({posts, title, remove}) => {
             </h1>
             <p className="status_el">cтатус</p>
             <div className='buttons_status'>
-                <ButtonStatus className={'btn-done'}>В эфире</ButtonStatus>
-                <ButtonStatus className={'btn-efir'}>Готов</ButtonStatus>
-                <ButtonStatus className={'btn-obr'}>Обработ.</ButtonStatus>
-                <ButtonStatus className={'btn-zaver'}>Заверш.</ButtonStatus>
+                <ButtonStatus className={'btn-done'} onClick={onChangeFilter} value={status[0]}>В эфире</ButtonStatus>
+                <ButtonStatus className={'btn-efir'} onClick={onChangeFilter} value={status[1]}>Готов</ButtonStatus>
+                <ButtonStatus className={'btn-obr'} onClick={onChangeFilter} value={status[2]}>Обработ.</ButtonStatus>
+                <ButtonStatus className={'btn-zaver'} onClick={onChangeFilter} value={status[3]}>Заверш.</ButtonStatus>
             </div>
 
             {posts.map((post, index) =>
