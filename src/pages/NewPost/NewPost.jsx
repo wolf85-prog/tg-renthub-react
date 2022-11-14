@@ -16,6 +16,7 @@ import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import ButtonMinus from "../../img/minus.png";
 import ButtonPlus from "../../img/plus.png";
 import Calendar from "../../img/calendar.svg";
+import GeoInput from "../../components/UI/GeoInput/GeoInput";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true  }} {...props} />
@@ -303,8 +304,8 @@ const NewPost = ({create}) => {
     //select
     const [selectedElement, setSelectedElement] = useState("")
 
-    function addGeo () {
-
+    function addGeo (newGeo) {
+        console.log(newGeo)
     }
 
 
@@ -455,7 +456,7 @@ const NewPost = ({create}) => {
                                 }}
                             />
                             <span className="open-button">
-                              <button type="button"><img src={Calendar}/></button>
+                              <button type="button"><img src={Calendar} alt='calendar'/></button>
                             </span>
                         </Stack>
                     </LocalizationProvider>
@@ -464,6 +465,7 @@ const NewPost = ({create}) => {
                 {/*Геолокация*/}
                 <div className="text-field text-field_floating">
                         <RedditTextField2 fullWidth
+                                        add={addGeo}
                                          label="Укажите геолокацию"
                                          defaultValue=""
                                          id="project_geo"
