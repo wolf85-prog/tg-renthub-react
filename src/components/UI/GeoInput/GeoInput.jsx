@@ -5,14 +5,7 @@ import {IconButton, InputAdornment} from "@mui/material";
 import NearMeIcon from "@mui/icons-material/NearMe";
 
 const RedditTextField = styled((props) => (
-    <TextField InputProps={{
-        disableUnderline: true,
-        endAdornment:
-            <InputAdornment position="end">
-                <IconButton onClick={componentDidMount}>
-                    <NearMeIcon />
-                </IconButton>
-            </InputAdornment> }} {...props} />
+    <TextField InputProps={{disableUnderline: true,}} {...props} />
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
         border: '1px solid #76A9FF',
@@ -47,7 +40,19 @@ const componentDidMount = () => {
 const GeoInput = () => {
     return (
         <div>
-            <RedditTextField/>
+            <RedditTextField fullWidth
+                             label="Укажите геолокацию"
+                             id="project_geo"
+                             variant="filled"
+                             InputProps={{
+                                 endAdornment:
+                                     <InputAdornment position="end">
+                                         <IconButton onClick={componentDidMount}>
+                                             <NearMeIcon />
+                                         </IconButton>
+                                     </InputAdornment>
+                             }}
+            />
         </div>
     );
 };

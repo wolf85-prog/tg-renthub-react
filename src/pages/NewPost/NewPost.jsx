@@ -42,46 +42,6 @@ const RedditTextField = styled((props) => (
     },
 }));
 
-const RedditTextField2 = styled((props) => (
-    <TextField InputProps={{
-        disableUnderline: true,
-        endAdornment:
-            <InputAdornment position="end">
-                <IconButton onClick={componentDidMount}>
-                    <NearMeIcon />
-                </IconButton>
-            </InputAdornment> }} {...props} />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        border: '1px solid #76A9FF',
-        overflow: 'hidden',
-        borderRadius: 4,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
-
-const componentDidMount = () => {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-
-        //setGeo(position.coords.latitude + ', ' + position.coords.longitude);
-    });
-}
-
 
 const data = [
     {
@@ -464,15 +424,7 @@ const NewPost = ({create}) => {
 
                 {/*Геолокация*/}
                 <div className="text-field text-field_floating">
-                        <RedditTextField2 fullWidth
-                                        add={addGeo}
-                                         label="Укажите геолокацию"
-                                         defaultValue=""
-                                         id="project_geo"
-                                         variant="filled"
-                                         value={post.geo}
-                                         onChange={e => setPost({...post, geo: e.target.value})}
-                        />
+                        <GeoInput/>
                 </div>
 
                 {/*Техническое задание*/}
