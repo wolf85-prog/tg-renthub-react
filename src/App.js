@@ -5,8 +5,8 @@ import {Route, Routes} from 'react-router-dom'
 import Posts from "./pages/Posts";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import NewPost from "./pages/NewPost/NewPost";
 import Form from "./components/Form/Form";
+import NewProject from "./pages/NewProject/NewProject";
 
 function App() {
 
@@ -43,7 +43,7 @@ function App() {
 
                 <Routes>
                     <Route index element={<Posts posts={posts}/>}/>
-                    <Route path={'add-project'} element={<NewPost create={createPost}/>}/>
+                    <Route path={'add-project'} element={<NewProject create={createPost}/>}/>
                     <Route path={'form'} element={<Form create={createPost}/>}/>
                 </Routes>
 
