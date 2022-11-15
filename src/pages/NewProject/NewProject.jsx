@@ -302,7 +302,7 @@ const NewProject = ({create}) => {
             teh,
             queryId,
         }
-        fetch('https://188.225.63.143:8000', {
+        fetch('https://188.225.63.143:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
