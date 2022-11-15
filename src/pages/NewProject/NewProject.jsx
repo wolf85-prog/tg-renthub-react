@@ -242,7 +242,7 @@ const NewProject = ({create}) => {
 
     //const navigate = useNavigate();
 
-    const {tg} = useTelegram();
+    const {tg, queryId} = useTelegram();
 
     //проект
     const [post, setPost] = useState({title: '', time: '11.11.2022 10:00', geo: '', teh: '', status: ''})
@@ -399,12 +399,13 @@ const NewProject = ({create}) => {
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
         const data = {
-            project,
-            datestart,
-            geo,
-            teh
+            project: post,
+            // datestart,
+            // geo,
+            // teh,
+            queryId,
         }
-        fetch('http://localhost:8000', {
+        fetch('https://188.225.63.143:8000', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
