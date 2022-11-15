@@ -297,9 +297,9 @@ const NewProject = ({create}) => {
     const onSendData = useCallback(() => {
         const data = {
             project,
-            datestart,
-            geo,
-            teh,
+            // datestart,
+            // geo,
+            // teh,
             queryId,
         }
         fetch('https://188.225.63.143:8000/web-data', {
@@ -309,7 +309,7 @@ const NewProject = ({create}) => {
             },
             body: JSON.stringify(data)
         })
-    }, [project, datestart, geo, teh])
+    }, [project])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
