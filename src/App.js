@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Form from "./components/Form/Form";
 import NewProject from "./pages/NewProject/NewProject";
+import ProductList from "./components/ProductList/ProductList";
 
 function App() {
 
@@ -42,7 +43,8 @@ function App() {
             <div className="App">
 
                 <Routes>
-                    <Route index element={<Posts posts={posts}/>}/>
+                    {/*<Route index element={<Posts posts={posts}/>}/>*/}
+                    <Route index element={<ProductList />}/>
                     <Route path={'add-project'} element={<NewProject create={createPost}/>}/>
                     <Route path={'form'} element={<Form create={createPost}/>}/>
                 </Routes>
