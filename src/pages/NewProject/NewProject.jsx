@@ -48,26 +48,11 @@ const data = [
         name: 'SOUND',
         icon: 'Sound',
         models: [
-            {
-                id: 1,
-                name: 'Звукорежиссер',
-            },
-            {
-                id: 2,
-                name: 'RF менеджер',
-            },
-            {
-                id: 3,
-                name: 'Backline',
-            },
-            {
-                id: 4,
-                name: 'Roadie',
-            },
-            {
-                id: 5,
-                name: 'Техник по звуку',
-            },
+            {id: 1, name: 'Звукорежиссер',},
+            {id: 2, name: 'RF менеджер',},
+            {id: 3, name: 'Backline',},
+            {id: 4, name: 'Roadie',},
+            {id: 5, name: 'Техник по звуку',},
         ]
     },
     {
@@ -75,22 +60,10 @@ const data = [
         name: 'LIGHT',
         icon: 'Light',
         models: [
-            {
-                id: 1,
-                name: 'Художник по свету',
-            },
-            {
-                id: 2,
-                name: 'Оператор световой пушки',
-            },
-            {
-                id: 3,
-                name: 'Гафер',
-            },
-            {
-                id: 4,
-                name: 'Техник по свету',
-            },
+            {id: 1, name: 'Художник по свету',},
+            {id: 2, name: 'Оператор световой пушки',},
+            {id: 3, name: 'Гафер',},
+            {id: 4, name: 'Техник по свету',},
         ]
     },
     {
@@ -98,34 +71,13 @@ const data = [
         name: 'VIDEO',
         icon: 'Video',
         models: [
-            {
-                id: 1,
-                name: 'Инженер VMix',
-            },
-            {
-                id: 2,
-                name: 'Инженер Resolume',
-            },
-            {
-                id: 3,
-                name: 'Инженер Zoom',
-            },
-            {
-                id: 4,
-                name: 'Оператор [сameraman]',
-            },
-            {
-                id: 5,
-                name: 'Гафер',
-            },
-            {
-                id: 6,
-                name: 'IT-специалист',
-            },
-            {
-                id: 7,
-                name: 'Техник монтажа',
-            },
+            {id: 1, name: 'Инженер VMix',},
+            {id: 2, name: 'Инженер Resolume',},
+            {id: 3, name: 'Инженер Zoom',},
+            {id: 4, name: 'Оператор [сameraman]',},
+            {id: 5, name: 'Гафер',},
+            {id: 6, name: 'IT-специалист',},
+            {id: 7, name: 'Техник монтажа',},
         ]
     },
     {
@@ -133,14 +85,8 @@ const data = [
         name: 'RIGGERS',
         icon: 'Riggers',
         models: [
-            {
-                id: 1,
-                name: 'High Rigger [???]',
-            },
-            {
-                id: 2,
-                name: 'Lo Rigger [???]',
-            },
+            {id: 1, name: 'High Rigger [???]',},
+            {id: 2, name: 'Lo Rigger [???]',},
         ]
     },
     {
@@ -148,14 +94,8 @@ const data = [
         name: 'STAGEHANDS',
         icon: 'Stagehands',
         models: [
-            {
-                id: 1,
-                name: 'Погрузка / разгрузка',
-            },
-            {
-                id: 2,
-                name: 'Монтаж / демонтаж',
-            },
+            {id: 1, name: 'Погрузка / разгрузка',},
+            {id: 2, name: 'Монтаж / демонтаж',},
         ]
     },
     {
@@ -163,14 +103,8 @@ const data = [
         name: 'STAGE GROUND',
         icon: 'StageGround',
         models: [
-            {
-                id: 1,
-                name: 'High Rigger [???]',
-            },
-            {
-                id: 2,
-                name: 'Lo Rigger [???]',
-            },
+            {id: 1, name: 'High Rigger [???]',},
+            {id: 2, name: 'Lo Rigger [???]',},
         ]
     },
     {
@@ -178,46 +112,16 @@ const data = [
         name: 'TRUCKS',
         icon: 'Tracks',
         models: [
-            {
-                id: 1,
-                name: 'C личным ТС [B]',
-            },
-            {
-                id: 2,
-                name: 'Без личного ТС [B]',
-            },
-            {
-                id: 3,
-                name: 'С гидролифтом',
-            },
-            {
-                id: 4,
-                name: 'Без гидролифта',
-            },
-            {
-                id: 5,
-                name: 'Грузоподъемность 4 т.',
-            },
-            {
-                id: 6,
-                name: 'Грузоподъемность 6 т.',
-            },
-            {
-                id: 7,
-                name: 'Грузоподъемность 7 т.',
-            },
-            {
-                id: 8,
-                name: 'Грузоподъемность 8 т.',
-            },
-            {
-                id: 9,
-                name: 'Грузоподъемность 10 т.',
-            },
-            {
-                id: 10,
-                name: 'Грузоподъемность 14 т.',
-            },
+            {id: 1, name: 'C личным ТС [B]',},
+            {id: 2, name: 'Без личного ТС [B]',},
+            {id: 3, name: 'С гидролифтом',},
+            {id: 4, name: 'Без гидролифта',},
+            {id: 5, name: 'Грузоподъемность 4 т.',},
+            {id: 6, name: 'Грузоподъемность 6 т.',},
+            {id: 7, name: 'Грузоподъемность 7 т.',},
+            {id: 8, name: 'Грузоподъемность 8 т.',},
+            {id: 9, name: 'Грузоподъемность 10 т.',},
+            {id: 10, name: 'Грузоподъемность 14 т.',},
         ]
     },
     {
@@ -225,14 +129,8 @@ const data = [
         name: 'PRODUCTION',
         icon: 'Production',
         models: [
-            {
-                id: 1,
-                name: 'Мероприятие под ключ',
-            },
-            {
-                id: 2,
-                name: 'Отдельные технические задачи',
-            },
+            {id: 1, name: 'Мероприятие под ключ',},
+            {id: 2, name: 'Отдельные технические задачи',},
         ]
     }
 ];
@@ -249,7 +147,6 @@ const NewProject = ({create}) => {
 
     const [project, setProject] = useState('');
     const [datestart, setDatestart] = useState('11.11.2022 10:00');
-    //const [geodata, setGeodata] = useState('');
     const [teh, setTeh] = useState('');
 
     //геолокация
@@ -399,10 +296,10 @@ const NewProject = ({create}) => {
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
         const data = {
-            project: post,
-            // datestart,
-            // geo,
-            // teh,
+            project,
+            datestart,
+            geo,
+            teh,
             queryId,
         }
         fetch('https://188.225.63.143:8000', {
