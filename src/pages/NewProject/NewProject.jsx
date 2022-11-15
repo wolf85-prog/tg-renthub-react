@@ -296,7 +296,7 @@ const NewProject = ({create}) => {
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
         const data = {
-            project,
+            projectname: project,
             // datestart,
             // geo,
             // teh,
