@@ -43,10 +43,8 @@ function App() {
             <div className="App">
 
                 <Routes>
-                    {/*<Route index element={<Posts posts={posts}/>}/>*/}
-                    <Route index element={<ProductList />}/>
+                    <Route index element={<Posts posts={posts}/>}/>
                     <Route path={'add-project'} element={<NewProject create={createPost}/>}/>
-                    <Route path={'form'} element={<Form create={createPost}/>}/>
                 </Routes>
 
             </div>
