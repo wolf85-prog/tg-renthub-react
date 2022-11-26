@@ -297,9 +297,9 @@ const NewProject = ({create}) => {
     const onSendData = useCallback(() => {
         const data = {
             projectname: project,
-            // datestart,
-            // geo,
-            // teh,
+            datestart,
+            geo,
+            teh,
             queryId,
         }
         fetch('https://telegram.uley.moscow:8000/web-data', {
