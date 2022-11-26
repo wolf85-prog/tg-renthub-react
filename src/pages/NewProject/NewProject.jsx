@@ -322,7 +322,7 @@ const NewProject = ({create}) => {
             },
             body: JSON.stringify(data)
         })
-    }, [project])
+    }, [project, datestart, geo, teh])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
