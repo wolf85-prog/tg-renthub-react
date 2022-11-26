@@ -143,10 +143,10 @@ const NewProject = ({create}) => {
     const {tg, queryId} = useTelegram();
 
     //проект
-    const [post, setPost] = useState({title: '', time: '11.11.2022 10:00', geo: '', teh: '', status: ''})
+    const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
 
     const [project, setProject] = useState('');
-    const [datestart, setDatestart] = useState('11.11.2022 10:00');
+    const [datestart, setDatestart] = useState('2022-01-01 10:00:00');
     const [teh, setTeh] = useState('');
 
     //геолокация
@@ -169,7 +169,7 @@ const NewProject = ({create}) => {
     const [selectedElement, setSelectedElement] = useState("")
 
     function addGeo (newGeo) {
-        console.log('geo=' + newGeo)
+        console.log(newGeo)
         setPost({...post, geo: newGeo})
         setGeo(newGeo)
     }
@@ -276,9 +276,10 @@ const NewProject = ({create}) => {
     const onChangeTime = (e) => {
         setDatestart(e.target.value)
     }
-    const onChangeGeodata = (e) => {
-        setGeo(e.target.value)
-    }
+    // const onChangeGeodata = (e) => {
+    //     setGeo(e.target.value)
+    //     console.log(e.target.value)
+    // }
     const onChangeTeh = (e) => {
         setTeh(e.target.value)
     }
@@ -290,6 +291,18 @@ const NewProject = ({create}) => {
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
+    }
+
+    const getData = (e) => {
+        e.preventDefault();
+        const data = {
+            projectname: project,
+            datestart,
+            geo,
+            teh,
+            queryId,
+        }
+        console.log(data)
     }
 
 
@@ -391,7 +404,7 @@ const NewProject = ({create}) => {
                         add={addGeo}
                         value={geo}
                         //value={geodata}
-                        onChange={onChangeGeodata}
+                        //onChange={onChangeGeodata}
                     />
                 </div>
 
@@ -410,7 +423,6 @@ const NewProject = ({create}) => {
                                      rows={4}
                     />
                 </div>
-
                 <div>
                     <label>
                         <p
@@ -470,7 +482,7 @@ const NewProject = ({create}) => {
 
                 <WorkerList remove={removeWorker} workers={workers} />
 
-                {/*<MyButton onClick={addNewProject}>Создать проект</MyButton>*/}
+                {/* <MyButton onClick={getData}>Создать проект</MyButton> */}
             </form>
 
         </div>
