@@ -12,10 +12,25 @@ import ProductList from "./components/ProductList/ProductList";
 function App() {
 
     const [posts, setPosts] = useState([
-        {id: 1, title: 'Красная площадь', time: '4 ноября 17:00', geo: '', teh: '', status: 'Готов'},
-        {id: 2, title: 'Новый год', time: '31 декабря 12:00', geo: '', teh: '', status: 'В эфире'},
-        {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
+        // {id: 1, title: 'Красная площадь', time: '4 ноября 17:00', geo: '', teh: '', status: 'Готов'},
+        // {id: 2, title: 'Новый год', time: '31 декабря 12:00', geo: '', teh: '', status: 'В эфире'},
+        // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
+
+    const getProjectData = () => {
+        fetch('https://telegram.uley.moscow:8000/projects')
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setPosts(data);
+            })
+    }
+
+    useEffect(() => {
+        getProjectData();
+    }, [])
+    
 
     const createPost = (newPost) => {
         setPosts([...posts, newPost])
