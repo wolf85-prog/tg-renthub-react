@@ -162,9 +162,7 @@ const NewProject = ({create}) => {
     //работник
     const [worker, setWorker] = useState({cat: '', spec: '', count: 1, icon: ''})
     //работники
-    const [workers, setWorkers] = useState([
-        {id: 1, cat: 'Sound', spec: 'Звукорежиссер', count: 1, icon: 'Sound'},
-    ])
+    const [workers, setWorkers] = useState([])
     //select
     const [selectedElement, setSelectedElement] = useState("")
 
@@ -208,7 +206,7 @@ const NewProject = ({create}) => {
             setWorkers([...workers, {...worker, id: Date.now()}])
         }
 
-        console.log(worker)
+        //console.log(worker)
         //console.log(workers)
         setWorker({cat: '', spec: '', count: 1, icon: ''})
 
@@ -313,6 +311,7 @@ const NewProject = ({create}) => {
             datestart,
             geo,
             teh,
+            worklist: workers,
             queryId,
         }
         fetch('https://telegram.uley.moscow:8000/web-data', {
@@ -322,7 +321,7 @@ const NewProject = ({create}) => {
             },
             body: JSON.stringify(data)
         })
-    }, [project, datestart, geo, teh])
+    }, [project, workers, datestart, geo, teh])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -482,7 +481,7 @@ const NewProject = ({create}) => {
 
                 <WorkerList remove={removeWorker} workers={workers} />
 
-                {/* <MyButton onClick={getData}>Создать проект</MyButton> */}
+                {/* <MyButton onClick={console.log(workers)}>Создать проект</MyButton> */}
             </form>
 
         </div>
