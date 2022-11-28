@@ -11,13 +11,15 @@ const ProjectItem = (props) => {
     const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
     const dateProject = props.post.time != null ? props.post.time.start : 'Не указано';
 
+    
+
 
     return (
         <div className={`box ${statusColor}`}>
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {dateProject.getDate() + ' '+ dateProject.getMonth() + ' ' + dateProject.getFullYear()}
+                    {moment(dateProject).format('DD MM yyyy')}
                 </div>
                 <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
