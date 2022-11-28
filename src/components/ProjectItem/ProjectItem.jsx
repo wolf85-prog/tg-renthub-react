@@ -6,6 +6,8 @@ import comp3 from "../../img/component_3.png";
 
 const ProjectItem = (props) => {
 
+    console.log(props.post);
+
     return (
         <div className="box red">
             <div className="post__content">
