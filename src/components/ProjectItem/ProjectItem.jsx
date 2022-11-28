@@ -27,17 +27,19 @@ const ProjectItem = (props) => {
         11: 'Декабрь',
       }
 
-    // const monthName = months[dateProject.getMonth()];
-    // const formatted = `${date} ${monthName} ${year}`;
+    const d = new Date(dateProject);
 
-    const d1 = new Date(dateProject);
+    const year = d.getFullYear()
+    const date = d.getDate()
+    const monthName = months[d.getMonth()];
+    const formatted = `${date} ${monthName} ${year}`;
 
     return (
         <div className={`box ${statusColor}`}>
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {d1 !== null ? d1.getDate() : ''}
+                    {formatted}
                 </div>
                 <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
