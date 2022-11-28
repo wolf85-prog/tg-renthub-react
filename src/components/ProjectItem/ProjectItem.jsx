@@ -27,8 +27,8 @@ const ProjectItem = (props) => {
         11: 'Декабрь',
       }
 
-    const monthName = months[dateProject.getMonth()];
-    const formatted = `${date} ${monthName} ${year}`;
+    // const monthName = months[dateProject.getMonth()];
+    // const formatted = `${date} ${monthName} ${year}`;
 
     const d1 = new Date();
 
