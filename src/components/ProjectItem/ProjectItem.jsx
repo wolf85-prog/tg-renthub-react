@@ -11,7 +11,7 @@ const ProjectItem = (props) => {
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {/* {props.post.time.start} */}
+                    {props.post.time.start}
                 </div>
                 <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
