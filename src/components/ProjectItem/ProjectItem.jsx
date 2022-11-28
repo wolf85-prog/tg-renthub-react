@@ -6,10 +6,11 @@ import comp3 from "../../img/component_3.png";
 
 const ProjectItem = (props) => {
 
-    console.log(props.post);
+    //console.log(props.post);
+    const statusColor = props.post.status != null ? props.post.status_id.color : 'gray' 
 
     return (
-        <div className="box red">
+        <div className="{`box ${statusColor}`}">
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">

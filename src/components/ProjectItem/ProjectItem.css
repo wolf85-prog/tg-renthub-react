@@ -9,6 +9,30 @@
 .red {
     border-left: 8px solid var(--red);
 }
+.orange {
+    border-left: 8px solid var(--orange);
+}
+.yellow {
+    border-left: 8px solid var(--yellow);
+}
+.green {
+    border-left: 8px solid var(--green);
+}
+.blue {
+    border-left: 8px solid var(--blue);
+}
+.purple {
+    border-left: 8px solid var(--purple);
+}
+.gray {
+    border-left: 8px solid var(--gray);
+}
+.brown {
+    border-left: 8px solid var(--brown);
+}
+.pink {
+    border-left: 8px solid var(--pink);
+}
 
 .post_title {
     font-size: 20px;
