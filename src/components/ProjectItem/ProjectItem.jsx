@@ -6,14 +6,14 @@ import comp3 from "../../img/component_3.png";
 
 const ProjectItem = (props) => {
 
-    console.log(props.post);
+    //console.log(props.post.status_id);
 
     return (
         <div className="box red">
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {props.post.status_id.name}
+                    {props.post.time.start ? props.post.time.start : 'Не указано'}
                 </div>
                 <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
