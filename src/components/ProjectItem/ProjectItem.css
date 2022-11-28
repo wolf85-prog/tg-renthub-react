@@ -7,31 +7,31 @@
 }
 
 .red {
-    border-left: 8px solid var(--red);
+    border-left: 8px solid #C8372D;
 }
 .orange {
-    border-left: 8px solid var(--orange);
+    border-left: 8px solid #ffa500;
 }
 .yellow {
-    border-left: 8px solid var(--yellow);
+    border-left: 8px solid #ffff00;
 }
 .green {
-    border-left: 8px solid var(--green);
+    border-left: 8px solid #008000;
 }
 .blue {
-    border-left: 8px solid var(--blue);
+    border-left: 8px solid #0000ff;
 }
 .purple {
-    border-left: 8px solid var(--purple);
+    border-left: 8px solid #800080;
 }
 .gray {
-    border-left: 8px solid var(--gray);
+    border-left: 8px solid #808080;
 }
 .brown {
-    border-left: 8px solid var(--brown);
+    border-left: 8px solid #a52a2a;
 }
 .pink {
-    border-left: 8px solid var(--pink);
+    border-left: 8px solid #ffc0cb;
 }
 
 .post_title {
