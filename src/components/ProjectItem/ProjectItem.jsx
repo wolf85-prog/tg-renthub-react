@@ -31,10 +31,11 @@ const ProjectItem = (props) => {
     // const formatted = `${date} ${monthName} ${year}`;
 
     const d1 = new Date();
+    const result = '';
 
     if (typeof d1 === 'object' && d1 !== null && 'getDate' in d1) {
-    const result = d1.getDate();
-    //console.log(result); 
+        result = d1.getDate();
+        //console.log(result); 
     }
 
     return (
