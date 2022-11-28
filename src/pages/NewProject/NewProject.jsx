@@ -41,6 +41,54 @@ const RedditTextField = styled((props) => (
     },
 }));
 
+const statusData = [
+    {
+        id: 1,
+        title: 'onAir',
+        color: '#BB6BD9'
+    },
+    {
+        id: 2,
+        title: 'Accept',
+        color: '#800080' 
+    },
+    {
+        id: 3,
+        title: 'Ready',
+        color: '#0000FF'
+
+    },
+    {
+        id: 4,
+        title: 'Done',
+        color: '#FFFF00' 
+    },
+    {
+        id: 5,
+        title: 'Load',
+        color: '#FF5733 ' 
+    },
+    {
+        id: 6,
+        title: 'Decline',
+        color: '#FF0000' 
+    },
+    {
+        id: 7,
+        title: 'New',
+        color: '#0000FF' 
+    },
+    {
+        id: 8,
+        title: 'Wasted',
+        color: '#FF0000' 
+    },
+    {
+        id: 9,
+        title: 'Test',
+        color: '#828282' 
+    }
+]
 
 const data = [
     {
