@@ -24,6 +24,7 @@ function App() {
             })
             .then(data => {
                 setPosts(data);
+                console.log(data);
             })
     }
 
