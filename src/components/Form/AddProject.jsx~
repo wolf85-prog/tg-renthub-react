@@ -1,0 +1,17 @@
+import React from 'react';
+import MyInput from "../UI/Input/MyInput";
+
+const AddProject = () => {
+    //console.log(props.post);
+    return (
+        <div className="AddProject">
+            <form>
+                <MyInput type="text" placeholder="sdfsdf"/>
+                <MyInput type="text" placeholder="sdfsdf"/>
+            </form>
+
+        </div>
+    );
+};
+
+export default AddProject;

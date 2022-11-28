@@ -1,0 +1,15 @@
+import React, {useState} from 'react';
+import {FormControl} from "@mui/material";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import ButtonPlus from "../../img/plus.png";
+import ButtonMinus from "../../img/minus.png";
+import classes from './Counter.module.css';
+
+const Counter = (props) => {
+
+    return (
+        <input className={classes.myInput} {...props}/>
+    );
+};
+
+export default Counter;
