@@ -7,7 +7,7 @@ import comp3 from "../../img/component_3.png";
 const ProjectItem = (props) => {
 
     console.log(props.post);
-    const statusColor = props.post.status == null ? 'gray' : props.post.status_id.color;
+    const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
 
     return (
         <div className={`box ${statusColor}`}>
