@@ -12,15 +12,30 @@ const ProjectItem = (props) => {
     const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
     const dateProject = props.post.time != null ? props.post.time.start : 'Не указано';
 
-    
+    const months = {
+        0: 'Январь',
+        1: 'Февраль',
+        2: 'Март',
+        3: 'Апрель',
+        4: 'Май',
+        5: 'Июнь',
+        6: 'Июль',
+        7: 'Август',
+        8: 'Сентябрь',
+        9: 'Октябрь',
+        10: 'Ноябрь',
+        11: 'Декабрь',
+      }
 
+    const monthName = months[dateProject.getMonth()];
+    const formatted = `${date} ${monthName} ${year}`
 
     return (
         <div className={`box ${statusColor}`}>
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {format(dateProject, 'dd mm yyyy')}
+                    {formatted}
                 </div>
                 <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
