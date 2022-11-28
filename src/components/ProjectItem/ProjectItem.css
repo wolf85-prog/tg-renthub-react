@@ -33,6 +33,9 @@
 .pink {
     border-left: 8px solid #ffc0cb;
 }
+.default {
+    border-left: 8px solid #808080;
+}
 
 .post_title {
     font-size: 20px;
