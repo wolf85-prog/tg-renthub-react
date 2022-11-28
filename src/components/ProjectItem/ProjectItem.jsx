@@ -31,11 +31,10 @@ const ProjectItem = (props) => {
     // const formatted = `${date} ${monthName} ${year}`;
 
     const d1 = new Date();
-    const result = '';
 
     if (typeof d1 === 'object' && d1 !== null && 'getDate' in d1) {
         result = d1.getDate();
-        //console.log(result); 
+        
     }
 
     return (
@@ -43,7 +42,7 @@ const ProjectItem = (props) => {
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {result}
+                    {d1 !== null ? d1.getDate() : 'время'}
                 </div>
                 <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
