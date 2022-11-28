@@ -22,15 +22,15 @@ const ProjectList = ({posts, title, remove}) => {
             </h1>
             <p className="status_el">cтатус</p>
             <div className='buttons_status'>
-                <ButtonStatus className={'btn-status green'} onClick={onChangeFilter} value={status[0]}>{status[0]}</ButtonStatus>
-                <ButtonStatus className={'btn-status purple'} onClick={onChangeFilter} value={status[1]}>{status[1]}</ButtonStatus>
-                <ButtonStatus className={'btn-status blue'} onClick={onChangeFilter} value={status[2]}>{status[2]}</ButtonStatus>
-                <ButtonStatus className={'btn-status yellow'} onClick={onChangeFilter} value={status[3]}>{status[3]}</ButtonStatus>
-                <ButtonStatus className={'btn-status orange'} onClick={onChangeFilter} value={status[3]}>{status[4]}</ButtonStatus>
-                <ButtonStatus className={'btn-status red'} onClick={onChangeFilter} value={status[3]}>{status[5]}</ButtonStatus>
-                <ButtonStatus className={'btn-status blue'} onClick={onChangeFilter} value={status[3]}>{status[6]}</ButtonStatus>
-                <ButtonStatus className={'btn-status red'} onClick={onChangeFilter} value={status[3]}>{status[7]}</ButtonStatus>
-                <ButtonStatus className={'btn-status gray'} onClick={onChangeFilter} value={status[3]}>{status[8]}</ButtonStatus>
+                <ButtonStatus className={'btn-status green-btn'} onClick={onChangeFilter} value={status[0]}>{status[0]}</ButtonStatus>
+                <ButtonStatus className={'btn-status purple-btn'} onClick={onChangeFilter} value={status[1]}>{status[1]}</ButtonStatus>
+                <ButtonStatus className={'btn-status blue-btn'} onClick={onChangeFilter} value={status[2]}>{status[2]}</ButtonStatus>
+                <ButtonStatus className={'btn-status yellow-btn'} onClick={onChangeFilter} value={status[3]}>{status[3]}</ButtonStatus>
+                <ButtonStatus className={'btn-status orange-btn'} onClick={onChangeFilter} value={status[3]}>{status[4]}</ButtonStatus>
+                <ButtonStatus className={'btn-status red-btn'} onClick={onChangeFilter} value={status[3]}>{status[5]}</ButtonStatus>
+                <ButtonStatus className={'btn-status blue-btn'} onClick={onChangeFilter} value={status[3]}>{status[6]}</ButtonStatus>
+                <ButtonStatus className={'btn-status red-btn'} onClick={onChangeFilter} value={status[3]}>{status[7]}</ButtonStatus>
+                <ButtonStatus className={'btn-status gray-btn'} onClick={onChangeFilter} value={status[3]}>{status[8]}</ButtonStatus>
             </div>
 
             {posts.map((post, index) =>

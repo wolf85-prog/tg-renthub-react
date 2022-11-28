@@ -10,39 +10,39 @@
     margin: 5px;
 }
 
-.red {
+.red-btn {
     background: #C8372D;
     border: 1px solid #C8372D;
 }
-.orange {
+.orange-btn {
     background: #ffa500;
     border: 1px solid #ffa500;
 }
-.yellow {
-    background: #ffff00;
-    border: 1px solid #ffff00;
+.yellow-btn {
+    background: #D1941A;
+    border: 1px solid #D1941A;
 }
-.green {
+.green-btn {
     background: #008000;
     border: 1px solid #008000;
 }
-.blue {
+.blue-btn {
     background: #0000ff;
     border: 1px solid #0000ff;
 }
-.purple {
+.purple-btn {
     background: #800080;
     border: 1px solid #800080;
 }
-.gray {
+.gray-btn {
     background: #808080;
     border: 1px solid #808080;
 }
-.brown {
+.brown-btn {
     background: #a52a2a;
     border: 1px solid #a52a2a;
 }
-.pink {
+.pink-btn {
     background: #ffc0cb;
     border: 1px solid #ffc0cb;
 }
