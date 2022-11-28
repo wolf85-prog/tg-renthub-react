@@ -32,11 +32,6 @@ const ProjectItem = (props) => {
 
     const d1 = new Date();
 
-    if (typeof d1 === 'object' && d1 !== null && 'getDate' in d1) {
-        result = d1.getDate();
-        
-    }
-
     return (
         <div className={`box ${statusColor}`}>
             <div className="post__content">
