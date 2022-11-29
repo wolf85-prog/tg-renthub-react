@@ -36,7 +36,7 @@ const ProjectItem = (props) => {
     const minut = d.getMinutes();
     const monthName = months[d.getMonth()];
         
-    const formatted = (d2 != '') ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
+    const formatted = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
 
 
     return (
