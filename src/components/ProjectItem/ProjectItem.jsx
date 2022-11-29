@@ -7,7 +7,7 @@ import comp3 from "../../img/component_3.png";
 
 const ProjectItem = (props) => {
 
-    console.log(props.post);
+    //console.log(props.post);
     
     const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
     const dateProject = props.post.time != null ? props.post.time.start : 'Не указано';
@@ -31,8 +31,10 @@ const ProjectItem = (props) => {
 
     const year = d.getFullYear()
     const date = d.getDate()
+    const chas = d.getHours()
+    const minut = d.getMinutes()
     const monthName = months[d.getMonth()];
-    const formatted = `${date} ${monthName} ${year}`;
+    const formatted = `${date} ${monthName} ${year} ${chas}:${minut}`;
 
     return (
         <div className={`box ${statusColor}`}>
