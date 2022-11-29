@@ -61,7 +61,7 @@ const ProjectList = ({posts, title, remove}) => {
             </div>
 
             {posts.map((post, index) =>
-                <ProjectItem remove={remove} number={index+1} post={sortedAndSearchPosts} key={post.id}/>
+                <ProjectItem remove={remove} number={index+1} post={post} key={post.id}/>
             )}
         </div>
     );
