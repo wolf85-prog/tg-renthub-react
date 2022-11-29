@@ -20,7 +20,7 @@ export const useProjects = (posts, sort, query) => {
             if (query == 'All') {
                 return posts;
             }
-            return posts.filter(post => post.status_id.name === query)
+            return posts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
         }
         
         return posts
