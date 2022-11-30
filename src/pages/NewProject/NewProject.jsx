@@ -159,7 +159,7 @@ const NewProject = ({create}) => {
     //количество работников
     const [count, setCount] = useState(1)
     //работник
-    const [worker, setWorker] = useState({cat: '', spec: '', count: 1, icon: ''})
+    const [worker, setWorker] = useState({id: '', cat: '', spec: '', count: 1, icon: ''})
     //работники
     const [workers, setWorkers] = useState([])
     //select
