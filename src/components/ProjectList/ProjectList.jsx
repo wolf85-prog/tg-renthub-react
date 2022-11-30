@@ -21,7 +21,6 @@ const ProjectList = ({posts, title, remove}) => {
                      
 
             {posts.map((post, index) =>
-
                 <ProjectItem remove={remove} number={index + 1} post={post} key={post.id}/>        
             )}
             
