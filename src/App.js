@@ -5,9 +5,7 @@ import {Route, Routes} from 'react-router-dom'
 import Posts from "./pages/Posts";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import Form from "./components/Form/Form";
 import NewProject from "./pages/NewProject/NewProject";
-import ProductList from "./components/ProductList/ProductList";
 
 function App() {
 
@@ -17,7 +15,7 @@ function App() {
         // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
 
-    const [managers, setManagers] = useState([])
+    const [managers, setManagers] = useState([]);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
 
@@ -32,15 +30,15 @@ function App() {
             })
     }
 
-    const getManagerData = () => {
-        fetch('https://telegram.uley.moscow:8000/managers')
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                setManagers(data);
-            })
-    }
+    // const getManagerData = () => {
+    //     fetch('https://telegram.uley.moscow:8000/managers')
+    //         .then(response => {
+    //             return response.json()
+    //         })
+    //         .then(data => {
+    //             setManagers(data);
+    //         })
+    // }
 
     useEffect(() => {
         //setIsPostsLoading(true);
