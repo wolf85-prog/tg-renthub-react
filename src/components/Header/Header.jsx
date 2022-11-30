@@ -19,6 +19,10 @@ const Header = (props) => {
             <span className={'title'}>
                 {props.header.title}
             </span>
+
+            <span className={'username'}>
+                {user?.username}
+            </span>
             <img className={'btn-close'} onClick={onClose} src={CloseButton}/>
         </div>
     );

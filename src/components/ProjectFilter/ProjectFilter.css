@@ -1,8 +1,15 @@
+.buttons_status {
+    margin: 10px 10px 50px 10px;
+    text-align: left;
+}
+
 .btn-status {
     border-radius: 99px;
     color: #ffffff;
-    padding: 5px 10px;
+    padding: 4px;
     margin: 5px;
+    width: 92px;
+    font-size: 14px;
 }
 
 .red-btn {
@@ -40,9 +47,4 @@
 .pink-btn {
     background: #ffc0cb;
     border: 1px solid #ffc0cb;
-}
-
-.buttons_status {
-    margin: 0 35px;
-    text-align: left;
 }

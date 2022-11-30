@@ -27,10 +27,8 @@ const ProjectItem = (props) => {
 
     const d = new Date(dateProject);
 
-    const d2 = '';
-    //const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
-
-    //console.log(d2);
+    //const d2 = '';
+    const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
 
     const year = d.getFullYear()
     const date = d.getDate()
@@ -39,101 +37,6 @@ const ProjectItem = (props) => {
     const monthName = months[d.getMonth()];
         
     const formatted = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
-
-    const workdata = [
-        {
-            id: 1,
-            name: 'SOUND',
-            icon: 'Sound',
-            models: [
-                {id: 1, name: 'Звукорежиссер',},
-                {id: 2, name: 'RF менеджер',},
-                {id: 3, name: 'Backline',},
-                {id: 4, name: 'Roadie',},
-                {id: 5, name: 'Техник по звуку',},
-            ]
-        },
-        {
-            id: 2,
-            name: 'LIGHT',
-            icon: 'Light',
-            models: [
-                {id: 1, name: 'Художник по свету',},
-                {id: 2, name: 'Оператор световой пушки',},
-                {id: 3, name: 'Гафер',},
-                {id: 4, name: 'Техник по свету',},
-            ]
-        },
-        {
-            id: 3,
-            name: 'VIDEO',
-            icon: 'Video',
-            models: [
-                {id: 1, name: 'Инженер VMix',},
-                {id: 2, name: 'Инженер Resolume',},
-                {id: 3, name: 'Инженер Zoom',},
-                {id: 4, name: 'Оператор [сameraman]',},
-                {id: 5, name: 'Гафер',},
-                {id: 6, name: 'IT-специалист',},
-                {id: 7, name: 'Техник монтажа',},
-            ]
-        },
-        {
-            id: 4,
-            name: 'RIGGERS',
-            icon: 'Riggers',
-            models: [
-                {id: 1, name: 'High Rigger [???]',},
-                {id: 2, name: 'Lo Rigger [???]',},
-            ]
-        },
-        {
-            id: 5,
-            name: 'STAGEHANDS',
-            icon: 'Stagehands',
-            models: [
-                {id: 1, name: 'Погрузка / разгрузка',},
-                {id: 2, name: 'Монтаж / демонтаж',},
-            ]
-        },
-        {
-            id: 6,
-            name: 'STAGE GROUND',
-            icon: 'StageGround',
-            models: [
-                {id: 1, name: 'High Rigger [???]',},
-                {id: 2, name: 'Lo Rigger [???]',},
-            ]
-        },
-        {
-            id: 7,
-            name: 'TRUCKS',
-            icon: 'Tracks',
-            models: [
-                {id: 1, name: 'C личным ТС [B]',},
-                {id: 2, name: 'Без личного ТС [B]',},
-                {id: 3, name: 'С гидролифтом',},
-                {id: 4, name: 'Без гидролифта',},
-                {id: 5, name: 'Грузоподъемность 4 т.',},
-                {id: 6, name: 'Грузоподъемность 6 т.',},
-                {id: 7, name: 'Грузоподъемность 7 т.',},
-                {id: 8, name: 'Грузоподъемность 8 т.',},
-                {id: 9, name: 'Грузоподъемность 10 т.',},
-                {id: 10, name: 'Грузоподъемность 14 т.',},
-            ]
-        },
-        {
-            id: 8,
-            name: 'PRODUCTION',
-            icon: 'Production',
-            models: [
-                {id: 1, name: 'Мероприятие под ключ',},
-                {id: 2, name: 'Отдельные технические задачи',},
-            ]
-        }
-    ];
-
-    
 
     return (
         <div className={`box ${statusColor}`}>
@@ -146,16 +49,12 @@ const ProjectItem = (props) => {
                 <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
                 <img className="image_comp" src={comp3} alt="component 3"/>
-                
+                <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">2/2</span><span className="col_span">2/2</span><span className="col_span">2/2</span></p>               
 
-                <ProjectWorkList workers={props.post.workers} />
+                {/* <ProjectWorkList workers={props.post.workers} /> */}
 
-                {/* {props.post.workers.map((worker) =>
-                    <ProjectWorkItem worker={worker} key={worker.id}/>        
-                )} */}
-
-                <p><span className="col_span">2/2</span><span className="col_span">2/2</span><span className="col_span">2/2</span></p>
-                <p><span className="find_span">Найдено 2 из 3</span></p>
+                {/* <p><span className="find_span">Найдено 2 из 3</span></p> */}
+                <p><span className="nofind_span"></span></p>
             </div>
         </div>
     );

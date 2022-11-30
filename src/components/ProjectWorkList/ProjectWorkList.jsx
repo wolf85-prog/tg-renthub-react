@@ -6,7 +6,7 @@ import ProjectWorkItem from "../ProjectWorkItem/ProjectWorkItem";
 const ProjectWorkList = ({workers}) => {
 
     return (
-        <div>
+        <div style={{display: 'flex'}}>
                      
             {workers.map((worker, index) =>
                 <ProjectWorkItem worker={worker} key={worker.id}/>        

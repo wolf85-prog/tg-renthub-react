@@ -5,11 +5,13 @@ import ProjectFilter from "../components/ProjectFilter/ProjectFilter";
 import MyButton from "../components/UI/MyButton/MyButton";
 import {Link} from "react-router-dom";
 import Header from "../components/Header/Header";
+import Loader from "../components/UI/Loader/Loader";
 
 function Posts({posts}) {
 
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = useProjects(posts, filter.sort, filter.query);
+
 
     return (
         <div className="App">
@@ -22,6 +24,10 @@ function Posts({posts}) {
                 filter={filter}
                 setFilter={setFilter}
             />
+
+            {/* {isPostsLoading &&
+                <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}><Loader/></div>
+            } */}
 
             <ProjectList posts={sortedAndSearchedPosts} title=""/>
 

@@ -10,8 +10,6 @@ const ProjectFilter = ({filter, setFilter}) => {
         e.preventDefault();
         
         setFilter({...filter, query: e.target.value})
-
-        //console.log(filter.query)
     } 
 
     return (

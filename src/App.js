@@ -12,10 +12,12 @@ import ProductList from "./components/ProductList/ProductList";
 function App() {
 
     const [posts, setPosts] = useState([
-       // {id: 1, title: 'Красная площадь', time: '12/12/2022T00:00:00', geo: '', teh: '', status_id: 'Done', workers: [{id: 1, cat: 'audio', spec: 'реж', count: 1, icon: 'Sound'}]},
-        // {id: 2, title: 'Новый год', time: '31 декабря 12:00', geo: '', teh: '', status: 'В эфире'},
+        //{id: 1, title: 'Красная площадь', time: '12/12/2022T00:00:00', geo: '', teh: '', status_id: {id: 1, name: 'Done', color: 'red'}, workers: [{id: 1, cat: 'audio', spec: 'реж', count: 1, icon: 'Sound'}, {id: 2, cat: 'audio', spec: 'реж', count: 1, icon: 'Sound'}]},
+        //{id: 2, title: 'Красная площадь2', time: '12/12/2022T00:00:00', geo: '', teh: '', status_id: {id: 1, name: 'Done', color: 'blue'}, workers: [{id: 1, cat: 'audio', spec: 'реж', count: 1, icon: 'Sound'}]},
         // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
+
+    const [isPostsLoading, setIsPostsLoading] = useState(false);
 
     const getProjectData = () => {
         fetch('https://telegram.uley.moscow:8000/projects')
@@ -29,7 +31,9 @@ function App() {
     }
 
     useEffect(() => {
+        //setIsPostsLoading(true);
         getProjectData();
+        //setIsPostsLoading(false);
     }, [])
     
 

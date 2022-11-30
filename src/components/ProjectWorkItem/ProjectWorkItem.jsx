@@ -13,28 +13,29 @@ const ProjectWorkItem = (props) => {
 
     let image;
 
-    if (props.icon === 'Sound') {
+    if (props.worker.icon === 'Sound') {
         image = Sound;
-    } else if (props.icon === 'Riggers') {
+    } else if (props.worker.icon === 'Riggers') {
         image = Riggers;
-    } else if (props.icon === 'Production') {
+    } else if (props.worker.icon === 'Production') {
         image = Production;
-    } else if (props.icon === 'StageGround') {
+    } else if (props.worker.icon === 'StageGround') {
         image = StageGround;
-    } else if (props.icon === 'Video') {
+    } else if (props.worker.icon === 'Video') {
         image = Video;
-    } else if (props.icon === 'Light') {
+    } else if (props.worker.icon === 'Light') {
         image = Light;
-    } else if (props.icon === 'Stagehands') {
+    } else if (props.worker.icon === 'Stagehands') {
         image = Stagehands;
-    } else if (props.icon === 'Tracks') {
+    } else if (props.worker.icon === 'Tracks') {
         image = Tracks;
     }
 
     return (
-        <div>
+       <div>
             <img className="image_comp" src={image} alt=""/>
-        </div>
+            <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" style={{background: 'green'}}>{props.worker.count}/{props.worker.count}</span></p>
+       </div>            
     );
 };
 

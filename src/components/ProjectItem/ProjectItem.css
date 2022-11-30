@@ -1,40 +1,40 @@
 .box {
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0px 0px 40px -20px var(--grayishBlue);
-    padding: 30px;
-    margin: 20px;
+    padding: 15px 30px;
+    margin: 20px 0;
     text-align: left;
 }
 
 .red {
-    border-left: 8px solid #C8372D;
+    border-left: 10px solid #C8372D;
 }
 .orange {
-    border-left: 8px solid #c4830c;
+    border-left: 10px solid #c4830c;
 }
 .yellow {
-    border-left: 8px solid #D1941A;
+    border-left: 10px solid #D1941A;
 }
 .green {
-    border-left: 8px solid #008000;
+    border-left: 10px solid #008000;
 }
 .blue {
-    border-left: 8px solid #236bd6;
+    border-left: 10px solid #236bd6;
 }
 .purple {
-    border-left: 8px solid #800080;
+    border-left: 10px solid #800080;
 }
 .gray {
-    border-left: 8px solid #808080;
+    border-left: 10px solid #808080;
 }
 .brown {
-    border-left: 8px solid #a52a2a;
+    border-left: 10px solid #a52a2a;
 }
 .pink {
-    border-left: 8px solid #ffc0cb;
+    border-left: 10px solid #ffc0cb;
 }
 .default {
-    border-left: 8px solid #808080;
+    border-left: 10px solid #808080;
 }
 
 .post_title {
@@ -53,8 +53,8 @@
 .col_span {
     background: #828282;
     border-radius: 99px;
-    margin: 0 10px 0 5px;
-    padding: 0 5px;
+    margin: 0 1px 0 3px;
+    padding: 2px 8px;
     font-size: 10px;
 }
 
@@ -62,5 +62,12 @@
     background: #D1941A;
     font-size: 10px;
     margin: 8px 0;
-    padding: 3px 25px;
+    padding: 6px 35px;
+}
+
+.nofind_span {
+    background: transition; 
+    font-size: 10px;
+    margin: 8px 0;
+    padding: 6px 35px;
 }
