@@ -17,6 +17,8 @@ function App() {
         // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
 
+    const [managers, setManagers] = useState([])
+
     const [isPostsLoading, setIsPostsLoading] = useState(false);
 
     const getProjectData = () => {
@@ -30,9 +32,20 @@ function App() {
             })
     }
 
+    const getManagerData = () => {
+        fetch('https://telegram.uley.moscow:8000/managers')
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setManagers(data);
+            })
+    }
+
     useEffect(() => {
         //setIsPostsLoading(true);
         getProjectData();
+        //getManagerData();
         //setIsPostsLoading(false);
     }, [])
     
@@ -63,7 +76,7 @@ function App() {
             <div className="App">
 
                 <Routes>
-                    <Route index element={<Posts posts={posts}/>}/>
+                    <Route index element={<Posts posts={posts} />}/>
                     <Route path={'add-project'} element={<NewProject create={createPost}/>}/>
                 </Routes>
 
