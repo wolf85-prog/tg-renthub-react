@@ -25,8 +25,8 @@ function App() {
                 return response.json()
             })
             .then(data => {
-                setPosts(data);
-                //console.log(data);
+                //setPosts(data);
+                console.log(data);
             })
     }
 
