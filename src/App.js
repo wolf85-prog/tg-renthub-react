@@ -15,6 +15,7 @@ function App() {
         // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
 
+    const {user} = useTelegram();
     const [managers, setManagers] = useState([]);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
@@ -33,7 +34,7 @@ function App() {
     }
 
     const getManagerId = () => {
-        fetch('https://telegram.uley.moscow:8000/managers/')
+        fetch('https://telegram.uley.moscow:8000/managers/' + user?.id)
             .then(response => {
                 return response.json()
             })
@@ -43,19 +44,11 @@ function App() {
             })
     }
 
-    // const getManagerData = () => {
-    //     fetch('https://telegram.uley.moscow:8000/managers')
-    //         .then(response => {
-    //             return response.json()
-    //         })
-    //         .then(data => {
-    //             setManagers(data);
-    //         })
-    // }
-
     useEffect(() => {
         //setIsPostsLoading(true);
-        getProjectData();
+
+        getManagerId();
+        //getProjectData();
         //getManagerData();
         //setIsPostsLoading(false);
     }, [])
