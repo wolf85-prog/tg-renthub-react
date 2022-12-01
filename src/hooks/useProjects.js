@@ -11,21 +11,21 @@ import {useMemo} from "react";
 //     return sortedPosts;
 // }
 
-export const useProjects = (posts, sort, query) => {
+export const useProjects = (posts, manager, sort, query) => {
     //const sortedPosts = useSortedPosts(posts, sort);
 
     const sortedAndSearchedPosts = useMemo(() => {
         
-        //const filterPosts = posts.filter(post => (post.status_id != null ? post.status_id.name : '') === manager.TelegramID)
+        const filterPosts = posts.filter(post => (post.manager != null ? post.manager : '') === manager)
         
         if (query != '') {
             if (query == 'All') {
-                return posts;
+                return filterPosts;
             }
-            return posts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
+            return filterPosts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
         }
         
-        return posts
+        return filterPosts
      }, [query, posts])
 
      return sortedAndSearchedPosts;

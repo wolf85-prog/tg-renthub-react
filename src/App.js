@@ -16,9 +16,19 @@ function App() {
     ])
 
     const {user} = useTelegram();
-    const [managers, setManagers] = useState([]);
+    const [managerId, setManagerId] = useState('');
 
-    const [isPostsLoading, setIsPostsLoading] = useState(false);
+    const getManagerId = () => {
+        const url = 'https://telegram.uley.moscow:8000/managers/805436270'; //+ user?.id;
+        fetch(url)
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setManagerId(data);
+                console.log(data);
+            })
+    }
 
     const getProjectData = () => {
         fetch('https://telegram.uley.moscow:8000/projects')
@@ -27,30 +37,13 @@ function App() {
             })
             .then(data => {
                 setPosts(data);
-
-                //const str = data.workers
-                //console.log(data);
             })
     }
 
-    const getManagerId = () => {
-        fetch('https://telegram.uley.moscow:8000/managers/' + user?.id)
-            .then(response => {
-                return response.json()
-            })
-            .then(data => {
-                //setPosts(data);
-                console.log(data);
-            })
-    }
 
     useEffect(() => {
-        //setIsPostsLoading(true);
-
         getManagerId();
-        //getProjectData();
-        //getManagerData();
-        //setIsPostsLoading(false);
+        getProjectData();
     }, [])
     
 
@@ -78,12 +71,10 @@ function App() {
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <div className="App">
-
                 <Routes>
-                    <Route index element={<Posts posts={posts} />}/>
+                    <Route index element={<Posts posts={posts} manager={managerId} />}/>
                     <Route path={'add-project'} element={<NewProject create={createPost}/>}/>
                 </Routes>
-
             </div>
         </ThemeProvider>
     );

@@ -8,10 +8,10 @@ import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
 import './Post.css';
 
-function Posts({posts}) {
+function Posts({posts, manager}) {
 
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(posts, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(posts, manager, filter.sort, filter.query);
 
 
     return (
@@ -30,8 +30,9 @@ function Posts({posts}) {
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}><Loader/></div>
             } */}
 
+            
             <ProjectList posts={sortedAndSearchedPosts} title=""/>
-
+            
             <div className="footer">
                 <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>
             </div>            
