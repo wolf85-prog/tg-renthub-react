@@ -42,8 +42,12 @@ function App() {
 
 
     useEffect(() => {
-        getManagerId();
-        getProjectData();
+        const manager_id = getManagerId();
+
+        if (manager_id) {
+            getProjectData();
+        }
+        
     }, [])
     
 
