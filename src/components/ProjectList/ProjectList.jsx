@@ -14,7 +14,7 @@ const ProjectList = ({posts, title, remove}) => {
     }
 
     return (
-        <div>
+        <div className="list-item">
             <h1>
                 {title}
             </h1>

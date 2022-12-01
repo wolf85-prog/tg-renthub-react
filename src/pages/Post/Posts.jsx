@@ -25,11 +25,6 @@ function Posts({posts, manager}) {
                 filter={filter}
                 setFilter={setFilter}
             />
-
-            {/* {isPostsLoading &&
-                <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}><Loader/></div>
-            } */}
-
             
             <ProjectList posts={sortedAndSearchedPosts} title=""/>
             
