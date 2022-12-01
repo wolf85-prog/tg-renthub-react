@@ -46,12 +46,12 @@ const ProjectItem = (props) => {
                     {formatted}
                 </div>
 
-                <img className="image_comp" src={comp1} alt="component 1"/>
+                {/* <img className="image_comp" src={comp1} alt="component 1"/>
                 <img className="image_comp" src={comp2} alt="component 2"/>
                 <img className="image_comp" src={comp3} alt="component 3"/>
-                <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">2/2</span><span className="col_span">2/2</span><span className="col_span">2/2</span></p>               
+                <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">2/2</span><span className="col_span">2/2</span><span className="col_span">2/2</span></p>                */}
 
-                {/* <ProjectWorkList workers={props.post.workers} /> */}
+                <ProjectWorkList workers={props.post.workers} />
 
                 {/* <p><span className="find_span">Найдено 2 из 3</span></p> */}
                 <p><span className="nofind_span"></span></p>

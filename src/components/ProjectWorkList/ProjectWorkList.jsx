@@ -5,12 +5,20 @@ import ProjectWorkItem from "../ProjectWorkItem/ProjectWorkItem";
 
 const ProjectWorkList = ({workers}) => {
 
+    //console.log(workers)
+    let users = workers ? JSON.parse(workers) : '';
+
     return (
         <div style={{display: 'flex'}}>
-                     
-            {workers.map((worker, index) =>
+
+            {users !='' ? users.map((worker, index) =>
                 <ProjectWorkItem worker={worker} key={worker.id}/>        
-            )}
+            ) : 'Список специалистов пуст'}  
+
+            {/* {users.map((worker, index) =>
+                <ProjectWorkItem worker={worker} key={worker.id}/>        
+            )}  */}
+            
             
         </div>
     );

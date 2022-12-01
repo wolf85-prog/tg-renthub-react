@@ -34,7 +34,7 @@ const ProjectWorkItem = (props) => {
     return (
        <div>
             <img className="image_comp" src={image} alt=""/>
-            <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" style={{background: 'green'}}>{props.worker.count}/{props.worker.count}</span></p>
+            <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" >{props.worker.count}/{props.worker.count}</span></p>
        </div>            
     );
 };

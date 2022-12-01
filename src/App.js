@@ -2,7 +2,7 @@ import './style/App.css';
 import React, {useEffect, useState} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 import {Route, Routes} from 'react-router-dom'
-import Posts from "./pages/Posts";
+import Posts from "./pages/Post/Posts";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import NewProject from "./pages/NewProject/NewProject";
@@ -25,8 +25,10 @@ function App() {
                 return response.json()
             })
             .then(data => {
-                //setPosts(data);
-                console.log(data);
+                setPosts(data);
+
+                //const str = data.workers
+                //console.log(data);
             })
     }
 
