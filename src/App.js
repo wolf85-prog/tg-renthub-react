@@ -19,7 +19,7 @@ function App() {
     const [managerId, setManagerId] = useState('');
 
     const getManagerId = () => {
-        const url = 'https://telegram.uley.moscow:8000/managers/805436270'; //+ user?.id;
+        const url = 'https://telegram.uley.moscow:8000/managers/'+ user?.id;
         fetch(url)
             .then(response => {
                 return response.json()
