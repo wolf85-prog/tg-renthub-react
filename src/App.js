@@ -32,6 +32,17 @@ function App() {
             })
     }
 
+    const getManagerId = () => {
+        fetch('https://telegram.uley.moscow:8000/managers/')
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                //setPosts(data);
+                console.log(data);
+            })
+    }
+
     // const getManagerData = () => {
     //     fetch('https://telegram.uley.moscow:8000/managers')
     //         .then(response => {
