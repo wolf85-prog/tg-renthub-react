@@ -18,6 +18,9 @@ function App() {
     const {user} = useTelegram();
     const [managerId, setManagerId] = useState('');
 
+    const [mainCast, setMainCast] = useState([]);
+    const [maincastId, setMaincastId] = useState('');
+
     const getManagerId = () => {
         const url = 'https://telegram.uley.moscow:8000/managers/'+ user?.id;
         fetch(url)
@@ -40,6 +43,29 @@ function App() {
             })
     }
 
+    const getBlocksData = (id) => {
+        fetch('https://telegram.uley.moscow:8000/blocks/' + id)
+            .then(response => {
+                return response.json()
+            })
+            .then(maincast_id => {
+                //getWorkData(maincast_id);
+                setMaincastId(maincast_id)
+            })
+    }
+
+    const getWorkData = (id) => {
+        fetch('https://telegram.uley.moscow:8000/database/' + id)
+            .then(response => {
+                return response.json()
+            })
+            .then(worklist => {
+                //console.log(worklist);
+                //return worklist;
+                setMainCast(worklist);
+            })
+    }
+    
 
     useEffect(() => {
         const manager_id = getManagerId();
@@ -47,9 +73,18 @@ function App() {
         //if (manager_id) {
             getProjectData();
         //}
+
+        {posts.map((post) => {
+               getBlocksData(post.id)
+               getWorkData(maincastId);
+
+               
+               
+               setPosts({...post, workers: mainCast})
+            }    
+        )}
         
     }, [])
-    
 
     const createPost = (newPost) => {
         setPosts([...posts, newPost])
