@@ -16,16 +16,23 @@ export const useProjects = (posts, manager, sort, query) => {
 
     const sortedAndSearchedPosts = useMemo(() => {
         
-        const filterPosts = posts.filter(post => (post.manager != null ? post.manager : '') === manager)
+        // const filterPosts = posts.filter(post => (post.manager != null ? post.manager : '') === manager)
         
+        // if (query != '') {
+        //     if (query == 'All') {
+        //         return filterPosts;
+        //     }
+        //     return filterPosts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
+        // }
+        // return filterPosts
+
         if (query != '') {
             if (query == 'All') {
-                return filterPosts;
+                return posts;
             }
-            return filterPosts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
+            return posts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
         }
-        
-        return filterPosts
+        return posts
      }, [query, posts])
 
      return sortedAndSearchedPosts;

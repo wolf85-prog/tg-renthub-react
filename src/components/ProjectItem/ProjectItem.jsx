@@ -6,6 +6,8 @@ import comp3 from "../../img/component_3.png";
 import ProjectWorkList from '../ProjectWorkList/ProjectWorkList';
 
 const ProjectItem = (props) => {
+
+    //console.log("workers: " + props.worklist)
    
     const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
     const dateProject = props.post.time != null ? props.post.time.start : '';
@@ -51,7 +53,7 @@ const ProjectItem = (props) => {
                 <img className="image_comp" src={comp3} alt="component 3"/>
                 <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">2/2</span><span className="col_span">2/2</span><span className="col_span">2/2</span></p>                */}
 
-                <ProjectWorkList workers={props.post.workers} />
+                {/* <ProjectWorkList workers={props.worklist} /> */}
 
                 {/* <p><span className="find_span">Найдено 2 из 3</span></p> */}
                 <p><span className="nofind_span"></span></p>

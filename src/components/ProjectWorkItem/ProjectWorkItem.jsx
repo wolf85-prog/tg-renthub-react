@@ -13,28 +13,28 @@ const ProjectWorkItem = (props) => {
 
     let image;
 
-    if (props.worker.icon === 'Sound') {
+    if (props.worker.title.name === 'Sound') {
         image = Sound;
-    } else if (props.worker.icon === 'Riggers') {
+    } else if (props.worker.title.name === 'Riggers') {
         image = Riggers;
-    } else if (props.worker.icon === 'Production') {
+    } else if (props.worker.title.name === 'Production') {
         image = Production;
-    } else if (props.worker.icon === 'StageGround') {
+    } else if (props.worker.title.name === 'StageGround') {
         image = StageGround;
-    } else if (props.worker.icon === 'Video') {
+    } else if (props.worker.title.name === 'Video') {
         image = Video;
-    } else if (props.worker.icon === 'Light') {
+    } else if (props.worker.title.name === 'Light') {
         image = Light;
-    } else if (props.worker.icon === 'Stagehands') {
+    } else if (props.worker.title.name === 'Stagehands') {
         image = Stagehands;
-    } else if (props.worker.icon === 'Tracks') {
+    } else if (props.worker.title.name === 'Tracks') {
         image = Tracks;
     }
 
     return (
        <div>
             <img className="image_comp" src={image} alt=""/>
-            <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" >{props.worker.count}/{props.worker.count}</span></p>
+            {/* <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" >{props.worker.count}/{props.worker.count}</span></p> */}
        </div>            
     );
 };

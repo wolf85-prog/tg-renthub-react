@@ -7,6 +7,7 @@ const ProjectWorkList = ({workers}) => {
 
     //console.log(workers)
     let users = workers ? JSON.parse(workers) : '';
+    //console.log(users)
 
     return (
         <div style={{display: 'flex'}}>

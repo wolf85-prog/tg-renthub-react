@@ -3,7 +3,7 @@ import './ProjectList.css';
 import ProjectItem from "../ProjectItem/ProjectItem";
 
 
-const ProjectList = ({posts, title, remove}) => {
+const ProjectList = ({posts, title, worklist, remove}) => {
     
     if (!posts.length) {
         return (
@@ -11,6 +11,8 @@ const ProjectList = ({posts, title, remove}) => {
                 Проекты не найдены!
             </h2>
         )
+    } {
+       console.log(posts.length) 
     }
 
     return (
@@ -21,7 +23,8 @@ const ProjectList = ({posts, title, remove}) => {
                      
 
             {posts.map((post, index) =>
-                <ProjectItem remove={remove} number={index + 1} post={post} key={post.id}/>        
+                <ProjectItem remove={remove} number={index + 1} post={post} key={post.id} worklist={worklist}/> 
+                //console.log('worklist item: ' + worklist)      
             )}
             
         </div>

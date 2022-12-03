@@ -6,12 +6,16 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
-import './Post.css';
+import './Posts.css';
 
-function Posts({posts, manager}) {
+function Posts({posts, manager, worklist}) {
 
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = useProjects(posts, manager, filter.sort, filter.query);
+
+    //{worklist.map((work) =>
+        //console.log('worklist posts: ', posts)      
+    //)}
 
 
     return (
@@ -26,7 +30,7 @@ function Posts({posts, manager}) {
                 setFilter={setFilter}
             />
             
-            <ProjectList posts={sortedAndSearchedPosts} title=""/>
+            <ProjectList posts={sortedAndSearchedPosts} worklist={worklist} title=""/>
             
             <div className="footer">
                 <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>
