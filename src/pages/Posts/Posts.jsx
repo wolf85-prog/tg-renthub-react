@@ -8,15 +8,10 @@ import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
 import './Posts.css';
 
-function Posts({posts, manager, worklist}) {
+function Posts({manager, posts}) {
 
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = useProjects(posts, manager, filter.sort, filter.query);
-
-    //{worklist.map((work) =>
-        //console.log('worklist posts: ', posts)      
-    //)}
-
 
     return (
         <div className="App">
@@ -30,7 +25,7 @@ function Posts({posts, manager, worklist}) {
                 setFilter={setFilter}
             />
             
-            <ProjectList posts={sortedAndSearchedPosts} worklist={worklist} title=""/>
+            <ProjectList posts={sortedAndSearchedPosts} title=""/>
             
             <div className="footer">
                 <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>

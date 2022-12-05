@@ -11,7 +11,7 @@ import {useMemo} from "react";
 //     return sortedPosts;
 // }
 
-export const useProjects = (posts, manager, sort, query) => {
+export const useProjects = (posts2, manager, sort, query) => {
     //const sortedPosts = useSortedPosts(posts, sort);
 
     const sortedAndSearchedPosts = useMemo(() => {
@@ -28,12 +28,12 @@ export const useProjects = (posts, manager, sort, query) => {
 
         if (query != '') {
             if (query == 'All') {
-                return posts;
+                return posts2;
             }
-            return posts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
+            return posts2.filter(post => (post.status_id != null ? post.status_id.name : '') === query)
         }
-        return posts
-     }, [query, posts])
+        return posts2
+     }, [query, posts2])
 
      return sortedAndSearchedPosts;
 }

@@ -11,8 +11,8 @@ const ProjectList = ({posts, title, worklist, remove}) => {
                 Проекты не найдены!
             </h2>
         )
-    } {
-       console.log(posts.length) 
+    } else {
+        console.log(posts.length)
     }
 
     return (

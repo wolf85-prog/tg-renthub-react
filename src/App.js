@@ -15,21 +15,16 @@ function App() {
         // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
     const [posts2, setPosts2] = useState([]);
-
-    const [mainCast, setMainCast] = useState([]);
     
     const [managerId, setManagerId] = useState([]);
 
     const {user} = useTelegram();
-
-    //console.log('app posts: ', mainCast)
     
     const getManagerId = () => {
         const url = 'https://telegram.uley.moscow:8000/managers/'+ user?.id;
         fetch(url)
             .then(response => {          
                 return response.text()
-                //return (response ? JSON.stringify(response) : {})
             })
             .then(data => {
                 console.log("Result getManagerId(): ", JSON.stringify(data));
@@ -47,34 +42,35 @@ function App() {
             })
     }
 
-    const getBlocksData = (post) => {
-        fetch('https://telegram.uley.moscow:8000/blocks/' + post.id)
+    const getBlocksData = (id) => {
+        fetch('https://telegram.uley.moscow:8000/blocks/' + id)
             .then(response => {
                 return response.json()
             })
             .then(maincast_id => {
-                //console.log("Result BlockId: ", maincast_id);
-                getWorkData(maincast_id, post);
+                getWorkData(maincast_id);
             })
     }
 
-    const getWorkData = (id, post) => {
+    const getWorkData = (id) => {
         fetch('https://telegram.uley.moscow:8000/database/' + id)
             .then(response => {
                 return response.json()
             })
             .then(worklist => {
-                const newPost2 = {
-                    id: post.id,
-                    title: post.title,
-                    time: post.time,
-                    geo: post.geo,
-                    teh: post.teh,
-                    status_id: post.status_id,
-                    manager: post.manager,
-                    workers: worklist
-                }
-                setPosts2([...posts2, newPost2])
+                // const newPost2 = {
+                //     id: post.id,
+                //     title: post.title,
+                //     time: post.time,
+                //     geo: post.geo,
+                //     teh: post.teh,
+                //     status_id: post.status_id,
+                //     manager: post.manager,
+                //     workers: worklist
+                // }
+                //setPosts2([...posts2, newPost2]) 
+                //console.log(worklist) 
+                return worklist;               
             })
     }
     
@@ -85,13 +81,21 @@ function App() {
         //if (manager_id) {
             getProjectData();
         //}
+        
+        const posts3 = posts.map((post) => {           
+                getBlocksData(post); 
+                //post.worklist = workers  
+                //const workers = getBlocksData(post.id)  
+                //title: post.title                                                
+            }   
+        ); 
+        
+        // setTimeout(async () => {
+        //     console.log('post2: ', posts2)  
+        // }, 11000)
 
-        {posts.map((post) => {
-               getBlocksData(post);            
-            }    
-        )}   
-
-        console.log('posts: ', posts)
+        console.log(posts3)
+        
     }, [])
 
     const createPost = (newPost) => {
@@ -114,12 +118,13 @@ function App() {
         },
     });
 
+
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <div className="App">
                 <Routes>
-                    <Route index element={<Posts posts={posts} manager={managerId} worklist={mainCast}/>}/>
+                    <Route index element={<Posts manager={managerId} posts={posts2}/>}/>
                     <Route path={'add-project'} element={<NewProject create={createPost}/>}/>
                 </Routes>
             </div>
