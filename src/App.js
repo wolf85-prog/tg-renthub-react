@@ -16,6 +16,8 @@ function App() {
     ])
     const [posts2, setPosts2] = useState([]);
     const [posts3, setPosts3] = useState([]);
+
+    const arrayPost = []
     
     const [managerId, setManagerId] = useState([]);
 
@@ -69,25 +71,19 @@ function App() {
                     manager: post.manager,
                     workers: worklist
                 }
-                //setPosts2(newPost2) 
 
-                //console.log(worklist) 
-                //return worklist;  
+                arrayPost.push(newPost2)
+                
+                console.log('posts2: ', arrayPost) 
                 
             })
+
+            
     }
     
-    const fillingArray = () => {
-        const newArray = []
-        for (let i = 0; i < posts.length; i++) {
-          newArray.push(...posts);
-         }
-         setPosts3(newArray)
-
-         
-    }
 
     useEffect(() => {
+
         const manager_id = getManagerId();
 
         //if (manager_id) {
@@ -95,20 +91,18 @@ function App() {
         //}
         
         posts.map((post) => {           
-                getBlocksData(post); 
-                //post.worklist = workers  
-                //const workers = getBlocksData(post.id)  
-                //title: post.title 
-                
-                //posts2
+                getBlocksData(post);           
             }   
         ); 
 
-        //fillingArray()   
-        
+        setTimeout(async ()=> {
+            //setPosts2(posts)
+        }, 10000)
+               
     }, [])
 
-    //console.log(posts3)
+    
+
 
     const createPost = (newPost) => {
         setPosts([...posts, newPost])
