@@ -15,6 +15,7 @@ function App() {
         // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
     ])
     const [posts2, setPosts2] = useState([]);
+    const [posts3, setPosts3] = useState([]);
     
     const [managerId, setManagerId] = useState([]);
 
@@ -42,38 +43,49 @@ function App() {
             })
     }
 
-    const getBlocksData = (id) => {
-        fetch('https://telegram.uley.moscow:8000/blocks/' + id)
+    const getBlocksData = (post) => {
+        fetch('https://telegram.uley.moscow:8000/blocks/' + post.id)
             .then(response => {
                 return response.json()
             })
             .then(maincast_id => {
-                getWorkData(maincast_id);
+                getWorkData(maincast_id, post);
             })
     }
 
-    const getWorkData = (id) => {
+    const getWorkData = (id, post) => {
         fetch('https://telegram.uley.moscow:8000/database/' + id)
             .then(response => {
                 return response.json()
             })
             .then(worklist => {
-                // const newPost2 = {
-                //     id: post.id,
-                //     title: post.title,
-                //     time: post.time,
-                //     geo: post.geo,
-                //     teh: post.teh,
-                //     status_id: post.status_id,
-                //     manager: post.manager,
-                //     workers: worklist
-                // }
-                //setPosts2([...posts2, newPost2]) 
+                const newPost2 = {
+                    id: post.id,
+                    title: post.title,
+                    time: post.time,
+                    geo: post.geo,
+                    teh: post.teh,
+                    status_id: post.status_id,
+                    manager: post.manager,
+                    workers: worklist
+                }
+                //setPosts2(newPost2) 
+
                 //console.log(worklist) 
-                return worklist;               
+                //return worklist;  
+                
             })
     }
     
+    const fillingArray = () => {
+        const newArray = []
+        for (let i = 0; i < posts.length; i++) {
+          newArray.push(...posts);
+         }
+         setPosts3(newArray)
+
+         
+    }
 
     useEffect(() => {
         const manager_id = getManagerId();
@@ -82,21 +94,21 @@ function App() {
             getProjectData();
         //}
         
-        const posts3 = posts.map((post) => {           
+        posts.map((post) => {           
                 getBlocksData(post); 
                 //post.worklist = workers  
                 //const workers = getBlocksData(post.id)  
-                //title: post.title                                                
+                //title: post.title 
+                
+                //posts2
             }   
         ); 
-        
-        // setTimeout(async () => {
-        //     console.log('post2: ', posts2)  
-        // }, 11000)
 
-        console.log(posts3)
+        //fillingArray()   
         
     }, [])
+
+    //console.log(posts3)
 
     const createPost = (newPost) => {
         setPosts([...posts, newPost])
