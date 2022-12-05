@@ -13,21 +13,21 @@ const ProjectWorkItem = (props) => {
 
     let image;
 
-    if (props.worker.title.name === 'Sound') {
+    if (props.worker.title === 'Sound') {
         image = Sound;
-    } else if (props.worker.title.name === 'Riggers') {
+    } else if (props.worker.title === 'Riggers') {
         image = Riggers;
-    } else if (props.worker.title.name === 'Production') {
+    } else if (props.worker.title === 'Production') {
         image = Production;
-    } else if (props.worker.title.name === 'StageGround') {
+    } else if (props.worker.title === 'StageGround') {
         image = StageGround;
-    } else if (props.worker.title.name === 'Video') {
+    } else if (props.worker.title === 'Video') {
         image = Video;
-    } else if (props.worker.title.name === 'Light') {
+    } else if (props.worker.title === 'Light') {
         image = Light;
-    } else if (props.worker.title.name === 'Stagehands') {
+    } else if (props.worker.title === 'Stagehands') {
         image = Stagehands;
-    } else if (props.worker.title.name === 'Tracks') {
+    } else if (props.worker.title === 'Tracks') {
         image = Tracks;
     }
 

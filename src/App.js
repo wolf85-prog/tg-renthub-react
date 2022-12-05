@@ -74,7 +74,7 @@ function App() {
 
                 arrayPost.push(newPost2)
                 
-                console.log('posts2: ', arrayPost) 
+                console.log('arrayPost: ', arrayPost) 
                 
             })
 
@@ -83,9 +83,7 @@ function App() {
     
 
     useEffect(() => {
-
         const manager_id = getManagerId();
-
         //if (manager_id) {
             getProjectData();
         //}
@@ -96,8 +94,8 @@ function App() {
         ); 
 
         setTimeout(async ()=> {
-            //setPosts2(posts)
-        }, 10000)
+            setPosts2(arrayPost)
+        }, 20000)
                
     }, [])
 

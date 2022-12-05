@@ -53,7 +53,7 @@ const ProjectItem = (props) => {
                 <img className="image_comp" src={comp3} alt="component 3"/>
                 <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">2/2</span><span className="col_span">2/2</span><span className="col_span">2/2</span></p>                */}
 
-                {/* <ProjectWorkList workers={props.worklist} /> */}
+                <ProjectWorkList workers={props.post.workers} />
 
                 {/* <p><span className="find_span">Найдено 2 из 3</span></p> */}
                 <p><span className="nofind_span"></span></p>

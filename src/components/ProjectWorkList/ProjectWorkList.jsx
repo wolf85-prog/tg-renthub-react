@@ -6,7 +6,7 @@ import ProjectWorkItem from "../ProjectWorkItem/ProjectWorkItem";
 const ProjectWorkList = ({workers}) => {
 
     //console.log(workers)
-    let users = workers ? JSON.parse(workers) : '';
+    let users = workers ? workers : '';
     //console.log(users)
 
     return (
