@@ -74,7 +74,7 @@ function App() {
 
                 arrayPost.push(newPost2)
                 
-                //console.log('arrayPost: ', arrayPost) 
+                console.log('arrayPost: ', arrayPost) 
                 
             })
 
