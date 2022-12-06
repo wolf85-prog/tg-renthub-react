@@ -8,14 +8,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import NewProject from "./pages/NewProject/NewProject";
 
 function App() {
+    const API_URL = 'https://proj.uley.team:8000/'
+    const API_URL_MANAGER = API_URL + 'managers/';
+    const API_URL_PROJECTS = API_URL + 'projects';
+    const API_URL_BLOCKS = API_URL + 'blocks';
+    const API_URL_DATABASE = API_URL + 'database/';
 
-    const [posts, setPosts] = useState([
-        //{id: 1, title: 'Красная площадь', time: '12/12/2022T00:00:00', geo: '', teh: '', status_id: {id: 1, name: 'Done', color: 'red'}, workers: [{id: 1, cat: 'audio', spec: 'реж', count: 1, icon: 'Sound'}, {id: 2, cat: 'audio', spec: 'реж', count: 1, icon: 'Sound'}]},
-        //{id: 2, title: 'Красная площадь2', time: '12/12/2022T00:00:00', geo: '', teh: '', status_id: {id: 1, name: 'Done', color: 'blue'}, workers: [{id: 1, cat: 'audio', spec: 'реж', count: 1, icon: 'Sound'}]},
-        // {id: 3, title: 'Тестовый проект', time: '1 января 15:00', geo: '', teh: '', status: 'Обработан'},
-    ])
+    const [posts, setPosts] = useState([])
     const [posts2, setPosts2] = useState([]);
-    const [posts3, setPosts3] = useState([]);
 
     const arrayPost = []
     
@@ -24,7 +24,7 @@ function App() {
     const {user} = useTelegram();
     
     const getManagerId = () => {
-        const url = 'https://telegram.uley.moscow:8000/managers/'+ user?.id;
+        const url = API_URL_MANAGER + user?.id;
         fetch(url)
             .then(response => {          
                 return response.text()
@@ -36,7 +36,7 @@ function App() {
     }
 
     const getProjectData = () => {
-        fetch('https://telegram.uley.moscow:8000/projects')
+        fetch(API_URL_PROJECTS)
             .then(response => {
                 return response.json()
             })
@@ -46,7 +46,7 @@ function App() {
     }
 
     const getBlocksData = (post) => {
-        fetch('https://telegram.uley.moscow:8000/blocks/' + post.id)
+        fetch(API_URL_BLOCKS + post.id)
             .then(response => {
                 return response.json()
             })
@@ -56,7 +56,7 @@ function App() {
     }
 
     const getWorkData = (id, post) => {
-        fetch('https://telegram.uley.moscow:8000/database/' + id)
+        fetch(API_URL_DATABASE + id)
             .then(response => {
                 return response.json()
             })
