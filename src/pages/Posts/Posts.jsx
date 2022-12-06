@@ -23,7 +23,7 @@ function Posts() {
 
     const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(posts, managerId, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(posts2, managerId, filter.sort, filter.query);
     const arrayPost = []   
     const [isPostsLoading, setIsPostsLoading] = useState(false);
  
@@ -42,12 +42,13 @@ function Posts() {
         ); 
 
         setTimeout(async ()=> {
-            setPosts2(arrayPost)
+            //setPosts2(arrayPost)
             setIsPostsLoading(false)
-        }, 20000)
+        }, 1000)
                
     }, [])
 
+    //1
     const getManagerId = () => {
         const url = API_URL_MANAGER + user?.id;
         fetch(url)
@@ -55,37 +56,44 @@ function Posts() {
                 return response.text()
             })
             .then(data => {
-                console.log("Result getManagerId(): ", JSON.stringify(data));
+                console.log("Result 1 getManagerId(): ", JSON.stringify(data));
                 setManagerId(data);
             })
     }
 
+    //2
     const getProjectData = () => {
         fetch(API_URL_PROJECTS)
             .then(response => {
                 return response.json()
             })
             .then(data => {
+                console.log('Result 2 getProjectData')
+                //console.log(data)
                 setPosts(data);
             })
     }
 
+    //3
     const getBlocksData = (post) => {
         fetch(API_URL_BLOCKS + post.id)
             .then(response => {
                 return response.json()
             })
             .then(maincast_id => {
+                console.log('Result 3 getBlocksData')
                 getWorkData(maincast_id, post);
             })
     }
 
+    //4
     const getWorkData = (id, post) => {
         fetch(API_URL_DATABASE + id)
             .then(response => {
                 return response.json()
             })
             .then(worklist => {
+                console.log('Result 4 getWorkData')
                 const newPost2 = {
                     id: post.id,
                     title: post.title,
@@ -99,7 +107,7 @@ function Posts() {
 
                 arrayPost.push(newPost2)
                 
-                console.log('arrayPost: ', arrayPost) 
+                //console.log('arrayPost: ', arrayPost) 
                 
             })
 
