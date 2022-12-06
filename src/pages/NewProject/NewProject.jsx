@@ -135,7 +135,9 @@ const data = [
 ];
 
 
-const NewProject = ({create}) => {
+const NewProject = () => {
+
+    const API_URL = 'https://proj.uley.team:8000/'
 
     //const navigate = useNavigate();
 
@@ -166,8 +168,7 @@ const NewProject = ({create}) => {
     const [selectedElement, setSelectedElement] = useState("")
 
     function addGeo (newGeo) {
-        console.log(newGeo)
-        setPost({...post, geo: newGeo})
+        //setPost({...post, geo: newGeo})
         setGeo(newGeo)
     }
 
@@ -182,20 +183,6 @@ const NewProject = ({create}) => {
         setWorker({...worker, count: count - 1})
     }
 
-    {/* Добавление проекта */}
-    const addNewProject = (e) => {
-        e.preventDefault();
-        const newPost = {
-            ...post, id: Date.now()
-        }
-        create(newPost)
-        console.log(post)
-
-        //Установка по-умолчанию
-        //setPost({title: '', time: '', geo: '', teh: '', status: ''})
-
-        //navigate("/");
-    }
 
     {/* Добавление работника */}
     const addNewWorker = (e) => {
@@ -204,9 +191,6 @@ const NewProject = ({create}) => {
         if (worker.cat !== '' || worker.spec !== '') {
             setWorkers([...workers, {...worker, id: Date.now()}])
         }
-
-        //console.log(worker)
-        //console.log(workers)
         setWorker({cat: '', spec: '', count: 1, icon: ''})
 
         setCount(1);
@@ -270,13 +254,16 @@ const NewProject = ({create}) => {
     const onChangeProject = (e) => {
         setProject(e.target.value)
     }
+
     const onChangeTime = (e) => {
         setDatestart(e.target.value)
     }
+
     // const onChangeGeodata = (e) => {
     //     setGeo(e.target.value)
     //     console.log(e.target.value)
     // }
+
     const onChangeTeh = (e) => {
         setTeh(e.target.value)
     }
@@ -290,18 +277,6 @@ const NewProject = ({create}) => {
         setWorker({...worker, spec: model.name})
     }
 
-    const getData = (e) => {
-        e.preventDefault();
-        const data = {
-            projectname: project,
-            datestart,
-            geo,
-            teh,
-            queryId,
-        }
-        console.log(data)
-    }
-
 
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
@@ -313,7 +288,7 @@ const NewProject = ({create}) => {
             worklist: workers,
             queryId,
         }
-        fetch('https://telegram.uley.moscow:8000/web-data', {
+        fetch(API_URL + '/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -347,11 +322,8 @@ const NewProject = ({create}) => {
     return (
 
         <div className="App">
-
             <Header header={{title: 'Новый проект', icon: 'false'}}/>
-
             <form>
-
                 {/*Название*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
