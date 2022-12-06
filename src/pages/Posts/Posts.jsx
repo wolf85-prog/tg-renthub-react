@@ -120,7 +120,7 @@ function Posts() {
 
 
             {isPostsLoading
-                ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '150px'}}><Loader/></div>
+                ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
                 : <ProjectList posts={sortedAndSearchedPosts} title=""/>
             }
             
