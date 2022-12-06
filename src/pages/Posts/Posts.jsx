@@ -15,7 +15,7 @@ function Posts() {
     const API_URL = 'https://proj.uley.team:8000/'
     const API_URL_MANAGER = API_URL + 'managers/';
     const API_URL_PROJECTS = API_URL + 'projects';
-    const API_URL_BLOCKS = API_URL + 'blocks';
+    const API_URL_BLOCKS = API_URL + 'blocks/';
     const API_URL_DATABASE = API_URL + 'database/';
 
     const [posts, setPosts] = useState([])
