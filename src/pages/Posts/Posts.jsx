@@ -100,11 +100,15 @@ function Posts() {
 
         setTimeout(async ()=> {
             console.log('posts.map start')
-            posts.map((post) => {
-                //getBlocksData(post) 
-                console.log('post')
-            }); 
 
+            posts.forEach((post) => {
+                console.log('post')
+            }, []);
+
+            // posts.map((post) => {
+            //     //getBlocksData(post) 
+            //     console.log('post')
+            // }); 
             setIsPostsLoading(false);
             
         }, 3000)
