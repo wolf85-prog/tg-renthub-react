@@ -50,7 +50,8 @@ function Posts() {
             })
             .then(data => {
                 setPosts(data);
-                console.log(data)
+                console.log(data);
+                //setIsPostsLoading(false);
             })
     }
 
@@ -100,16 +101,19 @@ function Posts() {
         setTimeout(async ()=> {
             console.log('posts.map start')
             posts.map((post) => {
-                getBlocksData(post) 
+                //getBlocksData(post) 
+                console.log('post')
             }); 
-            
-        }, 4000)
-
-        setTimeout(async ()=> {
-            setPosts2(arrayPost);
 
             setIsPostsLoading(false);
-        }, 24000)     
+            
+        }, 3000)
+
+        // setTimeout(async ()=> {
+        //     setPosts2(arrayPost);
+
+        //     setIsPostsLoading(false);
+        // }, 24000)     
                
     }, [])
 
