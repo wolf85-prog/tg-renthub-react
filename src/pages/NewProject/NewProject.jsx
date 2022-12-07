@@ -16,6 +16,7 @@ import ButtonPlus from "../../img/plus.png";
 import Calendar from "../../img/calendar.svg";
 import GeoInput from "../../components/UI/GeoInput/GeoInput";
 import {useTelegram} from "../../hooks/useTelegram";
+import MyModal from "../../components/MyModal/MyModal";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true  }} {...props} />
@@ -142,6 +143,8 @@ const NewProject = () => {
     //const navigate = useNavigate();
 
     const {tg, queryId} = useTelegram();
+
+    const [modal, setModal] = useState(false)
 
     //проект
     const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
@@ -451,6 +454,10 @@ const NewProject = () => {
                 </div>
 
                 <WorkerList remove={removeWorker} workers={workers} />
+
+                {/* <MyModal visible={modal} setVisible={setModal}>
+                    {queryId}
+                </MyModal> */}
 
                 {/* <MyButton onClick={console.log(workers)}>Создать проект</MyButton> */}
             </form>
