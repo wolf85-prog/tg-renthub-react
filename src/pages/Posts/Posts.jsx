@@ -24,7 +24,7 @@ function Posts() {
 
     const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(posts2, managerId, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(posts, managerId, filter.sort, filter.query);
     const arrayPost = []   
     const arrayId = []   
     const [isPostsLoading, setIsPostsLoading] = useState(false);
@@ -51,7 +51,7 @@ function Posts() {
             .then(data => {
                 setPosts(data);
                 //console.log(data);
-                //setIsPostsLoading(false);
+                setIsPostsLoading(false);
             })
     }
 
@@ -98,27 +98,22 @@ function Posts() {
             getProjectData();
         //}     
 
-        setTimeout(async ()=> {
-            //console.log('posts.map start')
+        // setTimeout(async ()=> {
 
-            // posts.forEach((post) => {
-            //     console.log('post')
-            // });
-
-            posts.map((post) => {
-                getBlocksData(post)                 
-            }); 
+        //     posts.map((post) => {
+        //         getBlocksData(post)                 
+        //     }); 
             
             
-        }, 3000)
+        // }, 3000)
 
-        setTimeout(async ()=> {
-            setPosts2(arrayPost);
+        // setTimeout(async ()=> {
+        //     setPosts2(arrayPost);
 
-            setIsPostsLoading(false);
-        }, 24000)     
+        //     setIsPostsLoading(false);
+        // }, 24000)     
                
-    }, [])
+    },[])
 
     
 
