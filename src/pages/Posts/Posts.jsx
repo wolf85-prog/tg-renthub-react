@@ -50,7 +50,7 @@ function Posts() {
             })
             .then(data => {
                 setPosts(data);
-                console.log(data);
+                //console.log(data);
                 //setIsPostsLoading(false);
             })
     }
@@ -99,27 +99,28 @@ function Posts() {
         //}     
 
         setTimeout(async ()=> {
-            console.log('posts.map start')
+            //console.log('posts.map start')
 
-            posts.forEach((post) => {
-                console.log('post')
-            });
+            // posts.forEach((post) => {
+            //     console.log('post')
+            // });
 
-            // posts.map((post) => {
-            //     //getBlocksData(post) 
-            //     
-            // }); 
-            //setIsPostsLoading(false);
+            posts.map((post) => {
+                getBlocksData(post)                 
+            }); 
+            
             
         }, 3000)
 
-        // setTimeout(async ()=> {
-        //     setPosts2(arrayPost);
+        setTimeout(async ()=> {
+            setPosts2(arrayPost);
 
-        //     setIsPostsLoading(false);
-        // }, 24000)     
+            setIsPostsLoading(false);
+        }, 24000)     
                
-    }, [posts])
+    }, [])
+
+    
 
     return (
         <div className="App">

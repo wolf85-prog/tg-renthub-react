@@ -16,7 +16,7 @@ const ProjectWorkList = ({workers}) => {
             ) : 'Список специалистов пуст'}   */}
 
             {Object.values(workers).map((worker, index) =>
-                <ProjectWorkItem worker={worker} key={worker.id}/>        
+                <ProjectWorkItem worker={worker} key={index+1}/>        
             )} 
             
             
