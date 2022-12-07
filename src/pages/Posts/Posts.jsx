@@ -117,15 +117,16 @@ function Posts() {
     },[])
 
     useEffect(() => {
-        posts.map((post) => 
+        posts.map((post) =>{ 
             getBlocksData(post)
-        ); 
+            console.log('post')
+        }); 
 
-        setTimeout(async ()=> {
-            setPosts2(arrayPost);
-            console.log('posts2', arrayPost);
-            setIsPostsLoading(false);
-        }, 23000)  
+        // setTimeout(async ()=> {
+        //     setPosts2(arrayPost);
+        //     console.log('posts2', arrayPost);
+        //     setIsPostsLoading(false);
+        // }, 23000)  
     },[posts]);
 
     return (
