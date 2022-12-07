@@ -37,7 +37,7 @@ function Posts() {
                 return response.text()
             })
             .then(data => {
-                //console.log("Result 1 getManagerId(): ", JSON.stringify(data));
+                console.log("Manager ID: ", JSON.stringify(data));
                 setManagerId(data);
             })
     }
@@ -105,14 +105,10 @@ function Posts() {
         }, 4000)
 
         setTimeout(async ()=> {
-            console.log('arrayPosts: ', arrayPost);
             setPosts2(arrayPost);
 
             setIsPostsLoading(false);
-        }, 24000)
-
-
-        
+        }, 24000)     
                
     }, [])
 
