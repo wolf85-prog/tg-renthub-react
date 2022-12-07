@@ -6,7 +6,7 @@ import CloseButton from "../../img/x.png";
 
 
 const Header = (props) => {
-    const {user, onClose} = useTelegram();
+    const {user, queryId, onClose} = useTelegram();
 
     return (
         <div className={'header'}>
