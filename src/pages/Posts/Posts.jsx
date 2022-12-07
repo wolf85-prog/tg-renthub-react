@@ -51,7 +51,7 @@ function Posts() {
             .then(data => {
                 setPosts(data);
                 //console.log(data);
-                setIsPostsLoading(false);
+                //setIsPostsLoading(false);
             })
     }
 
@@ -85,6 +85,7 @@ function Posts() {
                     workers: worklist
                 }
                 arrayPost.push(newPost2)
+                //console.log('Result worklist')
             }) 
             
     }
@@ -117,11 +118,15 @@ function Posts() {
 
     useEffect(() => {
         posts.map((post) => 
-            console.log('post')
-        ); // map your state here
-        //setPosts2(newState); // and then update the state
-        //console.log(newState);
-     },[posts]);
+            getBlocksData(post)
+        ); 
+
+        setTimeout(async ()=> {
+            setPosts2(arrayPost);
+            console.log('posts2', arrayPost);
+            setIsPostsLoading(false);
+        }, 23000)  
+    },[posts]);
 
     return (
         <div className="App">
