@@ -24,7 +24,7 @@ function Posts() {
 
     const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(posts, managerId, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(posts2, managerId, filter.sort, filter.query);
     const arrayPost = []   
     const arrayId = []   
     const [isPostsLoading, setIsPostsLoading] = useState(false);
