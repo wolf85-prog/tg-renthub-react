@@ -102,8 +102,6 @@ function Posts() {
             posts.map((post) => {
                 getBlocksData(post) 
             }); 
-
-            //posts.forEach(post => console.log('post: ', post));
             
         }, 4000)
 
@@ -113,7 +111,7 @@ function Posts() {
             setIsPostsLoading(false);
         }, 24000)     
                
-    }, [posts])
+    }, [])
 
     return (
         <div className="App">
