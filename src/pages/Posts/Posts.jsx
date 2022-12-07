@@ -20,33 +20,14 @@ function Posts() {
 
     const [posts, setPosts] = useState([])
     const [posts2, setPosts2] = useState([]);
+    const [array3, setArray3] = useState([]);
 
     const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(posts2, managerId, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(posts, managerId, filter.sort, filter.query);
     const arrayPost = []   
+    const arrayId = []   
     const [isPostsLoading, setIsPostsLoading] = useState(false);
- 
-
-    useEffect(() => {
-        setIsPostsLoading(true);
-
-        const manager_id = getManagerId();       
-        //if (manager_id) {
-            getProjectData();
-        //}
-        
-        posts.map((post) => {           
-                getBlocksData(post);           
-            }   
-        ); 
-
-        setTimeout(async ()=> {
-            //setPosts2(arrayPost)
-            setIsPostsLoading(false)
-        }, 1000)
-               
-    }, [])
 
     //1
     const getManagerId = () => {
@@ -69,31 +50,36 @@ function Posts() {
             })
             .then(data => {
                 console.log('Result 2 getProjectData')
-                //console.log(data)
+                console.log(data)
                 setPosts(data);
             })
     }
 
     //3
     const getBlocksData = (post) => {
+        console.log('Start 3 getBlocksData: ')
         fetch(API_URL_BLOCKS + post.id)
             .then(response => {
                 return response.json()
             })
             .then(maincast_id => {
-                console.log('Result 3 getBlocksData')
-                getWorkData(maincast_id, post);
+               //console.log('Result 3 getBlocksData: ', maincast_id)
+               //arrayId.push(maincast_id)
+               getWorkData(maincast_id, post);
+               //setArray3(arrayId)
+               //console.log(arrayId)
             })
     }
 
     //4
     const getWorkData = (id, post) => {
+        console.log('Start 4 getWorkData')  
         fetch(API_URL_DATABASE + id)
             .then(response => {
                 return response.json()
             })
             .then(worklist => {
-                console.log('Result 4 getWorkData')
+                console.log('Result 4 getWorkData')  
                 const newPost2 = {
                     id: post.id,
                     title: post.title,
@@ -106,13 +92,64 @@ function Posts() {
                 }
 
                 arrayPost.push(newPost2)
-                
                 //console.log('arrayPost: ', arrayPost) 
-                
-            })
-
+            }) 
             
     }
+    
+
+    useEffect(() => {
+        console.log('useEffect start')
+        setIsPostsLoading(true);
+
+        const manager_id = getManagerId();       
+        //if (manager_id) {
+            getProjectData();
+        //}
+               
+
+        setTimeout(async ()=> {
+            console.log('posts.map start')
+            posts.map((post) => {           
+                getBlocksData(post); 
+                //console.log('arrayId: ', arrayId) 
+            }); 
+
+            //console.log('arrayId.map start')
+            //console.log(arrayId) 
+            // arrayId.map((id) => {  
+            //     //id          
+            //     console.log(id)
+            // })
+            //console.log('array3: ', array3)
+
+            //const numbers = [1, 2, 3, 4, 5];
+            //const doubled = arrayId.map((number) => number);
+            //console.log(doubled);
+            
+        }, 4000)
+
+        setTimeout(async ()=> {
+            // console.log('setPosts2 start')
+            // setPosts2(arrayPost)
+            // console.log('setPosts2(arrayPost):', posts2)
+
+            //setArray3(arrayId);
+            //console.log('array3: ', arrayId);
+
+            arrayPost.map((post) => {
+                console.log('post: ', post)
+                //getWorkData(maincast_id, post);
+            });
+            //console.log(doubled);
+
+            setIsPostsLoading(false);
+        }, 15000)
+
+
+        
+               
+    }, [])
 
     return (
         <div className="App">
