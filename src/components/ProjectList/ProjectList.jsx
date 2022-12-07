@@ -8,7 +8,7 @@ const ProjectList = ({posts, title, remove}) => {
     if (!posts.length) {
         return (
             <h2 style={{textAlign: 'center'}}>
-                Проекты не найдены!
+                Проекты не найдены
             </h2>
         )
     } else {

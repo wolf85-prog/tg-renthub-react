@@ -50,6 +50,7 @@ function Posts() {
             })
             .then(data => {
                 setPosts(data);
+                console.log(data)
             })
     }
 
