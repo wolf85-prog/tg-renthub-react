@@ -291,7 +291,7 @@ const NewProject = () => {
             worklist: workers,
             queryId,
         }
-        fetch(API_URL + '/web-data', {
+        fetch('https://proj.uley.team:8000/web-data', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
