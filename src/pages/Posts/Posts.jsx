@@ -86,7 +86,7 @@ function Posts() {
                 }
                 arrayPost.push(newPost2)
                 console.log('Result worklist')
-                setIsPostsLoading(false);
+                //setIsPostsLoading(false);
             }) 
             
     }
@@ -109,11 +109,11 @@ function Posts() {
 
         //setIsPostsLoading(false);
 
-        // setTimeout(async ()=> {
-        //     setPosts2(arrayPost);
-        //     console.log('posts2', arrayPost);
-        //     setIsPostsLoading(false);
-        // }, 23000)  
+        setTimeout(async ()=> {
+            //setPosts2(arrayPost);
+            //console.log('posts2', arrayPost);
+            setIsPostsLoading(false);
+        }, 20000)  
     },[posts]);
 
     return (
