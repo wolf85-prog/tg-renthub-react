@@ -103,7 +103,7 @@ function Posts() {
 
             posts.forEach((post) => {
                 console.log('post')
-            }, []);
+            }, [posts]);
 
             // posts.map((post) => {
             //     //getBlocksData(post) 
