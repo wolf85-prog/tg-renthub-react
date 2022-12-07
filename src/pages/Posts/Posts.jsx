@@ -110,10 +110,10 @@ function Posts() {
         //setIsPostsLoading(false);
 
         setTimeout(async ()=> {
-            //setPosts2(arrayPost);
-            //console.log('posts2', arrayPost);
+            setPosts2(arrayPost);
+            console.log('posts2', arrayPost);
             setIsPostsLoading(false);
-        }, 20000)  
+        }, 22000)  
     },[posts]);
 
     return (
