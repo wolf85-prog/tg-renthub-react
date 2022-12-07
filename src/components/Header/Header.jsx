@@ -21,8 +21,7 @@ const Header = (props) => {
             </span>
 
             <span className={'username'}>
-                {/* {user?.id} */}
-                {queryId}
+                {user?.username}
             </span>
             <img className={'btn-close'} onClick={onClose} src={CloseButton}/>
         </div>
