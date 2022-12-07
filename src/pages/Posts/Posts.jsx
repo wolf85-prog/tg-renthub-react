@@ -103,7 +103,11 @@ function Posts() {
             //     getBlocksData(post) 
             // }); 
 
-            posts.forEach(post => console.log('post: ', post));
+            //posts.forEach(post => console.log('post: ', post));
+
+            const array1 = ['a', 'b', 'c'];
+
+            array1.forEach(element => console.log(element));
             
         }, 4000)
 
