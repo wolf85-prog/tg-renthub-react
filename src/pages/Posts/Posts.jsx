@@ -99,10 +99,12 @@ function Posts() {
 
         setTimeout(async ()=> {
             console.log('posts.map start')
-            posts.map((post) => { 
-                console.log(post);          
+            const arr = posts.map((post) => { 
+                post
+                //console.log(post);          
                 //getBlocksData(post); 
             }); 
+            console.log(arr)
             
         }, 4000)
 
