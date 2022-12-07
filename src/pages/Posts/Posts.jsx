@@ -115,7 +115,13 @@ function Posts() {
                
     },[])
 
-    
+    useEffect(() => {
+        posts.map((post) => 
+            console.log('post')
+        ); // map your state here
+        //setPosts2(newState); // and then update the state
+        //console.log(newState);
+     },[posts]);
 
     return (
         <div className="App">
