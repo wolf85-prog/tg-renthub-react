@@ -111,13 +111,13 @@ function Posts() {
             
        // }, 4000)
 
-        setTimeout(async ()=> {
-            setPosts2(arrayPost);
+        // setTimeout(async ()=> {
+        //     setPosts2(arrayPost);
 
-            setIsPostsLoading(false);
-        }, 24000)     
+        //     setIsPostsLoading(false);
+        // }, 24000)     
                
-    }, [])
+    }, [posts])
 
     return (
         <div className="App">
