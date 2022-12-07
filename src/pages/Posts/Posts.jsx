@@ -56,6 +56,7 @@ function Posts() {
 
     //3
     const getBlocksData = (post) => {
+        console.log('Start getBlockData')
         fetch(API_URL_BLOCKS + post.id)
             .then(response => {
                 return response.json()
