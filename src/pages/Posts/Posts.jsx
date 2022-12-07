@@ -99,21 +99,9 @@ function Posts() {
 
         setTimeout(async ()=> {
             console.log('posts.map start')
-            let newArr = posts.map((post, i) => {
-
-                console.log(`Index: ${i}`);
-                return post;
-
-                //getBlocksData(post) 
-                //console.log(post)
+            posts.map((post) => {
+                getBlocksData(post) 
             }); 
-            console.log(newArr);
-            
-            // const numbers = [1, 2, 3, 4, 5];
-            // const doubled = numbers.map((number) => 
-            //     number * 2
-            // );
-            // console.log(doubled);
             
         }, 4000)
 
