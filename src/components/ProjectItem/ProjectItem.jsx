@@ -6,8 +6,6 @@ import comp3 from "../../img/component_3.png";
 import ProjectWorkList from '../ProjectWorkList/ProjectWorkList';
 
 const ProjectItem = (props) => {
-
-    //console.log("workers: " + props.worklist)
    
     const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
     const dateProject = props.post.time != null ? props.post.time.start : '';

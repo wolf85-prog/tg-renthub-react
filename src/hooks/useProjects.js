@@ -14,6 +14,8 @@ import {useMemo} from "react";
 export const useProjects = (posts2, manager, sort, query) => {
     //const sortedPosts = useSortedPosts(posts, sort);
 
+    console.log('posts: ', posts2)
+
     const sortedAndSearchedPosts = useMemo(() => {
         
         // const filterPosts = posts.filter(post => (post.manager != null ? post.manager : '') === manager)
