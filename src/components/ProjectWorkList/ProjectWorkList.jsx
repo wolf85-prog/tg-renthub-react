@@ -15,8 +15,11 @@ const ProjectWorkList = ({workers}) => {
                 <ProjectWorkItem worker={worker} key={worker.id}/>        
             ) : 'Список специалистов пуст'}   */}
 
-            {Object.values(workers).map((worker, index) =>
-                <ProjectWorkItem worker={worker} key={index+1}/>        
+            {Object.values(workers).map((worker, index) => //{
+                    //if (worker.title == 'Video') {
+                        <ProjectWorkItem worker={worker} key={index+1}/> 
+                    //} 
+                //}      
             )} 
             
             

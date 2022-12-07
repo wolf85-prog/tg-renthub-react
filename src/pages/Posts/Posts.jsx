@@ -25,8 +25,7 @@ function Posts() {
     const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = useProjects(posts2, managerId, filter.sort, filter.query);
-    const arrayPost = []   
-    const arrayId = []   
+    const arrayPost = []     
     const [isPostsLoading, setIsPostsLoading] = useState(false);
 
     //1
@@ -104,16 +103,13 @@ function Posts() {
     useEffect(() => {
         posts.map((post) => 
             getBlocksData(post)
-            //console.log('post')
         ); 
-
-        //setIsPostsLoading(false);
 
         setTimeout(async ()=> {
             setPosts2(arrayPost);
             console.log('posts2', arrayPost);
             setIsPostsLoading(false);
-        }, 22000)  
+        }, 23000)  
     },[posts]);
 
     return (
