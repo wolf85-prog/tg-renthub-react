@@ -85,7 +85,8 @@ function Posts() {
                     workers: worklist
                 }
                 arrayPost.push(newPost2)
-                //console.log('Result worklist')
+                console.log('Result worklist')
+                setIsPostsLoading(false);
             }) 
             
     }
@@ -97,32 +98,16 @@ function Posts() {
         const manager_id = getManagerId();       
         //if (manager_id) {
             getProjectData();
-        //}     
-
-        // setTimeout(async ()=> {
-
-        //     posts.map((post) => {
-        //         getBlocksData(post)                 
-        //     }); 
-            
-            
-        // }, 3000)
-
-        // setTimeout(async ()=> {
-        //     setPosts2(arrayPost);
-
-        //     setIsPostsLoading(false);
-        // }, 24000)     
-               
+        //}                     
     },[])
 
     useEffect(() => {
         posts.map((post) => 
-            //getBlocksData(post)
-            console.log('post')
+            getBlocksData(post)
+            //console.log('post')
         ); 
 
-        setIsPostsLoading(false);
+        //setIsPostsLoading(false);
 
         // setTimeout(async ()=> {
         //     setPosts2(arrayPost);
