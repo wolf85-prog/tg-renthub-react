@@ -5,10 +5,8 @@ import ProjectWorkItem from "../ProjectWorkItem/ProjectWorkItem";
 
 const ProjectWorkList = ({workers}) => {
 
-    console.log('workers: ', workers)
-    //const users = JSON.parse(workers); //workers ? workers : 'пусто';
-    console.log(Object.keys(workers));
-    //console.log(users)
+    //console.log('workers: ', workers)
+    //console.log(Object.keys(workers));
 
     return (
         <div style={{display: 'flex'}}>
