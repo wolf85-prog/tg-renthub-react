@@ -97,19 +97,19 @@ function Posts() {
             getProjectData();
         //}     
 
-        setTimeout(async ()=> {
+       // setTimeout(async ()=> {
             console.log('posts.map start')
             // posts.map((post) => {
             //     getBlocksData(post) 
             // }); 
 
-            //posts.forEach(post => console.log('post: ', post));
+            posts.forEach(post => console.log('post: ', post));
 
-            const array1 = ['a', 'b', 'c'];
+            //const array1 = ['a', 'b', 'c'];
 
-            array1.forEach(element => console.log(element));
+            //array1.forEach(element => console.log(element));
             
-        }, 4000)
+       // }, 4000)
 
         setTimeout(async ()=> {
             setPosts2(arrayPost);
