@@ -20,7 +20,6 @@ function Posts() {
 
     const [posts, setPosts] = useState([])
     const [posts2, setPosts2] = useState([]);
-    const [array3, setArray3] = useState([]);
 
     const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
@@ -107,7 +106,7 @@ function Posts() {
             console.log('posts2', arrayPost);
             setIsPostsLoading(false);
         }, 23000)  
-    },[posts]); //posts
+    },[posts]);             //posts
 
     return (
         <div className="App">

@@ -29,6 +29,8 @@ const ProjectWorkItem = (props) => {
         image = Stagehands;
     } else if (props.worker.title === 'Tracks') {
         image = Tracks;
+    } else {
+        image = '';
     }
 
     return (
