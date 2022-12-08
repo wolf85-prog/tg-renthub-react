@@ -32,10 +32,10 @@ function Posts() {
         const url = API_URL_MANAGER + user?.id;
         fetch(url)
             .then(response => {          
-                return response.text()
+                return response.json()
             })
             .then(data => {
-                console.log("Manager ID: ", JSON.stringify(data));
+                //console.log("Manager ID: ", JSON.stringify(data));
                 setManagerId(data);
             })
     }
@@ -48,6 +48,7 @@ function Posts() {
             })
             .then(data => {
                 setPosts(data);
+                console.log(data)
             })
     }
 
@@ -90,8 +91,9 @@ function Posts() {
     useEffect(() => {
         setIsPostsLoading(true);
 
-        const manager_id = getManagerId();       
-        if (manager_id) {
+        getManagerId();  
+
+        if (managerId) {
             getProjectData();
         }                     
     },[])
@@ -103,10 +105,10 @@ function Posts() {
 
         setTimeout(async ()=> {
             setPosts2(arrayPost);
-            console.log('posts2', arrayPost);
+            //console.log('posts2', arrayPost);
             setIsPostsLoading(false);
         }, 23000)  
-    },[posts]);  //posts
+    },[posts]);          //posts
 
     return (
         <div className="App">
