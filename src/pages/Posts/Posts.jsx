@@ -91,9 +91,9 @@ function Posts() {
         setIsPostsLoading(true);
 
         const manager_id = getManagerId();       
-        //if (manager_id) {
+        if (manager_id) {
             getProjectData();
-        //}                     
+        }                     
     },[])
 
     useEffect(() => {
@@ -106,7 +106,7 @@ function Posts() {
             console.log('posts2', arrayPost);
             setIsPostsLoading(false);
         }, 23000)  
-    },[posts]);             //posts
+    },[posts]);  //posts
 
     return (
         <div className="App">
