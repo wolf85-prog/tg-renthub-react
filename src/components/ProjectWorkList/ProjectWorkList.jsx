@@ -8,6 +8,13 @@ const ProjectWorkList = ({workers}) => {
     //console.log('workers: ', workers)
     //console.log(Object.keys(workers));
 
+    const newWorkers = Object.values(workers).map((value, index) => {
+        //console.log('worker', value)  
+        //value.title     
+    });
+
+    console.log('new workers: ', newWorkers)
+
     return (
         <div style={{display: 'flex'}}>
 

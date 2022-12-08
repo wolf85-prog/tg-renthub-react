@@ -49,8 +49,6 @@ function Posts() {
             })
             .then(data => {
                 setPosts(data);
-                //console.log(data);
-                //setIsPostsLoading(false);
             })
     }
 
@@ -85,7 +83,6 @@ function Posts() {
                 }
                 arrayPost.push(newPost2)
                 console.log('Result worklist')
-                //setIsPostsLoading(false);
             }) 
             
     }
@@ -110,7 +107,7 @@ function Posts() {
             console.log('posts2', arrayPost);
             setIsPostsLoading(false);
         }, 23000)  
-    },[posts]);
+    },[posts]); //posts
 
     return (
         <div className="App">
