@@ -18,7 +18,7 @@ export const useProjects = (posts2, manager, sort, query) => {
 
     const sortedAndSearchedPosts = useMemo(() => {
         
-        const filterPosts = posts2.filter((post.manager != null ? post.manager : '') === manager)
+        const filterPosts = posts2.filter(post => (post.manager != null ? post.manager : '') === manager)
 
         //console.log('manager_id:', manager)
         //console.log('filterPosts:', posts2)
