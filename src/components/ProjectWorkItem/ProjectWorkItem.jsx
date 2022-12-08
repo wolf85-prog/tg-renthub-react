@@ -19,7 +19,7 @@ const ProjectWorkItem = (props) => {
         image = Riggers;
     } else if (props.worker.title === 'Production') {
         image = Production;
-    } else if (props.worker.title === 'StageGround') {
+    } else if (props.worker.title === 'Stage Ground') {
         image = StageGround;
     } else if (props.worker.title === 'Video') {
         image = Video;
@@ -36,7 +36,11 @@ const ProjectWorkItem = (props) => {
     return (
        <div>
             <img className="image_comp" src={image} alt=""/>
-            {/* <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" >{props.worker.count}/{props.worker.count}</span></p> */}
+            {(props.worker.title === 'undefined') 
+                ? ''
+                : <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" >{props.worker.count}/{props.worker.count}</span></p>               
+            }
+            
        </div>            
     );
 };
