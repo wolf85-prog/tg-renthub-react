@@ -46,7 +46,7 @@ function Posts() {
     }
 
     //2
-    const getProjectData = (id) => {
+    const getProjectData = useMemo((id) => {
         console.log('Get URL: '+ API_URL_PROJECTS + id)
         fetch(API_URL_PROJECTS + id)
             .then(response => {
@@ -55,7 +55,7 @@ function Posts() {
             .then(data => {
                 setPosts(data);
             })
-    }
+    })
 
     //3
     const getBlocksData = (post) => {
@@ -71,7 +71,7 @@ function Posts() {
     }
 
     //4
-    const getWorkData = useMemo((id, post) => { 
+    const getWorkData = (id, post) => { 
         fetch(API_URL_DATABASE + id)
             .then(response => {
                 return response.json()
@@ -91,7 +91,7 @@ function Posts() {
                 console.log('Result worklist: ', worklist)              
             }) 
             
-    })
+    }
     
     //start
     useEffect(() => {
