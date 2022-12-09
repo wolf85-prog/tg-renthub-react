@@ -12,9 +12,7 @@ const ProjectWorkList = ({workers}) => {
     const [count, setCount] = useState(1)
 
     //console.log('workers: ', workers)
-    //console.log(Object.keys(workers));
-
-    
+    //console.log(Object.keys(workers));   
 
     Object.values(workers).map((value, index) => {
 
@@ -45,26 +43,12 @@ const ProjectWorkList = ({workers}) => {
         arr.push(obj) 
     });
 
-    //console.log('arr: ', arr)
-
-    // useEffect(() => {
-    //     setWorkers2(arr)
-    // },[]); 
-
     return (
         <div style={{display: 'flex'}}>
 
-            {/* {users !='' ? users.map((worker, index) =>
-                <ProjectWorkItem worker={worker} key={worker.id}/>        
-            ) : 'Список специалистов пуст'}   */}
-
-            {/* {Object.values(workers).map((worker, index) => 
-                <ProjectWorkItem worker={worker} key={index+1}/>    
-            )}  */}
-
-            {arr.map((worker, index) => 
-                <ProjectWorkItem worker={worker} key={index+1}/>    
-            )} 
+            {arr.length ? arr.map((worker, index) => 
+                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} key={index+1}/> : 'Список специалистов пуст'                                   
+            ) : 'Список специалистов пуст' } 
             
         </div>
     );

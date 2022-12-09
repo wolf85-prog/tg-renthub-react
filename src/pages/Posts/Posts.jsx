@@ -108,7 +108,7 @@ function Posts() {
         setTimeout(async ()=> {
             setPosts2(arrayPost);
             setIsPostsLoading(false);
-        }, 4000)  
+        }, 3000)  
     },[posts]);          //posts
 
     return (
