@@ -46,7 +46,7 @@ function Posts() {
     }
 
     //2
-    const getProjectData = useMemo((id) => {
+    const getProjectData = (id) => {
         console.log('Get URL: '+ API_URL_PROJECTS + id)
         fetch(API_URL_PROJECTS + id)
             .then(response => {
@@ -55,7 +55,7 @@ function Posts() {
             .then(data => {
                 setPosts(data);
             })
-    })
+    }
 
     //3
     const getBlocksData = (post) => {
