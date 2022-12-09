@@ -71,7 +71,7 @@ function Posts() {
     }
 
     //4
-    const getWorkData = (id, post) => { 
+    const getWorkData = useMemo((id, post) => { 
         fetch(API_URL_DATABASE + id)
             .then(response => {
                 return response.json()
@@ -91,7 +91,7 @@ function Posts() {
                 console.log('Result worklist: ', worklist)              
             }) 
             
-    }
+    })
     
     //start
     useEffect(() => {
