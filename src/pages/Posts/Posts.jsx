@@ -14,7 +14,7 @@ function Posts() {
 
     const API_URL = 'https://proj.uley.team:8000/'
     const API_URL_MANAGER = API_URL + 'managers/';
-    const API_URL_PROJECTS = API_URL + 'projects';
+    const API_URL_PROJECTS = API_URL + 'projects/';
     const API_URL_BLOCKS = API_URL + 'blocks/';
     const API_URL_DATABASE = API_URL + 'database/';
 
@@ -35,14 +35,13 @@ function Posts() {
                 return response.json()
             })
             .then(data => {
-                //console.log("Manager ID: ", JSON.stringify(data));
                 setManagerId(data);
             })
     }
 
     //2
-    const getProjectData = () => {
-        fetch(API_URL_PROJECTS)
+    const getProjectData = (id) => {
+        fetch(API_URL_PROJECTS + id)
             .then(response => {
                 return response.json()
             })
@@ -94,7 +93,7 @@ function Posts() {
         getManagerId();  
 
         if (managerId) {
-            getProjectData();
+            getProjectData(managerId);
         }                     
     },[])
 
