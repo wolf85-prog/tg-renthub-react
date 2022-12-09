@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useMemo} from "react";
 import {useProjects} from "../../hooks/useProjects"
 import {useTelegram} from "../../hooks/useTelegram";
 import ProjectList from "../../components/ProjectList/ProjectList";
@@ -29,7 +29,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; //'805436270';//user?.id;
+        const url = API_URL_MANAGER + '805436270';//user?.id;
         fetch(url)
             .then(response => { 
                 if (response) {
@@ -54,7 +54,6 @@ function Posts() {
             })
             .then(data => {
                 setPosts(data);
-                console.log(data)
             })
     }
 
@@ -101,7 +100,7 @@ function Posts() {
     },[])
 
     useEffect(() => {
-        console.log('start posts.map')
+        console.log('start posts.map: ', posts)
         posts.map((post) => {
             getBlocksData(post)
         }); 
@@ -111,11 +110,6 @@ function Posts() {
             setIsPostsLoading(false);
         }, 5000)  
     },[posts]);          //posts
-
-    // useEffect(() => {
-    //     setPosts2(arrayPost);
-    //     setIsPostsLoading(false);
-    // }, [])
 
     return (
         <div className="App">

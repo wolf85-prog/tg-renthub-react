@@ -26,7 +26,7 @@ export const useProjects = (posts2, sort, query) => {
         }
         return posts2
 
-     }, [query, posts2])
+    }, [query, posts2])
 
-     return sortedAndSearchedPosts;
+    return sortedAndSearchedPosts;
 }
