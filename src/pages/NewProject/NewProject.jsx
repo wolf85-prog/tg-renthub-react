@@ -139,10 +139,11 @@ const data = [
 const NewProject = () => {
 
     const API_URL = 'https://proj.uley.team:8000/'
+    const API_URL_MANAGER = API_URL + 'managers/';
 
     //const navigate = useNavigate();
 
-    const {tg, queryId} = useTelegram();
+    const {tg, queryId, user} = useTelegram();
 
     const [modal, setModal] = useState(false)
 
@@ -169,6 +170,20 @@ const NewProject = () => {
     const [workers, setWorkers] = useState([])
     //select
     const [selectedElement, setSelectedElement] = useState("")
+
+    const [managerId, setManagerId] = useState('')
+
+    const getManagerId = (id) => {
+        const url = API_URL_MANAGER + id;
+        fetch(url)
+            .then(response => { 
+                return response.json()               
+            })
+            .then(data => {
+                console.log('ManagerId: ', data) 
+                setManagerId(data)            
+            })
+    }
 
     function addGeo (newGeo) {
         //setPost({...post, geo: newGeo})
@@ -208,6 +223,7 @@ const NewProject = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
+        getManagerId('805436270'); //user?.id
 
         // устанавливаем категории
         if (data.length > 0 && data) {
@@ -289,6 +305,7 @@ const NewProject = () => {
             geo,
             teh,
             worklist: workers,
+            managerId,
             queryId,
         }
         fetch(API_URL + 'web-data', {
@@ -298,7 +315,7 @@ const NewProject = () => {
             },
             body: JSON.stringify(data)
         })
-    }, [project, workers, datestart, geo, teh])
+    }, [project, workers, datestart, geo, teh, managerId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
