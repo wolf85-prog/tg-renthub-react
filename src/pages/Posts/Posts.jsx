@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useMemo} from "react";
 import {useProjects} from "../../hooks/useProjects"
 import {useTelegram} from "../../hooks/useTelegram";
 import ProjectList from "../../components/ProjectList/ProjectList";
@@ -14,7 +14,7 @@ function Posts() {
 
     const API_URL = 'https://proj.uley.team:8000/'
     const API_URL_MANAGER = API_URL + 'managers/';
-    const API_URL_PROJECTS = API_URL + 'projects';
+    const API_URL_PROJECTS = API_URL + 'projects/';
     const API_URL_BLOCKS = API_URL + 'blocks/';
     const API_URL_DATABASE = API_URL + 'database/';
 
@@ -23,32 +23,37 @@ function Posts() {
 
     const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(posts2, managerId, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(posts2, filter.sort, filter.query);
     const arrayPost = []     
     const [isPostsLoading, setIsPostsLoading] = useState(false);
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id;
+        const url = API_URL_MANAGER + user?.id; //'805436270';//user?.id;
         fetch(url)
-            .then(response => {          
-                return response.json()
+            .then(response => { 
+                if (response) {
+                    return response.json()
+                } else {
+                    return 'null'
+                }       
+                
             })
             .then(data => {
-                //console.log("Manager ID: ", JSON.stringify(data));
-                setManagerId(data);
+                console.log('ManagerId: ', data)
+                getProjectData(data);               
             })
     }
 
     //2
-    const getProjectData = () => {
-        fetch(API_URL_PROJECTS)
+    const getProjectData = (id) => {
+        console.log('Get URL: '+ API_URL_PROJECTS + id)
+        fetch(API_URL_PROJECTS + id)
             .then(response => {
                 return response.json()
             })
             .then(data => {
                 setPosts(data);
-                console.log(data)
             })
     }
 
@@ -60,7 +65,8 @@ function Posts() {
                 return response.json()
             })
             .then(maincast_id => {
-               getWorkData(maincast_id, post);
+                console.log('Полученный id блоков: ' + JSON.stringify(maincast_id))
+                getWorkData(maincast_id, post);
             })
     }
 
@@ -82,32 +88,27 @@ function Posts() {
                     workers: worklist
                 }
                 arrayPost.push(newPost2)
-                console.log('Result worklist')
+                console.log('Result worklist: ', worklist)              
             }) 
             
     }
     
-
+    //start
     useEffect(() => {
         setIsPostsLoading(true);
-
-        getManagerId();  
-
-        if (managerId) {
-            getProjectData();
-        }                     
+        getManagerId();                    
     },[])
 
     useEffect(() => {
-        posts.map((post) => 
+        console.log('start posts.map: ', posts)
+        posts.map((post) => {
             getBlocksData(post)
-        ); 
+        }); 
 
         setTimeout(async ()=> {
             setPosts2(arrayPost);
-            //console.log('posts2', arrayPost);
             setIsPostsLoading(false);
-        }, 23000)  
+        }, 4000)  
     },[posts]);          //posts
 
     return (
