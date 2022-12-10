@@ -32,12 +32,7 @@ function Posts() {
         const url = API_URL_MANAGER + user?.id; //'805436270';//user?.id;
         fetch(url)
             .then(response => { 
-                if (response) {
-                    return response.json()
-                } else {
-                    return 'null'
-                }       
-                
+                return response.json()               
             })
             .then(data => {
                 console.log('ManagerId: ', data)
