@@ -140,6 +140,7 @@ const NewProject = () => {
 
     const API_URL = 'https://proj.uley.team:8000/'
     const API_URL_MANAGER = API_URL + 'managers/';
+    const API_URL_COMPANY = API_URL + 'manager/';
 
     //const navigate = useNavigate();
 
@@ -172,6 +173,7 @@ const NewProject = () => {
     const [selectedElement, setSelectedElement] = useState("")
 
     const [managerId, setManagerId] = useState('')
+    const [companyId, setCompanyId] = useState('')
 
     const getManagerId = (id) => {
         const url = API_URL_MANAGER + id;
@@ -182,6 +184,18 @@ const NewProject = () => {
             .then(data => {
                 console.log('ManagerId: ', data) 
                 setManagerId(data)            
+            })
+    }
+
+    const getCompanyId = (id) => {
+        const url = API_URL_COMPANY + id;
+        fetch(url)
+            .then(response => { 
+                return response.json()               
+            })
+            .then(data => {
+                console.log('CompanyId: ', data) 
+                setCompanyId(data)            
             })
     }
 
@@ -306,6 +320,7 @@ const NewProject = () => {
             teh,
             worklist: workers,
             managerId,
+            companyId,
             queryId,
         }
         fetch(API_URL + 'web-data', {
@@ -315,7 +330,7 @@ const NewProject = () => {
             },
             body: JSON.stringify(data)
         })
-    }, [project, workers, datestart, geo, teh, managerId])
+    }, [project, workers, datestart, geo, teh, managerId, companyId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
