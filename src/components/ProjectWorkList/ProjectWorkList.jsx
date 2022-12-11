@@ -35,7 +35,6 @@ const ProjectWorkList = ({workers}) => {
 
     const objectArray = Object.entries(countItems);
     objectArray.forEach(([key, value]) => {
-
         const obj = {
             title: key,
             count: value,

@@ -20,12 +20,13 @@ function Posts() {
 
     const [posts, setPosts] = useState([])
     const [posts2, setPosts2] = useState([]);
+    const [status, setStatus] = useState([]);
 
-    const [managerId, setManagerId] = useState([]);
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = useProjects(posts2, filter.sort, filter.query);
     const arrayPost = []     
     const [isPostsLoading, setIsPostsLoading] = useState(false);
+    const arr_status = [] 
 
     //1
     const getManagerId = () => {
@@ -96,6 +97,32 @@ function Posts() {
 
     useEffect(() => {
         console.log('start posts.map: ', posts)
+        
+        const countItems = {}; // здесь будет храниться промежуточный результат
+        for (const item of posts) {
+            // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
+            countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
+        }
+        console.log('countItemsStatus: ', countItems);
+        const objectArray = Object.entries(countItems);
+        objectArray.forEach(([key, value]) => {
+            const obj = {
+                title: key,
+                color: "",
+                count: value,
+            }
+            arr_status.push(obj) 
+        });
+        const obj = {
+            title: 'All',
+            color: "gray",
+            count: '',
+        }
+        arr_status.push(obj) 
+
+        console.log('arr status: ', arr_status);
+        setStatus(arr_status);
+
         posts.map((post) => {
             getBlocksData(post)
         }); 
@@ -104,7 +131,7 @@ function Posts() {
             setPosts2(arrayPost);
             setIsPostsLoading(false);
         }, 4000)  
-    },[posts]);          //posts
+    },[posts]);             //posts
 
     return (
         <div className="App">
@@ -116,6 +143,7 @@ function Posts() {
             <ProjectFilter
                 filter={filter}
                 setFilter={setFilter}
+                arr_status={status}
             />
 
             <div style={{marginBottom: '30px'}}>

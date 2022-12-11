@@ -237,8 +237,8 @@ const NewProject = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        getManagerId('805436270'); //user?.id
-        getCompanyId('805436270'); //user?.id
+        getManagerId(user?.id); //user?.id
+        getCompanyId(user?.id); //user?.id
 
         // устанавливаем категории
         if (data.length > 0 && data) {
