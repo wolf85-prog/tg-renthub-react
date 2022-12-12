@@ -364,7 +364,6 @@ const NewProject = () => {
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                      label="Название проекта"
-                                     defaultValue=""
                                      id="project_name"
                                      variant="filled"
                         // value={post.title}
