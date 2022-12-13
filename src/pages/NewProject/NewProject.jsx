@@ -199,11 +199,6 @@ const NewProject = () => {
             })
     }
 
-    function addGeo (newGeo) {
-        //setPost({...post, geo: newGeo})
-        setGeo(newGeo)
-    }
-
 
     function increment() {
         setCount(count + 1)
@@ -293,10 +288,15 @@ const NewProject = () => {
         setDatestart(e.target.value)
     }
 
-    // const onChangeGeodata = (e) => {
-    //     setGeo(e.target.value)
-    //     console.log(e.target.value)
-    // }
+    function addGeo (newGeo) {
+        //setPost({...post, geo: newGeo})
+        setGeo(newGeo)
+    }
+
+    const onChangeGeodata = (e) => {
+        setGeo(e.target.value)
+        console.log(e.target.value)
+    }
 
     const onChangeTeh = (e) => {
         setTeh(e.target.value)
@@ -405,13 +405,22 @@ const NewProject = () => {
 
                 {/*Геолокация*/}
                 <div className="text-field text-field_floating">
+                    <RedditTextField fullWidth
+                                     label="Укажите геолокацию"
+                                     id="geo"
+                                     variant="filled"
+                                     value={geo}
+                                     onChange={onChangeGeodata}
+                    />
+                </div>
+                {/* <div className="text-field text-field_floating">
                     <GeoInput
                         add={addGeo}
                         value={geo}
                         //value={geodata}
                         //onChange={onChangeGeodata}
                     />
-                </div>
+                </div> */}
 
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating">
