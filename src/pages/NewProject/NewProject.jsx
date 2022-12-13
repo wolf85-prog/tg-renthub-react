@@ -163,6 +163,9 @@ const NewProject = () => {
     //специальности
     const [models, setModels] = useState([]);
 
+    const [disabled, setDisabled] = useState(true)
+    const [disabledBtn, setDisabledBtn] = useState(true)
+
     //количество работников
     const [count, setCount] = useState(1)
     //работник
@@ -206,8 +209,10 @@ const NewProject = () => {
     }
 
     function decrement() {
-        setCount(count - 1)
-        setWorker({...worker, count: count - 1})
+        if (count != 1 && count > 0) {
+            setCount(count - 1)
+            setWorker({...worker, count: count - 1})
+        }     
     }
 
 
@@ -222,6 +227,9 @@ const NewProject = () => {
 
         setCount(1);
         setSelectedElement("");
+
+        setDisabled(true);
+        setDisabledBtn(true);
     }
 
     {/* Удаление работника */}
@@ -278,6 +286,7 @@ const NewProject = () => {
         // меняем модели во втором списке
         setModels(models);
 
+        setDisabled(false)
     }
 
     const onChangeProject = (e) => {
@@ -302,6 +311,7 @@ const NewProject = () => {
         setTeh(e.target.value)
     }
 
+    //выбор специальности
     const onSpecSelectChange = (e) => {
         setSelectedElement(e.target.options.value);
 
@@ -309,6 +319,8 @@ const NewProject = () => {
         const model = models.find(item => item.id === modelId);
 
         setWorker({...worker, spec: model.name})
+
+        setDisabledBtn(false)
     }
 
 
@@ -460,6 +472,7 @@ const NewProject = () => {
 
                         <div>
                             <CustomSelect
+                                disabled={disabled}
                                 id="model"
                                 title="Специальность"
                                 options={models}
@@ -486,6 +499,7 @@ const NewProject = () => {
 
                     <p>
                         <MyButton
+                            disabled={disabledBtn}
                             style={{width: "103px", marginBottom: "15px"}}
                             onClick={addNewWorker}
                         >Добавить
