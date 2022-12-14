@@ -24,6 +24,7 @@ const ProjectItem = (props) => {
         10: 'Ноябрь',
         11: 'Декабрь',
       }
+    let count = 0;
 
     const d = new Date(dateProject);
 
@@ -38,6 +39,12 @@ const ProjectItem = (props) => {
         
     const formatted = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
 
+    //console.log('workers: ', props.post.workers)
+
+    Object.values(props.post.workers).map((worker) =>
+        worker.fio ? count++ : count
+    )
+
     return (
         <div className={`box ${statusColor}`}>
             <div className="post__content">
@@ -46,15 +53,15 @@ const ProjectItem = (props) => {
                     {formatted}
                 </div>
 
-                {/* <img className="image_comp" src={comp1} alt="component 1"/>
-                <img className="image_comp" src={comp2} alt="component 2"/>
-                <img className="image_comp" src={comp3} alt="component 3"/>
-                <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">2/2</span><span className="col_span">2/2</span><span className="col_span">2/2</span></p>                */}
-
                 <ProjectWorkList workers={props.post.workers} />
 
-                {/* <p><span className="find_span">Найдено 2 из 3</span></p> */}
-                <p><span className="nofind_span"></span></p>
+                {
+                    (props.post.workers.length) 
+                    ? <p><span className="find_span">Найдено {count} из {props.post.workers.length}</span></p> 
+                    : <p><span className="nofind_span"></span></p>
+                }
+                
+
             </div>
         </div>
     );
