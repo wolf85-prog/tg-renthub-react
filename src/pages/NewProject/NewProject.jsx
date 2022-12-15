@@ -418,7 +418,7 @@ const NewProject = () => {
                 {/*Геолокация*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     label="Укажите геолокацию"
+                                     label="Адрес"
                                      id="geo"
                                      variant="filled"
                                      value={geo}
