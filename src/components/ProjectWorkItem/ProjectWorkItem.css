@@ -1,3 +1,19 @@
 .image_comp {
     padding-right: 5px;
 }
+
+.col_span_found {
+    background-color:darkgreen;
+    border-radius: 99px;
+    margin: 0 1px 0 3px;
+    padding: 2px 8px;
+    font-size: 10px;
+}
+
+.col_span_not_found {
+    background-color:darkgoldenrod;
+    border-radius: 99px;
+    margin: 0 1px 0 3px;
+    padding: 2px 8px;
+    font-size: 10px;
+}

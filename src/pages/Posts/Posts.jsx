@@ -30,7 +30,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; //'805436270';//user?.id;
+        const url = API_URL_MANAGER + user?.id; '805436270'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
@@ -101,7 +101,9 @@ function Posts() {
         const countItems = {}; // здесь будет храниться промежуточный результат
         for (const item of posts) {
             // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
-            countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
+            if (item.status_id.name != 'Test') {
+                countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
+            }
         }
         console.log('countItemsStatus: ', countItems);
         const objectArray = Object.entries(countItems);
@@ -138,7 +140,7 @@ function Posts() {
 
             <Header header={{title: 'Проекты', icon: 'true'}}/>
 
-            <p className="status_el">cтатус</p> 
+            <p className="status_el">статус</p> 
 
             <ProjectFilter
                 filter={filter}

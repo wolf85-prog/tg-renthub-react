@@ -38,7 +38,7 @@ const ProjectWorkItem = (props) => {
             <img className="image_comp" src={image} alt=""/>
             {(props.worker.title === 'undefined') 
                 ? ''
-                : <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span" >{props.worker.count}/{props.worker.count}</span></p>               
+                : <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className={(props.fio==props.worker.count) ? "col_span_found" : "col_span_not_found"} >{props.fio}/{props.worker.count}</span></p>               
             }
             
        </div>            

@@ -11,6 +11,8 @@ const ProjectWorkList = ({workers}) => {
     const [workers2, setWorkers2] = useState([])
     const [count, setCount] = useState(1)
 
+    let count_fio = 0;
+
     //console.log('workers: ', workers)
     //console.log(Object.keys(workers));   
 
@@ -42,11 +44,21 @@ const ProjectWorkList = ({workers}) => {
         arr.push(obj) 
     });
 
+    arr.map((arritem) => {
+        Object.values(workers).map((value, index) => {     
+            if (arritem.title === value.title) {
+                if (value.fio) {
+                    count_fio++
+                }
+            }
+        })  
+    })
+
     return (
         <div style={{display: 'flex'}}>
 
             {arr.length ? arr.map((worker, index) => 
-                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} key={index+1}/> : 'Список специалистов пуст'                                   
+                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} fio={count_fio} key={index+1}/> : 'Список специалистов пуст'                                   
             ) : 'Список специалистов пуст' } 
             
         </div>

@@ -27,10 +27,8 @@ const ProjectItem = (props) => {
     let count = 0;
 
     const d = new Date(dateProject);
-    console.log("d: ", d)
 
     const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
-    console.log("d2: ", d2)
 
     const year = d.getFullYear()
     const date = d.getDate()
