@@ -7,14 +7,14 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
     console.log('arr_status: ', arr_status)
 
     arr_status.map((item, index) => {
-                        if (item.title === 'onAir') {
+                        if (item.title === 'OnAir') {
                             item.color = 'green';
                         } else if (item.title === 'Ready') {
                             item.color = 'blue';
                         } else if (item.title === 'Done') {
                             item.color = 'yellow';
                         } else if (item.title === 'Load') {
-                            item.color = 'orange';
+                            item.color = 'purple';
                         } else if (item.title === 'New') {
                             item.color = 'blue';
                         } else if (item.title === 'Wasted') {
