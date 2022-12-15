@@ -27,19 +27,18 @@ const ProjectItem = (props) => {
     let count = 0;
 
     const d = new Date(dateProject);
+    console.log("d: ", d)
 
-    //const d2 = '';
     const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
+    console.log("d2: ", d2)
 
     const year = d.getFullYear()
     const date = d.getDate()
     const chas = d.getHours();
-    const minut = d.getMinutes();
+    const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
     const monthName = months[d.getMonth()];
         
     const formatted = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
-
-    //console.log('workers: ', props.post.workers)
 
     Object.values(props.post.workers).map((worker) =>
         worker.fio ? count++ : count
