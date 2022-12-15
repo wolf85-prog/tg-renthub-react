@@ -152,7 +152,7 @@ const NewProject = () => {
     const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
 
     const [project, setProject] = useState('');
-    const [datestart, setDatestart] = useState('2022-01-01 10:00:00');
+    const [datestart, setDatestart] = useState('2022-12-01 10:00:00');
     const [teh, setTeh] = useState('');
 
     //геолокация
