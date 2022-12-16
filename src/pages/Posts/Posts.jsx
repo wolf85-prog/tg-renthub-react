@@ -30,7 +30,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; '805436270'; //user?.id;
+        const url = API_URL_MANAGER + user?.id; //'805436270'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
@@ -133,7 +133,7 @@ function Posts() {
             setPosts2(arrayPost);
             setIsPostsLoading(false);
         }, 4000)  
-    },[posts]);               //posts
+    },[posts]);    //posts
 
     return (
         <div className="App">
