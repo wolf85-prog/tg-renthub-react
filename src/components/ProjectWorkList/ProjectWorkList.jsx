@@ -8,8 +8,10 @@ const ProjectWorkList = ({workers}) => {
     const arrayWorker = []  
     const arrayWorker2 = []  
     const arr = []  
+    const arr2 = []  
     const [workers2, setWorkers2] = useState([])
     const [count, setCount] = useState(1)
+    const arr_count = []  
 
     let count_fio = 0;
 
@@ -28,7 +30,6 @@ const ProjectWorkList = ({workers}) => {
     });
 
     const countItems = {}; // здесь будет храниться промежуточный результат
-
     for (const item of arrayWorker) {
         // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
         countItems[item] = countItems[item] ? countItems[item] + 1 : 1;
@@ -45,20 +46,40 @@ const ProjectWorkList = ({workers}) => {
     });
 
     arr.map((arritem) => {
+        count_fio = 0; 
         Object.values(workers).map((value, index) => {     
             if (arritem.title === value.title) {
                 if (value.fio) {
                     count_fio++
-                }
+                    //console.log("title: " + value.title + " count: " + count_fio)                  
+                }else {
+                    count_fio;
+                    //console.log("title: " + value.title + " count: " + count_fio)
+                }               
             }
         })  
+        const obj = {
+            title2: arritem.title,
+            count_fio: count_fio,
+        }
+        arr_count.push(obj)
     })
+
+    //объединение 2-х массивов
+    const worker3 = arr.map((item, index) =>
+        ({
+            ...item,
+            ...arr_count[index],
+        })
+    );
+
+    console.log("array3: ", worker3)
 
     return (
         <div style={{display: 'flex'}}>
 
-            {arr.length ? arr.map((worker, index) => 
-                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} fio={count_fio} key={index+1}/> : 'Список специалистов пуст'                                   
+            {worker3.length ? worker3.map((worker, index) => 
+                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} key={index+1}/> : 'Список специалистов пуст'                                   
             ) : 'Список специалистов пуст' } 
             
         </div>
