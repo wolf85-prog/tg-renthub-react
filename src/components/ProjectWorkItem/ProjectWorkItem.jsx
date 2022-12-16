@@ -12,6 +12,7 @@ import Tracks from "../../img/spec/8_tracks.svg";
 const ProjectWorkItem = (props) => {
 
     console.log("worker: ", props.worker)
+    console.log("defould: ", props.defould)
 
     let image;
 
@@ -38,7 +39,10 @@ const ProjectWorkItem = (props) => {
     return (
        <div>
             <img className="image_comp" src={image} alt=""/>
-            {(props.worker.title === 'undefined') 
+            
+            {(props.defould==0) ? <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">{props.worker.count_fio}/{props.worker.count}</span></p> 
+            :
+            (props.worker.title === 'undefined') 
                 ? ''
                 : <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className={(props.worker.count_fio==props.worker.count) ? "col_span_found" : "col_span_not_found"} >{props.worker.count_fio}/{props.worker.count}</span></p>               
             }

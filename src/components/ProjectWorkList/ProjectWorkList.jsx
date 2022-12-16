@@ -3,7 +3,7 @@ import './ProjectWorkList.css';
 import ProjectWorkItem from "../ProjectWorkItem/ProjectWorkItem";
 
 
-const ProjectWorkList = ({workers}) => {
+const ProjectWorkList = ({workers, defould}) => {
 
     const arrayWorker = []  
     const arrayWorker2 = []  
@@ -79,7 +79,7 @@ const ProjectWorkList = ({workers}) => {
         <div style={{display: 'flex'}}>
 
             {worker3.length ? worker3.map((worker, index) => 
-                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} key={index+1}/> : 'Список специалистов пуст'                                   
+                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} defould={defould} key={index+1}/> : 'Список специалистов пуст'                                   
             ) : 'Список специалистов пуст' } 
             
         </div>

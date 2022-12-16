@@ -50,10 +50,10 @@ const ProjectItem = (props) => {
                     {formatted}
                 </div>
 
-                <ProjectWorkList workers={props.post.workers} />
+                <ProjectWorkList workers={props.post.workers} defould={count}/>
 
                 {
-                    (props.post.workers.length) 
+                    (props.post.workers.length && count !=0)
                     ? <p><span className="find_span">Найдено {count} из {props.post.workers.length}</span></p> 
                     : <p><span className="nofind_span"></span></p>
                 }
