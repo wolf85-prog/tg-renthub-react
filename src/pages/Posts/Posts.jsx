@@ -133,7 +133,7 @@ function Posts() {
             setPosts2(arrayPost);
             setIsPostsLoading(false);
         }, 4000)  
-    },[posts]);    //posts
+    },[posts]);               //posts
 
     return (
         <div className="App">
