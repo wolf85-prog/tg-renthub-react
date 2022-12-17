@@ -359,12 +359,12 @@ const NewProject = () => {
     }, [])
 
     useEffect(() => {
-        if(!project) {
+        if(!workers) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [project])
+    }, [workers])
 
 
     return (
