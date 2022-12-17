@@ -32,7 +32,7 @@ const ProjectItem = (props) => {
 
     const year = d.getFullYear()
     const date = d.getDate()
-    const chas = d.getHours();
+    const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
     const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
     const monthName = months[d.getMonth()];
         
