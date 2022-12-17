@@ -7,7 +7,7 @@ import StageGround from "../../img/spec/4_stage_ground.svg";
 import Video from "../../img/spec/5_video.svg";
 import Light from "../../img/spec/6_light.svg";
 import Stagehands from "../../img/spec/7_stagehands.svg";
-import Trucks from "../../img/spec/8_tracks.svg";
+import Tracks from "../../img/spec/8_tracks.svg";
 
 const ProjectWorkItem = (props) => {
 
@@ -30,8 +30,8 @@ const ProjectWorkItem = (props) => {
         image = Light;
     } else if (props.worker.title === 'Stagehands') {
         image = Stagehands;
-    } else if (props.worker.title === 'Trucks') {
-        image = Trucks;
+    } else if (props.worker.title === 'Tracks') {
+        image = Tracks;
     } else {
         image = '';
     }
