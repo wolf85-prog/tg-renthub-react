@@ -73,7 +73,7 @@ const data = [
         models: [
             {id: 1, name: 'Инженер VMix',},
             {id: 2, name: 'Инженер Resolume',},
-            {id: 3, name: 'Инженер Zoom',},
+            {id: 3, name: 'Оператор Zoom',},
             {id: 4, name: 'Оператор [сameraman]',},
             {id: 5, name: 'Гафер',},
             {id: 6, name: 'IT-специалист',},
@@ -85,8 +85,8 @@ const data = [
         name: 'RIGGERS',
         icon: 'Riggers',
         models: [
-            {id: 1, name: 'High Rigger [???]',},
-            {id: 2, name: 'Lo Rigger [???]',},
+            {id: 1, name: 'High Rigger',},
+            {id: 2, name: 'Lo Rigger',},
         ]
     },
     {
@@ -103,14 +103,14 @@ const data = [
         name: 'STAGE GROUND',
         icon: 'StageGround',
         models: [
-            {id: 1, name: 'High Rigger [???]',},
-            {id: 2, name: 'Lo Rigger [???]',},
+            {id: 1, name: 'High Rigger',},
+            {id: 2, name: 'Lo Rigger',},
         ]
     },
     {
         id: 7,
         name: 'TRUCKS',
-        icon: 'Tracks',
+        icon: 'Trucks',
         models: [
             {id: 1, name: 'C личным ТС [B]',},
             {id: 2, name: 'Без личного ТС [B]',},
