@@ -110,7 +110,7 @@ const data = [
     {
         id: 7,
         name: 'TRUCKS',
-        icon: 'Trucks',
+        icon: 'Tracks',
         models: [
             {id: 1, name: 'C личным ТС [B]',},
             {id: 2, name: 'Без личного ТС [B]',},
