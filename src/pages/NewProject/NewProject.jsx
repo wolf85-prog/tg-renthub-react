@@ -109,8 +109,8 @@ const data = [
     },
     {
         id: 7,
-        name: 'TRACKS',
-        icon: 'Tracks',
+        name: 'TRUCKS',
+        icon: 'Trucks',
         models: [
             {id: 1, name: 'C личным ТС [B]',},
             {id: 2, name: 'Без личного ТС [B]',},
