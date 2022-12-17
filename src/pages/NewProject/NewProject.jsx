@@ -94,8 +94,7 @@ const data = [
         name: 'STAGEHANDS',
         icon: 'Stagehands',
         models: [
-            {id: 1, name: 'Погрузка / разгрузка',},
-            {id: 2, name: 'Монтаж / демонтаж',},
+            {id: 1, name: 'Помощник / Грузчик',},
         ]
     },
     {
