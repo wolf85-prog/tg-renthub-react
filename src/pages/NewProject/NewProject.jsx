@@ -436,7 +436,7 @@ const NewProject = () => {
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     style={{backgroundColor: '#2A2731', border: '1px solid #76A9FF', borderRadius: '4px'}}
+                                     style={{backgroundColor: '#2A2731', borderRadius: '4px'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"

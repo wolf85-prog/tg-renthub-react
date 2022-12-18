@@ -13,13 +13,13 @@ import {alpha, styled} from "@mui/material/styles";
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
-        marginTop: theme.spacing(3),
+        marginTop: '21px',//theme.spacing(3),
     },
     '& .MuiInputBase-input': {
         borderRadius: 4,
         position: 'relative',
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '1px solid #ced4da',
+        border: '1px solid #76A9FF',
         fontSize: 16,
         width: 'auto',
         padding: '10px 12px',
@@ -50,13 +50,13 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 
 const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
     'label + &': {
-        marginTop: theme.spacing(3),
+        marginTop: '21px',//theme.spacing(3),
     },
     '& .MuiInputBase-input': {
         borderRadius: 4,
         position: 'relative',
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '1px solid #ced4da',
+        border: '1px solid #76A9FF',
         fontSize: 16,
         textAlign: 'center',
         width: 'auto',
@@ -109,9 +109,9 @@ const WorkerItem = (props) => {
 
     return (
         <div className="list_spec">
-            <img style={{marginTop: "24px"}} src={image} alt='icon'/>
+            <img style={{marginTop: "21px"}} src={image} alt='icon'/>
 
-            <FormControl sx={{marginLeft: '7px', width: '60%'}} variant="standard">
+            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} style={{border: '1px, solid, #76A9FF'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input">
                     {props.worker.cat}
                 </InputLabel>
@@ -122,7 +122,7 @@ const WorkerItem = (props) => {
                 />
             </FormControl>
 
-            <FormControl sx={{marginLeft: '5px', width: '45px' }} variant="standard">
+            <FormControl sx={{marginLeft: '5px', width: '45px'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input2" />
                 <BootstrapInput2
                     className="inputSpec"
