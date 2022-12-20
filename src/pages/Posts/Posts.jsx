@@ -7,6 +7,7 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
+import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import './Posts.css';
 
 function Posts() {
@@ -30,7 +31,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; //'805436270'; //user?.id;
+        const url = API_URL_MANAGER + user?.id; //'319024600'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
@@ -147,6 +148,16 @@ function Posts() {
                 setFilter={setFilter}
                 arr_status={status}
             />
+
+            {/* <CustomSelect
+                disabled={disabled}
+                id="sort"
+                title="Сортировка"
+                options={models}
+                selectedElement={selectedElement}
+                setSelectedElement={setSelectedElement}
+                onChange={onSortSelectChange}
+            /> */}
 
             <div style={{marginBottom: '30px'}}>
                 <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>

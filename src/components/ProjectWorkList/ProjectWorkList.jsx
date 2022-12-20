@@ -78,8 +78,8 @@ const ProjectWorkList = ({workers, defould}) => {
     return (
         <div style={{display: 'flex'}}>
 
-            {worker3.length ? worker3.map((worker, index) => 
-                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} defould={defould} key={index+1}/> : 'Список специалистов пуст'                                   
+            {worker3.length > 0 ? worker3.map((worker, index) => 
+                    (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} defould={defould} key={index+1}/> : ''                                   
             ) : 'Список специалистов пуст' } 
             
         </div>

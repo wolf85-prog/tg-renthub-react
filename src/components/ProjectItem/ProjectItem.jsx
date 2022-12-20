@@ -25,6 +25,7 @@ const ProjectItem = (props) => {
         11: 'декабря',
       }
     let count = 0;
+    let count2 = 0;
 
     const d = new Date(dateProject);
 
@@ -42,6 +43,10 @@ const ProjectItem = (props) => {
         worker.fio ? count++ : count
     )
 
+    Object.values(props.post.workers).map((worker2) =>
+        worker2.title ? count2++ : count2
+    )
+
     return (
         <div className={`box ${statusColor}`}>
             <div className="post__content">
@@ -54,7 +59,7 @@ const ProjectItem = (props) => {
 
                 {
                     (props.post.workers.length && count !=0)
-                    ? <p><span className="find_span">Найдено {count} из {props.post.workers.length}</span></p> 
+                    ? <p><span className="find_span">Найдено {count} из {props.post.workers.length - (props.post.workers.length - count2)}</span></p> 
                     : <p><span className="nofind_span"></span></p>
                 }
                 
