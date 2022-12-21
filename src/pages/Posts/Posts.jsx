@@ -127,9 +127,9 @@ function Posts() {
         console.log('arr status: ', arr_status);
         setStatus(arr_status);
 
-        // posts.map((post) => {
-        //     getBlocksData(post)
-        // }); 
+        posts.map((post) => {
+            getBlocksData(post)
+        }); 
 
         // setTimeout(async ()=> {
         //     setPosts2(arrayPost);
