@@ -63,7 +63,7 @@ function Posts() {
             })
             .then(maincast_id => {
                 console.log('Полученный id блоков: ' + JSON.stringify(maincast_id))
-                //getWorkData(maincast_id, post);
+                getWorkData(maincast_id, post);
             })
     }
 
@@ -97,8 +97,6 @@ function Posts() {
     },[])
 
     useEffect(() => {
-        //console.log('start posts.map: ', posts)
-        
         const countItems = {}; // здесь будет храниться промежуточный результат
         for (const item of posts) {
             // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
@@ -106,7 +104,7 @@ function Posts() {
                 countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
             }
         }
-        console.log('countItemsStatus: ', countItems);
+        //console.log('countItemsStatus: ', countItems);
         
         const objectArray = Object.entries(countItems);
         objectArray.forEach(([key, value]) => {
@@ -124,17 +122,17 @@ function Posts() {
         }
         arr_status.push(obj) 
 
-        console.log('arr status: ', arr_status);
+        //console.log('arr status: ', arr_status);
         setStatus(arr_status);
 
         posts.map((post) => {
             getBlocksData(post)
         }); 
 
-        // setTimeout(async ()=> {
-        //     setPosts2(arrayPost);
-        //     setIsPostsLoading(false);
-        // }, 4000)  
+        setTimeout(async ()=> {
+            setPosts2(arrayPost);
+            setIsPostsLoading(false);
+        }, 4000)  
     },[posts]);      //posts
 
 
