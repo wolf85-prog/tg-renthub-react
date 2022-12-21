@@ -63,7 +63,7 @@ function Posts() {
             })
             .then(maincast_id => {
                 console.log('Полученный id блоков: ' + JSON.stringify(maincast_id))
-                getWorkData(maincast_id, post);
+                //getWorkData(maincast_id, post);
             })
     }
 
