@@ -31,7 +31,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; //'319024600'; //user?.id;
+        const url = API_URL_MANAGER + '805436270'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
@@ -97,7 +97,7 @@ function Posts() {
     },[])
 
     useEffect(() => {
-        console.log('start posts.map: ', posts)
+        //console.log('start posts.map: ', posts)
         
         const countItems = {}; // здесь будет храниться промежуточный результат
         for (const item of posts) {
@@ -107,6 +107,7 @@ function Posts() {
             }
         }
         console.log('countItemsStatus: ', countItems);
+        
         const objectArray = Object.entries(countItems);
         objectArray.forEach(([key, value]) => {
             const obj = {
@@ -126,14 +127,14 @@ function Posts() {
         console.log('arr status: ', arr_status);
         setStatus(arr_status);
 
-        posts.map((post) => {
-            getBlocksData(post)
-        }); 
+        // posts.map((post) => {
+        //     getBlocksData(post)
+        // }); 
 
-        setTimeout(async ()=> {
-            setPosts2(arrayPost);
-            setIsPostsLoading(false);
-        }, 4000)  
+        // setTimeout(async ()=> {
+        //     setPosts2(arrayPost);
+        //     setIsPostsLoading(false);
+        // }, 4000)  
     },[posts]);      //posts
 
 
