@@ -7,7 +7,6 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import {Link} from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
-import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import './Posts.css';
 
 function Posts() {
@@ -25,9 +24,10 @@ function Posts() {
 
     const [filter, setFilter] = useState({sort: '', query: ''});
     const sortedAndSearchedPosts = useProjects(posts2, filter.sort, filter.query);
-    const arrayPost = []     
+          
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const arr_status = [] 
+    const arrayPost = []
 
     //1
     const getManagerId = () => {
@@ -136,6 +136,7 @@ function Posts() {
         }, 4000)  
     },[posts]);      //posts
 
+
     return (
         <div className="App">
 
@@ -149,15 +150,6 @@ function Posts() {
                 arr_status={status}
             />
 
-            {/* <CustomSelect
-                disabled={disabled}
-                id="sort"
-                title="Сортировка"
-                options={models}
-                selectedElement={selectedElement}
-                setSelectedElement={setSelectedElement}
-                onChange={onSortSelectChange}
-            /> */}
 
             <div style={{marginBottom: '30px'}}>
                 <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>
