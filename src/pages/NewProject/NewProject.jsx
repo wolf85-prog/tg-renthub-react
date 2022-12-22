@@ -145,7 +145,7 @@ const NewProject = () => {
 
     const {tg, queryId, user} = useTelegram();
 
-    const [modal, setModal] = useState(true)
+    const [modal, setModal] = useState(false)
 
     //проект
     const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
