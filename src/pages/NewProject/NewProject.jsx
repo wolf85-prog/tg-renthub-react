@@ -359,7 +359,7 @@ const NewProject = () => {
 
     useEffect(() => {
         if(workers.length > 0) {
-            //tg.MainButton.show();
+            tg.MainButton.show();
         } else {
             tg.MainButton.hide();
         }  
