@@ -145,7 +145,7 @@ const NewProject = () => {
 
     const {tg, queryId, user} = useTelegram();
 
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(true)
 
     //проект
     const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
@@ -359,11 +359,13 @@ const NewProject = () => {
 
     useEffect(() => {
         if(workers.length > 0) {
-            tg.MainButton.show();
+            //tg.MainButton.show();
         } else {
             tg.MainButton.hide();
-        }
+        }  
     }, [workers])
+
+    let tex = 'Ведуться технические работы!'
 
 
     return (
@@ -512,6 +514,11 @@ const NewProject = () => {
                 {/* <MyModal visible={modal} setVisible={setModal}>
                     {queryId}
                 </MyModal> */}
+
+
+                <MyModal visible={modal} setVisible={setModal}>
+                    {tex}
+                </MyModal>
 
                 {/* <MyButton onClick={console.log(workers)}>Создать проект</MyButton> */}
             </form>
