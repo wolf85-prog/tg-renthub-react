@@ -73,7 +73,7 @@ const ProjectWorkList = ({workers, defould}) => {
         })
     );
 
-    console.log("array3: ", worker3)
+    //console.log("array3: ", worker3)
 
     return (
         <div style={{display: 'flex'}}>

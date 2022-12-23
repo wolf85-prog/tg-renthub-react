@@ -31,13 +31,13 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; //'805436270'; //user?.id;
+        const url = API_URL_MANAGER + '1408579113'; //'805436270'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
             })
             .then(data => {
-                console.log('ManagerId: ', data)
+                console.log('------ ManagerId: ', data)
                 getProjectData(data);               
             })
     }
@@ -50,6 +50,7 @@ function Posts() {
                 return response.json()
             })
             .then(data => {
+                //console.log("------ post: ", data)
                 setPosts(data);
             })
     }
@@ -78,6 +79,8 @@ function Posts() {
                     id: post.id,
                     title: post.title,
                     time: post.time,
+                    time_start: (post.time_start).split('T')[0],
+                    time_created: (post.time_created).split('T')[0],
                     geo: post.geo,
                     teh: post.teh,
                     status_id: post.status_id,
@@ -85,7 +88,8 @@ function Posts() {
                     workers: worklist
                 }
                 arrayPost.push(newPost2)
-                console.log('Result worklist: ', worklist)              
+                //console.log('Result worklist: ', worklist)    
+                console.log('Result arrayPost: ', arrayPost)              
             }) 
             
     }
@@ -133,7 +137,7 @@ function Posts() {
             setPosts2(arrayPost);
             setIsPostsLoading(false);
         }, 4000)  
-    },[posts]);      //posts
+    },[posts]);         //posts
 
 
     return (

@@ -1,0 +1,15 @@
+.mySelect {
+    position: relative;
+    min-width: 250px;
+    -webkit-appearance: none;
+    padding: 7px 40px 7px 12px;
+    border: 1px solid #76A9FF;
+    border-radius: 5px;
+    background: #2A2731;
+    box-shadow: 0 1px 3px -2px #9098A9;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    transition: all 150ms ease;
+    color: #76A9FF;
+}

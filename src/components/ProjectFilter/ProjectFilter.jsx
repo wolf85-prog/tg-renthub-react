@@ -1,11 +1,11 @@
 import React, {useMemo, useState} from 'react';
 import './ProjectFilter.css';
 import ButtonStatus from "../UI/ButtonStatus/ButtonStatus";
-import CustomSelect from "../UI/CustomSelect/CustomSelect";
+import SortSelect from "../UI/SortSelect/SortSelect";
 
 const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
-    console.log('arr_status: ', arr_status)
+    //console.log('arr_status: ', arr_status)
 
     arr_status.map((item, index) => {
                         if (item.title === 'OnAir') {
@@ -20,6 +20,8 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                             item.color = 'blue';
                         } else if (item.title === 'Wasted') {
                             item.color = 'red';
+                        } else if (item.title === 'OnHold') {
+                            item.color = 'brown';
                         } else if (item.title === 'Test') {
                             item.color = 'gray';
                         } else if (item.title === 'All') {
@@ -38,12 +40,12 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
     } 
 
     //filter.sort
-    // const onSortSelectChange = (e) => {
-    //     setSelectedElement(e.target.options.value);
-    //     const sortId = parseInt(e.target.options[e.target.selectedIndex].value);
-    //     setFilter({...filter, sort: sortId})
-    //     console.log("sort: ", sortId)
-    // }
+    const sortPost = (selectedSort) => {
+        setFilter({...filter, sort: selectedSort})
+        //selectedSort => setFilter({...filter, sort: selectedSort})
+        console.log(selectedSort)
+    }
+
 
     return (
         <div>
@@ -55,17 +57,16 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
             </div>
 
             <div style={{marginBottom: '15px'}}>
-                <CustomSelect 
+                <SortSelect 
+                    value={filter.sort}
+                    onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
                     disabled={false}
                     id="sort"
-                    title="Сортировка"
+                    defaultValue="Сортировка"
                     options={[
-                        {id: 1, name: 'По дате создания'},
-                        {id: 2, name: 'По дате начала'},
+                        {value: 'time_start', name: 'По дате начала'},
+                        {value: 'time_created', name: 'По дате создания'},
                     ]}
-                    selectedElement={filter.sort}
-                    setSelectedElement={setFilter}
-                    onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
                 /> 
             </div>
         </div>

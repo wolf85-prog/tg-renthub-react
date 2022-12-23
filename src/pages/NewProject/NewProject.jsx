@@ -511,10 +511,6 @@ const NewProject = () => {
 
                 <WorkerList remove={removeWorker} workers={workers} />
 
-                {/* <MyModal visible={modal} setVisible={setModal}>
-                    {queryId}
-                </MyModal> */}
-
 
                 <MyModal visible={modal} setVisible={setModal}>
                     {tex}

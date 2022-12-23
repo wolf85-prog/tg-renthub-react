@@ -11,8 +11,8 @@ import Trucks from "../../img/spec/8_tracks.svg";
 
 const ProjectWorkItem = (props) => {
 
-    console.log("worker: ", props.worker)
-    console.log("defould: ", props.defould)
+    //console.log("worker: ", props.worker)
+    //console.log("defould: ", props.defould)
 
     let image;
 
