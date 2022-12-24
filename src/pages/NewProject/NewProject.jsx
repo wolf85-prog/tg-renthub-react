@@ -335,23 +335,22 @@ const NewProject = () => {
             companyId,
             queryId,
         }
-        if (project === 'Горних') {
-            // fetch(API_URL + 'web-test-data', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data)
-            // })
-            setModal(true);
+        if (project === 'Тестпроект') {
+            fetch(API_URL + 'web-test-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
         } else {
-            // fetch(API_URL + 'web-data', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data)
-            // })
+            fetch(API_URL + 'web-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
         }
         
     }, [project, workers, datestart, geo, teh, managerId, companyId])
