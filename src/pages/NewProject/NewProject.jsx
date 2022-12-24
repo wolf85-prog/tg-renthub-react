@@ -345,13 +345,13 @@ const NewProject = () => {
             // })
             setModal(true);
         } else {
-            fetch(API_URL + 'web-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
+            // fetch(API_URL + 'web-data', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify(data)
+            // })
         }
         
     }, [project, workers, datestart, geo, teh, managerId, companyId])
