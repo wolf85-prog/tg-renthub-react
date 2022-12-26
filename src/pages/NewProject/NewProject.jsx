@@ -335,7 +335,7 @@ const NewProject = () => {
             companyId,
             queryId,
         }
-        if (project === 'Тестпроект') {
+        if (project.includes("Тестпроект")) {
             fetch(API_URL + 'web-test-data', {
                 method: 'POST',
                 headers: {
