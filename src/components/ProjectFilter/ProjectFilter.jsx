@@ -64,7 +64,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                     id="sort"
                     defaultValue="Сортировка"
                     options={[
-                        {value: 'time_start', name: 'По дате начала'},
+                        {value: 'time_start', name: 'По дате мероприятия'},
                         {value: 'time_created', name: 'По дате создания'},
                     ]}
                 /> 
