@@ -19,7 +19,7 @@ import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
 
 const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true  }} {...props} />
+    <TextField InputProps={{ disableUnderline: true }} {...props}  />
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
         border: '1px solid #76A9FF',
@@ -449,6 +449,7 @@ const NewProject = () => {
                                      onChange={onChangeTeh}
                                      multiline
                                      rows={4}
+                                     inputProps={{maxLength :300}}
                                      helperText = {`${countChar}/300`}
                     />
                 </div>
