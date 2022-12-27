@@ -153,6 +153,7 @@ const NewProject = () => {
     const [project, setProject] = useState('');
     const [datestart, setDatestart] = useState('2022-12-01 10:00:00');
     const [teh, setTeh] = useState('');
+    const [countChar, setCountChar] = useState(0);
 
     //геолокация
     const [geo, setGeo] = useState('');
@@ -308,6 +309,7 @@ const NewProject = () => {
 
     const onChangeTeh = (e) => {
         setTeh(e.target.value)
+        setCountChar(e.target.value.length)
     }
 
     //выбор специальности
@@ -390,8 +392,6 @@ const NewProject = () => {
                                      label="Название проекта"
                                      id="project_name"
                                      variant="filled"
-                        // value={post.title}
-                        // onChange={e => setPost({...post, title: e.target.value})}
                                      value={project}
                                      onChange={onChangeProject}
                     />
@@ -401,19 +401,11 @@ const NewProject = () => {
                 <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '4px'}}>
-                            {/*<DesktopDateTimePicker*/}
-                            {/*        label="Дата начала"*/}
-                            {/*        value={value}*/}
-                            {/*        onChange={handleChange}*/}
-                            {/*        renderInput={(params) => <TextField {...params} />}*/}
-                            {/*/>*/}
                             <RedditTextField
                                 id="datetime-local"
                                 label="Дата начала"
                                 type="datetime-local"
                                 variant="filled"
-                                //defaultValue="2022-11-11T10:30"
-                                // onChange={e => setPost({...post, time: e.target.value})}
                                 value={datestart}
                                 onChange={onChangeTime}
                                 InputLabelProps={{
@@ -449,16 +441,15 @@ const NewProject = () => {
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     style={{backgroundColor: '#2A2731', borderRadius: '4px'}}
+                                     style={{borderRadius: '4px'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"
-                        // value={post.teh}
-                        // onChange={e => setPost({...post, teh: e.target.value})}
                                      value={teh}
                                      onChange={onChangeTeh}
                                      multiline
                                      rows={4}
+                                     helperText = {`${countChar}/300`}
                     />
                 </div>
                 <div>
