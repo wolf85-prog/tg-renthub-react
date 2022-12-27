@@ -31,7 +31,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id;//'1408579113'; //'805436270'; //user?.id;
+        const url = API_URL_MANAGER + user?.id; //'1408579113'; //'805436270'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
@@ -79,8 +79,8 @@ function Posts() {
                     id: post.id,
                     title: post.title,
                     time: post.time,
-                    time_start: (post.time_start).split('T')[0],
-                    time_created: (post.time_created).split('T')[0],
+                    time_start: (post.time_start),//.split('T')[0],
+                    time_created: (post.time_created),//.split('T')[0],
                     geo: post.geo,
                     teh: post.teh,
                     status_id: post.status_id,

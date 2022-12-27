@@ -3,20 +3,20 @@ import {useMemo} from "react";
 export const useSortedPosts = (posts, sort) => {
     //console.log("sorttttttttt: ", sort)
 
-    const sortedPosts = useMemo( () => {
+    const sortedPosts = useMemo(() => {
         if (sort) {
             return [...posts].sort((a, b) => {
                 
                 var dateA = new Date(a[sort]), dateB = new Date(b[sort])
                                 
-                dateA-dateB  //сортировка по возрастающей дате     
-                //dateB-dateA  //сортировка по убывающей дате      
+                //dateA-dateB  //сортировка по возрастающей дате     
+                return dateB-dateA  //сортировка по убывающей дате  
             })
         }
         return posts;
     }, [sort, posts])
 
-    //console.log("sortedPosts: ", sortedPosts)
+    console.log("sortedPosts: ", sortedPosts)
 
     return sortedPosts;
 }
