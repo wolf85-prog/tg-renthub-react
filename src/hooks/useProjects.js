@@ -16,8 +16,6 @@ export const useSortedPosts = (posts, sort) => {
         return posts;
     }, [sort, posts])
 
-    console.log("sortedPosts: ", sortedPosts)
-
     return sortedPosts;
 }
 

@@ -63,7 +63,7 @@ function Posts() {
                 return response.json()
             })
             .then(maincast_id => {
-                console.log('Полученный id блоков: ' + JSON.stringify(maincast_id))
+                //console.log('Полученный id блоков: ' + JSON.stringify(maincast_id))
                 getWorkData(maincast_id, post);
             })
     }
@@ -89,7 +89,7 @@ function Posts() {
                 }
                 arrayPost.push(newPost2)
                 //console.log('Result worklist: ', worklist)    
-                console.log('Result arrayPost: ', arrayPost)              
+                //console.log('Result arrayPost: ', arrayPost)              
             }) 
             
     }
@@ -104,7 +104,7 @@ function Posts() {
         const countItems = {}; // здесь будет храниться промежуточный результат
         for (const item of posts) {
             // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
-            if (item.status_id.name != 'Test') {
+            if (item.status_id.name != 'Test' && item.status_id.name != 'OnHold') {
                 countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
             }
         }
