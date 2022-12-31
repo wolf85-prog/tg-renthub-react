@@ -202,7 +202,7 @@ const NewProject = () => {
             .then(data => {
                 console.log('CompanyId: ', data) 
                 setCompanyId(data) 
-                //setIsLoading(false)           
+                setIsLoading(false)           
             })
     }
 
