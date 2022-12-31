@@ -202,7 +202,7 @@ const NewProject = () => {
             .then(data => {
                 console.log('CompanyId: ', data) 
                 setCompanyId(data) 
-                setIsLoading(false)           
+                //setIsLoading(false)           
             })
     }
 
@@ -246,8 +246,8 @@ const NewProject = () => {
     useEffect(() => {
         setIsLoading(true);
 
-        const manager = getManagerId(user?.id); //user?.id
-        const company = getCompanyId(user?.id); //user?.id
+        getManagerId(user?.id); //user?.id
+        getCompanyId(user?.id); //user?.id
 
         // устанавливаем категории
         if (data.length > 0 && data) {
