@@ -345,7 +345,6 @@ const NewProject = () => {
             queryId,
         }
 
-        tg.MainButton.hide();
         setIsLoading(true)
         if (project.includes("Тестпроект")) {
             //setIsLoading(false)
