@@ -17,6 +17,7 @@ import Calendar from "../../img/calendar.svg";
 import GeoInput from "../../components/UI/GeoInput/GeoInput";
 import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
+import Loader from "../../components/UI/Loader/Loader";
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props}  />
@@ -178,6 +179,8 @@ const NewProject = () => {
     const [managerId, setManagerId] = useState('')
     const [companyId, setCompanyId] = useState('')
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const getManagerId = (id) => {
         const url = API_URL_MANAGER + id;
         fetch(url)
@@ -198,7 +201,8 @@ const NewProject = () => {
             })
             .then(data => {
                 console.log('CompanyId: ', data) 
-                setCompanyId(data)            
+                setCompanyId(data) 
+                setIsLoading(false)           
             })
     }
 
@@ -240,8 +244,10 @@ const NewProject = () => {
 
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        getManagerId(user?.id); //user?.id
-        getCompanyId(user?.id); //user?.id
+        setIsLoading(true);
+
+        const manager = getManagerId('805436270'); //user?.id
+        const company = getCompanyId('805436270'); //user?.id
 
         // устанавливаем категории
         if (data.length > 0 && data) {
@@ -252,6 +258,12 @@ const NewProject = () => {
         if (data.length > 0 && data[0].models && data[0].models.length > 0) {
             setModels(data[0].models);
         }
+
+
+        // if (manager && company) {
+        //     setIsLoading(false);
+        // }
+        
 
     }, []);
 
@@ -385,7 +397,10 @@ const NewProject = () => {
 
         <div className="App">
             <Header header={{title: 'Новый проект', icon: 'false'}}/>
-            <form>
+
+            {isLoading
+                ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
+                : <form>
                 {/*Название*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
@@ -520,8 +535,8 @@ const NewProject = () => {
                 </MyModal>
 
                 {/* <MyButton onClick={console.log(workers)}>Создать проект</MyButton> */}
-            </form>
-
+                </form>
+            }
         </div>
     );
 }
