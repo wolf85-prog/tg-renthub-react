@@ -246,8 +246,8 @@ const NewProject = () => {
     useEffect(() => {
         setIsLoading(true);
 
-        const manager = getManagerId('805436270'); //user?.id
-        const company = getCompanyId('805436270'); //user?.id
+        const manager = getManagerId(user?.id); //user?.id
+        const company = getCompanyId(user?.id); //user?.id
 
         // устанавливаем категории
         if (data.length > 0 && data) {
@@ -258,11 +258,6 @@ const NewProject = () => {
         if (data.length > 0 && data[0].models && data[0].models.length > 0) {
             setModels(data[0].models);
         }
-
-
-        // if (manager && company) {
-        //     setIsLoading(false);
-        // }
         
 
     }, []);
