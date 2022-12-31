@@ -345,9 +345,7 @@ const NewProject = () => {
             queryId,
         }
 
-        setIsLoading(true)
         if (project.includes("Тестпроект")) {
-            //setIsLoading(false)
             fetch(API_URL + 'web-test-data', {
                 method: 'POST',
                 headers: {
@@ -356,7 +354,6 @@ const NewProject = () => {
                 body: JSON.stringify(data)
             })
         } else {
-            //setIsLoading(false)
             fetch(API_URL + 'web-data', {
                 method: 'POST',
                 headers: {
