@@ -350,25 +350,28 @@ const NewProject = () => {
             queryId,
         }
 
-        setIsLoading(true)
-        // if (project.includes("Тестпроект")) {
-        //     fetch(API_URL + 'web-test-data', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(data)
-        //     })
-        // } else {
-        //     fetch(API_URL + 'web-data', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(data)
-        //     })
-        // }
         tg.MainButton.hide();
+        setIsLoading(true)
+        if (project.includes("Тестпроект")) {
+            //setIsLoading(false)
+            fetch(API_URL + 'web-test-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        } else {
+            //setIsLoading(false)
+            fetch(API_URL + 'web-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        }
+        
         
     }, [project, workers, datestart, geo, teh, managerId, companyId])
 
