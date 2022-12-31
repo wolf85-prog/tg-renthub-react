@@ -202,7 +202,7 @@ const NewProject = () => {
             .then(data => {
                 console.log('CompanyId: ', data) 
                 setCompanyId(data) 
-                setIsLoading(false)           
+                //setIsLoading(false)           
             })
     }
 
@@ -258,6 +258,8 @@ const NewProject = () => {
         if (data.length > 0 && data[0].models && data[0].models.length > 0) {
             setModels(data[0].models);
         }
+
+        setTimeout(()=> {setIsLoading(false)}, 3000)
         
 
     }, []);
