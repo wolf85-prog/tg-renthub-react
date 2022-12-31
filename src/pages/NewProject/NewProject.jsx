@@ -368,6 +368,7 @@ const NewProject = () => {
         //         body: JSON.stringify(data)
         //     })
         // }
+        tg.MainButton.hide();
         
     }, [project, workers, datestart, geo, teh, managerId, companyId])
 
