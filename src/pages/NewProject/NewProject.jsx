@@ -345,6 +345,8 @@ const NewProject = () => {
             queryId,
         }
 
+        tg.MainButton.hide();
+        setIsLoading(true)
         if (project.includes("Тестпроект")) {
             fetch(API_URL + 'web-test-data', {
                 method: 'POST',
