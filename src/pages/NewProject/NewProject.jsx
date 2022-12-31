@@ -259,7 +259,7 @@ const NewProject = () => {
             setModels(data[0].models);
         }
 
-        setTimeout(()=> {setIsLoading(false)}, 3000)
+        setTimeout(()=> {setIsLoading(false)}, 4000)
         
 
     }, []);
