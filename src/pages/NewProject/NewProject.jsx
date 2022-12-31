@@ -189,7 +189,8 @@ const NewProject = () => {
             })
             .then(data => {
                 console.log('ManagerId: ', data) 
-                setManagerId(data)            
+                setManagerId(data)  
+                getCompanyId(user?.id);          
             })
     }
 
@@ -202,7 +203,7 @@ const NewProject = () => {
             .then(data => {
                 console.log('CompanyId: ', data) 
                 setCompanyId(data) 
-                //setIsLoading(false)           
+                setIsLoading(false)           
             })
     }
 
@@ -247,7 +248,7 @@ const NewProject = () => {
         setIsLoading(true);
 
         getManagerId(user?.id); //user?.id
-        getCompanyId(user?.id); //user?.id
+
 
         // устанавливаем категории
         if (data.length > 0 && data) {
@@ -259,7 +260,7 @@ const NewProject = () => {
             setModels(data[0].models);
         }
 
-        setTimeout(()=> {setIsLoading(false)}, 4000)
+        //setTimeout(()=> {setIsLoading(false)}, 4000)
         
 
     }, []);
