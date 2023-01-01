@@ -95,7 +95,7 @@ const data = [
         name: 'STAGEHANDS',
         icon: 'Stagehands',
         models: [
-            {id: 1, name: 'Помощник / Грузчик',},
+            {id: 1, name: 'Помощник \/ Грузчик',},
         ]
     },
     {
