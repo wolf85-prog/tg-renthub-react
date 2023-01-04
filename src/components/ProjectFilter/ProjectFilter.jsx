@@ -5,10 +5,12 @@ import SortSelect from "../UI/SortSelect/SortSelect";
 
 const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
-    //console.log('arr_status: ', arr_status)
+    console.log('arr_status: ', arr_status)
 
     arr_status.map((item, index) => {
-                        if (item.title === 'OnAir') {
+                        if (item.title === 'All') {
+                            item.color = 'gray';
+                        } else if (item.title === 'OnAir') {
                             item.color = 'green';
                         } else if (item.title === 'Ready') {
                             item.color = 'blue';
@@ -23,8 +25,6 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                         } else if (item.title === 'OnHold') {
                             item.color = 'brown';
                         } else if (item.title === 'Test') {
-                            item.color = 'gray';
-                        } else if (item.title === 'All') {
                             item.color = 'gray';
                         } else {
                             item.color = '';

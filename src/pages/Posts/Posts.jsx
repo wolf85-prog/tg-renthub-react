@@ -31,7 +31,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; //'1408579113'; //'805436270'; //user?.id;
+        const url = API_URL_MANAGER + '805436270'; //'1408579113'; //'805436270'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
@@ -109,6 +109,13 @@ function Posts() {
             }
         }
         //console.log('countItemsStatus: ', countItems);
+
+        const obj = {
+            title: 'All',
+            color: "gray",
+            count: '',
+        }
+        arr_status.push(obj) 
         
         const objectArray = Object.entries(countItems);
         objectArray.forEach(([key, value]) => {
@@ -119,12 +126,6 @@ function Posts() {
             }
             arr_status.push(obj) 
         });
-        const obj = {
-            title: 'All',
-            color: "gray",
-            count: '',
-        }
-        arr_status.push(obj) 
 
         //console.log('arr status: ', arr_status);
         setStatus(arr_status);
