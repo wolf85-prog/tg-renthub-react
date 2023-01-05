@@ -31,7 +31,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + '805436270'; //'1408579113'; //'805436270'; //user?.id;
+        const url = API_URL_MANAGER + user?.id; //'1408579113'; //'805436270'; //user?.id;
         fetch(url)
             .then(response => { 
                 return response.json()               
