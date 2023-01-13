@@ -182,8 +182,9 @@ const NewProject = () => {
     const [isLoading, setIsLoading] = useState(false);
 
     const getManagerId = (id) => {
-        const url = API_URL_MANAGER + id;
-        fetch(url)
+        const url = API_URL_MANAGER + id; //id
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(url, { headers })
             .then(response => { 
                 return response.json()               
             })
@@ -196,7 +197,8 @@ const NewProject = () => {
 
     const getCompanyId = (id) => {
         const url = API_URL_COMPANY + id;
-        fetch(url)
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(url, { headers })
             .then(response => { 
                 return response.json()               
             })

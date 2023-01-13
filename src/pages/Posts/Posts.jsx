@@ -32,7 +32,9 @@ function Posts() {
     //1
     const getManagerId = () => {
         const url = API_URL_MANAGER + user?.id; //'1408579113'; //'805436270'; //user?.id;
-        fetch(url)
+        console.log(url)
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(url, { headers })
             .then(response => { 
                 return response.json()               
             })
@@ -45,12 +47,13 @@ function Posts() {
     //2
     const getProjectData = (id) => {
         console.log('Get URL: '+ API_URL_PROJECTS + id)
-        fetch(API_URL_PROJECTS + id)
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(API_URL_PROJECTS + id, { headers })
             .then(response => {
                 return response.json()
             })
             .then(data => {
-                //console.log("------ post: ", data)
+                console.log("------ post: ", data)
                 setPosts(data);
             })
     }
@@ -58,7 +61,8 @@ function Posts() {
     //3
     const getBlocksData = (post) => {
         console.log('Start getBlockData')
-        fetch(API_URL_BLOCKS + post.id)
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(API_URL_BLOCKS + post.id, { headers })
             .then(response => {
                 return response.json()
             })
@@ -70,7 +74,8 @@ function Posts() {
 
     //4
     const getWorkData = (id, post) => { 
-        fetch(API_URL_DATABASE + id)
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(API_URL_DATABASE + id, { headers })
             .then(response => {
                 return response.json()
             })
@@ -96,6 +101,7 @@ function Posts() {
     
     //start
     useEffect(() => {
+        console.log('start')
         setIsPostsLoading(true);
         getManagerId();                    
     },[])
@@ -139,7 +145,7 @@ function Posts() {
             setPosts2(arrayPost);
             setIsPostsLoading(false);
         }, 4000)  
-    },[posts]);         //posts
+    },[posts]);           //posts
 
 
     return (
