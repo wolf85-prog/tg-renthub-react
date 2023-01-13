@@ -104,7 +104,8 @@ function Posts() {
         const countItems = {}; // здесь будет храниться промежуточный результат
         for (const item of posts) {
             // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
-            if (item.status_id.name != 'Test' && item.status_id.name != 'OnHold') {
+            //ВЫВОДИТЬ КНОПКИ БЕЗ ненужных кнопок фильтра
+            if (item.status_id.name != 'Test' && item.status_id.name != 'OnHold' && item.status_id.name != 'Deleted') {
                 countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
             }
         }
