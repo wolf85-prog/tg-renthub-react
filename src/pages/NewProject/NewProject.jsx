@@ -11,6 +11,7 @@ import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import {useNavigate} from "react-router-dom";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
+import CustomSelect2 from "../../components/UI/CustomSelect2/CustomSelect2";
 import ButtonMinus from "../../img/minus.png";
 import ButtonPlus from "../../img/plus.png";
 import Calendar from "../../img/calendar.svg";
@@ -136,6 +137,116 @@ const data = [
 ];
 
 
+const dataEquipment = [
+    {
+        id: 1,
+        name: 'SOUND',
+        icon: 'Sound',
+        names: [
+            {id: 1, name: 'P.A. system',},
+            {id: 2, name: 'Amplifires',},
+            {id: 3, name: 'Monitor wedge',},
+            {id: 4, name: 'Mixer desk',},
+            {id: 5, name: 'Stage rack',},
+            {id: 6, name: 'Wireless system',},
+            {id: 7, name: 'Antenna',},
+            {id: 8, name: 'I.E.M',},
+            {id: 9, name: 'Microfone',},
+            {id: 10, name: 'Backline',},
+            {id: 11, name: 'Cat cable',},
+            {id: 12, name: 'Power cable',},
+            {id: 13, name: 'XLR',},
+            {id: 14, name: 'Powercon',},
+            {id: 15, name: 'SpeaconCat cable',},
+            {id: 16, name: 'IBP',},
+            {id: 17, name: 'Other',},
+        ]
+    },
+    {
+        id: 2,
+        name: 'LIGHT',
+        icon: 'Light',
+        names: [
+            {id: 1, name: 'Light desk',},
+            {id: 2, name: 'Farm construction',},
+            {id: 3, name: 'Beam',},
+            {id: 4, name: 'Wash',},
+            {id: 1, name: 'Strobe',},
+            {id: 2, name: 'Smoke machine',},
+            {id: 3, name: 'Power cable',},
+            {id: 4, name: 'DMX',},
+            {id: 3, name: 'Splitter',},
+            {id: 4, name: 'Other',},
+        ]
+    },
+    {
+        id: 3,
+        name: 'VIDEO',
+        icon: 'Video',
+        names: [
+            {id: 1, name: 'Camera',},
+            {id: 2, name: 'Video console',},
+            {id: 3, name: 'Led monitor',},
+            {id: 4, name: 'Server',},
+            {id: 5, name: 'Card',},
+            {id: 6, name: 'Kinoflo',},
+            {id: 7, name: 'Other',},
+        ]
+    },
+    {
+        id: 4,
+        name: 'RIGGERS',
+        icon: 'Riggers',
+        names: [
+            {id: 1, name: 'Моторы',},
+            {id: 2, name: 'Такелаж',},
+        ]
+    },
+    {
+        id: 5,
+        name: 'STAGE GROUND',
+        icon: 'StageGround',
+        names: [
+            {id: 1, name: 'Layher',},
+            {id: 2, name: 'Фермы',},
+            {id: 3, name: 'Станки',},
+            {id: 4, name: 'Ноги',},
+            {id: 5, name: 'Шатры',},
+            {id: 6, name: 'Аттракционы',},
+            {id: 7, name: 'Надувные конструкции',},
+        ]
+    },
+    {
+        id: 6,
+        name: 'TRUCKS',
+        icon: 'Tracks',
+        names: [
+            {id: 1, name: 'C личным ТС [B]',},
+            {id: 2, name: 'Без личного ТС [B]',},
+            {id: 3, name: 'C личным ТС [C]',},
+            {id: 4, name: 'Без личного ТС [C]',},
+            {id: 5, name: 'С гидролифтом',},
+            {id: 6, name: 'Без гидролифта',},
+            {id: 7, name: 'Грузоподъемность 4 т.',},
+            {id: 8, name: 'Грузоподъемность 6 т.',},
+            {id: 9, name: 'Грузоподъемность 7 т.',},
+            {id: 10, name: 'Грузоподъемность 8 т.',},
+            {id: 11, name: 'Грузоподъемность 10 т.',},
+            {id: 12, name: 'Грузоподъемность 14 т.',},
+        ]
+    },
+    {
+        id: 7,
+        name: 'PRODUCTION',
+        icon: 'Production',
+        names: [
+            {id: 1, name: 'Мероприятие под ключ',},
+            {id: 2, name: 'Отдельные технические задачи',},
+        ]
+    }
+];
+
+
 const NewProject = () => {
 
     const API_URL = 'https://proj.uley.team:8000/'
@@ -164,8 +275,16 @@ const NewProject = () => {
     //специальности
     const [models, setModels] = useState([]);
 
+    //категории2
+    const [categories2, setCategories2] = useState([]);
+    //наименование оборудования
+    const [names, setNames] = useState([]);
+
     const [disabled, setDisabled] = useState(true)
     const [disabledBtn, setDisabledBtn] = useState(true)
+
+    const [disabled2, setDisabled2] = useState(true)
+    const [disabledBtn2, setDisabledBtn2] = useState(true)
 
     //количество работников
     const [count, setCount] = useState(1)
@@ -173,8 +292,19 @@ const NewProject = () => {
     const [worker, setWorker] = useState({id: '', cat: '', spec: '', count: 1, icon: ''})
     //работники
     const [workers, setWorkers] = useState([])
+
+    //количество оборудования
+    const [count2, setCount2] = useState(1)
+    //оборудование
+    const [equipment, setEquipment] = useState({id: '', cat: '', name: '', count: 1, icon: ''})
+    //оборудования
+    const [equipments, setEquipments] = useState([])
+
     //select
     const [selectedElement, setSelectedElement] = useState("")
+
+    //select2
+    const [selectedElement2, setSelectedElement2] = useState("")
 
     const [managerId, setManagerId] = useState('')
     const [companyId, setCompanyId] = useState('')
@@ -222,6 +352,18 @@ const NewProject = () => {
         }     
     }
 
+    function increment2() {
+        setCount2(count2 + 1)
+        setEquipment({...equipment, count: count2 + 1})
+    }
+
+    function decrement2() {
+        if (count2 != 1 && count2 > 0) {
+            setCount2(count2 - 1)
+            setEquipment({...equipment, count: count2 - 1})
+        }     
+    }
+
 
     {/* Добавление работника */}
     const addNewWorker = (e) => {
@@ -245,6 +387,31 @@ const NewProject = () => {
     }
 
 
+    {/* Добавление оборудования */}
+    const addNewEquipment = (e) => {
+        e.preventDefault();
+
+        //if (equipment.cat !== '' || equipment.name !== '') {
+            setEquipments([...equipments, {...equipment, id: Date.now()}])
+        //}
+        console.log('equipments: ', equipments)
+
+        setEquipment({cat: '', name: '', count: 1, icon: ''})
+
+        setCount2(1);
+        setSelectedElement2(""); 
+
+        setDisabled2(true);
+        setDisabledBtn2(true);
+    }
+
+    {/* Удаление оборудования */}
+    const removeEquipment = (equipment) => {
+        setEquipments(equipments.filter(p => p.id !== equipment.id))
+    }
+
+
+
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         setIsLoading(true);
@@ -262,8 +429,16 @@ const NewProject = () => {
             setModels(data[0].models);
         }
 
-        //setTimeout(()=> {setIsLoading(false)}, 4000)
         
+        // устанавливаем категории оборудования
+        if (dataEquipment.length > 0 && dataEquipment) {
+            setCategories2(dataEquipment);
+        }
+
+        // и наименования оборудования из первой категории по умолчанию
+        if (dataEquipment.length > 0 && dataEquipment[0].names && dataEquipment[0].names.length > 0) {
+            setNames(dataEquipment[0].names);
+        }
 
     }, []);
 
@@ -301,6 +476,34 @@ const NewProject = () => {
         setDisabled(false)
     }
 
+    // при выборе нового значения в категории
+    const onCategoriesSelectChange2 = (e) => {
+
+        setSelectedElement2(e.target.options.value);
+
+        // преобразуем выбранное значение опции списка в число - идентификатор категории
+        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+
+        // получаем из массива категорий объект категории по соответствующему идентификатору
+        const category = categories2.find(item => item.id === categoryId);
+
+        const catSelect = capitalizeFirst(category.name);
+
+        const iconCatSelect = category.icon;
+
+        setEquipment({...equipment, cat: catSelect, icon: iconCatSelect})
+
+        // выбираем все модели в категории, если таковые есть
+        const names = category.names && category.names.length > 0
+            ? category.names
+            : [{ id: 0, name: 'Нет моделей', items: [] }];
+
+        // меняем модели во втором списке
+        setNames(names);
+
+        setDisabled2(false)
+    }
+
     const onChangeProject = (e) => {
         setProject(e.target.value)
     }
@@ -334,6 +537,18 @@ const NewProject = () => {
         setWorker({...worker, spec: model.name})
 
         setDisabledBtn(false)
+    }
+
+    //выбор наименования оборудования
+    const onNameSelectChange = (e) => {
+        setSelectedElement(e.target.options.value);
+
+        const nameId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const name = names.find(item => item.id === nameId);
+
+        setEquipment({...equipment, name: name.name})
+
+        setDisabledBtn2(false)
     }
 
 
@@ -531,8 +746,72 @@ const NewProject = () => {
 
                 </div>
 
+                {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
 
+                {/*Добавить оборудование*/}  
+                {/* <div>
+                    <label>
+                        <p
+                            style={{
+                                margin: '20px 5px',
+                                display: 'flex',
+                                fontSize: '14px',
+                                color: '#ECFF76',
+                            }}>Добавьте оборудование</p>
+
+                        <div className="text-field text-field_floating">
+                            <CustomSelect2
+                                id="category2"
+                                title="Категория"
+                                options={categories2}
+                                selectedElement={selectedElement2}
+                                setSelectedElement={setSelectedElement2}
+                                onChange={onCategoriesSelectChange2}
+                            />
+                        </div>
+
+                        <div>
+                            <CustomSelect2
+                                disabled={disabled2}
+                                id="name"
+                                title="Наименование"
+                                options={names}
+                                selectedElement={selectedElement2}
+                                setSelectedElement={setSelectedElement2}
+                                onChange={onNameSelectChange}
+                            />
+                        </div>
+                    </label>
+
+
+                    <p style={{marginTop: "15px", color: '#ECFF76'}}>
+                        Количество
+                    </p>
+
+                    <div>
+                        <img style={{verticalAlign: 'middle', marginRight: '10px'}} src={ButtonMinus} onClick={decrement2} alt='Минус'/>
+                        <Counter
+                            style={{borderColor: '#ECFF76'}}
+                            value={count2}
+                            onChange={e => setEquipment({...equipment, count: e.target.value})}
+                        />
+                        <img style={{verticalAlign: 'middle', marginLeft: '10px'}} src={ButtonPlus} onClick={increment2} alt='Плюс'/>
+                    </div>
+
+                    <p>
+                        <MyButton
+                            disabled={disabledBtn2}
+                            style={{width: "103px", marginBottom: "15px", borderColor: '#ECFF76', backgroundColor: '#ECFF76', color: '#000000'}}
+                            onClick={addNewEquipment}
+                        >Добавить
+                        </MyButton>
+                    </p>
+
+                </div>*/}
+
+                {/*список оборудования*/}
+                {/* <WorkerList remove={removeEquipment} workers={equipments} />  */}
 
                 <MyModal visible={modal} setVisible={setModal}>
                     {tex}

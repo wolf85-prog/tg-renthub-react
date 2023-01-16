@@ -114,6 +114,18 @@ input {
     pointer-events: none;
 }
 
+.chevron2 {
+    position: relative;
+    right: 25px;
+    bottom: -4px;
+    stroke-width: 2px;
+    stroke: #ECFF76;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
 .sd-container {
     position: relative;
     float: left;
