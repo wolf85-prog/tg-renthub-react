@@ -9,11 +9,14 @@ import { alpha, styled } from '@mui/material/styles';
 import Counter from "../../components/Counter/Counter";
 import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
+import EquipmentList from "../../components/EquipmentList/EquipmentList";
 import {useNavigate} from "react-router-dom";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import CustomSelect2 from "../../components/UI/CustomSelect2/CustomSelect2";
 import ButtonMinus from "../../img/minus.png";
 import ButtonPlus from "../../img/plus.png";
+import ButtonMinus2 from "../../img/minus2.png";
+import ButtonPlus2 from "../../img/plus2.png";
 import Calendar from "../../img/calendar.svg";
 import GeoInput from "../../components/UI/GeoInput/GeoInput";
 import {useTelegram} from "../../hooks/useTelegram";
@@ -24,9 +27,9 @@ const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props}  />
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
-        border: '1px solid #76A9FF',
+        border: '2px solid #76A9FF',
         overflow: 'hidden',
-        borderRadius: 4,
+        borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
         transition: theme.transitions.create([
             'border-color',
@@ -634,7 +637,7 @@ const NewProject = () => {
                 {/*Дата начала*/}
                 <div className="text-field text-field_floating">
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
-                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '4px'}}>
+                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
                             <RedditTextField
                                 id="datetime-local"
                                 label="Дата начала"
@@ -675,7 +678,7 @@ const NewProject = () => {
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
-                                     style={{borderRadius: '4px'}}
+                                     style={{borderRadius: '10px'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"
@@ -722,7 +725,7 @@ const NewProject = () => {
                     </label>
 
 
-                    <p style={{marginTop: "15px"}}>
+                    <p style={{marginTop: "15px", color: '#76A9FF'}}>
                         Количество
                     </p>
 
@@ -750,7 +753,7 @@ const NewProject = () => {
                 <WorkerList remove={removeWorker} workers={workers} />
 
                 {/*Добавить оборудование*/}  
-                {/* <div>
+                <div>
                     <label>
                         <p
                             style={{
@@ -790,13 +793,13 @@ const NewProject = () => {
                     </p>
 
                     <div>
-                        <img style={{verticalAlign: 'middle', marginRight: '10px'}} src={ButtonMinus} onClick={decrement2} alt='Минус'/>
+                        <img style={{verticalAlign: 'middle', marginRight: '10px'}} src={ButtonMinus2} onClick={decrement2} alt='Минус'/>
                         <Counter
                             style={{borderColor: '#ECFF76'}}
                             value={count2}
                             onChange={e => setEquipment({...equipment, count: e.target.value})}
                         />
-                        <img style={{verticalAlign: 'middle', marginLeft: '10px'}} src={ButtonPlus} onClick={increment2} alt='Плюс'/>
+                        <img style={{verticalAlign: 'middle', marginLeft: '10px'}} src={ButtonPlus2} onClick={increment2} alt='Плюс'/>
                     </div>
 
                     <p>
@@ -808,10 +811,10 @@ const NewProject = () => {
                         </MyButton>
                     </p>
 
-                </div>*/}
+                </div>
 
                 {/*список оборудования*/}
-                {/* <WorkerList remove={removeEquipment} workers={equipments} />  */}
+                <EquipmentList remove={removeEquipment} equipments={equipments} /> 
 
                 <MyModal visible={modal} setVisible={setModal}>
                     {tex}

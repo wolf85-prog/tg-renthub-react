@@ -1,12 +1,12 @@
 import React from 'react';
-import Sound from "../../img/spec/1_sound.svg";
-import Riggers from "../../img/spec/2_riggers.svg";
-import Production from "../../img/spec/3_production.svg";
-import StageGround from "../../img/spec/4_stage_ground.svg";
-import Video from "../../img/spec/5_video.svg";
-import Light from "../../img/spec/6_light.svg";
-import Stagehands from "../../img/spec/7_stagehands.svg";
-import Tracks from "../../img/spec/8_tracks.svg";
+import Sound from "../../img/name/1_sound2.svg";
+import Riggers from "../../img/name/2_riggers2.svg";
+import Production from "../../img/name/3_production2.svg";
+import StageGround from "../../img/name/4_stage_ground2.svg";
+import Video from "../../img/name/5_video2.svg";
+import Light from "../../img/name/6_light2.svg";
+import Stagehands from "../../img/name/7_stagehands2.svg";
+import Tracks from "../../img/name/8_tracks2.svg";
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
@@ -19,7 +19,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
         borderRadius: 10,
         position: 'relative',
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '2px solid #76A9FF',
+        border: '2px solid #ECFF76',
         fontSize: 16,
         width: 'auto',
         padding: '10px 12px',
@@ -56,7 +56,7 @@ const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
         borderRadius: 10,
         position: 'relative',
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '2px solid #76A9FF',
+        border: '2px solid #ECFF76',
         fontSize: 16,
         textAlign: 'center',
         width: 'auto',
@@ -89,21 +89,21 @@ const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
 const WorkerItem = (props) => {
     let image;
 
-    if (props.worker.icon === 'Sound') {
+    if (props.equipment.icon === 'Sound') {
         image = Sound;
-    } else if (props.worker.icon === 'Riggers') {
+    } else if (props.equipment.icon === 'Riggers') {
         image = Riggers;
-    } else if (props.worker.icon === 'Production') {
+    } else if (props.equipment.icon === 'Production') {
         image = Production;
-    } else if (props.worker.icon === 'StageGround') {
+    } else if (props.equipment.icon === 'StageGround') {
         image = StageGround;
-    } else if (props.worker.icon === 'Video') {
+    } else if (props.equipment.icon === 'Video') {
         image = Video;
-    } else if (props.worker.icon === 'Light') {
+    } else if (props.equipment.icon === 'Light') {
         image = Light;
-    } else if (props.worker.icon === 'Stagehands') {
+    } else if (props.equipment.icon === 'Stagehands') {
         image = Stagehands;
-    } else if (props.worker.icon === 'Tracks') {
+    } else if (props.equipment.icon === 'Tracks') {
         image = Tracks;
     }
 
@@ -111,14 +111,14 @@ const WorkerItem = (props) => {
         <div className="list_spec">
             <img style={{marginTop: "21px"}} src={image} alt='icon'/>
 
-            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} style={{border: '2px, solid, #76A9FF'}} variant="standard">
-                <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#76A9FF'}}>
-                    {props.worker.cat}
+            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} style={{border: '2px, solid, #ECFF76'}} variant="standard">
+                <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#ECFF76'}}>
+                    {props.equipment.cat}
                 </InputLabel>
                 <BootstrapInput
                     defaultValue=""
                     id="bootstrap-input"
-                    value={props.worker.spec}
+                    value={props.equipment.name}
                 />
             </FormControl>
 
@@ -128,13 +128,13 @@ const WorkerItem = (props) => {
                     className="inputSpec"
                     defaultValue=""
                     id="bootstrap-input2"
-                    value={props.worker.count}
+                    value={props.equipment.count}
                 />
             </FormControl>
 
             <DeleteIcon
-                style={{marginBottom: "10px", marginLeft: "0", color: '#76A9FF'}}
-                onClick={() => props.remove(props.worker)}
+                style={{marginBottom: "10px", marginLeft: "0", color: "#ECFF76"}}
+                onClick={() => props.remove(props.equipment)}
             />
         </div>
     );
