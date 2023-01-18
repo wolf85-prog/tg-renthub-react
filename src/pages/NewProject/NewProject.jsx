@@ -261,6 +261,8 @@ const NewProject = () => {
     const {tg, queryId, user} = useTelegram();
 
     const [modal, setModal] = useState(false)
+    const [showWorkadd, setShowWorkadd] = useState(false)
+    const [showEquipmentadd, setShowEquipmentadd] = useState(false)
 
     //проект
     const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
@@ -367,6 +369,12 @@ const NewProject = () => {
         }     
     }
 
+    {/* Показать Добавление работника */}
+    const clickShowWorker = (e) => {
+        e.preventDefault();
+
+        showWorkadd ? setShowWorkadd(false) : setShowWorkadd(true)
+    }
 
     {/* Добавление работника */}
     const addNewWorker = (e) => {
@@ -387,6 +395,14 @@ const NewProject = () => {
     {/* Удаление работника */}
     const removeWorker = (worker) => {
         setWorkers(workers.filter(p => p.id !== worker.id))
+    }
+
+
+    {/* Показать Добавление оборудования */}
+    const clickShowEquipment = (e) => {
+        e.preventDefault();
+
+        showEquipmentadd ? setShowEquipmentadd(false) : setShowEquipmentadd(true)
     }
 
 
@@ -690,7 +706,9 @@ const NewProject = () => {
                                      helperText = {`${countChar}/300`}
                     />
                 </div>
-                <div>
+
+                <MyButton onClick={clickShowWorker} style={{ width: '230px' }}>{showWorkadd ? 'Убрать специалистов' : 'Добавить специалистов'}</MyButton>
+                <div style={{ display: showWorkadd ? "block" : "none" }}>
                     <label>
                         <p
                             style={{
@@ -698,7 +716,7 @@ const NewProject = () => {
                                 display: 'flex',
                                 fontSize: '14px',
                                 color: '#76A9FF',
-                            }}>Добавьте специалистов</p>
+                            }}>Добавить специалистов</p>
 
                         <div className="text-field text-field_floating">
                             <CustomSelect
@@ -752,8 +770,11 @@ const NewProject = () => {
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
 
+                <br/>
+
                 {/*Добавить оборудование*/}  
-                <div>
+                <MyButton onClick={clickShowEquipment} style={{ width: '230px' }}>{showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}</MyButton>
+                <div style={{ display: showEquipmentadd ? "block" : "none" }}>
                     <label>
                         <p
                             style={{
