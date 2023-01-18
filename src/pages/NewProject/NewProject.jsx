@@ -316,6 +316,15 @@ const NewProject = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
+    function isEmptyObject(obj) {
+        for (var i in obj) {
+            if (obj.hasOwnProperty(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const getManagerId = (id) => {
         const url = API_URL_MANAGER + id; //id
         const headers = { 'Content-Type': 'application/json' }
@@ -326,7 +335,7 @@ const NewProject = () => {
             .then(data => {
                 console.log('ManagerId: ', data) 
                 setManagerId(data)  
-                getCompanyId(user?.id);          
+                getCompanyId(user?.id);       
             })
     }
 
@@ -338,13 +347,45 @@ const NewProject = () => {
                 return response.json()               
             })
             .then(data => {
-                console.log('CompanyId: ', data) 
+                console.log('CompanyId: ', data)
+                isEmptyObject(data) ? setModal(true) : setModal(false)
                 setCompanyId(data) 
                 setIsLoading(false)           
             })
     }
 
+    // при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+        setIsLoading(true);
 
+        getManagerId(user?.id); //user?.id
+
+
+        // устанавливаем категории
+        if (data.length > 0 && data) {
+            setCategories(data);
+        }
+
+        // и модели из первой категории по умолчанию
+        if (data.length > 0 && data[0].models && data[0].models.length > 0) {
+            setModels(data[0].models);
+        }
+
+        
+        // устанавливаем категории оборудования
+        if (dataEquipment.length > 0 && dataEquipment) {
+            setCategories2(dataEquipment);
+        }
+
+        // и наименования оборудования из первой категории по умолчанию
+        if (dataEquipment.length > 0 && dataEquipment[0].names && dataEquipment[0].names.length > 0) {
+            setNames(dataEquipment[0].names);
+        }
+
+    }, []);
+
+    //------------------------------------------------------
+    
     function increment() {
         setCount(count + 1)
         setWorker({...worker, count: count + 1})
@@ -430,36 +471,6 @@ const NewProject = () => {
     }
 
 
-
-    // при первой загрузке приложения выполнится код ниже
-    useEffect(() => {
-        setIsLoading(true);
-
-        getManagerId(user?.id); //user?.id
-
-
-        // устанавливаем категории
-        if (data.length > 0 && data) {
-            setCategories(data);
-        }
-
-        // и модели из первой категории по умолчанию
-        if (data.length > 0 && data[0].models && data[0].models.length > 0) {
-            setModels(data[0].models);
-        }
-
-        
-        // устанавливаем категории оборудования
-        if (dataEquipment.length > 0 && dataEquipment) {
-            setCategories2(dataEquipment);
-        }
-
-        // и наименования оборудования из первой категории по умолчанию
-        if (dataEquipment.length > 0 && dataEquipment[0].names && dataEquipment[0].names.length > 0) {
-            setNames(dataEquipment[0].names);
-        }
-
-    }, []);
 
     //Название категории с большой буквы
     const capitalizeFirst = str => {
@@ -586,25 +597,15 @@ const NewProject = () => {
 
         tg.MainButton.hide();
         setIsLoading(true)
-        if (project.includes("Тестпроект")) {
-            fetch(API_URL + 'web-test-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-        } else {
-            fetch(API_URL + 'web-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-        }
-        
-        
+
+        fetch(API_URL + 'web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+              
     }, [project, workers, datestart, geo, teh, managerId, companyId])
 
     useEffect(() => {
@@ -628,7 +629,8 @@ const NewProject = () => {
         }  
     }, [workers])
 
-    let tex = 'Ведуться технические работы!'
+    let tex = 'Ведутся технические работы!'
+    const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
 
 
     return (
@@ -843,7 +845,13 @@ const NewProject = () => {
                 <EquipmentList remove={removeEquipment} equipments={equipments} /> 
 
                 <MyModal visible={modal} setVisible={setModal}>
-                    {tex}
+                    <h2><b>Предупреждение</b></h2>
+                    <hr/>
+                    <br/>
+                    {update_company}
+                    <br/>
+                    <br/>
+                    <MyButton>Обновить</MyButton>
                 </MyModal>
 
                 {/* <MyButton onClick={console.log(workers)}>Создать проект</MyButton> */}
