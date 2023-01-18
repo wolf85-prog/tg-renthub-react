@@ -114,7 +114,7 @@ const data = [
     {
         id: 7,
         name: 'TRUCKS',
-        icon: 'Tracks',
+        icon: 'Trucks',
         models: [
             {id: 1, name: 'C личным ТС [B]',},
             {id: 2, name: 'Без личного ТС [B]',},
@@ -222,7 +222,7 @@ const dataEquipment = [
     {
         id: 6,
         name: 'TRUCKS',
-        icon: 'Tracks',
+        icon: 'Trucks',
         names: [
             {id: 1, name: 'C личным ТС [B]',},
             {id: 2, name: 'Без личного ТС [B]',},
