@@ -773,7 +773,12 @@ const NewProject = () => {
                 <br/>
 
                 {/*Добавить оборудование*/}  
-                <MyButton onClick={clickShowEquipment} style={{ width: '230px' }}>{showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}</MyButton>
+                <MyButton 
+                    onClick={clickShowEquipment} 
+                    style={{ width: '230px', borderColor: '#ECFF76', backgroundColor: '#ECFF76', color: '#000000'}}
+                >
+                    {showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}
+                </MyButton>
                 <div style={{ display: showEquipmentadd ? "block" : "none" }}>
                     <label>
                         <p
