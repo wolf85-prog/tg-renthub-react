@@ -779,7 +779,7 @@ const NewProject = () => {
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} />
 
-                <br/>
+                
 
                 {/*Добавить оборудование*/}  
                 <MyButton 
