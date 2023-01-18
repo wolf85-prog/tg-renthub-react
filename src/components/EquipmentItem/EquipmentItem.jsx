@@ -6,7 +6,7 @@ import StageGround from "../../img/name/4_stage_ground2.svg";
 import Video from "../../img/name/5_video2.svg";
 import Light from "../../img/name/6_light2.svg";
 import Stagehands from "../../img/name/7_stagehands2.svg";
-import Tracks from "../../img/name/8_tracks2.svg";
+import Tracks from "../../img/name/8_trucks2.svg";
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";

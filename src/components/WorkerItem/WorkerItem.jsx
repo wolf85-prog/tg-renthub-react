@@ -6,7 +6,7 @@ import StageGround from "../../img/spec/4_stage_ground.svg";
 import Video from "../../img/spec/5_video.svg";
 import Light from "../../img/spec/6_light.svg";
 import Stagehands from "../../img/spec/7_stagehands.svg";
-import Tracks from "../../img/spec/8_tracks.svg";
+import Trucks from "../../img/spec/8_trucks.svg";
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
@@ -103,8 +103,8 @@ const WorkerItem = (props) => {
         image = Light;
     } else if (props.worker.icon === 'Stagehands') {
         image = Stagehands;
-    } else if (props.worker.icon === 'Tracks') {
-        image = Tracks;
+    } else if (props.worker.icon === 'Trucks') {
+        image = Trucks;
     }
 
     return (
