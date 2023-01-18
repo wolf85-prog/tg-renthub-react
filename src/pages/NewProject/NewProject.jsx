@@ -385,6 +385,13 @@ const NewProject = () => {
     }, []);
 
     //------------------------------------------------------
+
+    {/* Обновить */}
+    const clickButton = (e) => {
+        e.preventDefault();
+
+        getCompanyId(user?.id)
+    }
     
     function increment() {
         setCount(count + 1)
@@ -777,7 +784,7 @@ const NewProject = () => {
                 {/*Добавить оборудование*/}  
                 <MyButton 
                     onClick={clickShowEquipment} 
-                    style={{ width: '230px', borderColor: '#ECFF76', backgroundColor: '#ECFF76', color: '#000000'}}
+                    style={{ width: '230px', borderColor: '#ab7811', backgroundColor: '#ab7811', color: '#000000'}}
                 >
                     {showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}
                 </MyButton>
@@ -851,7 +858,7 @@ const NewProject = () => {
                     {update_company}
                     <br/>
                     <br/>
-                    <MyButton>Обновить</MyButton>
+                    <MyButton onClick={clickButton}>Обновить</MyButton>
                 </MyModal>
 
                 {/* <MyButton onClick={console.log(workers)}>Создать проект</MyButton> */}
