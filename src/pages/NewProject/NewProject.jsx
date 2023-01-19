@@ -597,6 +597,7 @@ const NewProject = () => {
             geo,
             teh,
             worklist: workers,
+            equipmentlist: equipments,
             managerId,
             companyId,
             queryId,
@@ -613,7 +614,7 @@ const NewProject = () => {
             body: JSON.stringify(data)
         })
               
-    }, [project, workers, datestart, geo, teh, managerId, companyId])
+    }, [project, workers, equipments, datestart, geo, teh, managerId, companyId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -629,12 +630,12 @@ const NewProject = () => {
     }, [])
 
     useEffect(() => {
-        if(workers.length > 0) {
+        if ((workers.length > 0) || (equipments.length > 0)) {
             tg.MainButton.show();
         } else {
             tg.MainButton.hide();
         }  
-    }, [workers])
+    }, [workers, equipments])
 
     let tex = 'Ведутся технические работы!'
     const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
