@@ -918,7 +918,7 @@ const NewProject = () => {
                             <CustomSelect2
                                 disabled={disabled2}
                                 id="name"
-                                title="Наименование"
+                                title="Подкатегория"
                                 options={names}
                                 selectedElement={selectedElement2}
                                 setSelectedElement={setSelectedElement2}
@@ -930,7 +930,7 @@ const NewProject = () => {
                             <CustomSelect2
                                 disabled={disabled3}
                                 id="subname"
-                                title="Поднаименование"
+                                title="Наименование"
                                 options={subnames}
                                 selectedElement={selectedElement2}
                                 setSelectedElement={setSelectedElement2}
