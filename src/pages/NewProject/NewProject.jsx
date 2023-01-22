@@ -338,6 +338,9 @@ const NewProject = () => {
     const [modal, setModal] = useState(false)
     const [showWorkadd, setShowWorkadd] = useState(false)
     const [showEquipmentadd, setShowEquipmentadd] = useState(false)
+    const [showSpec, setShowSpec] = useState(false)
+    const [showName, setShowName] = useState(false)
+    const [showSubname, setShowSubname] = useState(false)
 
     //проект
     const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
@@ -559,6 +562,7 @@ const NewProject = () => {
         setModels(models);
 
         setDisabled(false)
+        setShowSpec(true)
     }
 
     // 2. выбор специальности
@@ -598,6 +602,7 @@ const NewProject = () => {
         setNames(nameSelect);
 
         setDisabled2(false)
+        setShowName(true)
     }
 
     // 2. выбор наименования оборудования
@@ -618,6 +623,7 @@ const NewProject = () => {
         setSubNames(subname);
 
         setDisabled3(false)
+        setShowSubname(true)
     }
 
     // 3. выбор поднаименования оборудования
@@ -843,7 +849,7 @@ const NewProject = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className="text-field text-field_floating" style={{ display: showSpec ? "block" : "none" }}>
                             <CustomSelect
                                 disabled={disabled}
                                 id="model"
@@ -914,7 +920,7 @@ const NewProject = () => {
                             />
                         </div>
 
-                        <div className="text-field text-field_floating">
+                        <div className="text-field text-field_floating" style={{ display: showName ? "block" : "none" }}>
                             <CustomSelect2
                                 disabled={disabled2}
                                 id="name"
@@ -926,7 +932,7 @@ const NewProject = () => {
                             />
                         </div>
 
-                        <div className="text-field text-field_floating">
+                        <div className="text-field text-field_floating" style={{ display: showSubname ? "block" : "none" }}>
                             <CustomSelect2
                                 disabled={disabled3}
                                 id="subname"
