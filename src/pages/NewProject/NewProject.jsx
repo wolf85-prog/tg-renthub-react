@@ -364,14 +364,8 @@ const NewProject = () => {
     const [names, setNames] = useState([]);
     const [subnames, setSubNames] = useState([]);
 
-    const [disabled, setDisabled] = useState(true)
     const [disabledBtn, setDisabledBtn] = useState(true)
-
-    const [disabled2, setDisabled2] = useState(true)
     const [disabledBtn2, setDisabledBtn2] = useState(true)
-
-    const [disabled3, setDisabled3] = useState(true)
-    const [disabledBtn3, setDisabledBtn3] = useState(true)
 
     //количество работников
     const [count, setCount] = useState(1)
@@ -561,7 +555,7 @@ const NewProject = () => {
         // меняем модели во втором списке
         setModels(models);
 
-        setDisabled(false)
+        //setDisabled(false)
         setShowSpec(true)
     }
 
@@ -601,7 +595,7 @@ const NewProject = () => {
         // меняем модели во втором списке
         setNames(nameSelect);
 
-        setDisabled2(false)
+        //setDisabled2(false)
         setShowName(true)
     }
 
@@ -622,7 +616,7 @@ const NewProject = () => {
         // меняем модели во 3-м списке
         setSubNames(subname);
 
-        setDisabled3(false)
+        //setDisabled3(false)
         setShowSubname(true)
     }
 
@@ -657,7 +651,8 @@ const NewProject = () => {
         setCount(1);
         setSelectedElement("");
 
-        setDisabled(true);
+        //setDisabled(true);
+        setShowSpec(false)
         setDisabledBtn(true);
     }
 
@@ -688,8 +683,10 @@ const NewProject = () => {
         setCount2(1);
         setSelectedElement2(""); 
 
-        setDisabled2(true);
-        setDisabled3(true);
+        //setDisabled2(true);
+        //setDisabled3(true);
+        setShowName(false)
+        setShowSubname(false)
         setDisabledBtn2(true);
     }
 
