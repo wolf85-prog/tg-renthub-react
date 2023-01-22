@@ -146,23 +146,86 @@ const dataEquipment = [
         name: 'SOUND',
         icon: 'Sound',
         names: [
-            {id: 1, name: 'P.A. system',},
-            {id: 2, name: 'Amplifires',},
-            {id: 3, name: 'Monitor wedge',},
-            {id: 4, name: 'Mixer desk',},
-            {id: 5, name: 'Stage rack',},
-            {id: 6, name: 'Wireless system',},
-            {id: 7, name: 'Antenna',},
-            {id: 8, name: 'I.E.M',},
-            {id: 9, name: 'Microfone',},
-            {id: 10, name: 'Backline',},
-            {id: 11, name: 'Cat cable',},
-            {id: 12, name: 'Power cable',},
-            {id: 13, name: 'XLR',},
-            {id: 14, name: 'Powercon',},
-            {id: 15, name: 'SpeaconCat cable',},
-            {id: 16, name: 'IBP',},
-            {id: 17, name: 'Other',},
+            {
+                id: 1, 
+                name: 'P.A. system',
+                subnames: [
+                    {id: 1, name: 'dB Technologies',},
+                    {id: 2, name: 'L-Acoustics',},
+                    {id: 3, name: 'Meyer Sound',},
+                    {id: 4, name: 'Nexo',},
+                    {id: 5, name: 'Turbosound',},
+                    {id: 6, name: 'Clair Brothers',},
+                    {id: 7, name: 'Coda Audio',},
+                    {id: 8, name: 'Electro Voice',},
+                    {id: 9, name: 'EAW',},
+                    {id: 10, name: 'Bose',},
+                    {id: 11, name: 'RCF',},
+                    {id: 12, name: 'JBL',},
+                    {id: 13, name: 'HK Audio',},
+                    {id: 14, name: 'Martin Audio',},
+                    {id: 15, name: 'Funktion One',},
+                    {id: 16, name: 'Peavey',},
+                    {id: 17, name: 'Yorkville',},
+                    {id: 18, name: 'Dynacord',},
+                    {id: 19, name: 'Mackie',},
+                    {id: 20, name: 'QSC',},
+                    {id: 21, name: 'Nova',},
+                    {id: 22, name: 'Other',},
+                ]
+            },
+            {
+                id: 2, 
+                name: 'Amplifires',
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
+            {
+                id: 3, 
+                name: 'Monitor wedge',
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
+            {
+                id: 4, 
+                name: 'Mixer desk',
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
+            {
+                id: 5, 
+                name: 'Stage rack',
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
+            {
+                id: 6, 
+                name: 'Wireless system',
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
+            {
+                id: 7, 
+                name: 'Antenna',
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
+            {id: 8, name: 'I.E.M', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 9, name: 'Microfone', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 10, name: 'Backline', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 11, name: 'Cat cable', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 12, name: 'Power cable', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 13, name: 'XLR', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 14, name: 'Powercon', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 15, name: 'SpeaconCat cable', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 16, name: 'IBP', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 17, name: 'Other', subnames: [{id: 1, name: 'Оборудование',},]},
         ]
     },
     {
@@ -170,16 +233,16 @@ const dataEquipment = [
         name: 'LIGHT',
         icon: 'Light',
         names: [
-            {id: 1, name: 'Light desk',},
-            {id: 2, name: 'Farm construction',},
-            {id: 3, name: 'Beam',},
-            {id: 4, name: 'Wash',},
-            {id: 1, name: 'Strobe',},
-            {id: 2, name: 'Smoke machine',},
-            {id: 3, name: 'Power cable',},
-            {id: 4, name: 'DMX',},
-            {id: 3, name: 'Splitter',},
-            {id: 4, name: 'Other',},
+            {id: 1, name: 'Light desk', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 2, name: 'Farm construction', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 3, name: 'Beam', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 4, name: 'Wash', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 1, name: 'Strobe', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 2, name: 'Smoke machine', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 3, name: 'Power cable', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 4, name: 'DMX', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 3, name: 'Splitter', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 4, name: 'Other', subnames: [{id: 1, name: 'Оборудование',},]},
         ]
     },
     {
@@ -187,13 +250,13 @@ const dataEquipment = [
         name: 'VIDEO',
         icon: 'Video',
         names: [
-            {id: 1, name: 'Camera',},
-            {id: 2, name: 'Video console',},
-            {id: 3, name: 'Led monitor',},
-            {id: 4, name: 'Server',},
-            {id: 5, name: 'Card',},
-            {id: 6, name: 'Kinoflo',},
-            {id: 7, name: 'Other',},
+            {id: 1, name: 'Camera', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 2, name: 'Video console', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 3, name: 'Led monitor', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 4, name: 'Server', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 5, name: 'Card', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 6, name: 'Kinoflo', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 7, name: 'Other', subnames: [{id: 1, name: 'Оборудование',},]},
         ]
     },
     {
@@ -201,8 +264,8 @@ const dataEquipment = [
         name: 'RIGGERS',
         icon: 'Riggers',
         names: [
-            {id: 1, name: 'Моторы',},
-            {id: 2, name: 'Такелаж',},
+            {id: 1, name: 'Моторы', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 2, name: 'Такелаж', subnames: [{id: 1, name: 'Оборудование',},]},
         ]
     },
     {
@@ -210,13 +273,13 @@ const dataEquipment = [
         name: 'STAGE GROUND',
         icon: 'StageGround',
         names: [
-            {id: 1, name: 'Layher',},
-            {id: 2, name: 'Фермы',},
-            {id: 3, name: 'Станки',},
-            {id: 4, name: 'Ноги',},
-            {id: 5, name: 'Шатры',},
-            {id: 6, name: 'Аттракционы',},
-            {id: 7, name: 'Надувные конструкции',},
+            {id: 1, name: 'Layher', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 2, name: 'Фермы', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 3, name: 'Станки', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 4, name: 'Ноги', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 5, name: 'Шатры', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 6, name: 'Аттракционы', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 7, name: 'Надувные конструкции', subnames: [{id: 1, name: 'Оборудование',},]},
         ]
     },
     {
@@ -224,18 +287,18 @@ const dataEquipment = [
         name: 'TRUCKS',
         icon: 'Trucks',
         names: [
-            {id: 1, name: 'C личным ТС [B]',},
-            {id: 2, name: 'Без личного ТС [B]',},
-            {id: 3, name: 'C личным ТС [C]',},
-            {id: 4, name: 'Без личного ТС [C]',},
-            {id: 5, name: 'С гидролифтом',},
-            {id: 6, name: 'Без гидролифта',},
-            {id: 7, name: 'Грузоподъемность 4 т.',},
-            {id: 8, name: 'Грузоподъемность 6 т.',},
-            {id: 9, name: 'Грузоподъемность 7 т.',},
-            {id: 10, name: 'Грузоподъемность 8 т.',},
-            {id: 11, name: 'Грузоподъемность 10 т.',},
-            {id: 12, name: 'Грузоподъемность 14 т.',},
+            {id: 1, name: 'C личным ТС [B]', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 2, name: 'Без личного ТС [B]', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 3, name: 'C личным ТС [C]', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 4, name: 'Без личного ТС [C]', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 5, name: 'С гидролифтом', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 6, name: 'Без гидролифта', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 7, name: 'Грузоподъемность 4 т.', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 8, name: 'Грузоподъемность 6 т.', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 9, name: 'Грузоподъемность 7 т.', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 10, name: 'Грузоподъемность 8 т.', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 11, name: 'Грузоподъемность 10 т.', subnames: [{id: 1, name: 'Оборудование',},]},
+            {id: 12, name: 'Грузоподъемность 14 т.', subnames: [{id: 1, name: 'Оборудование',},]},
         ]
     },
     {
@@ -243,8 +306,20 @@ const dataEquipment = [
         name: 'PRODUCTION',
         icon: 'Production',
         names: [
-            {id: 1, name: 'Мероприятие под ключ',},
-            {id: 2, name: 'Отдельные технические задачи',},
+            {
+                id: 1, 
+                name: 'Мероприятие под ключ', 
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
+            {
+                id: 2, 
+                name: 'Отдельные технические задачи', 
+                subnames: [
+                    {id: 1, name: 'Оборудование',},
+                ]
+            },
         ]
     }
 ];
@@ -284,12 +359,16 @@ const NewProject = () => {
     const [categories2, setCategories2] = useState([]);
     //наименование оборудования
     const [names, setNames] = useState([]);
+    const [subnames, setSubNames] = useState([]);
 
     const [disabled, setDisabled] = useState(true)
     const [disabledBtn, setDisabledBtn] = useState(true)
 
     const [disabled2, setDisabled2] = useState(true)
     const [disabledBtn2, setDisabledBtn2] = useState(true)
+
+    const [disabled3, setDisabled3] = useState(true)
+    const [disabledBtn3, setDisabledBtn3] = useState(true)
 
     //количество работников
     const [count, setCount] = useState(1)
@@ -301,15 +380,16 @@ const NewProject = () => {
     //количество оборудования
     const [count2, setCount2] = useState(1)
     //оборудование
-    const [equipment, setEquipment] = useState({id: '', cat: '', name: '', count: 1, icon: ''})
+    const [equipment, setEquipment] = useState({id: '', cat: '', name: '', subname: '', count: 1, icon: ''})
     //оборудования
     const [equipments, setEquipments] = useState([])
 
     //select
     const [selectedElement, setSelectedElement] = useState("")
-
     //select2
     const [selectedElement2, setSelectedElement2] = useState("")
+    //select3
+    const [selectedElement3, setSelectedElement3] = useState("")
 
     const [managerId, setManagerId] = useState('')
     const [companyId, setCompanyId] = useState('')
@@ -382,6 +462,13 @@ const NewProject = () => {
             setNames(dataEquipment[0].names);
         }
 
+        // и поднаименования оборудования из первой категории по умолчанию
+        if (dataEquipment.length > 0 && dataEquipment[0].subnames && dataEquipment[0].subnames.length > 0 ) {
+            //setNames(dataEquipment[0].names);
+            setSubNames(dataEquipment[0].subnames);
+        }
+
+
     }, []);
 
     //------------------------------------------------------
@@ -417,8 +504,136 @@ const NewProject = () => {
         }     
     }
 
-    {/* Показать Добавление работника */}
-    const clickShowWorker = (e) => {
+
+
+    //Название категории с большой буквы
+    const capitalizeFirst = str => {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    };
+
+
+    const onChangeProject = (e) => {
+        setProject(e.target.value)
+    }
+
+    const onChangeTime = (e) => {
+        setDatestart(e.target.value)
+    }
+
+    function addGeo (newGeo) {
+        //setPost({...post, geo: newGeo})
+        setGeo(newGeo)
+    }
+
+    const onChangeGeodata = (e) => {
+        setGeo(e.target.value)
+        console.log(e.target.value)
+    }
+
+    const onChangeTeh = (e) => {
+        setTeh(e.target.value)
+        setCountChar(e.target.value.length)
+    }
+//---------------------------------------------------------------------------------------
+
+    // 1. при выборе нового значения в категории
+    const onCategoriesSelectChange = (e) => {
+
+        setSelectedElement(e.target.options.value);
+
+        // преобразуем выбранное значение опции списка в число - идентификатор категории
+        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        // получаем из массива категорий объект категории по соответствующему идентификатору
+        const category = categories.find(item => item.id === categoryId);
+        const catSelect = capitalizeFirst(category.name);
+        const iconCatSelect = category.icon;
+
+        setWorker({...worker, cat: catSelect, icon: iconCatSelect})
+
+        // выбираем все модели в категории, если таковые есть
+        const models = category.models && category.models.length > 0
+            ? category.models
+            : [{ id: 0, name: 'Нет моделей', items: [] }];
+
+        // меняем модели во втором списке
+        setModels(models);
+
+        setDisabled(false)
+    }
+
+    // 2. выбор специальности
+    const onSpecSelectChange = (e) => {
+        setSelectedElement(e.target.options.value);
+
+        const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const model = models.find(item => item.id === modelId);
+
+        setWorker({...worker, spec: model.name})
+
+        setDisabledBtn(false)
+    }
+
+
+    // 1. при выборе нового значения в категории
+    const onCategoriesSelectChange2 = (e) => {
+
+        setSelectedElement2(e.target.options.value);
+
+        // преобразуем выбранное значение опции списка в число - идентификатор категории
+        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+
+        // получаем из массива категорий объект категории по соответствующему идентификатору
+        const category = categories2.find(item => item.id === categoryId);
+        const catSelect = capitalizeFirst(category.name);
+        const iconCatSelect = category.icon;
+
+        setEquipment({...equipment, cat: catSelect, icon: iconCatSelect})
+
+        // выбираем все модели в категории, если таковые есть
+        const nameSelect = category.names && category.names.length > 0
+            ? category.names
+            : [{ id: 0, name: 'Нет моделей', items: [] }];
+
+        // меняем модели во втором списке
+        setNames(nameSelect);
+
+        setDisabled2(false)
+    }
+
+    // 2. выбор наименования оборудования
+    const onNameSelectChange3 = (e) => {
+        setSelectedElement2(e.target.options.value);
+
+        const nameId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const nameSelect = names.find(item => item.id === nameId);
+
+        setEquipment({...equipment, name: nameSelect.name})
+
+         // выбираем все поднаименования в наименовании, если таковые есть
+         const subname = nameSelect.subnames && nameSelect.subnames.length > 0
+         ? nameSelect.subnames
+         : [{ id: 0, subname: 'Нет оборудования', items: [] }];
+
+        // меняем модели во 3-м списке
+        setSubNames(subname);
+
+        setDisabled3(false)
+    }
+
+    // 3. выбор поднаименования оборудования
+    const onSubNameSelectChange = (e) => {
+        setSelectedElement3(e.target.options.value);
+
+        const subnameId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const subnameSelect = subnames.find(item => item.id === subnameId);
+
+        setEquipment({...equipment, subname: subnameSelect.name})
+
+        setDisabledBtn2(false)
+    }
+
+     {/* Показать Добавление работника */}
+     const clickShowWorker = (e) => {
         e.preventDefault();
 
         showWorkadd ? setShowWorkadd(false) : setShowWorkadd(true)
@@ -461,131 +676,20 @@ const NewProject = () => {
         //if (equipment.cat !== '' || equipment.name !== '') {
             setEquipments([...equipments, {...equipment, id: Date.now()}])
         //}
-        console.log('equipments: ', equipments)
 
-        setEquipment({cat: '', name: '', count: 1, icon: ''})
+        setEquipment({cat: '', name: '', subname: '', count: 1, icon: ''})
 
         setCount2(1);
         setSelectedElement2(""); 
 
         setDisabled2(true);
+        setDisabled3(true);
         setDisabledBtn2(true);
     }
 
     {/* Удаление оборудования */}
     const removeEquipment = (equipment) => {
         setEquipments(equipments.filter(p => p.id !== equipment.id))
-    }
-
-
-
-    //Название категории с большой буквы
-    const capitalizeFirst = str => {
-        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-    };
-
-
-    // при выборе нового значения в категории
-    const onCategoriesSelectChange = (e) => {
-
-        setSelectedElement(e.target.options.value);
-
-        // преобразуем выбранное значение опции списка в число - идентификатор категории
-        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
-
-        // получаем из массива категорий объект категории по соответствующему идентификатору
-        const category = categories.find(item => item.id === categoryId);
-
-        const catSelect = capitalizeFirst(category.name);
-
-        const iconCatSelect = category.icon;
-
-        setWorker({...worker, cat: catSelect, icon: iconCatSelect})
-
-        // выбираем все модели в категории, если таковые есть
-        const models = category.models && category.models.length > 0
-            ? category.models
-            : [{ id: 0, name: 'Нет моделей', items: [] }];
-
-        // меняем модели во втором списке
-        setModels(models);
-
-        setDisabled(false)
-    }
-
-    // при выборе нового значения в категории
-    const onCategoriesSelectChange2 = (e) => {
-
-        setSelectedElement2(e.target.options.value);
-
-        // преобразуем выбранное значение опции списка в число - идентификатор категории
-        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
-
-        // получаем из массива категорий объект категории по соответствующему идентификатору
-        const category = categories2.find(item => item.id === categoryId);
-
-        const catSelect = capitalizeFirst(category.name);
-
-        const iconCatSelect = category.icon;
-
-        setEquipment({...equipment, cat: catSelect, icon: iconCatSelect})
-
-        // выбираем все модели в категории, если таковые есть
-        const names = category.names && category.names.length > 0
-            ? category.names
-            : [{ id: 0, name: 'Нет моделей', items: [] }];
-
-        // меняем модели во втором списке
-        setNames(names);
-
-        setDisabled2(false)
-    }
-
-    const onChangeProject = (e) => {
-        setProject(e.target.value)
-    }
-
-    const onChangeTime = (e) => {
-        setDatestart(e.target.value)
-    }
-
-    function addGeo (newGeo) {
-        //setPost({...post, geo: newGeo})
-        setGeo(newGeo)
-    }
-
-    const onChangeGeodata = (e) => {
-        setGeo(e.target.value)
-        console.log(e.target.value)
-    }
-
-    const onChangeTeh = (e) => {
-        setTeh(e.target.value)
-        setCountChar(e.target.value.length)
-    }
-
-    //выбор специальности
-    const onSpecSelectChange = (e) => {
-        setSelectedElement(e.target.options.value);
-
-        const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
-        const model = models.find(item => item.id === modelId);
-
-        setWorker({...worker, spec: model.name})
-
-        setDisabledBtn(false)
-    }
-
-    //выбор наименования оборудования
-    const onNameSelectChange = (e) => {
-        setSelectedElement(e.target.options.value);
-
-        const nameId = parseInt(e.target.options[e.target.selectedIndex].value);
-        const name = names.find(item => item.id === nameId);
-
-        setEquipment({...equipment, name: name.name})
-
-        setDisabledBtn2(false)
     }
 
 
@@ -784,7 +888,7 @@ const NewProject = () => {
                 {/*Добавить оборудование*/}  
                 <MyButton 
                     onClick={clickShowEquipment} 
-                    style={{ width: '230px', borderColor: '#dbd453', backgroundColor: '#dbd453', color: '#000000'}}
+                    style={{ width: '230px', borderColor: '#ecff76', backgroundColor: '#ecff76', color: '#000000'}}
                 >
                     {showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}
                 </MyButton>
@@ -809,7 +913,7 @@ const NewProject = () => {
                             />
                         </div>
 
-                        <div>
+                        <div className="text-field text-field_floating">
                             <CustomSelect2
                                 disabled={disabled2}
                                 id="name"
@@ -817,7 +921,19 @@ const NewProject = () => {
                                 options={names}
                                 selectedElement={selectedElement2}
                                 setSelectedElement={setSelectedElement2}
-                                onChange={onNameSelectChange}
+                                onChange={onNameSelectChange3}
+                            />
+                        </div>
+
+                        <div className="text-field text-field_floating">
+                            <CustomSelect2
+                                disabled={disabled3}
+                                id="subname"
+                                title="Поднаименование"
+                                options={subnames}
+                                selectedElement={selectedElement2}
+                                setSelectedElement={setSelectedElement2}
+                                onChange={onSubNameSelectChange}
                             />
                         </div>
                     </label>
@@ -850,6 +966,7 @@ const NewProject = () => {
 
                 {/*список оборудования*/}
                 <EquipmentList remove={removeEquipment} equipments={equipments} /> 
+                
 
                 <MyModal visible={modal} setVisible={setModal}>
                     <h2><b>Предупреждение</b></h2>
