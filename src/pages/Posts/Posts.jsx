@@ -143,8 +143,13 @@ function Posts() {
 
         setTimeout(async ()=> {
             setPosts2(arrayPost);
-            setIsPostsLoading(false);
+            //setIsPostsLoading(false);
         }, 4000)  
+        
+        setTimeout(async ()=> {
+            setIsPostsLoading(false);
+        }, 8000) 
+
     },[posts]);           //posts
 
 
