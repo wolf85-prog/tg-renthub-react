@@ -116,9 +116,8 @@ const WorkerItem = (props) => {
                     {props.equipment.cat}
                 </InputLabel>
                 <BootstrapInput
-                    defaultValue=""
                     id="bootstrap-input"
-                    value={props.equipment.name}
+                    value={props.equipment.subname}
                 />
             </FormControl>
 
@@ -126,7 +125,6 @@ const WorkerItem = (props) => {
                 <InputLabel shrink htmlFor="bootstrap-input2" />
                 <BootstrapInput2
                     className="inputSpec"
-                    defaultValue=""
                     id="bootstrap-input2"
                     value={props.equipment.count}
                 />
