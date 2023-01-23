@@ -31,7 +31,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id; //'1408579113'; //'805436270'; //user?.id;
+        const url = API_URL_MANAGER + user?.id;    //'1408579113'; //'805436270'; //user?.id;
         console.log(url)
         const headers = { 'Content-Type': 'application/json' }
         fetch(url, { headers })
@@ -144,7 +144,7 @@ function Posts() {
         setTimeout(async ()=> {
             setPosts2(arrayPost);
             setIsPostsLoading(false);
-        }, 4000)  
+        }, 6000)  
     },[posts]);           //posts
 
 
