@@ -422,6 +422,20 @@ const NewProject = () => {
         })
     }
 
+    const getManagerId2 = (id) => {
+        const url = API_URL_MANAGER + id; //id
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(url, { headers })
+            .then(response => { 
+                return response.json()               
+            })
+            .then(data => {
+                console.log('ManagerId: ', data) 
+                setManagerId(data)                
+                getCompanyId(user?.id);                                        
+            })
+    }
+
     const getManagerId = (id) => {
         const url = API_URL_MANAGER + id; //id
         const headers = { 'Content-Type': 'application/json' }
@@ -433,12 +447,15 @@ const NewProject = () => {
                 if (isEmptyObject(data)) {
                     console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД! Создаем менеджера!')
                     createManager(id)
+                    setTimeout(async ()=> {
+                        getManagerId2(id)
+                    }, 2000)                    
                 } else {
                     console.log('ManagerId: ', data) 
+                    setManagerId(data)                
+                    getCompanyId(user?.id);  
                 } 
-                  
-                setManagerId(data)  
-                getCompanyId(user?.id);    
+                                      
             })
     }
 
