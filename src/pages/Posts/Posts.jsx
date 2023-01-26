@@ -39,8 +39,13 @@ function Posts() {
                 return response.json()               
             })
             .then(data => {
-                console.log('------ ManagerId: ', data)
-                getProjectData(data);               
+
+                if (isEmptyObject(data)) {
+                    console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД!')
+                } else {
+                    console.log('ManagerId: ', data) 
+                    getProjectData(data); 
+                }
             })
     }
 
