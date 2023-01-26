@@ -51,6 +51,7 @@ function Posts() {
 
                 if (isEmptyObject(data)) {
                     console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД!')
+                    setIsPostsLoading(false);
                 } else {
                     console.log('ManagerId: ', data) 
                     getProjectData(data); 
