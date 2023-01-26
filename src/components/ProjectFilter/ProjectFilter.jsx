@@ -5,7 +5,7 @@ import SortSelect from "../UI/SortSelect/SortSelect";
 
 const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
-    console.log('arr_status: ', arr_status)
+    //console.log('arr_status: ', arr_status)
 
     arr_status.map((item, index) => {
                         if (item.title === 'All') {
@@ -43,7 +43,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
     const sortPost = (selectedSort) => {
         setFilter({...filter, sort: selectedSort})
         //selectedSort => setFilter({...filter, sort: selectedSort})
-        console.log(selectedSort)
+        //console.log(selectedSort)
     }
 
 

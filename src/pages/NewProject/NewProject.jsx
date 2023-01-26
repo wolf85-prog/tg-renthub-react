@@ -406,6 +406,22 @@ const NewProject = () => {
         return true;
     }
 
+    const createManager = (id, ) => {
+        const data = {
+            id: id,
+            firstname: user?.first_name,
+            lastname: user?.last_name,
+        }
+
+        fetch(API_URL + 'manager', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+    }
+
     const getManagerId = (id) => {
         const url = API_URL_MANAGER + id; //id
         const headers = { 'Content-Type': 'application/json' }
@@ -414,9 +430,15 @@ const NewProject = () => {
                 return response.json()               
             })
             .then(data => {
-                console.log('ManagerId: ', data) 
+                if (isEmptyObject(data)) {
+                    console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД! Создаем менеджера!')
+                    createManager(id)
+                } else {
+                    console.log('ManagerId: ', data) 
+                } 
+                  
                 setManagerId(data)  
-                getCompanyId(user?.id);       
+                getCompanyId(user?.id);    
             })
     }
 
@@ -429,7 +451,7 @@ const NewProject = () => {
             })
             .then(data => {
                 console.log('CompanyId: ', data)
-                isEmptyObject(data) ? setModal(true) : setModal(false)
+                //isEmptyObject(data) ? setModal(true) : setModal(false)
                 setCompanyId(data) 
                 setIsLoading(false)           
             })
@@ -439,8 +461,7 @@ const NewProject = () => {
     useEffect(() => {
         setIsLoading(true);
 
-        getManagerId(user?.id); //user?.id
-
+        getManagerId(user?.id); //user?.id 
 
         // устанавливаем категории
         if (data.length > 0 && data) {
