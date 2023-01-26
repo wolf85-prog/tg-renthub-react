@@ -406,9 +406,9 @@ const NewProject = () => {
         return true;
     }
 
-    const createManager = (id, ) => {
+    const createManager = (id) => {
         const data = {
-            id: id,
+            id: id.toString(),
             firstname: user?.first_name,
             lastname: user?.last_name,
         }
