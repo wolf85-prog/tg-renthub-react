@@ -448,8 +448,8 @@ const NewProject = () => {
                     console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД! Создаем менеджера!')
                     createManager(id)
                     setTimeout(async ()=> {
-                        getManagerId2(id)
-                    }, 2000)                    
+                        getManagerId(id)
+                    }, 3000)                    
                 } else {
                     console.log('ManagerId: ', data) 
                     setManagerId(data)                
