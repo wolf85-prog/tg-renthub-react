@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewProject.css';
 import {Stack} from "@mui/material";
@@ -396,6 +396,7 @@ const NewProject = () => {
     const [companyId, setCompanyId] = useState('')
 
     const [isLoading, setIsLoading] = useState(false);
+    const scrollRef = useRef()
 
     function isEmptyObject(obj) {
         for (var i in obj) {
@@ -453,7 +454,7 @@ const NewProject = () => {
                 } else {
                     console.log('ManagerId: ', data) 
                     setManagerId(data)                
-                    getCompanyId(user?.id);  
+                    getCompanyId(id);  
                 } 
                                       
             })
@@ -709,6 +710,9 @@ const NewProject = () => {
         e.preventDefault();
 
         showEquipmentadd ? setShowEquipmentadd(false) : setShowEquipmentadd(true)
+
+        //scrollRef.current?.scrollIntoView( {behavior: "smooth"})
+        window.scrollTo({ behavior: 'smooth', top: scrollRef.current.offsetTop })
     }
 
 
@@ -938,15 +942,16 @@ const NewProject = () => {
                 >
                     {showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}
                 </MyButton>
+            
                 <div style={{ display: showEquipmentadd ? "block" : "none" }}>
                     <label>
-                        <p
-                            style={{
+                        <p style={{
                                 margin: '20px 5px',
                                 display: 'flex',
                                 fontSize: '14px',
                                 color: '#ECFF76',
-                            }}>Добавьте оборудование</p>
+                            }}>Добавьте оборудование
+                        </p>
 
                         <div className="text-field text-field_floating">
                             <CustomSelect2
