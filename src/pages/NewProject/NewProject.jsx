@@ -759,13 +759,25 @@ const NewProject = () => {
         tg.MainButton.hide();
         setIsLoading(true)
 
-        fetch(API_URL + 'web-data', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
+        if (project === 'Проект XYZ') {
+            fetch(API_URL + 'web-test-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        } else {
+            fetch(API_URL + 'web-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        }
+        
+        setIsLoading(false)
               
     }, [project, workers, equipments, datestart, geo, teh, managerId, companyId])
 
