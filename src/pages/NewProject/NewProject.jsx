@@ -90,8 +90,8 @@ const data = [
         name: 'RIGGERS',
         icon: 'Riggers',
         models: [
-            {id: 1, name: 'High Rigger',},
-            {id: 2, name: 'Lo Rigger',},
+            {id: 1, name: 'Верхний Риггер',},
+            {id: 2, name: 'Нижний Риггер',},
         ]
     },
     {
@@ -107,8 +107,8 @@ const data = [
         name: 'STAGE GROUND',
         icon: 'StageGround',
         models: [
-            {id: 1, name: 'High Rigger',},
-            {id: 2, name: 'Lo Rigger',},
+            {id: 1, name: 'Риггер [Ground]',},
+            {id: 2, name: 'Монтажник [Ground]',},
         ]
     },
     {
