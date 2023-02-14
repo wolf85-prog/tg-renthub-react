@@ -17,12 +17,10 @@ function App() {
     return (
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
-            <div className="App">
                 <Routes>
                     <Route index element={<Posts />}/>
                     <Route path={'add-project'} element={<NewProject />}/>
                 </Routes>
-            </div>
         </ThemeProvider>
     );
 }
