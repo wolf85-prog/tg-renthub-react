@@ -22,7 +22,7 @@ const ProjectWorkItem = (props) => {
         image = Riggers;
     } else if (props.worker.title === 'Production') {
         image = Production;
-    } else if (props.worker.title === 'Stage Ground') {
+    } else if (props.worker.title === 'StageGround') {
         image = StageGround;
     } else if (props.worker.title === 'Video') {
         image = Video;
