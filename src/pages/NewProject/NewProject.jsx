@@ -545,13 +545,6 @@ const NewProject = () => {
     }
 
 
-
-    //Название категории с большой буквы
-    const capitalizeFirst = str => {
-        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-    };
-
-
     const onChangeProject = (e) => {
         setProject(e.target.value)
     }
@@ -585,7 +578,7 @@ const NewProject = () => {
         const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories.find(item => item.id === categoryId);
-        const catSelect = capitalizeFirst(category.name);
+        const catSelect = category.icon; //capitalizeFirst(category.name);
         const iconCatSelect = category.icon;
 
         setWorker({...worker, cat: catSelect, icon: iconCatSelect})
@@ -625,7 +618,7 @@ const NewProject = () => {
 
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories2.find(item => item.id === categoryId);
-        const catSelect = capitalizeFirst(category.name);
+        const catSelect = category.icon; //capitalizeFirst(category.name);
         const iconCatSelect = category.icon;
 
         setEquipment({...equipment, cat: catSelect, icon: iconCatSelect})
