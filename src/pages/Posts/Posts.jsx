@@ -126,7 +126,7 @@ function Posts() {
         for (const item of posts) {
             // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
             //ВЫВОДИТЬ КНОПКИ БЕЗ ненужных кнопок фильтра
-            if (item.status_id.name != 'Test' && item.status_id.name != 'OnHold' && item.status_id.name != 'Deleted') {
+            if (item.status_id && item.status_id.name != 'Test' && item.status_id.name != 'OnHold' && item.status_id.name != 'Deleted') {
                 countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
             }
         }
@@ -149,7 +149,7 @@ function Posts() {
             arr_status.push(obj) 
         });
 
-        //console.log('arr status: ', arr_status);
+        console.log('arr status: ', arr_status);
         setStatus(arr_status);
 
         posts.map((post) => {

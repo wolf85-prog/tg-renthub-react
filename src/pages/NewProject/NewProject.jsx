@@ -858,8 +858,8 @@ const NewProject = () => {
                                      onChange={onChangeTeh}
                                      multiline
                                      rows={4}
-                                     inputProps={{maxLength :300}}
-                                     helperText = {`${countChar}/300`}
+                                     inputProps={{maxLength :500}}
+                                     helperText = {`${countChar}/500`}
                     />
                 </div>
 
