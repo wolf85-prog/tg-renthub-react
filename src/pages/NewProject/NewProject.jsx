@@ -80,9 +80,8 @@ const data = [
             {id: 2, name: 'Инженер Resolume',},
             {id: 3, name: 'Оператор Zoom',},
             {id: 4, name: 'Оператор [сameraman]',},
-            {id: 5, name: 'Гафер',},
+            {id: 5, name: 'Техник монтажа',},
             {id: 6, name: 'IT-специалист',},
-            {id: 7, name: 'Техник монтажа',},
         ]
     },
     {
@@ -100,6 +99,7 @@ const data = [
         icon: 'Stagehands',
         models: [
             {id: 1, name: 'Помощник \/ Грузчик',},
+            {id: 2, name: 'Промоутер',},
         ]
     },
     {
@@ -109,6 +109,7 @@ const data = [
         models: [
             {id: 1, name: 'Риггер [Ground]',},
             {id: 2, name: 'Монтажник [Ground]',},
+            {id: 3, name: 'Декоратор',},
         ]
     },
     {
