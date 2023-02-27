@@ -54,7 +54,7 @@ const data = [
         icon: 'Sound',
         models: [
             {id: 1, name: 'Звукорежиссер',},
-            {id: 2, name: 'RF менеджер',},
+            {id: 2, name: 'RF-Менеджер',},
             {id: 3, name: 'Backline',},
             {id: 4, name: 'Roadie',},
             {id: 5, name: 'Техник по звуку',},
@@ -331,8 +331,6 @@ const NewProject = () => {
     const [showSubname, setShowSubname] = useState(false)
 
     //проект
-    const [post, setPost] = useState({title: '', time: '', geo: '', teh: '', status: ''})
-
     const [project, setProject] = useState('');
     const [datestart, setDatestart] = useState('2023-01-01 10:00:00');
     const [teh, setTeh] = useState('');
