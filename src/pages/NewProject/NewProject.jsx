@@ -22,6 +22,7 @@ import GeoInput from "../../components/UI/GeoInput/GeoInput";
 import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
+import specData from "../../data/spec"
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props}  />
@@ -46,105 +47,6 @@ const RedditTextField = styled((props) => (
         },
     },
 }));
-
-const data = [
-    {
-        id: 1,
-        name: 'SOUND',
-        icon: 'Sound',
-        models: [
-            {id: 1, name: 'Звукорежиссер',},
-            {id: 2, name: 'RF-Менеджер',},
-            {id: 3, name: 'Backline',},
-            {id: 4, name: 'Roadie',},
-            {id: 5, name: 'Техник по звуку',},
-        ]
-    },
-    {
-        id: 2,
-        name: 'LIGHT',
-        icon: 'Light',
-        models: [
-            {id: 1, name: 'Художник по свету',},
-            {id: 2, name: 'Оператор световой пушки',},
-            {id: 3, name: 'Гафер',},
-            {id: 4, name: 'Техник по свету',},
-        ]
-    },
-    {
-        id: 3,
-        name: 'VIDEO',
-        icon: 'Video',
-        models: [
-            {id: 1, name: 'Инженер VMix',},
-            {id: 2, name: 'Инженер Resolume',},
-            {id: 3, name: 'Оператор Zoom',},
-            {id: 4, name: 'Оператор [сameraman]',},
-            {id: 5, name: 'Техник монтажа',},
-            {id: 6, name: 'IT-специалист',},
-        ]
-    },
-    {
-        id: 4,
-        name: 'RIGGERS',
-        icon: 'Riggers',
-        models: [
-            {id: 1, name: 'Верхний Риггер',},
-            {id: 2, name: 'Нижний Риггер',},
-        ]
-    },
-    {
-        id: 5,
-        name: 'STAGEHANDS',
-        icon: 'Stagehands',
-        models: [
-            {id: 1, name: 'Помощник \/ Грузчик',},
-            {id: 2, name: 'Промоутер',},
-        ]
-    },
-    {
-        id: 6,
-        name: 'STAGE GROUND',
-        icon: 'StageGround',
-        models: [
-            {id: 1, name: 'Риггер [Ground]',},
-            {id: 2, name: 'Монтажник [Ground]',},
-            {id: 3, name: 'Декоратор',},
-        ]
-    },
-    {
-        id: 7,
-        name: 'TRUCKS',
-        icon: 'Trucks',
-        models: [
-            {id: 1, name: 'C личным ТС [B/C]',},
-            {id: 2, name: 'Без личного ТС [B/C]',},
-            {id: 3, name: 'С гидролифтом',},
-            {id: 4, name: 'Без гидролифта',},
-        ]
-    },
-    {
-        id: 8,
-        name: 'PRODUCTION',
-        icon: 'Production',
-        models: [
-            {id: 1, name: 'Мероприятие под ключ',},
-            {id: 2, name: 'Отдельные технические задачи',},
-        ]
-    },
-    {
-        id: 9,
-        name: 'CATERING',
-        icon: 'Catering',
-        models: [
-            {id: 1, name: 'Официант',},
-            {id: 2, name: 'Бармен',},
-            {id: 3, name: 'Повар',},
-            {id: 4, name: 'Хостел',},
-            {id: 5, name: 'Банкетный менеджер',},
-        ]
-    }
-];
 
 
 const dataEquipment = [
@@ -481,13 +383,13 @@ const NewProject = () => {
         getManagerId(user?.id); //user?.id 
 
         // устанавливаем категории
-        if (data.length > 0 && data) {
-            setCategories(data);
+        if (specData.length > 0 && specData) {
+            setCategories(specData);
         }
 
         // и модели из первой категории по умолчанию
-        if (data.length > 0 && data[0].models && data[0].models.length > 0) {
-            setModels(data[0].models);
+        if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
+            setModels(specData[0].models);
         }
 
         

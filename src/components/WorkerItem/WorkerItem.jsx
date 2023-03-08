@@ -8,6 +8,8 @@ import Light from "../../img/spec/6_light.svg";
 import Stagehands from "../../img/spec/7_stagehands.svg";
 import Trucks from "../../img/spec/8_trucks.svg";
 import Catering from "../../img/spec/9_catering.svg";
+import Photo from "../../img/spec/10_photo.svg";
+import Party from "../../img/spec/11_party.svg";
 
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -109,6 +111,10 @@ const WorkerItem = (props) => {
         image = Trucks;
     } else if (props.worker.icon === 'Catering') {
         image = Catering;
+    } else if (props.worker.icon === 'Photo') {
+        image = Photo;
+    } else if (props.worker.icon === 'Party') {
+        image = Party;
     }
 
     return (

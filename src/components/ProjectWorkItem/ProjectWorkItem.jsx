@@ -9,6 +9,8 @@ import Light from "../../img/spec/6_light.svg";
 import Stagehands from "../../img/spec/7_stagehands.svg";
 import Trucks from "../../img/spec/8_trucks.svg";
 import Catering from "../../img/spec/9_catering.svg";
+import Photo from "../../img/spec/10_photo.svg";
+import Party from "../../img/spec/11_party.svg";
 
 const ProjectWorkItem = (props) => {
 
@@ -35,6 +37,10 @@ const ProjectWorkItem = (props) => {
         image = Trucks;
     } else if (props.worker.title === 'Catering') {
         image = Catering;
+    } else if (props.worker.title === 'Photo') {
+        image = Photo;
+    } else if (props.worker.title === 'Party') {
+        image = Party;
     } else {
         image = '';
     }
