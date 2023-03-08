@@ -22,7 +22,7 @@ import GeoInput from "../../components/UI/GeoInput/GeoInput";
 import {useTelegram} from "../../hooks/useTelegram";
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
-import specData from "../../data/spec"
+import specData from "../../data/specData"
 
 const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props}  />

@@ -1,5 +1,5 @@
 
-const data = [
+const specData = [
     {
         id: 1,
         name: 'SOUND',
