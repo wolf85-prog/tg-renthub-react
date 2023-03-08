@@ -124,4 +124,4 @@ const specData = [
     }
 ];
 
-export default spec;
+export default specData;
