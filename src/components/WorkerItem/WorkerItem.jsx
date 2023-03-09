@@ -105,6 +105,8 @@ const WorkerItem = (props) => {
         image = Stagehands;
     } else if (props.worker.icon === 'Trucks') {
         image = Trucks;
+    } else if (props.worker.icon === 'Catering') {
+        image = Production;
     }
 
     return (
