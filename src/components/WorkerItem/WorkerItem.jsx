@@ -7,7 +7,7 @@ import Video from "../../img/spec/5_video.svg";
 import Light from "../../img/spec/6_light.svg";
 import Stagehands from "../../img/spec/7_stagehands.svg";
 import Trucks from "../../img/spec/8_trucks.svg";
-import Catering from "../../img/spec/9_catering.png";
+import Catering from "../../img/spec/9_catering.svg";
 
 import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
