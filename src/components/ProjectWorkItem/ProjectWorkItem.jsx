@@ -8,6 +8,7 @@ import Video from "../../img/spec/5_video.svg";
 import Light from "../../img/spec/6_light.svg";
 import Stagehands from "../../img/spec/7_stagehands.svg";
 import Trucks from "../../img/spec/8_trucks.svg";
+import Catering from "../../img/spec/9_catering.png";
 
 const ProjectWorkItem = (props) => {
 
@@ -33,7 +34,7 @@ const ProjectWorkItem = (props) => {
     } else if (props.worker.title === 'Trucks') {
         image = Trucks;
     } else if (props.worker.title === 'Catering') {
-        image = Production;
+        image = Catering;
     } else {
         image = '';
     }

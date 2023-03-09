@@ -1,8 +1,5 @@
 import React from 'react';
 import './ProjectItem.css';
-import comp1 from "../../img/component_1.png";
-import comp2 from "../../img/component_2.png";
-import comp3 from "../../img/component_3.png";
 import ProjectWorkList from '../ProjectWorkList/ProjectWorkList';
 
 const ProjectItem = (props) => {
