@@ -32,6 +32,8 @@ const ProjectWorkItem = (props) => {
         image = Stagehands;
     } else if (props.worker.title === 'Trucks') {
         image = Trucks;
+    } else if (props.worker.title === 'Catering') {
+        image = Production;
     } else {
         image = '';
     }
