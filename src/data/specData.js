@@ -109,6 +109,18 @@ const specData = [
         ]
     },
     {
+        id: 10,
+        name: 'CATERING',
+        icon: 'Catering',
+        models: [
+            {id: 1, name: 'Официант',},
+            {id: 2, name: 'Бармен',},
+            {id: 3, name: 'Повар',},
+            {id: 4, name: 'Хостел',},
+            {id: 5, name: 'Банкетный менеджер',},
+        ]
+    },   
+    {
         id: 11,
         name: 'PARTY',
         icon: 'Party',
