@@ -86,18 +86,6 @@ const specData = [
     },
     {
         id: 9,
-        name: 'CATERING',
-        icon: 'Catering',
-        models: [
-            {id: 1, name: 'Официант',},
-            {id: 2, name: 'Бармен',},
-            {id: 3, name: 'Повар',},
-            {id: 4, name: 'Хостеc',},
-            {id: 5, name: 'Банкетный менеджер',},
-        ]
-    },
-    {
-        id: 10,
         name: 'PHOTO',
         icon: 'Photo',
         models: [
@@ -116,7 +104,7 @@ const specData = [
             {id: 1, name: 'Официант',},
             {id: 2, name: 'Бармен',},
             {id: 3, name: 'Повар',},
-            {id: 4, name: 'Хостел',},
+            {id: 4, name: 'Хостеc',},
             {id: 5, name: 'Банкетный менеджер',},
         ]
     },   
