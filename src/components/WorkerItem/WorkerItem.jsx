@@ -99,7 +99,7 @@ const WorkerItem = (props) => {
         image = Riggers;
     } else if (props.worker.icon === 'Production') {
         image = Production;
-    } else if (props.worker.icon === 'StageGround') {
+    } else if (props.worker.icon === 'Stage Ground') {
         image = StageGround;
     } else if (props.worker.icon === 'Video') {
         image = Video;
