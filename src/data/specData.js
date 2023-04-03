@@ -57,7 +57,7 @@ const specData = [
     {
         id: 6,
         name: 'STAGE GROUND',
-        icon: 'StageGround',
+        icon: 'Stage Ground',
         models: [
             {id: 1, name: 'Риггер [Ground]',},
             {id: 2, name: 'Монтажник [Ground]',},
@@ -120,6 +120,26 @@ const specData = [
             {id: 5, name: 'Певец/певица',},
             {id: 6, name: 'Артист оригинального жанра',},
             {id: 7, name: 'Go-Go',},
+        ]
+    },
+    {
+        id: 12,
+        name: 'GAMES',
+        icon: 'Games',
+        models: [
+            {id: 1, name: 'Аттракционы',},
+            {id: 2, name: 'Надувные фигуры',},
+            {id: 3, name: 'Игровые автоматы',},
+            {id: 4, name: 'Активности',},
+            {id: 5, name: 'Настольные игры',},
+        ]
+    },
+    {
+        id: 13,
+        name: 'BLACKLIST',
+        icon: 'Blacklist',
+        models: [
+            {id: 1, name: 'Blacklist',},
         ]
     }
 ];

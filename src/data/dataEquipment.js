@@ -192,7 +192,7 @@ const dataEquipment = [
     {
         id: 5,
         name: 'STAGE GROUND',
-        icon: 'StageGround',
+        icon: 'Stage Ground',
         names: [
             {id: 1, name: 'Layher', subnames: [{id: 1, name: 'Оборудование',},]},
             {id: 2, name: 'Фермы', subnames: [{id: 1, name: 'Оборудование',},]},
