@@ -135,14 +135,6 @@ const specData = [
             {id: 5, name: 'Настольные игры',},
         ]
     },
-    {
-        id: 13,
-        name: 'BLACKLIST',
-        icon: 'Blacklist',
-        models: [
-            {id: 1, name: 'Blacklist',},
-        ]
-    }
 ];
 
 export default specData;
