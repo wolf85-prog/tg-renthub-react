@@ -34,6 +34,7 @@ const specData = [
             {id: 4, name: 'Оператор [сameraman]',},
             {id: 5, name: 'Техник монтажа',},
             {id: 6, name: 'IT-специалист',},
+            {id: 7, name: 'Оператор-постановщик',},
         ]
     },
     {
@@ -134,14 +135,6 @@ const specData = [
             {id: 5, name: 'Настольные игры',},
         ]
     },
-    {
-        id: 13,
-        name: 'BLACKLIST',
-        icon: 'Blacklist',
-        models: [
-            {id: 1, name: 'Blacklist',},
-        ]
-    }
 ];
 
 export default specData;

@@ -69,7 +69,7 @@ const NewProject = () => {
 
     //проект
     const [project, setProject] = useState('');
-    const [datestart, setDatestart] = useState('2023-01-01 10:00:00');
+    const [datestart, setDatestart] = useState('2023-04-01 10:00:00');
     const [teh, setTeh] = useState('');
     const [countChar, setCountChar] = useState(0);
 
