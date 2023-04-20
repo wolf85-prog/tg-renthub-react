@@ -26,7 +26,12 @@ const ProjectItem = (props) => {
     let count2 = 0;
 
     const d = new Date(dateProject);
-    const d_end = new Date(dateProject2);
+    
+    let d_end =null
+    if (dateProject2 != null) {
+        d_end = new Date(dateProject2);
+    }
+    
 
     const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
 
