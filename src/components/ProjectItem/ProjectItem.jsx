@@ -6,6 +6,7 @@ const ProjectItem = (props) => {
    
     const statusColor = props.post.status_id == null ? 'gray' : props.post.status_id.color;
     const dateProject = props.post.time != null ? props.post.time.start : '';
+    const dateProject2 = props.post.time != null ? props.post.time.end : '';
 
     const months = {
         0: 'января',
@@ -25,16 +26,26 @@ const ProjectItem = (props) => {
     let count2 = 0;
 
     const d = new Date(dateProject);
+    const d_end = new Date(dateProject2);
 
     const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
 
+    //time start
     const year = d.getFullYear()
     const date = d.getDate()
     const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
     const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
-    const monthName = months[d.getMonth()];
-        
+    const monthName = months[d.getMonth()];      
     const formatted = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
+
+    //time end
+    const year2 = d_end.getFullYear()
+    const date2 = d_end.getDate()
+    const chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
+    const minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
+    const monthName2 = months[d_end.getMonth()];       
+    const formatted2 = `${date2} ${monthName2} ${year2}`;
+
 
     Object.values(props.post.workers).map((worker) =>
         worker.fio ? count++ : count
@@ -49,7 +60,7 @@ const ProjectItem = (props) => {
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {formatted}
+                    {formatted + formatted2 ? '-'+ formatted2 : ''}
                 </div>
 
                 <ProjectWorkList workers={props.post.workers} defould={count}/>
