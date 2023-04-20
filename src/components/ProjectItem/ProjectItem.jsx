@@ -26,12 +26,7 @@ const ProjectItem = (props) => {
     let count2 = 0;
 
     const d = new Date(dateProject);
-    
-    let d_end =null
-    if (dateProject2 != null) {
-        d_end = new Date(dateProject2);
-    }
-    
+    const d_end = new Date(dateProject2);
 
     const d2 = dateProject != '' ? dateProject.split('T')[1] : '';
 
@@ -66,7 +61,7 @@ const ProjectItem = (props) => {
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {formatted2 ? formatted + ' - '+ formatted2 + year : formattedyear}
+                    {formatted}
                 </div>
 
                 <ProjectWorkList workers={props.post.workers} defould={count}/>
