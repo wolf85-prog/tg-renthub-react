@@ -60,7 +60,7 @@ const ProjectItem = (props) => {
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
-                    {formatted + formatted2 ? '-'+ formatted2 : ''}
+                    {formatted}{formatted2 ? ' - '+ formatted2 : ''}
                 </div>
 
                 <ProjectWorkList workers={props.post.workers} defould={count}/>
