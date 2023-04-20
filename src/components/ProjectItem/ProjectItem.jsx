@@ -36,7 +36,7 @@ const ProjectItem = (props) => {
     const chas = String(d.getHours()).padStart(2, "0"); //d.getHours();
     const minut = String(d.getMinutes()).padStart(2, "0"); //d.getMinutes();
     const monthName = months[d.getMonth()];      
-    const formatted = (d2) ? `${date} ${monthName} ${chas}:${minut}` : `${date} ${monthName} `;
+    const formatted = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
     const formattedyear = (d2) ? `${date} ${monthName} ${year} ${chas}:${minut}` : `${date} ${monthName} ${year}`;
 
     //time end
@@ -45,7 +45,7 @@ const ProjectItem = (props) => {
     const chas2 = String(d_end.getHours()).padStart(2, "0"); //d.getHours();
     const minut2 = String(d_end.getMinutes()).padStart(2, "0"); //d.getMinutes();
     const monthName2 = months[d_end.getMonth()];       
-    const formatted2 = `${date2} ${monthName2} `;
+    const formatted2 = `${date2} ${monthName2} ${year}`;
 
 
     Object.values(props.post.workers).map((worker) =>
