@@ -31,7 +31,7 @@ const specData = [
             {id: 1, name: 'Инженер VMix',},
             {id: 2, name: 'Инженер Resolume',},
             {id: 3, name: 'Оператор Zoom',},
-            {id: 4, name: 'Оператор [сameraman]',},
+            {id: 4, name: 'Оператор [cameraman]',},
             {id: 5, name: 'Техник монтажа',},
             {id: 6, name: 'IT-специалист',},
             {id: 7, name: 'Оператор-постановщик',},
