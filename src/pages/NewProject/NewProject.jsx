@@ -67,9 +67,13 @@ const NewProject = () => {
     const [showName, setShowName] = useState(false)
     const [showSubname, setShowSubname] = useState(false)
 
+    // текущая дата
+    const dateNow = new Date();
+    const date = dateNow.getFullYear() + "-0" + ((dateNow.getMonth())+1) + "-01 10:00:00"
+
     //проект
     const [project, setProject] = useState('');
-    const [datestart, setDatestart] = useState('2023-04-01 10:00:00');
+    const [datestart, setDatestart] = useState(date);
     const [teh, setTeh] = useState('');
     const [countChar, setCountChar] = useState(0);
 
