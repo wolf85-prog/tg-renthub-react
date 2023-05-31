@@ -38,6 +38,13 @@ function Posts() {
         return true;
     }
 
+//----------start--------------------------------------------------------------------------
+    useEffect(() => {
+        console.log('start')
+        setIsPostsLoading(true);
+        getManagerId();                    
+    },[])
+
     //1
     const getManagerId = () => {
         const url = API_URL_MANAGER + user?.id;  //'1408579113'; //'805436270'; //user?.id;
@@ -50,7 +57,7 @@ function Posts() {
             .then(data => {
 
                 if (isEmptyObject(data)) {
-                    console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД!')
+                    console.log('Данные о менеджере (' + user?.first_name + ') отсутствуют БД!')
                     setIsPostsLoading(false);
                 } else {
                     console.log('ManagerId: ', data) 
@@ -114,12 +121,7 @@ function Posts() {
             
     }
     
-    //start
-    useEffect(() => {
-        console.log('start')
-        setIsPostsLoading(true);
-        getManagerId();                    
-    },[])
+    
 
     useEffect(() => {
         const countItems = {}; // здесь будет храниться промежуточный результат
