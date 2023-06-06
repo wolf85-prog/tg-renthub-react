@@ -53,7 +53,7 @@ const RedditTextField = styled((props) => (
 const NewProject = () => {
 
     const API_URL = 'https://proj.uley.team:8000/'
-    const API_URL_MANAGER = API_URL + 'managers/';
+    const API_URL_MANAGER = API_URL + 'managers/chat/';
     const API_URL_COMPANY = API_URL + 'manager/';
 
     //const navigate = useNavigate();
