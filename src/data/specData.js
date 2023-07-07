@@ -2,7 +2,7 @@
 const specData = [
     {
         id: 1,
-        name: 'SOUND',
+        name: 'Звук',
         icon: 'Sound',
         models: [
             {id: 1, name: 'Звукорежиссер',},
@@ -14,7 +14,7 @@ const specData = [
     },
     {
         id: 2,
-        name: 'LIGHT',
+        name: 'Свет',
         icon: 'Light',
         models: [
             {id: 1, name: 'Художник по свету',},
@@ -25,7 +25,7 @@ const specData = [
     },
     {
         id: 3,
-        name: 'VIDEO',
+        name: 'Видео',
         icon: 'Video',
         models: [
             {id: 1, name: 'Инженер VMix',},
@@ -39,7 +39,7 @@ const specData = [
     },
     {
         id: 4,
-        name: 'RIGGERS',
+        name: 'Риггеры',
         icon: 'Riggers',
         models: [
             {id: 1, name: 'Верхний Риггер',},
@@ -48,7 +48,7 @@ const specData = [
     },
     {
         id: 5,
-        name: 'STAGEHANDS',
+        name: 'Помощники \/ Грузчики',
         icon: 'Stagehands',
         models: [
             {id: 1, name: 'Помощник \/ Грузчик',},
@@ -57,7 +57,7 @@ const specData = [
     },
     {
         id: 6,
-        name: 'STAGE GROUND',
+        name: 'Граунд',
         icon: 'Stage Ground',
         models: [
             {id: 1, name: 'Риггер [Ground]',},
@@ -67,7 +67,7 @@ const specData = [
     },
     {
         id: 7,
-        name: 'TRUCKS',
+        name: 'Водители',
         icon: 'Trucks',
         models: [
             {id: 1, name: 'C личным ТС [B\/C]',},
@@ -78,7 +78,7 @@ const specData = [
     },
     {
         id: 8,
-        name: 'PRODUCTION',
+        name: 'Технический продакшн',
         icon: 'Production',
         models: [
             {id: 1, name: 'Мероприятие под ключ',},
@@ -87,7 +87,7 @@ const specData = [
     },
     {
         id: 9,
-        name: 'PHOTO',
+        name: 'Фото',
         icon: 'Photo',
         models: [
             {id: 1, name: 'Свадебная съемка',},
@@ -99,7 +99,7 @@ const specData = [
     },
     {
         id: 10,
-        name: 'CATERING',
+        name: 'Кейтеринг',
         icon: 'Catering',
         models: [
             {id: 1, name: 'Официант',},
@@ -111,7 +111,7 @@ const specData = [
     },   
     {
         id: 11,
-        name: 'PARTY',
+        name: 'Артисты',
         icon: 'Party',
         models: [
             {id: 1, name: 'Кавер-бенд',},
@@ -125,7 +125,7 @@ const specData = [
     },
     {
         id: 12,
-        name: 'GAMES',
+        name: 'Игромания',
         icon: 'Games',
         models: [
             {id: 1, name: 'Квесты',},
