@@ -24,7 +24,6 @@ const ProjectWorkItem = (props) => {
 
     specData.map((specObject)=> {
         specObject.models.map((spec)=> {
-            console.log(spec)
             if (props.worker.title === spec.name) {
                 icon = specObject.icon;
                 

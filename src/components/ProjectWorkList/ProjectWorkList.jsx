@@ -50,18 +50,16 @@ const ProjectWorkList = ({workers, defould}) => {
         arr.push(obj) 
     });
 
-    console.log(arr)
+    //console.log("arr:", arr)
 
     arr.map((arritem) => {
         count_fio = 0; 
-        Object.values(workers).map((value, index) => {     
-            if (arritem.title === value.title) {
+        Object.values(workers).map((value, index) => {    
+            if (arritem.title === value.spec) {
                 if (value.fio) {
-                    count_fio++
-                    //console.log("title: " + value.title + " count: " + count_fio)                  
+                    count_fio++            
                 }else {
                     count_fio;
-                    //console.log("title: " + value.title + " count: " + count_fio)
                 }               
             }
         })  
@@ -80,7 +78,7 @@ const ProjectWorkList = ({workers, defould}) => {
         })
     );
 
-    console.log("array3: ", worker3)
+   // console.log("array3: ", worker3)
 
     return (
         <div style={{display: 'flex'}}>

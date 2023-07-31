@@ -53,7 +53,7 @@ const ProjectItem = (props) => {
     )
 
     Object.values(props.post.workers).map((worker2) =>
-        worker2.title ? count2++ : count2
+        worker2.spec ? count2++ : count2
     )
 
     return (
