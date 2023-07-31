@@ -47,7 +47,7 @@ function Posts() {
 
     //1
     const getManagerId = () => {
-        const url = API_URL_MANAGER + '852021298';  //'1408579113'; //'805436270'; //user?.id;
+        const url = API_URL_MANAGER + user?.id;  //'1408579113'; //'805436270'; //user?.id;
         console.log(url)
         const headers = { 'Content-Type': 'application/json' }
         fetch(url, { headers })
