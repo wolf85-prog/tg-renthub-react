@@ -15,25 +15,30 @@ const ProjectWorkList = ({workers, defould}) => {
 
     let count_fio = 0;
 
-    //console.log('workers: ', workers)
+    console.log('workers: ', workers)
     //console.log(Object.keys(workers));   
 
     Object.values(workers).map((value, index) => {
 
         const newWorker = {
             id: index+1,
-            title: value.title,
+            //title: value.title,
+            spec: value.spec,
             count: count,
         }
-        arrayWorker.push(value.title)      
-           
+        //arrayWorker.push(value.title) 
+        arrayWorker.push(value.spec)              
     });
+
+    console.log("arrayWorker: ", arrayWorker2)
 
     const countItems = {}; // здесь будет храниться промежуточный результат
     for (const item of arrayWorker) {
         // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
         countItems[item] = countItems[item] ? countItems[item] + 1 : 1;
     }
+
+    //console.log(countItems)
 
 
     const objectArray = Object.entries(countItems);
@@ -44,6 +49,8 @@ const ProjectWorkList = ({workers, defould}) => {
         }
         arr.push(obj) 
     });
+
+    console.log(arr)
 
     arr.map((arritem) => {
         count_fio = 0; 
@@ -73,7 +80,7 @@ const ProjectWorkList = ({workers, defould}) => {
         })
     );
 
-    //console.log("array3: ", worker3)
+    console.log("array3: ", worker3)
 
     return (
         <div style={{display: 'flex'}}>

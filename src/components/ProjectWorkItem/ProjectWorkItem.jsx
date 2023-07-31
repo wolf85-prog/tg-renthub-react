@@ -12,44 +12,57 @@ import Catering from "../../img/spec/9_catering.svg";
 import Photo from "../../img/spec/10_photo.svg";
 import Party from "../../img/spec/11_party.svg";
 
+import specData from '../../data/specData';
+
 const ProjectWorkItem = (props) => {
 
-    //console.log("worker: ", props.worker)
-    //console.log("defould: ", props.defould)
+   // console.log("worker: ", props.worker)
+   // console.log("defould: ", props.defould)
 
     let image;
+    let icon;
 
-    if (props.worker.title === 'Sound') {
+    specData.map((specObject)=> {
+        specObject.models.map((spec)=> {
+            console.log(spec)
+            if (props.worker.title === spec.name) {
+                icon = specObject.icon;
+                
+            }    
+        })
+    })
+
+    if (icon === 'Sound') {
         image = Sound;
-    } else if (props.worker.title === 'Riggers') {
+    } else if (icon === 'Riggers') {
         image = Riggers;
-    } else if (props.worker.title === 'Production') {
+    } else if (icon === 'Production') {
         image = Production;
-    } else if (props.worker.title === 'Stage Ground') {
+    } else if (icon === 'Stage Ground') {
         image = StageGround;
-    } else if (props.worker.title === 'Video') {
+    } else if (icon === 'Video') {
         image = Video;
-    } else if (props.worker.title === 'Light') {
+    } else if (icon === 'Light') {
         image = Light;
-    } else if (props.worker.title === 'Stagehands') {
+    } else if (icon === 'Stagehands') {
         image = Stagehands;
-    } else if (props.worker.title === 'Trucks') {
+    } else if (icon === 'Trucks') {
         image = Trucks;
-    } else if (props.worker.title === 'Catering') {
+    } else if (icon === 'Catering') {
         image = Catering;
-    } else if (props.worker.title === 'Photo') {
+    } else if (icon === 'Photo') {
         image = Photo;
-    } else if (props.worker.title === 'Party') {
+    } else if (icon === 'Party') {
         image = Party;
-    } else {
-        image = '';
     }
+
+    
 
     return (
        <div>
             <img className="image_comp" src={image} alt=""/>
             
-            {(props.defould==0) ? <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">{props.worker.count_fio}/{props.worker.count}</span></p> 
+            {(props.defould === 0) ? <p style={{marginTop: '-10px', marginLeft: '1px'}}><span className="col_span">{props.worker.count_fio}/{props.worker.count}</span></p> 
             :
             (props.worker.title === 'undefined') 
                 ? ''

@@ -15,6 +15,8 @@ import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
 
+const {specData} = require('./../../data/specData');
+
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {
         marginTop: '21px',//theme.spacing(3),
@@ -92,28 +94,37 @@ const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
 
 const WorkerItem = (props) => {
     let image;
+    let icon;
 
-    if (props.worker.icon === 'Sound') {
+    specData.map((specObject)=> {
+        specObject.models.map((spec)=> {
+            if (props.worker.spec === spec.name) {
+                icon = specObject.icon;
+            }    
+        })
+    })
+
+    if (icon === 'Sound') {
         image = Sound;
-    } else if (props.worker.icon === 'Riggers') {
+    } else if (icon === 'Riggers') {
         image = Riggers;
-    } else if (props.worker.icon === 'Production') {
+    } else if (icon === 'Production') {
         image = Production;
-    } else if (props.worker.icon === 'Stage Ground') {
+    } else if (icon === 'Stage Ground') {
         image = StageGround;
-    } else if (props.worker.icon === 'Video') {
+    } else if (icon === 'Video') {
         image = Video;
-    } else if (props.worker.icon === 'Light') {
+    } else if (icon === 'Light') {
         image = Light;
-    } else if (props.worker.icon === 'Stagehands') {
+    } else if (icon === 'Stagehands') {
         image = Stagehands;
-    } else if (props.worker.icon === 'Trucks') {
+    } else if (icon === 'Trucks') {
         image = Trucks;
-    } else if (props.worker.icon === 'Catering') {
+    } else if (icon === 'Catering') {
         image = Catering;
-    } else if (props.worker.icon === 'Photo') {
+    } else if (icon === 'Photo') {
         image = Photo;
-    } else if (props.worker.icon === 'Party') {
+    } else if (icon === 'Party') {
         image = Party;
     }
 
