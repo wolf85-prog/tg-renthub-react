@@ -15,7 +15,7 @@ import {FormControl, InputBase, InputLabel} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {alpha, styled} from "@mui/material/styles";
 
-const {specData} = require('./../../data/specData');
+import specData from './../../data/specData';
 
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     'label + &': {

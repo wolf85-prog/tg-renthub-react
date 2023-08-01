@@ -206,7 +206,7 @@ const NewProject = () => {
     useEffect(() => {
         setIsLoading(true);
 
-        getManagerId(user?.id); //user?.id 
+        getManagerId('805436270'); //user?.id 
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
