@@ -121,6 +121,7 @@ const NewProject = () => {
 
     const [managerId, setManagerId] = useState('')
     const [companyId, setCompanyId] = useState('')
+    const [chatId, setChatId] = useState('')
 
     const [isLoading, setIsLoading] = useState(false);
     const scrollRef = useRef()
@@ -160,7 +161,7 @@ const NewProject = () => {
             .then(data => {
                 console.log('ManagerId: ', data) 
                 setManagerId(data)                
-                getCompanyId(user?.id);                                        
+                getCompanyId(user?.id);                                      
             })
     }
 
@@ -198,7 +199,8 @@ const NewProject = () => {
                 console.log('CompanyId: ', data)
                 //isEmptyObject(data) ? setModal(true) : setModal(false)
                 setCompanyId(data) 
-                setIsLoading(false)           
+                setIsLoading(false) 
+                setChatId(user?.id)          
             })
     }
 
@@ -474,6 +476,7 @@ const NewProject = () => {
             managerId,
             companyId,
             queryId,
+            chatId,
         }
 
         tg.MainButton.hide();
@@ -499,7 +502,7 @@ const NewProject = () => {
         
         setIsLoading(false)
               
-    }, [project, workers, equipments, datestart, geo, teh, managerId, companyId])
+    }, [project, workers, equipments, datestart, geo, teh, managerId, companyId, chatId])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -522,6 +525,7 @@ const NewProject = () => {
         }  
     }, [workers, equipments])
 
+    //сообщение о работах
     let tex = 'Ведутся технические работы!'
     const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
 
