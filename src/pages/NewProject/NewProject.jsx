@@ -67,9 +67,12 @@ const NewProject = () => {
     const [showName, setShowName] = useState(false)
     const [showSubname, setShowSubname] = useState(false)
 
+    const [showButtonEquipmentadd, setShowButtonEquipmentadd] = useState(true)
+
     // текущая дата
     const dateNow = new Date();
-    const date = dateNow.getFullYear() + "-0" + ((dateNow.getMonth())+1) + "-01 10:00:00"
+    const month = String(dateNow.getMonth()+1).padStart(2, "0");
+    const date = dateNow.getFullYear() + "-" + month + "-01 10:00:00"
 
     //проект
     const [project, setProject] = useState('');
@@ -208,7 +211,7 @@ const NewProject = () => {
     useEffect(() => {
         setIsLoading(true);
 
-        getManagerId(user?.id); //user?.id 
+        getManagerId('805436270'); //user?.id 
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
@@ -402,6 +405,9 @@ const NewProject = () => {
         e.preventDefault();
 
         showWorkadd ? setShowWorkadd(false) : setShowWorkadd(true)
+
+        //setShowButtonEquipmentadd(false)
+        showButtonEquipmentadd ? setShowButtonEquipmentadd(false) : setShowButtonEquipmentadd(true)
     }
 
     {/* Добавление работника */}
@@ -673,7 +679,7 @@ const NewProject = () => {
                 {/*Добавить оборудование*/}  
                 <MyButton 
                     onClick={clickShowEquipment} 
-                    style={{ width: '230px', borderColor: '#ecff76', backgroundColor: '#ecff76', color: '#000000'}}
+                    style={{ width: '230px', borderColor: '#ecff76', backgroundColor: '#ecff76', color: '#000000', display: showButtonEquipmentadd ? "" : "none"}}
                 >
                     {showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}
                 </MyButton>
