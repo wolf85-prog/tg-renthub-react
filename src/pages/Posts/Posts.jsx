@@ -12,7 +12,7 @@ import './Posts.css';
 function Posts() {
     const {user} = useTelegram();
 
-    const API_URL = 'https://proj.uley.team:8000/'
+    const API_URL = process.env.REACT_APP_API_URL
     const API_URL_MANAGER = API_URL + 'managers/chat/';
     const API_URL_PROJECTS = API_URL + 'projects/';
     const API_URL_BLOCKS = API_URL + 'blocks/';
