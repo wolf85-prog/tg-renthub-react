@@ -10,7 +10,6 @@ const UserProvider = ({ children }) => {
 	const {user} = useTelegram();
 
 	const [managerId, setManagerId] = useState("");
-	const [manager, setManager] = useState("");
 	const [projects, setProjects] = useState([]);
 
 
@@ -18,9 +17,8 @@ const UserProvider = ({ children }) => {
     useEffect(() => {
 
         const fetchData = async() => {
-            const manager = await getManagerId(user?.id) //user?.id '805436270'
-            console.log("manager context: ", manager)
-            setManager(manager)
+            const managerId = await getManagerId('805436270') //user?.id '805436270'
+            setManagerId(managerId)
         }
 
         fetchData()

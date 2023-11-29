@@ -1,16 +1,23 @@
 import React, {useEffect, useState, useMemo} from "react";
-import {useProjects} from "../../hooks/useProjects"
-import {useTelegram} from "../../hooks/useTelegram";
+import { useProjects } from "../../hooks/useProjects"
+import { useTelegram } from "../../hooks/useTelegram";
+import { useUsersContext } from "../../contexts/UserContext";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import MyButton from "../../components/UI/MyButton/MyButton";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
 import './Posts.css';
 
+import { getManagerId, getProjects } from './../../http/projectAPI';
+
 function Posts() {
     const {user} = useTelegram();
+
+    //const { managerId } = useUsersContext();
+
+    const [managerId, setManagerId] = useState("");
 
     const API_URL = process.env.REACT_APP_API_URL
     const API_URL_MANAGER = API_URL + 'managers/chat/';
@@ -40,31 +47,39 @@ function Posts() {
 
 //----------start--------------------------------------------------------------------------
     useEffect(() => {
-        console.log('start')
         setIsPostsLoading(true);
-        getManagerId();                    
+
+        const fetchData = async() => {
+            const managerId = await getManagerId('805436270') //user?.id '805436270'
+            console.log("manager context: ", managerId)
+            setManagerId(managerId)
+
+            getProjectData(managerId)
+        }
+
+        fetchData()
     },[])
 
     //1
-    const getManagerId = () => {
-        const url = API_URL_MANAGER + user?.id;  //'1408579113'; //'805436270'; //user?.id;
-        console.log(url)
-        const headers = { 'Content-Type': 'application/json' }
-        fetch(url, { headers })
-            .then(response => { 
-                return response.json()               
-            })
-            .then(data => {
+    // const getManagerId = () => {
+    //     const url = API_URL_MANAGER + user?.id;  //'1408579113'; //'805436270'; //user?.id;
+    //     console.log(url)
+    //     const headers = { 'Content-Type': 'application/json' }
+    //     fetch(url, { headers })
+    //         .then(response => { 
+    //             return response.json()               
+    //         })
+    //         .then(data => {
 
-                if (isEmptyObject(data)) {
-                    console.log('Данные о менеджере (' + user?.first_name + ') отсутствуют БД!')
-                    setIsPostsLoading(false);
-                } else {
-                    console.log('ManagerId: ', data) 
-                    getProjectData(data); 
-                }
-            })
-    }
+    //             if (isEmptyObject(data)) {
+    //                 console.log('Данные о менеджере (' + user?.first_name + ') отсутствуют БД!')
+    //                 setIsPostsLoading(false);
+    //             } else {
+    //                 console.log('ManagerId: ', data) 
+    //                 getProjectData(data); 
+    //             }
+    //         })
+    // }
 
     //2
     const getProjectData = (id) => {
