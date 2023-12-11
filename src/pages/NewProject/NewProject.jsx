@@ -1,4 +1,7 @@
 import React, {useState, useEffect, useCallback, useRef} from 'react';
+import {useNavigate} from "react-router-dom";
+import {useTelegram} from "../../hooks/useTelegram";
+
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewProject.css';
 import {Stack} from "@mui/material";
@@ -10,7 +13,6 @@ import Counter from "../../components/Counter/Counter";
 import Header from "../../components/Header/Header";
 import WorkerList from "../../components/WorkerList/WorkerList";
 import EquipmentList from "../../components/EquipmentList/EquipmentList";
-import {useNavigate} from "react-router-dom";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import CustomSelect2 from "../../components/UI/CustomSelect2/CustomSelect2";
 import ButtonMinus from "../../img/minus.png";
@@ -19,7 +21,7 @@ import ButtonMinus2 from "../../img/minus2.png";
 import ButtonPlus2 from "../../img/plus2.png";
 import Calendar from "../../img/calendar.svg";
 import GeoInput from "../../components/UI/GeoInput/GeoInput";
-import {useTelegram} from "../../hooks/useTelegram";
+
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
 import specData from "../../data/specData"
@@ -59,6 +61,7 @@ const NewProject = () => {
     //const navigate = useNavigate();
 
     const {tg, queryId, user} = useTelegram();
+    const navigate = useNavigate();
 
     const [modal, setModal] = useState(false)
     const [showWorkadd, setShowWorkadd] = useState(false)
@@ -534,6 +537,19 @@ const NewProject = () => {
     let tex = 'Ведутся технические работы!'
     const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
 
+
+    const handleClick = () => navigate(-1);
+
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", handleClick)
+        return () => {
+            tg.offEvent('backButtonClicked', handleClick)
+        }
+    }, [handleClick])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
     return (
 
