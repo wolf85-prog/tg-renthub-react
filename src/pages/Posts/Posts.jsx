@@ -10,13 +10,11 @@ import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
 import './Posts.css';
 
-import { getManagerId, getProjects } from './../../http/projectAPI';
-
 function Posts() {
     const {tg, user, onClose} = useTelegram();
-    //const { managerId } = useUsersContext();
+    const { managerId, status, projects } = useUsersContext();
 
-    const [managerId, setManagerId] = useState("");
+    const [setManagerId] = useState("");
 
     const API_URL = process.env.REACT_APP_API_URL
     const API_URL_MANAGER = API_URL + 'managers/chat/';
@@ -26,14 +24,16 @@ function Posts() {
 
     const [posts, setPosts] = useState([])
     const [posts2, setPosts2] = useState([]);
-    const [status, setStatus] = useState([]);
+    //const [status, setStatus] = useState([]);
 
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(posts2, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query);
           
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const arr_status = [] 
     const arrayPost = []
+
+//---------------------------------------------------------------------------------------
 
     function isEmptyObject(obj) {
         for (var i in obj) {
@@ -46,23 +46,24 @@ function Posts() {
 
 //----------start--------------------------------------------------------------------------
     useEffect(() => {
-        setIsPostsLoading(true);
+        //setIsPostsLoading(true);
+        console.log("projects: ", projects)
 
         const fetchData = async() => {
             const managerId = await getManagerId(user?.id) //user?.id '805436270'
-            console.log("manager context: ", managerId)
+            //console.log("manager context: ", managerId)
             setManagerId(managerId)
 
             getProjectData(managerId)
         }
 
-        fetchData()
+        //fetchData()
     },[])
 
     //1
     const getManagerId = () => {
         const url = API_URL_MANAGER + user?.id  //'1408579113'; //'805436270'; //user?.id;
-        console.log(url)
+        //console.log(url)
         const headers = { 'Content-Type': 'application/json' }
         fetch(url, { headers })
             .then(response => { 
@@ -71,10 +72,10 @@ function Posts() {
             .then(data => {
 
                 if (isEmptyObject(data)) {
-                    console.log('Данные о менеджере (' + user?.first_name + ') отсутствуют БД!')
+                    //console.log('Данные о менеджере (' + user?.first_name + ') отсутствуют БД!')
                     setIsPostsLoading(false);
                 } else {
-                    console.log('ManagerId: ', data) 
+                    //console.log('ManagerId: ', data) 
                     getProjectData(data); 
                 }
             })
@@ -82,14 +83,14 @@ function Posts() {
 
     //2
     const getProjectData = (id) => {
-        console.log('Get URL: '+ API_URL_PROJECTS + id)
+        //console.log('Get URL: '+ API_URL_PROJECTS + id)
         const headers = { 'Content-Type': 'application/json' }
         fetch(API_URL_PROJECTS + id, { headers })
             .then(response => {
                 return response.json()
             })
             .then(data => {
-                console.log("------ post: ", data)
+                //console.log("------ post: ", data)
                 setPosts(data);
             })
     }
@@ -137,51 +138,22 @@ function Posts() {
     
     
 
-    useEffect(() => {
-        const countItems = {}; // здесь будет храниться промежуточный результат
-        for (const item of posts) {
-            // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
-            //ВЫВОДИТЬ КНОПКИ БЕЗ ненужных кнопок фильтра
-            if (item.status_id && item.status_id.name != 'Test' && item.status_id.name != 'OnHold' && item.status_id.name != 'Deleted') {
-                countItems[item.status_id.name] = countItems[item.status_id.name] ? countItems[item.status_id.name] + 1 : 1;
-            }
-        }
-        //console.log('countItemsStatus: ', countItems);
+    // useEffect(() => {
 
-        const obj = {
-            title: 'All',
-            color: "gray",
-            count: '',
-        }
-        arr_status.push(obj) 
+    //     posts.map((post) => {
+    //         getBlocksData(post)
+    //     }); 
+
+    //     setTimeout(async ()=> {
+    //         setPosts2(arrayPost);
+    //         //setIsPostsLoading(false);
+    //     }, 4000)  
         
-        const objectArray = Object.entries(countItems);
-        objectArray.forEach(([key, value]) => {
-            const obj = {
-                title: key,
-                color: "",
-                count: value,
-            }
-            arr_status.push(obj) 
-        });
+    //     setTimeout(async ()=> {
+    //         setIsPostsLoading(false);
+    //     }, 8000) 
 
-        console.log('arr status: ', arr_status);
-        setStatus(arr_status);
-
-        posts.map((post) => {
-            getBlocksData(post)
-        }); 
-
-        setTimeout(async ()=> {
-            setPosts2(arrayPost);
-            //setIsPostsLoading(false);
-        }, 4000)  
-        
-        setTimeout(async ()=> {
-            setIsPostsLoading(false);
-        }, 8000) 
-
-    },[posts]);           //posts
+    // },[posts]);           //posts
 
     //раскрыть приложение на всю высоту 
     useEffect(()=>{       

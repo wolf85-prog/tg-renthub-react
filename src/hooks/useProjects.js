@@ -28,7 +28,8 @@ export const useProjects = (posts2, sort, query) => {
             if (query == 'All') {
                 return sortedPosts; //posts2; 
             }
-            return sortedPosts.filter(post => (post.status_id != null ? post.status_id.name : '') === query)  //post2
+            console.log("status: ", JSON.parse(post.status))
+            return sortedPosts.filter(post => (post.status != null ? JSON.parse(post.status) : '') === query)  //post2
         }
         return sortedPosts; //posts2 
 
