@@ -13,8 +13,7 @@ import './Posts.css';
 import { getManagerId, getProjects } from './../../http/projectAPI';
 
 function Posts() {
-    const {user} = useTelegram();
-
+    const {tg, user, onClose} = useTelegram();
     //const { managerId } = useUsersContext();
 
     const [managerId, setManagerId] = useState("");
@@ -50,7 +49,7 @@ function Posts() {
         setIsPostsLoading(true);
 
         const fetchData = async() => {
-            const managerId = await getManagerId('805436270') //user?.id '805436270'
+            const managerId = await getManagerId(user?.id) //user?.id '805436270'
             console.log("manager context: ", managerId)
             setManagerId(managerId)
 
@@ -61,25 +60,25 @@ function Posts() {
     },[])
 
     //1
-    // const getManagerId = () => {
-    //     const url = API_URL_MANAGER + user?.id;  //'1408579113'; //'805436270'; //user?.id;
-    //     console.log(url)
-    //     const headers = { 'Content-Type': 'application/json' }
-    //     fetch(url, { headers })
-    //         .then(response => { 
-    //             return response.json()               
-    //         })
-    //         .then(data => {
+    const getManagerId = () => {
+        const url = API_URL_MANAGER + user?.id  //'1408579113'; //'805436270'; //user?.id;
+        console.log(url)
+        const headers = { 'Content-Type': 'application/json' }
+        fetch(url, { headers })
+            .then(response => { 
+                return response.json()               
+            })
+            .then(data => {
 
-    //             if (isEmptyObject(data)) {
-    //                 console.log('Данные о менеджере (' + user?.first_name + ') отсутствуют БД!')
-    //                 setIsPostsLoading(false);
-    //             } else {
-    //                 console.log('ManagerId: ', data) 
-    //                 getProjectData(data); 
-    //             }
-    //         })
-    // }
+                if (isEmptyObject(data)) {
+                    console.log('Данные о менеджере (' + user?.first_name + ') отсутствуют БД!')
+                    setIsPostsLoading(false);
+                } else {
+                    console.log('ManagerId: ', data) 
+                    getProjectData(data); 
+                }
+            })
+    }
 
     //2
     const getProjectData = (id) => {
@@ -183,6 +182,25 @@ function Posts() {
         }, 8000) 
 
     },[posts]);           //posts
+
+    //раскрыть приложение на всю высоту 
+    useEffect(()=>{       
+        if (!tg.isExpanded) {
+           tg.expand() 
+        }       
+    }, [])
+
+    //показать кнопку Назад
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
 
 
     return (
