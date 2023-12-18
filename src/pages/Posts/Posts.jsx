@@ -5,7 +5,7 @@ import { useUsersContext } from "../../contexts/UserContext";
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 import MyButton from "../../components/UI/MyButton/MyButton";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
 import './Posts.css';
@@ -15,7 +15,7 @@ import { getManagerIdApi, getProjectsCashApi } from './../../http/projectAPI';
 function Posts() {
     const {tg, user, onClose} = useTelegram();
     const { userApp } = useUsersContext();
-
+    const navigate = useNavigate();
     const [managerId, setManagerId] = useState("");
 	const [projects, setProjects] = useState([]);
 	const [status, setStatus] = useState([]);
@@ -222,8 +222,8 @@ function Posts() {
 
 
     useEffect(()=>{
-        tg.setHeaderColor('#000') // установка цвета хедера
-        tg.setBackgroundColor('#000') // установка цвета бэкграунда
+        tg.setHeaderColor('#121212') // установка цвета хедера
+        tg.setBackgroundColor('#121212') // установка цвета бэкграунда
         
         if (!tg.isExpanded) {
            tg.expand() //раскрыть приложение на всю высоту 
@@ -245,6 +245,18 @@ function Posts() {
     }, [])
 
 
+
+    const onAddProject = () => {
+        navigate('/add-project')
+    }
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onAddProject)
+        return () => {
+            tg.offEvent('mainButtonClicked', onAddProject)
+        }
+    }, [onAddProject])
+
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Новая заявка',
@@ -252,17 +264,6 @@ function Posts() {
         })
     }, [])
 
-
-    const clickWorkhub = () => {
-        showFooter ? setShowFooter(false) : setShowFooter(true)
-    }
-
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', clickWorkhub)
-        return () => {
-            tg.offEvent('mainButtonClicked', clickWorkhub)
-        }
-    }, [clickWorkhub])
 
 
     return (

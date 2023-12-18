@@ -15,7 +15,7 @@ const ProjectWorkList = ({workers, defould}) => {
 
     let count_fio = 0;
 
-    console.log('workers: ', workers)
+    //console.log('workers: ', workers)
     //console.log(Object.keys(workers));   
 
     workers && Object.values(workers).map((value, index) => {
@@ -30,7 +30,7 @@ const ProjectWorkList = ({workers, defould}) => {
         arrayWorker.push(value.spec)              
     });
 
-    console.log("arrayWorker: ", arrayWorker2)
+    //console.log("arrayWorker: ", arrayWorker2)
 
     const countItems = {}; // здесь будет храниться промежуточный результат
     for (const item of arrayWorker) {
