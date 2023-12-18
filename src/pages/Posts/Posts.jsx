@@ -213,7 +213,7 @@ function Posts() {
 
 
     useEffect(()=>{
-        tg.setHeaderColor('#000000') // установка цвета хедера
+        tg.setHeaderColor('#121212') // установка цвета хедера
         tg.setBackgroundColor('#121212') // установка цвета бэкграунда
         
         if (!tg.isExpanded) {
@@ -255,7 +255,7 @@ function Posts() {
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Новая заявка',
-            color: '#000' //'#2e2e2e'
+            color: '#121212' //'#2e2e2e'
         })
     }, [])
 
@@ -276,7 +276,7 @@ function Posts() {
 
             {isPostsLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
-                : <ProjectList posts={sortedAndSearchedPosts} title=""/>
+                : <ProjectList posts={projects ? projects : sortedAndSearchedPosts} title=""/>
             }
 
         </div>
