@@ -57,7 +57,7 @@ function Posts() {
 				const projectsManager = res.filter((item) => item.manager === managerId)
 				console.log("------ post: ", projectsManager)
 				
-				setProjects(projectsManager)
+				//setProjects(projectsManager)
                 setProjects2(projectsManager)
 			}
         }
@@ -99,7 +99,7 @@ function Posts() {
         //console.log('arr status: ', arr_status);
         setStatus(arr_status);
         setIsPostsLoading(false);
-    },[projects]);  
+    },[projects2]);  
 
 //----------start--------------------------------------------------------------------------
     // useEffect(() => {
@@ -276,7 +276,7 @@ function Posts() {
 
             {isPostsLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
-                : <ProjectList posts={projects ? projects : sortedAndSearchedPosts} title=""/>
+                : <ProjectList posts={sortedAndSearchedPosts} title=""/>
             }
 
         </div>
