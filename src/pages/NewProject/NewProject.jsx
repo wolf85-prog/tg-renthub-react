@@ -538,7 +538,7 @@ const NewProject = () => {
     const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
 
 
-    const handleClick = () => navigate(-1);
+    const handleClick = () => navigate('/');
 
     useEffect(() => {
         tg.onEvent("backButtonClicked", handleClick)

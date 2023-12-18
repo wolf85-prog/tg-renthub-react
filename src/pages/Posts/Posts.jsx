@@ -283,20 +283,10 @@ function Posts() {
                 arr_status={status}
             />
 
-
-            {/* <div style={{marginBottom: '30px'}}>
-                <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>
-            </div> */}
-
             {isPostsLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
                 : <ProjectList posts={sortedAndSearchedPosts} title=""/>
             }
-            
-            
-            {/* <div className="footer">
-                <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>
-            </div>             */}
 
         </div>
     );
