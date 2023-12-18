@@ -245,6 +245,10 @@ function Posts() {
     }, [])
 
 
+    //кнопка Создать проект
+    useEffect(() => {
+        tg.MainButton.show();
+    }, [])
 
     const onAddProject = () => {
         navigate('/add-project')
