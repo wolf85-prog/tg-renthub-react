@@ -18,7 +18,7 @@ const ProjectWorkList = ({workers, defould}) => {
     console.log('workers: ', workers)
     //console.log(Object.keys(workers));   
 
-    Object.values(workers).map((value, index) => {
+    workers && Object.values(workers).map((value, index) => {
 
         const newWorker = {
             id: index+1,

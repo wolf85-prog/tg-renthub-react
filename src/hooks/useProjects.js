@@ -28,8 +28,9 @@ export const useProjects = (posts2, sort, query) => {
             if (query == 'All') {
                 return sortedPosts; //posts2; 
             }
-            console.log("status: ", JSON.parse(post.status))
-            return sortedPosts.filter(post => (post.status != null ? JSON.parse(post.status) : '') === query)  //post2
+            console.log("query: ", query)
+            console.log("sortedPosts: ", sortedPosts.filter(post => (post.status != null ? JSON.parse(post.status).name : '') === query))
+            return sortedPosts.filter(post => (post.status != null ? JSON.parse(post.status).name : '') === query)  //post2
         }
         return sortedPosts; //posts2 
 

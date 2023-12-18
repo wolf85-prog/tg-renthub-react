@@ -13,13 +13,17 @@ const UserProvider = ({ children }) => {
 	const [projects, setProjects] = useState([]);
 	const [status, setStatus] = useState([]);
 
+    const [userApp, setUserApp] = useState('1408579113');
+
 	const arr_status = [] 
 
 	// при первой загрузке приложения выполнится код ниже
     useEffect(() => {
 
         const fetchData = async() => {
-            const managerId = await getManagerIdApi('1408579113') //user?.id '805436270' '1408579113'
+            setUserApp(user?.id)
+
+            const managerId = await getManagerIdApi(user?.id) //user?.id '805436270' '1408579113'
             setManagerId(managerId)
 
 			if (!managerId) {
@@ -69,7 +73,7 @@ const UserProvider = ({ children }) => {
             arr_status.push(obj) 
         });
 
-        console.log('arr status: ', arr_status);
+        //console.log('arr status: ', arr_status);
         setStatus(arr_status);
 
     },[projects]);  
@@ -82,6 +86,7 @@ const UserProvider = ({ children }) => {
 			managerId,
 			setManagerId,
 			status,
+            userApp,
 		}}>
 			{children}
 		</UserContext.Provider>
