@@ -222,7 +222,7 @@ function Posts() {
 
 
     useEffect(()=>{
-        tg.setHeaderColor('#121212') // установка цвета хедера
+        tg.setHeaderColor('#000000') // установка цвета хедера
         tg.setBackgroundColor('#121212') // установка цвета бэкграунда
         
         if (!tg.isExpanded) {
