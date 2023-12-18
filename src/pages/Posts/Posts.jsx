@@ -255,7 +255,7 @@ function Posts() {
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Новая заявка',
-            color: '#121212' //'#2e2e2e'
+            color: '#000' //'#2e2e2e'
         })
     }, [])
 
