@@ -86,6 +86,7 @@ const UserProvider = ({ children }) => {
 			managerId,
 			setManagerId,
 			status,
+            setStatus,
             userApp,
 		}}>
 			{children}

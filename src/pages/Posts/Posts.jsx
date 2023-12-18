@@ -14,26 +14,16 @@ import { getManagerIdApi, getProjectsCashApi } from './../../http/projectAPI';
 
 function Posts() {
     const {tg, user, onClose} = useTelegram();
-    const { userApp } = useUsersContext();
+    const { userApp, projects, setProjects } = useUsersContext();
     const navigate = useNavigate();
     const [managerId, setManagerId] = useState("");
-	const [projects, setProjects] = useState([]);
+	const [projects2, setProjects2] = useState([]);
 	const [status, setStatus] = useState([]);
 
 	const arr_status = [] 
 
-    // const API_URL = process.env.REACT_APP_API_URL
-    // const API_URL_MANAGER = API_URL + 'managers/chat/';
-    // const API_URL_PROJECTS = API_URL + 'projects/';
-    // const API_URL_BLOCKS = API_URL + 'blocks/';
-    // const API_URL_DATABASE = API_URL + 'database/';
-
-    // const [posts, setPosts] = useState([])
-    // const [posts2, setPosts2] = useState([]);
-    //const [status, setStatus] = useState([]);
-
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(projects, filter.sort, filter.query);
+    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query);
           
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const arrayPost = []
@@ -68,6 +58,7 @@ function Posts() {
 				console.log("------ post: ", projectsManager)
 				
 				setProjects(projectsManager)
+                setProjects2(projectsManager)
 			}
         }
 
@@ -78,7 +69,7 @@ function Posts() {
 
 	useEffect(() => {
         const countItems = {}; // здесь будет храниться промежуточный результат
-        for (const item of projects) {
+        for (const item of projects2) {
             const status = JSON.parse(item.status)
             // если элемент уже был, то прибавляем 1, если нет - устанавливаем 1
             //ВЫВОДИТЬ КНОПКИ БЕЗ ненужных кнопок фильтра
@@ -105,7 +96,7 @@ function Posts() {
             arr_status.push(obj) 
         });
 
-        console.log('arr status: ', arr_status);
+        //console.log('arr status: ', arr_status);
         setStatus(arr_status);
         setIsPostsLoading(false);
     },[projects]);  
