@@ -10,7 +10,7 @@ import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
 import './Posts.css';
 
-import { getManagerIdApi, getProjectsCashApi } from './../../http/projectAPI';
+import { getManagerIdApi, getProjectsCashApi } from '../../http/projectAPI';
 
 function Posts() {
     const {tg, user, onClose} = useTelegram();

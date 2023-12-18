@@ -19,6 +19,7 @@ function App() {
             <CssBaseline />
                 <Routes>
                     <Route index element={<Posts />}/>
+                    <Route path={'posts'} element={<Posts />}/>
                     <Route path={'add-project'} element={<NewProject />}/>
                 </Routes>
         </ThemeProvider>
