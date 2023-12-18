@@ -136,31 +136,34 @@ function Posts() {
             
     }
     
-    
 
-    // useEffect(() => {
+    useEffect(() => {
+        posts.map((post) => {
+            getBlocksData(post)
+        }); 
 
-    //     posts.map((post) => {
-    //         getBlocksData(post)
-    //     }); 
-
-    //     setTimeout(async ()=> {
-    //         setPosts2(arrayPost);
-    //         //setIsPostsLoading(false);
-    //     }, 4000)  
+        setTimeout(async ()=> {
+            setPosts2(arrayPost);
+            //setIsPostsLoading(false);
+        }, 4000)  
         
-    //     setTimeout(async ()=> {
-    //         setIsPostsLoading(false);
-    //     }, 8000) 
+        setTimeout(async ()=> {
+            setIsPostsLoading(false);
+        }, 8000) 
 
-    // },[posts]);           //posts
+    },[posts]);           //posts
 
-    //раскрыть приложение на всю высоту 
-    useEffect(()=>{       
+
+    useEffect(()=>{
+        tg.setHeaderColor('#000') // установка цвета хедера
+        tg.setBackgroundColor('#000') // установка цвета бэкграунда
+        
         if (!tg.isExpanded) {
-           tg.expand() 
-        }       
+           tg.expand() //раскрыть приложение на всю высоту 
+        }
+        
     }, [])
+
 
     //показать кнопку Назад
     useEffect(() => {
@@ -173,6 +176,26 @@ function Posts() {
     useEffect(() => {
         tg.BackButton.show();
     }, [])
+
+
+    useEffect(() => {
+        tg.MainButton.setParams({
+            text: 'Новая заявка',
+            color: '#000' //'#2e2e2e'
+        })
+    }, [])
+
+
+    const clickWorkhub = () => {
+        showFooter ? setShowFooter(false) : setShowFooter(true)
+    }
+
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', clickWorkhub)
+        return () => {
+            tg.offEvent('mainButtonClicked', clickWorkhub)
+        }
+    }, [clickWorkhub])
 
 
     return (
@@ -189,9 +212,9 @@ function Posts() {
             />
 
 
-            <div style={{marginBottom: '30px'}}>
+            {/* <div style={{marginBottom: '30px'}}>
                 <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>
-            </div>
+            </div> */}
 
             {isPostsLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
@@ -199,9 +222,9 @@ function Posts() {
             }
             
             
-            <div className="footer">
+            {/* <div className="footer">
                 <Link to={'/add-project'}><MyButton>Новый проект</MyButton></Link>
-            </div>            
+            </div>             */}
 
         </div>
     );

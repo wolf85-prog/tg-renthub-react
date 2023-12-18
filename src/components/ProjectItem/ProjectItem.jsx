@@ -48,11 +48,11 @@ const ProjectItem = (props) => {
     const formatted2 = `${date2} ${monthName2} ${year}`;
 
 
-    Object.values(props.post.workers).map((worker) =>
+    props.post.workers && Object.values(props.post.workers).map((worker) =>
         worker.fio ? count++ : count
     )
 
-    Object.values(props.post.workers).map((worker2) =>
+    props.post.workers && Object.values(props.post.workers).map((worker2) =>
         worker2.spec ? count2++ : count2
     )
 
@@ -64,10 +64,10 @@ const ProjectItem = (props) => {
                     {formatted}
                 </div>
 
-                <ProjectWorkList workers={props.post.workers} defould={count}/>
+                <ProjectWorkList workers={props.post?.workers} defould={count}/>
 
                 {
-                    (props.post.workers.length && count !=0)
+                    (props.post.workers && count !=0)
                     ? <p><span className="find_span">Найдено {count} из {props.post.workers.length - (props.post.workers.length - count2)}</span></p> 
                     : <p><span className="nofind_span"></span></p>
                 }
