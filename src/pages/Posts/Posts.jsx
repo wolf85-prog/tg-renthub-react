@@ -50,6 +50,10 @@ function Posts() {
             setProjects2(projects)
             setIsPostsLoading(false) 
         }
+
+        setTimeout(()=> {
+            setIsPostsLoading(false) 
+        }, 2000)
         
     }, [projects]);
  
@@ -99,7 +103,7 @@ function Posts() {
     useEffect(() => {
         tg.MainButton.setParams({
             text: 'Новая заявка',
-            color: '#fff' //'#2e2e2e'
+            color: '#000' //'#2e2e2e'
         })
     }, [])
 
