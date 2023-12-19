@@ -27,6 +27,8 @@ import Loader from "../../components/UI/Loader/Loader";
 import specData from "../../data/specData"
 import dataEquipment from "../../data/dataEquipment"
 
+import { getManagerIdApi, getProjectsApi, getProjectsCashApi } from './../../http/projectAPI';
+
 
 const NewProject = () => {
 
@@ -116,6 +118,50 @@ const NewProject = () => {
         return true;
     }
 
+    
+
+    // при первой загрузке приложения выполнится код ниже
+    useEffect(() => {
+        const fetch = async() => {
+            setIsLoading(true);
+
+            getManagerId('1408579113'); //user?.id 
+            const managerId = await getManagerIdApi(user?.id) //user?.id '805436270' '1408579113'
+
+            // устанавливаем категории
+            if (specData.length > 0 && specData) {
+                setCategories(specData);
+            }
+
+            // и модели из первой категории по умолчанию
+            if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
+                setModels(specData[0].models);
+            }
+
+            
+            // устанавливаем категории оборудования
+            if (dataEquipment.length > 0 && dataEquipment) {
+                setCategories2(dataEquipment);
+            }
+
+            // и наименования оборудования из первой категории по умолчанию
+            if (dataEquipment.length > 0 && dataEquipment[0].names && dataEquipment[0].names.length > 0) {
+                setNames(dataEquipment[0].names);
+            }
+
+            // и поднаименования оборудования из первой категории по умолчанию
+            if (dataEquipment.length > 0 && dataEquipment[0].subnames && dataEquipment[0].subnames.length > 0 ) {
+                //setNames(dataEquipment[0].names);
+                setSubNames(dataEquipment[0].subnames);
+            }
+        }
+        
+
+        fetch()
+
+    }, []);
+
+
     const createManager = (id) => {
         const data = {
             id: id.toString(),
@@ -184,42 +230,6 @@ const NewProject = () => {
                 setChatId(user?.id)          
             })
     }
-
-    // при первой загрузке приложения выполнится код ниже
-    useEffect(() => {
-        setIsLoading(true);
-
-        getManagerId('1408579113'); //user?.id 
-
-        // устанавливаем категории
-        if (specData.length > 0 && specData) {
-            setCategories(specData);
-        }
-
-        // и модели из первой категории по умолчанию
-        if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
-            setModels(specData[0].models);
-        }
-
-        
-        // устанавливаем категории оборудования
-        if (dataEquipment.length > 0 && dataEquipment) {
-            setCategories2(dataEquipment);
-        }
-
-        // и наименования оборудования из первой категории по умолчанию
-        if (dataEquipment.length > 0 && dataEquipment[0].names && dataEquipment[0].names.length > 0) {
-            setNames(dataEquipment[0].names);
-        }
-
-        // и поднаименования оборудования из первой категории по умолчанию
-        if (dataEquipment.length > 0 && dataEquipment[0].subnames && dataEquipment[0].subnames.length > 0 ) {
-            //setNames(dataEquipment[0].names);
-            setSubNames(dataEquipment[0].subnames);
-        }
-
-
-    }, []);
 
     //------------------------------------------------------
 

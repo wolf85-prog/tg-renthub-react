@@ -30,16 +30,6 @@ function Posts() {
 
 //---------------------------------------------------------------------------------------
 
-    function isEmptyObject(obj) {
-        for (var i in obj) {
-            if (obj.hasOwnProperty(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-
 	// при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         setIsPostsLoading(true)
