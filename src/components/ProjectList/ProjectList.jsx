@@ -7,9 +7,9 @@ const ProjectList = ({posts, title, remove}) => {
     
     if (!posts.length) {
         return (
-            <h2 style={{textAlign: 'center'}}>
-                Проекты не найдены
-            </h2>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '80vh'}}>
+                <h2>Проекты не найдены</h2>
+            </div>       
         )
     } else {
         console.log("Кол-во проектов: ", posts.length)
