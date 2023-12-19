@@ -17,6 +17,13 @@ const UserProvider = ({ children }) => {
 
 	const arr_status = [] 
 
+
+    //работники
+    const [workers, setWorkers] = useState([])
+
+    //количество работников
+    const [count, setCount] = useState(1)
+
 	// при первой загрузке приложения выполнится код ниже
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
@@ -47,6 +54,10 @@ const UserProvider = ({ children }) => {
 
     }, []);
 
+
+    useEffect(() => {
+        console.log("workers context: ", workers)
+    }, [workers])
     
 
 	// useEffect(() => {
@@ -92,7 +103,11 @@ const UserProvider = ({ children }) => {
 			status,
             setStatus,
             userApp,
-            setUserApp
+            setUserApp,
+            workers, 
+            setWorkers,
+            count,
+            setCount
 		}}>
 			{children}
 		</UserContext.Provider>

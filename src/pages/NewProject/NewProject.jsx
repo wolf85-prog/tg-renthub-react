@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback, useRef} from 'react';
 import {useNavigate} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
-
+import { useUsersContext } from "../../contexts/UserContext";
 import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewProject.css';
 import {Stack} from "@mui/material";
@@ -27,30 +27,6 @@ import Loader from "../../components/UI/Loader/Loader";
 import specData from "../../data/specData"
 import dataEquipment from "../../data/dataEquipment"
 
-const RedditTextField = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        border: '2px solid #76A9FF',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
-
 
 const NewProject = () => {
 
@@ -58,10 +34,10 @@ const NewProject = () => {
     const API_URL_MANAGER = API_URL + 'managers/chat/';
     const API_URL_COMPANY = API_URL + 'manager/';
 
-    //const navigate = useNavigate();
-
-    const {tg, queryId, user} = useTelegram();
     const navigate = useNavigate();
+    const {tg, queryId, user} = useTelegram();
+
+    const { workers, setWorkers, count, setCount } = useUsersContext();
 
     const [modal, setModal] = useState(false)
     const [showWorkadd, setShowWorkadd] = useState(false)
@@ -104,12 +80,11 @@ const NewProject = () => {
     const [disabled2, setDisabled2] = useState(true)
     const [disabled3, setDisabled3] = useState(true)
 
-    //количество работников
-    const [count, setCount] = useState(1)
+    
     //работник
     const [worker, setWorker] = useState({id: '', cat: '', spec: '', count: 1, icon: ''})
-    //работники
-    const [workers, setWorkers] = useState([])
+    const [worker2, setWorker2] = useState({id: '', cat: '', spec: '', count: 1, icon: ''})
+
 
     //количество оборудования
     const [count2, setCount2] = useState(1)
@@ -214,7 +189,7 @@ const NewProject = () => {
     useEffect(() => {
         setIsLoading(true);
 
-        getManagerId(user?.id); //user?.id 
+        getManagerId('1408579113'); //user?.id 
 
         // устанавливаем категории
         if (specData.length > 0 && specData) {
@@ -337,12 +312,68 @@ const NewProject = () => {
         const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
         const model = models.find(item => item.id === modelId);
 
-        setWorker({...worker, spec: model.name})
+        setWorker2({...worker, spec: model.name})
 
-        setDisabledBtn(false)
+        setDisabledBtn(false)  
+    }
+
+    useEffect(()=> {
+        if (worker2.cat !== '' || worker2.spec !== '') {
+            setWorkers([...workers, {...worker2, id: Date.now()}])
+        }
+        //setWorker({cat: '', spec: '', count: 1, icon: ''})
+        //setWorker2({cat: '', spec: '', count: 1, icon: ''})
+
+        setCount(1);
+        setSelectedElement("");
+
+        setDisabled(true);
+        setShowSpec(false)
+        setDisabledBtn(true);
+    }, [worker2])
+
+
+     {/* Показать Добавление работника */}
+     const clickShowWorker = (e) => {
+        e.preventDefault();
+
+        showWorkadd ? setShowWorkadd(false) : setShowWorkadd(true)
+
+        //setShowButtonEquipmentadd(false)
+        showButtonEquipmentadd ? setShowButtonEquipmentadd(false) : setShowButtonEquipmentadd(true)
+    }
+
+    {/* Добавление работника */}
+    const addNewWorker = (e) => {
+        e.preventDefault();
+
+        if (worker.cat !== '' || worker.spec !== '') {
+            setWorkers([...workers, {...worker, id: Date.now()}])
+        }
+        setWorker({cat: '', spec: '', count: 1, icon: ''})
+
+        setCount(1);
+        setSelectedElement("");
+
+        setDisabled(true);
+        setShowSpec(false)
+        setDisabledBtn(true);
+    }
+
+    {/* Удаление работника */}
+    const removeWorker = (worker) => {
+        setWorkers(workers.filter(p => p.id !== worker.id))
+    }
+
+    {/* Правка работника */}
+    const changeWorker = (worker) => {
+        setWorkers(workers.filter(p => p.id !== worker.id))
     }
 
 
+ //----------------------------------------------------------------------------------------------------   
+
+    //оборудование
     // 1. при выборе нового значения в категории
     const onCategoriesSelectChange2 = (e) => {
 
@@ -403,38 +434,6 @@ const NewProject = () => {
         setDisabledBtn2(false)
     }
 
-     {/* Показать Добавление работника */}
-     const clickShowWorker = (e) => {
-        e.preventDefault();
-
-        showWorkadd ? setShowWorkadd(false) : setShowWorkadd(true)
-
-        //setShowButtonEquipmentadd(false)
-        showButtonEquipmentadd ? setShowButtonEquipmentadd(false) : setShowButtonEquipmentadd(true)
-    }
-
-    {/* Добавление работника */}
-    const addNewWorker = (e) => {
-        e.preventDefault();
-
-        if (worker.cat !== '' || worker.spec !== '') {
-            setWorkers([...workers, {...worker, id: Date.now()}])
-        }
-        setWorker({cat: '', spec: '', count: 1, icon: ''})
-
-        setCount(1);
-        setSelectedElement("");
-
-        setDisabled(true);
-        setShowSpec(false)
-        setDisabledBtn(true);
-    }
-
-    {/* Удаление работника */}
-    const removeWorker = (worker) => {
-        setWorkers(workers.filter(p => p.id !== worker.id))
-    }
-
 
     {/* Показать Добавление оборудования */}
     const clickShowEquipment = (e) => {
@@ -472,6 +471,7 @@ const NewProject = () => {
         setEquipments(equipments.filter(p => p.id !== equipment.id))
     }
 
+//-------------------------------------------------------------------------------------
 
     //отправка данных в telegram-бот
     const onSendData = useCallback(() => {
@@ -564,7 +564,7 @@ const NewProject = () => {
             <Header header={{title: 'Новый проект', icon: 'false'}}/>
 
             {isLoading
-                ? <div style={{display: 'flex', justifyContent: 'center', marginTop: '50px'}}><Loader/></div>
+                ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}><Loader/></div>
                 : <form>
                 {/*Название*/}
                 <div className="text-field text-field_floating">
@@ -618,21 +618,7 @@ const NewProject = () => {
                     />
                 </div> */}
 
-                {/*Техническое задание*/}
-                <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                     style={{borderRadius: '10px'}}
-                                     id="outlined-multiline-flexible"
-                                     label="Техническое задание"
-                                     variant="filled"
-                                     value={teh}
-                                     onChange={onChangeTeh}
-                                     multiline
-                                     rows={4}
-                                     inputProps={{maxLength :500}}
-                                     helperText = {`${countChar}/500`}
-                    />
-                </div>
+                
 
                 <MyButton onClick={clickShowWorker} style={{ width: '230px' }}>{showWorkadd ? 'Убрать специалистов' : 'Добавить специалистов'}</MyButton>
                 <div style={{ display: showWorkadd ? "block" : "none" }}>
@@ -670,7 +656,7 @@ const NewProject = () => {
                     </label>
 
 
-                    <p style={{marginTop: "15px", color: '#76A9FF'}}>
+                    {/* <p style={{marginTop: "15px", color: '#76A9FF'}}>
                         Количество
                     </p>
 
@@ -690,12 +676,12 @@ const NewProject = () => {
                             onClick={addNewWorker}
                         >Добавить
                         </MyButton>
-                    </p>
+                    </p> */}
 
                 </div>
 
                 {/*список работников*/}
-                <WorkerList remove={removeWorker} workers={workers} />
+                <WorkerList remove={removeWorker} workers={workers} change={changeWorker}/>
 
                 
 
@@ -754,7 +740,7 @@ const NewProject = () => {
                     </label>
 
 
-                    <p style={{marginTop: "15px", color: '#ECFF76'}}>
+                    {/* <p style={{marginTop: "15px", color: '#ECFF76'}}>
                         Количество
                     </p>
 
@@ -775,12 +761,29 @@ const NewProject = () => {
                             onClick={addNewEquipment}
                         >Добавить
                         </MyButton>
-                    </p>
+                    </p> */}
 
                 </div>
 
                 {/*список оборудования*/}
                 <EquipmentList remove={removeEquipment} equipments={equipments} /> 
+
+
+                {/*Техническое задание*/}
+                <div className="text-field text-field_floating" style={{marginTop: '25px'}}>
+                    <RedditTextField fullWidth
+                                     style={{borderRadius: '10px'}}
+                                     id="outlined-multiline-flexible"
+                                     label="Техническое задание"
+                                     variant="filled"
+                                     value={teh}
+                                     onChange={onChangeTeh}
+                                     multiline
+                                     rows={4}
+                                     inputProps={{maxLength :500}}
+                                     helperText = {`${countChar}/500`}
+                    />
+                </div>
                 
 
                 <MyModal visible={modal} setVisible={setModal}>
@@ -801,3 +804,27 @@ const NewProject = () => {
 }
 
 export default NewProject;
+
+const RedditTextField = styled((props) => (
+    <TextField InputProps={{ disableUnderline: true }} {...props}  />
+))(({ theme }) => ({
+    '& .MuiFilledInput-root': {
+        border: '2px solid #76A9FF',
+        overflow: 'hidden',
+        borderRadius: 10,
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+        transition: theme.transitions.create([
+            'border-color',
+            'background-color',
+            'box-shadow',
+        ]),
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
+        '&.Mui-focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
