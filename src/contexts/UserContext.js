@@ -24,7 +24,7 @@ const UserProvider = ({ children }) => {
         setUserApp(user?.id)
 
         const fetchData = async() => {
-            const managerId = await getManagerIdApi(user?.id) //user?.id '805436270' '1408579113'
+            const managerId = await getManagerIdApi('1408579113') //user?.id '805436270' '1408579113'
             setManagerId(managerId)
 
 			if (!managerId) {

@@ -538,6 +538,13 @@ const NewProject = () => {
     const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
 
 
+    useEffect(()=>{
+        tg.setHeaderColor('#121212') // установка цвета хедера
+        tg.setBackgroundColor('#121212') // установка цвета бэкграунда
+        
+    }, [])
+
+
     const handleClick = () => navigate('/');
 
     useEffect(() => {

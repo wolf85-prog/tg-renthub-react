@@ -57,7 +57,7 @@ const ProjectItem = (props) => {
     )
 
     return (
-        <div className={`box ${statusColor}`}>
+        <div className='box'>
             <div className="post__content">
                 <div className="post_title">{props.post.title}</div>
                 <div className="subscribe">
