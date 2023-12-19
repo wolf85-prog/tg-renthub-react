@@ -88,8 +88,8 @@ const WorkerItem = (props) => {
                     className="inputSpec"
                     defaultValue=""
                     id="bootstrap-input2"
-                    value={count}
-                    onChange={onChangeCount}
+                    value={props.worker.count}
+                    //onChange={onChangeCount}
                 />
             </FormControl>
 

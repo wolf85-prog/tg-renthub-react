@@ -125,7 +125,7 @@ const NewProject = () => {
         const fetch = async() => {
             setIsLoading(true);
 
-            getManagerId('1408579113'); //user?.id 
+            getManagerId(user?.id); //user?.id 
             const managerId = await getManagerIdApi(user?.id) //user?.id '805436270' '1408579113'
 
             // устанавливаем категории
@@ -322,25 +322,26 @@ const NewProject = () => {
         const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
         const model = models.find(item => item.id === modelId);
 
-        setWorker2({...worker, spec: model.name})
+        setWorker({...worker, spec: model.name})
+        //setWorker2({...worker, spec: model.name})
 
         setDisabledBtn(false)  
     }
 
-    useEffect(()=> {
-        if (worker2.cat !== '' || worker2.spec !== '') {
-            setWorkers([...workers, {...worker2, id: Date.now()}])
-        }
-        //setWorker({cat: '', spec: '', count: 1, icon: ''})
-        //setWorker2({cat: '', spec: '', count: 1, icon: ''})
+    // useEffect(()=> {
+    //     if (worker2.cat !== '' || worker2.spec !== '') {
+    //         setWorkers([...workers, {...worker2, id: Date.now()}])
+    //     }
+    //     //setWorker({cat: '', spec: '', count: 1, icon: ''})
+    //     //setWorker2({cat: '', spec: '', count: 1, icon: ''})
 
-        setCount(1);
-        setSelectedElement("");
+    //     setCount(1);
+    //     setSelectedElement("");
 
-        setDisabled(true);
-        setShowSpec(false)
-        setDisabledBtn(true);
-    }, [worker2])
+    //     setDisabled(true);
+    //     setShowSpec(false)
+    //     setDisabledBtn(true);
+    // }, [worker2])
 
 
      {/* Показать Добавление работника */}
@@ -666,7 +667,7 @@ const NewProject = () => {
                     </label>
 
 
-                    {/* <p style={{marginTop: "15px", color: '#76A9FF'}}>
+                    <p style={{marginTop: "15px", color: '#76A9FF'}}>
                         Количество
                     </p>
 
@@ -686,7 +687,7 @@ const NewProject = () => {
                             onClick={addNewWorker}
                         >Добавить
                         </MyButton>
-                    </p> */}
+                    </p>
 
                 </div>
 
