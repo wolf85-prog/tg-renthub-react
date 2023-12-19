@@ -1,12 +1,43 @@
 import {$host} from "./index";
 
+export const getManagerApi = async (id) =>{
+    try {
+       let response = await $host.get(`managers/cash/${id}`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getManagerApi api from webapp-react", error.message);
+    }
+}
+
+export const createManagerApi = async (data) =>{
+    try {
+       let response = await $host.post(`managers`, data);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling createManagerApi api from webapp-react", error.message);
+    }
+}
+
 export const getManagerIdApi = async (id) =>{
     try {
        let response = await $host.get(`managers/chat/${id}`);
        //console.log(response);
        return response.data;
     } catch (error) {
-        console.log("error while calling getManagerId api from webapp-react", error.message);
+        console.log("error while calling getManagerIdApi api from webapp-react", error.message);
+    }
+}
+
+
+export const getCompanyIdApi = async (id) =>{
+    try {
+       let response = await $host.get(`manager/${id}`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getCompanyIdApi api from webapp-react", error.message);
     }
 }
 

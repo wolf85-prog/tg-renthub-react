@@ -27,14 +27,14 @@ import Loader from "../../components/UI/Loader/Loader";
 import specData from "../../data/specData"
 import dataEquipment from "../../data/dataEquipment"
 
-import { getManagerIdApi, getProjectsApi, getProjectsCashApi } from './../../http/projectAPI';
+import { createManagerApi, getManagerApi, getManagerIdApi, getCompanyIdApi } from './../../http/projectAPI';
 
 
 const NewProject = () => {
 
-    const API_URL = 'https://proj.uley.team:8000/'
-    const API_URL_MANAGER = API_URL + 'managers/chat/';
-    const API_URL_COMPANY = API_URL + 'manager/';
+    // const API_URL = 'https://proj.uley.team:8000/'
+    // const API_URL_MANAGER = API_URL + 'managers/chat/';
+    // const API_URL_COMPANY = API_URL + 'manager/';
 
     const navigate = useNavigate();
     const {tg, queryId, user} = useTelegram();
@@ -125,8 +125,35 @@ const NewProject = () => {
         const fetch = async() => {
             setIsLoading(true);
 
-            getManagerId(user?.id); //user?.id 
-            const managerId = await getManagerIdApi(user?.id) //user?.id '805436270' '1408579113'
+            //getManagerId('1408579113'); //user?.id 
+            
+            
+            const manager = await getManagerApi('1408579113') //user?.id '805436270' '1408579113'
+
+            if (isEmptyObject(manager)) {
+                console.log(console.log("Менеджер не найден!"))
+                const newManager = await createManagerApi({
+                    id: user?.id, 
+                    firstname: user?.first_name,
+                    lastname: user?.last_name,
+                })
+                
+                setTimeout(async ()=> {
+                    const managerId = await getManagerIdApi(user?.id)
+                    const companyId = await getCompanyIdApi(user?.id)
+
+                    setManagerId(managerId)
+                    setCompanyId(companyId)
+                    setIsLoading(false) 
+                }, 4000)  
+            } else {
+                console.log(console.log("manager: ", manager))
+                setManagerId(manager.id)
+                setCompanyId(manager.companyId)
+                setIsLoading(false) 
+            }
+
+            setChatId(user?.id) 
 
             // устанавливаем категории
             if (specData.length > 0 && specData) {
@@ -162,74 +189,74 @@ const NewProject = () => {
     }, []);
 
 
-    const createManager = (id) => {
-        const data = {
-            id: id.toString(),
-            firstname: user?.first_name,
-            lastname: user?.last_name,
-        }
+    // const createManager = (id) => {
+    //     const data = {
+    //         id: id.toString(),
+    //         firstname: user?.first_name,
+    //         lastname: user?.last_name,
+    //     }
 
-        fetch(API_URL + 'manager', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        })
-    }
+    //     fetch(API_URL + 'manager', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    // }
 
-    const getManagerId2 = (id) => {
-        const url = API_URL_MANAGER + id; //id
-        const headers = { 'Content-Type': 'application/json' }
-        fetch(url, { headers })
-            .then(response => { 
-                return response.json()               
-            })
-            .then(data => {
-                console.log('ManagerId: ', data) 
-                setManagerId(data)                
-                getCompanyId(user?.id);                                      
-            })
-    }
+    // const getManagerId2 = (id) => {
+    //     const url = API_URL_MANAGER + id; //id
+    //     const headers = { 'Content-Type': 'application/json' }
+    //     fetch(url, { headers })
+    //         .then(response => { 
+    //             return response.json()               
+    //         })
+    //         .then(data => {
+    //             console.log('ManagerId: ', data) 
+    //             setManagerId(data)                
+    //             getCompanyId(user?.id);                                      
+    //         })
+    // }
 
-    const getManagerId = (id) => {
-        const url = API_URL_MANAGER + id; //id
-        const headers = { 'Content-Type': 'application/json' }
-        fetch(url, { headers })
-            .then(response => { 
-                return response.json()               
-            })
-            .then(data => {
-                if (isEmptyObject(data)) {
-                    console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД! Создаем менеджера!')
-                    createManager(id)
-                    setTimeout(async ()=> {
-                        getManagerId2(id)
-                    }, 4000)                    
-                } else {
-                    console.log('ManagerId: ', data) 
-                    setManagerId(data)                
-                    getCompanyId(id);  
-                } 
+    // const getManagerId = (id) => {
+    //     const url = API_URL_MANAGER + id; //id
+    //     const headers = { 'Content-Type': 'application/json' }
+    //     fetch(url, { headers })
+    //         .then(response => { 
+    //             return response.json()               
+    //         })
+    //         .then(data => {
+    //             if (isEmptyObject(data)) {
+    //                 console.log('Данные о менеджере (' + id + ', ' + user?.first_name + ') отсутствуют БД! Создаем менеджера!')
+    //                 createManager(id)
+    //                 setTimeout(async ()=> {
+    //                     getManagerId2(id)
+    //                 }, 4000)                    
+    //             } else {
+    //                 console.log('ManagerId: ', data) 
+    //                 setManagerId(data)                
+    //                 getCompanyId(id);  
+    //             } 
                                       
-            })
-    }
+    //         })
+    // }
 
-    const getCompanyId = (id) => {
-        const url = API_URL_COMPANY + id;
-        const headers = { 'Content-Type': 'application/json' }
-        fetch(url, { headers })
-            .then(response => { 
-                return response.json()               
-            })
-            .then(data => {
-                console.log('CompanyId: ', data)
-                //isEmptyObject(data) ? setModal(true) : setModal(false)
-                setCompanyId(data) 
-                setIsLoading(false) 
-                setChatId(user?.id)          
-            })
-    }
+    // const getCompanyId = (id) => {
+    //     const url = API_URL_COMPANY + id;
+    //     const headers = { 'Content-Type': 'application/json' }
+    //     fetch(url, { headers })
+    //         .then(response => { 
+    //             return response.json()               
+    //         })
+    //         .then(data => {
+    //             console.log('CompanyId: ', data)
+    //             //isEmptyObject(data) ? setModal(true) : setModal(false)
+    //             setCompanyId(data) 
+    //             setIsLoading(false) 
+    //             setChatId(user?.id)          
+    //         })
+    // }
 
     //------------------------------------------------------
 
@@ -610,29 +637,9 @@ const NewProject = () => {
                     </LocalizationProvider>
                 </div>
 
-                {/*Геолокация*/}
-                <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                     label="Адрес"
-                                     id="geo"
-                                     variant="filled"
-                                     value={geo}
-                                     onChange={onChangeGeodata}
-                    />
-                </div>
-                {/* <div className="text-field text-field_floating">
-                    <GeoInput
-                        add={addGeo}
-                        value={geo}
-                        //value={geodata}
-                        //onChange={onChangeGeodata}
-                    />
-                </div> */}
 
-                
-
-                <MyButton onClick={clickShowWorker} style={{ width: '230px' }}>{showWorkadd ? 'Убрать специалистов' : 'Добавить специалистов'}</MyButton>
-                <div style={{ display: showWorkadd ? "block" : "none" }}>
+                {/* <MyButton onClick={clickShowWorker} style={{ width: '230px' }}>{showWorkadd ? 'Убрать специалистов' : 'Добавить специалистов'}</MyButton> */}
+                {/* <div style={{ display: showWorkadd ? "block" : "none" }}> */}
                     <label>
                         <p
                             style={{
@@ -689,7 +696,7 @@ const NewProject = () => {
                         </MyButton>
                     </p>
 
-                </div>
+                {/* </div> */}
 
                 {/*список работников*/}
                 <WorkerList remove={removeWorker} workers={workers} change={changeWorker}/>
@@ -697,14 +704,14 @@ const NewProject = () => {
                 
 
                 {/*Добавить оборудование*/}  
-                <MyButton 
+                {/* <MyButton 
                     onClick={clickShowEquipment} 
                     style={{ width: '230px', borderColor: '#ecff76', backgroundColor: '#ecff76', color: '#000000', display: showButtonEquipmentadd ? "" : "none"}}
                 >
                     {showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}
-                </MyButton>
+                </MyButton> */}
             
-                <div style={{ display: showEquipmentadd ? "block" : "none" }}>
+                {/* <div style={{ display: showEquipmentadd ? "block" : "none" }}>
                     <label>
                         <p style={{
                                 margin: '20px 5px',
@@ -748,7 +755,7 @@ const NewProject = () => {
                                 onChange={onSubNameSelectChange}
                             />
                         </div>
-                    </label>
+                    </label> */}
 
 
                     {/* <p style={{marginTop: "15px", color: '#ECFF76'}}>
@@ -772,13 +779,32 @@ const NewProject = () => {
                             onClick={addNewEquipment}
                         >Добавить
                         </MyButton>
-                    </p> */}
+                    </p> 
 
-                </div>
+                </div>*/}
 
                 {/*список оборудования*/}
-                <EquipmentList remove={removeEquipment} equipments={equipments} /> 
+                {/* <EquipmentList remove={removeEquipment} equipments={equipments} />  */}
 
+
+                {/*Геолокация*/}
+                <div className="text-field text-field_floating">
+                    <RedditTextField fullWidth
+                                     label="Адрес"
+                                     id="geo"
+                                     variant="filled"
+                                     value={geo}
+                                     onChange={onChangeGeodata}
+                    />
+                </div>
+                {/* <div className="text-field text-field_floating">
+                    <GeoInput
+                        add={addGeo}
+                        value={geo}
+                        //value={geodata}
+                        //onChange={onChangeGeodata}
+                    />
+                </div> */}
 
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating" style={{marginTop: '25px'}}>
