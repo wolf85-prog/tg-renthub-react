@@ -32,9 +32,8 @@ import { createManagerApi, getManagerApi, getManagerIdApi, getCompanyIdApi } fro
 
 const NewProject = () => {
 
-    // const API_URL = 'https://proj.uley.team:8000/'
-    // const API_URL_MANAGER = API_URL + 'managers/chat/';
-    // const API_URL_COMPANY = API_URL + 'manager/';
+    const API_URL = process.env.REACT_APP_API_URL
+
 
     const navigate = useNavigate();
     const {tg, queryId, user} = useTelegram();
@@ -539,23 +538,13 @@ const NewProject = () => {
         tg.MainButton.hide();
         setIsLoading(true)
 
-        if (project === 'Проект XYZ') {
-            fetch(API_URL + 'web-test-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-        } else {
-            fetch(API_URL + 'web-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-        }
+        fetch(API_URL + 'web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
         
         setIsLoading(false)
               
