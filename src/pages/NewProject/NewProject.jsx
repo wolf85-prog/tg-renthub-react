@@ -127,33 +127,43 @@ const NewProject = () => {
 
             //getManagerId('1408579113'); //user?.id 
             
-            
-            const manager = await getManagerApi('1408579113') //user?.id '805436270' '1408579113'
+            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113'
 
             if (isEmptyObject(manager)) {
                 console.log(console.log("Менеджер не найден!"))
-                const newManager = await createManagerApi({
-                    id: user?.id, 
-                    firstname: user?.first_name,
-                    lastname: user?.last_name,
-                })
                 
-                setTimeout(async ()=> {
-                    const managerId = await getManagerIdApi(user?.id)
-                    const companyId = await getCompanyIdApi(user?.id)
+                //поиск менеджера в notion
+                const managerId = await getManagerIdApi(user?.id)
+                
+                //если менеджер не найден, то создать в notion
+                if (isEmptyObject(managerId)) {
+                  const newManager = await createManagerApi({
+                        id: user?.id, 
+                        firstname: user?.first_name,
+                        lastname: user?.last_name,
+                    })  
 
-                    setManagerId(managerId)
-                    setCompanyId(companyId)
-                    setIsLoading(false) 
-                }, 4000)  
+                    //получить данные менеджера после создания
+                    setTimeout(async ()=> {
+                        const managerId = await getManagerIdApi(user?.id)
+                        const companyId = await getCompanyIdApi(user?.id)
+    
+                        setManagerId(managerId)
+                        setCompanyId(companyId)
+                        
+                        setIsLoading(false) 
+                    }, 4000) 
+                }         
             } else {
                 console.log(console.log("manager: ", manager))
                 setManagerId(manager.id)
                 setCompanyId(manager.companyId)
+                
                 setIsLoading(false) 
             }
 
             setChatId(user?.id) 
+
 
             // устанавливаем категории
             if (specData.length > 0 && specData) {
