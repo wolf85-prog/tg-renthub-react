@@ -134,7 +134,7 @@ const NewProject = () => {
                 console.log("Менеджер не найден!")
                 
                 //поиск менеджера в notion
-                const managerId = await getManagerIdApi((user?.id).toString())
+                const managerId = await getManagerIdApi(user?.id)
                 console.log("Менеджер из ноушен: ", managerId)
                 
                 //если менеджер не найден, то создать в notion
