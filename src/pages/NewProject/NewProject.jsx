@@ -41,6 +41,8 @@ const NewProject = () => {
     const { workers, setWorkers, count, setCount } = useUsersContext();
 
     const [modal, setModal] = useState(false)
+    const [modalInfo, setModalInfo] = useState(false)
+
     const [showWorkadd, setShowWorkadd] = useState(false)
     const [showEquipmentadd, setShowEquipmentadd] = useState(false)
     const [showSpec, setShowSpec] = useState(false)
@@ -125,7 +127,7 @@ const NewProject = () => {
             setIsLoading(true);
             
             //поиск менеджера в БД (кэш)
-            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218'
+            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
 
             //если менеджер не найден, то искать в notion
             if (isEmptyObject(manager)) {
@@ -151,14 +153,17 @@ const NewProject = () => {
     
                         if (isEmptyObject(managerId)) {
                             console.log("Опять ошибка") 
+                            setIsLoading(false) 
+                            setModal(true)
                         } else {
                             console.log("Данные успешно сохранены!")
                             setManagerId(managerId)
                             setCompanyId(companyId)
-                            setIsLoading(false) 
+                            setIsLoading(false)
+                            setModalInfo(true) 
                         }    
                         
-                    }, 4000) 
+                    }, 2000) 
                 } else {
                     console.log("Менеджер найден в ноушене!")
                     setManagerId(managerId)
@@ -209,6 +214,41 @@ const NewProject = () => {
         fetch()
 
     }, []);
+
+    {/* Обновить */}
+    const clickButton = async(e) => {
+        e.preventDefault();
+        setModal(false)
+        setIsLoading(true) 
+
+        const newManager = await createManagerApi({
+            id: user?.id, 
+            firstname: user?.first_name,
+            lastname: user?.last_name,
+        }) 
+
+        //получить данные менеджера после создания
+        setTimeout(async ()=> {
+            const managerId = await getManagerIdApi(user?.id)
+            const companyId = await getCompanyIdApi(user?.id)
+            console.log(managerId)
+
+            if (isEmptyObject(managerId)) {
+                console.log("Опять ошибка") 
+                setIsLoading(false) 
+                setModal(true)
+            } else {
+                console.log("Данные успешно сохранены!")
+                setModalInfo(true)
+
+                setManagerId(managerId)
+                setCompanyId(companyId)
+                setIsLoading(false) 
+                setModal(false)  
+            }    
+            
+        }, 2000) 
+    }
 
 
     // const createManager = (id) => {
@@ -282,12 +322,6 @@ const NewProject = () => {
 
     //------------------------------------------------------
 
-    {/* Обновить */}
-    const clickButton = (e) => {
-        e.preventDefault();
-
-        getCompanyId(user?.id)
-    }
     
     function increment() {
         setCount(count + 1)
@@ -804,7 +838,7 @@ const NewProject = () => {
                 {/* <EquipmentList remove={removeEquipment} equipments={equipments} />  */}
 
 
-                {/*Геолокация*/}
+                {/*Адрес*/}
                 <div className="text-field text-field_floating">
                     <RedditTextField fullWidth
                                      label="Адрес"
@@ -841,13 +875,29 @@ const NewProject = () => {
                 
 
                 <MyModal visible={modal} setVisible={setModal}>
-                    <h2><b>Предупреждение</b></h2>
-                    <hr/>
-                    <br/>
-                    {update_company}
-                    <br/>
-                    <br/>
-                    <MyButton onClick={clickButton}>Обновить</MyButton>
+                    <div>
+                        <h2><b>Предупреждение</b></h2>
+                        <hr/>
+                        <br/>
+                        {update_company}
+                        <br/>
+                        <br/>
+                        <MyButton onClick={clickButton}>Обновить</MyButton>
+                    </div>
+                    
+                </MyModal>
+
+                <MyModal visible={modalInfo} setVisible={setModalInfo}>
+                    <div>
+                        <h2><b>Информация</b></h2>
+                        <hr/>
+                        <br/>
+                        <h3>Данные успешно подгружены!</h3>
+                        <br/>
+                        <br/>
+                        <MyButton onClick={()=>setModalInfo(false)}>ОК</MyButton>
+                    </div>
+                    
                 </MyModal>
 
                 {/* <MyButton onClick={console.log(workers)}>Создать проект</MyButton> */}

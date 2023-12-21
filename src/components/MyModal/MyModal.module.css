@@ -10,10 +10,12 @@
 
 .myModalContent {
     padding: 25px;
-    background: white;
+    background: #121212;
     border-radius: 16px;
     min-width: 250px;
-    color: #000;
+    color: #fff;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .myModal.active {
