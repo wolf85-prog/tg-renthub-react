@@ -12,6 +12,8 @@ import './Posts.css';
 
 import { getManagerIdApi, getProjectsCashApi } from './../../http/projectAPI';
 
+import iconDown from '../../img/arrow_down.png'
+
 function Posts() {
     const {tg, user, onClose} = useTelegram();
     const { userApp, projects, setProjects } = useUsersContext();
@@ -118,6 +120,10 @@ function Posts() {
             </div>  
             : <ProjectList posts={sortedAndSearchedPosts} title=""/>
             }
+
+            {/* стрелка */}
+            <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: "block"}} /></div>
+
         </div>
     );
 }

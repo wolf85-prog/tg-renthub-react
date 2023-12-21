@@ -49,6 +49,9 @@ const NewProject = () => {
     const [showName, setShowName] = useState(false)
     const [showSubname, setShowSubname] = useState(false)
 
+    const [showNotif, setShowNotif] = useState(false)
+    const [showNotif2, setShowNotif2] = useState(false)
+
     const [showButtonEquipmentadd, setShowButtonEquipmentadd] = useState(true)
 
     // текущая дата
@@ -119,6 +122,10 @@ const NewProject = () => {
         return true;
     }
 
+    useEffect(()=> {
+        setShowNotif(true)
+        setShowNotif2(false)
+    }, [])
     
 
     // при первой загрузке приложения выполнится код ниже
@@ -127,7 +134,7 @@ const NewProject = () => {
             setIsLoading(true);
             
             //поиск менеджера в БД (кэш)
-            const manager = await getManagerApi('1408579113') //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
+            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
 
             //если менеджер не найден, то искать в notion
             if (isEmptyObject(manager)) {
@@ -350,10 +357,13 @@ const NewProject = () => {
 
     const onChangeProject = (e) => {
         setProject(e.target.value)
+        setShowNotif(false)
+        setShowNotif2(true)
     }
 
     const onChangeTime = (e) => {
         setDatestart(e.target.value)
+        setShowNotif2(false)
     }
 
     function addGeo (newGeo) {
@@ -656,21 +666,33 @@ const NewProject = () => {
                 ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}><Loader/></div>
                 : <form>
                 {/*Название*/}
-                <div className="text-field text-field_floating">
-                    <RedditTextField fullWidth
-                                     label="Название проекта"
-                                     id="project_name"
-                                     variant="filled"
-                                     value={project}
-                                     onChange={onChangeProject}
+                <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')}>
+                    {showNotif 
+                    ? <RedditTextFieldNotif  
+                        fullWidth
+                        label="Название проекта"
+                        id="project_name"
+                        variant="filled"
+                        value={project}
+                        onChange={onChangeProject}
                     />
+                    :<RedditTextField
+                        fullWidth
+                        label="Название проекта"
+                        id="project_name"
+                        variant="filled"
+                        value={project}
+                        onChange={onChangeProject}
+                    />}
                 </div>
 
                 {/*Дата начала*/}
-                <div className="text-field text-field_floating">
+                <div className={'text-field text-field_floating ' + (showNotif2 ? 'block-anim' : '')}>
+                    
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
-                            <RedditTextField
+                           {showNotif2  
+                            ?<RedditTextFieldNotif
                                 id="datetime-local"
                                 label="Дата начала"
                                 type="datetime-local"
@@ -681,6 +703,17 @@ const NewProject = () => {
                                     shrink: true,
                                 }}
                             />
+                            :<RedditTextField
+                                id="datetime-local"
+                                label="Дата начала"
+                                type="datetime-local"
+                                variant="filled"
+                                value={datestart}
+                                onChange={onChangeTime}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                            />}
                             <span className="open-button">
                               <button type="button"><img src={Calendar} alt='calendar'/></button>
                             </span>
@@ -914,6 +947,30 @@ const RedditTextField = styled((props) => (
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
         border: '2px solid #26aad4',
+        overflow: 'hidden',
+        borderRadius: 10,
+        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
+        transition: theme.transitions.create([
+            'border-color',
+            'background-color',
+            'box-shadow',
+        ]),
+        '&:hover': {
+            backgroundColor: 'transparent',
+        },
+        '&.Mui-focused': {
+            backgroundColor: 'transparent',
+            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+            borderColor: theme.palette.primary.main,
+        },
+    },
+}));
+
+const RedditTextFieldNotif = styled((props) => (
+    <TextField InputProps={{ disableUnderline: true }} {...props}  />
+))(({ theme }) => ({
+    '& .MuiFilledInput-root': {
+        border: '2px solid red',
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
