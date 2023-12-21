@@ -140,7 +140,7 @@ const NewProject = () => {
                 //если менеджер не найден, то создать в notion
                 if (isEmptyObject(managerId)) {
                   const newManager = await createManagerApi({
-                        id: user?.id, 
+                        id: (user?.id).toString(), 
                         firstname: user?.first_name,
                         lastname: user?.last_name,
                     })  
