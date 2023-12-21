@@ -134,7 +134,7 @@ const NewProject = () => {
             setIsLoading(true);
             
             //поиск менеджера в БД (кэш)
-            const manager = await getManagerApi('1408579113') //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
+            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
 
             //если менеджер не найден, то искать в notion
             if (isEmptyObject(manager)) {
@@ -356,7 +356,7 @@ const NewProject = () => {
 
     const onClickProject = () => {
         setShowNotif(false)
-        setShowNotif2(true)
+        //setShowNotif2(true)
     }
 
     const onClickTime = () => {
