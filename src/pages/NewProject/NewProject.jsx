@@ -134,7 +134,7 @@ const NewProject = () => {
             setIsLoading(true);
             
             //поиск менеджера в БД (кэш)
-            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
+            const manager = await getManagerApi('1408579113') //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
 
             //если менеджер не найден, то искать в notion
             if (isEmptyObject(manager)) {
@@ -354,16 +354,21 @@ const NewProject = () => {
     //     }     
     // }
 
-
-    const onChangeProject = (e) => {
-        setProject(e.target.value)
+    const onClickProject = () => {
         setShowNotif(false)
         setShowNotif2(true)
     }
 
+    const onClickTime = () => {
+        setShowNotif2(false)
+    }
+
+    const onChangeProject = (e) => {
+        setProject(e.target.value)
+    }
+
     const onChangeTime = (e) => {
         setDatestart(e.target.value)
-        setShowNotif2(false)
     }
 
     function addGeo (newGeo) {
@@ -666,7 +671,7 @@ const NewProject = () => {
                 ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}><Loader/></div>
                 : <form>
                 {/*Название*/}
-                <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')}>
+                <div onClick={onClickProject} className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')}>
                     {showNotif 
                     ? <RedditTextFieldNotif  
                         fullWidth
@@ -687,7 +692,7 @@ const NewProject = () => {
                 </div>
 
                 {/*Дата начала*/}
-                <div className={'text-field text-field_floating ' + (showNotif2 ? 'block-anim' : '')}>
+                <div onClick={onClickTime} className={'text-field text-field_floating ' + (showNotif2 ? 'block-anim' : '')}>
                     
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
