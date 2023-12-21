@@ -892,7 +892,7 @@ const NewProject = () => {
                         <h2><b>Информация</b></h2>
                         <hr/>
                         <br/>
-                        <h3>Данные успешно подгружены!</h3>
+                        <h3>Аккаунт менеджера успешно создан!</h3>
                         <br/>
                         <br/>
                         <MyButton onClick={()=>setModalInfo(false)}>ОК</MyButton>
