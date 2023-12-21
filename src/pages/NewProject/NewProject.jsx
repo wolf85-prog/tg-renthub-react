@@ -123,16 +123,17 @@ const NewProject = () => {
     useEffect(() => {
         const fetch = async() => {
             setIsLoading(true);
-
-            //getManagerId('1408579113'); //user?.id 
             
-            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113'
+            //поиск менеджера в БД (кэш)
+            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218'
 
+            //если менеджер не найден, то искать в notion
             if (isEmptyObject(manager)) {
-                console.log(console.log("Менеджер не найден!"))
+                console.log("Менеджер не найден!")
                 
                 //поиск менеджера в notion
                 const managerId = await getManagerIdApi(user?.id)
+                console.log("Менеджер из ноушен: ", managerId)
                 
                 //если менеджер не найден, то создать в notion
                 if (isEmptyObject(managerId)) {
@@ -146,15 +147,26 @@ const NewProject = () => {
                     setTimeout(async ()=> {
                         const managerId = await getManagerIdApi(user?.id)
                         const companyId = await getCompanyIdApi(user?.id)
+                        console.log(managerId)
     
-                        setManagerId(managerId)
-                        setCompanyId(companyId)
+                        if (isEmptyObject(managerId)) {
+                            console.log("Опять ошибка") 
+                        } else {
+                            console.log("Данные успешно сохранены!")
+                            setManagerId(managerId)
+                            setCompanyId(companyId)
+                            setIsLoading(false) 
+                        }    
                         
-                        setIsLoading(false) 
                     }, 4000) 
-                }         
+                } else {
+                    console.log("Менеджер найден в ноушене!")
+                    setManagerId(managerId)
+                    setIsLoading(false) 
+                }   
+
             } else {
-                console.log(console.log("manager: ", manager))
+                console.log(console.log("manager cash: ", manager))
                 setManagerId(manager.id)
                 setCompanyId(manager.companyId)
                 
@@ -163,35 +175,36 @@ const NewProject = () => {
 
             setChatId(user?.id) 
 
+            //---------категории-----------------------
 
             // устанавливаем категории
             if (specData.length > 0 && specData) {
                 setCategories(specData);
+                //console.log("specData: ", specData)
             }
 
             // и модели из первой категории по умолчанию
-            if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
-                setModels(specData[0].models);
-            }
+            // if (specData.length > 0 && specData[0].models && specData[0].models.length > 0) {
+            //     setModels(specData[0].models);
+            // }
 
             
             // устанавливаем категории оборудования
-            if (dataEquipment.length > 0 && dataEquipment) {
-                setCategories2(dataEquipment);
-            }
+            // if (dataEquipment.length > 0 && dataEquipment) {
+            //     setCategories2(dataEquipment);
+            // }
 
             // и наименования оборудования из первой категории по умолчанию
-            if (dataEquipment.length > 0 && dataEquipment[0].names && dataEquipment[0].names.length > 0) {
-                setNames(dataEquipment[0].names);
-            }
+            // if (dataEquipment.length > 0 && dataEquipment[0].names && dataEquipment[0].names.length > 0) {
+            //     setNames(dataEquipment[0].names);
+            // }
 
             // и поднаименования оборудования из первой категории по умолчанию
-            if (dataEquipment.length > 0 && dataEquipment[0].subnames && dataEquipment[0].subnames.length > 0 ) {
-                //setNames(dataEquipment[0].names);
-                setSubNames(dataEquipment[0].subnames);
-            }
+            // if (dataEquipment.length > 0 && dataEquipment[0].subnames && dataEquipment[0].subnames.length > 0 ) {
+            //     //setNames(dataEquipment[0].names);
+            //     setSubNames(dataEquipment[0].subnames);
+            // }
         }
-        
 
         fetch()
 
@@ -288,17 +301,17 @@ const NewProject = () => {
         }     
     }
 
-    function increment2() {
-        setCount2(count2 + 1)
-        setEquipment({...equipment, count: count2 + 1})
-    }
+    // function increment2() {
+    //     setCount2(count2 + 1)
+    //     setEquipment({...equipment, count: count2 + 1})
+    // }
 
-    function decrement2() {
-        if (count2 != 1 && count2 > 0) {
-            setCount2(count2 - 1)
-            setEquipment({...equipment, count: count2 - 1})
-        }     
-    }
+    // function decrement2() {
+    //     if (count2 != 1 && count2 > 0) {
+    //         setCount2(count2 - 1)
+    //         setEquipment({...equipment, count: count2 - 1})
+    //     }     
+    // }
 
 
     const onChangeProject = (e) => {
@@ -331,18 +344,21 @@ const NewProject = () => {
         setSelectedElement(e.target.options.value);
 
         // преобразуем выбранное значение опции списка в число - идентификатор категории
-        const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const categoryId = e.target.options[e.target.selectedIndex].value;
+
         // получаем из массива категорий объект категории по соответствующему идентификатору
-        const category = categories.find(item => item.id === categoryId);
-        const catSelect = category.icon; //capitalizeFirst(category.name);
+        const category = categories.find(item => item.id === parseInt(categoryId));
+
+        const catSelect = category.icon; 
         const iconCatSelect = category.icon;
 
         setWorker({...worker, cat: catSelect, icon: iconCatSelect})
 
         // выбираем все модели в категории, если таковые есть
-        const models = category.models && category.models.length > 0
-            ? category.models
-            : [{ id: 0, name: 'Нет моделей', items: [] }];
+        // const models = category.models && category.models.length > 0
+        //     ? category.models
+        //     : [{ id: 0, name: 'Нет моделей', items: [] }];
+        const models = category.models
 
         // меняем модели во втором списке
         setModels(models);
@@ -355,14 +371,16 @@ const NewProject = () => {
     const onSpecSelectChange = (e) => {
         setSelectedElement(e.target.options.value);
 
-        const modelId = parseInt(e.target.options[e.target.selectedIndex].value);
-        const model = models.find(item => item.id === modelId);
+        const modelId = e.target.options[e.target.selectedIndex].value;
+        const model = models.find(item => item.id === parseInt(modelId));
 
         setWorker({...worker, spec: model.name})
         //setWorker2({...worker, spec: model.name})
 
         setDisabledBtn(false)  
     }
+
+
 
     // useEffect(()=> {
     //     if (worker2.cat !== '' || worker2.spec !== '') {

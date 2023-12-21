@@ -11,8 +11,9 @@ export const getManagerApi = async (id) =>{
 }
 
 export const createManagerApi = async (data) =>{
+    console.log("data: ", data)
     try {
-       let response = await $host.post(`managers`, data);
+       let response = await $host.post(`manager`, data);
        //console.log(response);
        return response.data;
     } catch (error) {
