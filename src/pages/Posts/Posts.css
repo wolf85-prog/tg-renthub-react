@@ -35,3 +35,12 @@
     0% { transform: translateY(-80px); }
     100% { transform: translateY(20px); }
 }
+
+
+.image-elka {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right:0;
+    z-index: 0;
+}

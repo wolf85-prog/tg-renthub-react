@@ -13,6 +13,7 @@ import './Posts.css';
 import { getManagerIdApi, getProjectsCashApi } from './../../http/projectAPI';
 
 import iconDown from '../../img/arrow_down.png'
+import elka from '../../img/klipartz.com.png'
 
 
 function Posts() {
@@ -108,8 +109,6 @@ function Posts() {
 
             <Header header={{title: 'Мои проекты', icon: 'false'}}/>
 
-            {/* <p className="status_el">статус</p>  */}
-
             <ProjectFilter
                 filter={filter}
                 setFilter={setFilter}
@@ -122,6 +121,8 @@ function Posts() {
             </div>  
             : <ProjectList posts={sortedAndSearchedPosts} title=""/>
             }
+
+            <img src={elka} alt='' className="image-elka" />
 
             {/* стрелка */}
             <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: "block"}} /></div>

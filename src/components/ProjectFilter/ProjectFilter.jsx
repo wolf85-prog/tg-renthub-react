@@ -51,8 +51,8 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
         showFilter ? setShowFilter(false) : setShowFilter(true)
     }
 
-    const clickSort = (sort) => {
-        setFilter({...filter, query: sort})
+    const clickSort = (selectedSort) => {
+        setFilter({...filter, sort: selectedSort})
         setShowFilter(false)
     }
 

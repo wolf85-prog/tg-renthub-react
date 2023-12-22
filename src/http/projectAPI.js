@@ -22,7 +22,6 @@ export const createManagerApi = async (data) =>{
 }
 
 export const getManagerIdApi = async (id) =>{
-    console.log(id, parseInt(id))
     try {
        let response = await $host.get(`managers/chat/${parseInt(id)}`);
        //console.log(response);
