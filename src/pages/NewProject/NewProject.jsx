@@ -714,7 +714,7 @@ const NewProject = () => {
 
                 {/*Дата начала*/}
                 <div className={'text-field text-field_floating ' + (showNotif2 ? 'block-anim' : '')}>
-                    <RedditTextField
+                    {/* <RedditTextField
                         style={{backgroundColor: '#2A2731', border: showNotif2 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}
                         fullWidth
                         label="Дата начала"
@@ -722,8 +722,8 @@ const NewProject = () => {
                         variant="filled"
                         value={datestart}
                         onChange={onChangeTime}
-                    />
-                    {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    /> */}
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', border: showNotif2 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                            <RedditTextField
                                 id="datetime-local"
@@ -740,7 +740,7 @@ const NewProject = () => {
                               <CalendarIcon style={{color: '#26aad4', width: '28px', height: '28px'}}/>
                             </span>
                         </Stack>
-                    </LocalizationProvider> */}
+                    </LocalizationProvider>
                 </div>
 
 
