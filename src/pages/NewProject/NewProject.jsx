@@ -51,9 +51,6 @@ const NewProject = () => {
     const [showName, setShowName] = useState(false)
     const [showSubname, setShowSubname] = useState(false)
 
-    const [showNotif, setShowNotif] = useState(false)
-    const [showNotif2, setShowNotif2] = useState(false)
-
     const [showButtonEquipmentadd, setShowButtonEquipmentadd] = useState(true)
 
     // текущая дата
@@ -115,6 +112,14 @@ const NewProject = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const scrollRef = useRef()
+
+
+    const [showNotif, setShowNotif] = useState(false)
+    const [showNotif2, setShowNotif2] = useState(false)
+    const [showNotif3, setShowNotif3] = useState(false)
+    const [showNotif4, setShowNotif4] = useState(false)
+    const [showNotif5, setShowNotif5] = useState(false)
+    const [showNotif6, setShowNotif6] = useState(false)
 
     function isEmptyObject(obj) {
         for (var i in obj) {
@@ -359,6 +364,8 @@ const NewProject = () => {
 
     
 
+
+
     const onChangeProject = (e) => {
         setProject(e.target.value)
         setShowNotif(false)
@@ -368,6 +375,7 @@ const NewProject = () => {
     const onChangeTime = (e) => {
         setDatestart(e.target.value)
         setShowNotif2(false)
+        setShowNotif3(true)
     }
 
     function addGeo (newGeo) {
@@ -378,11 +386,15 @@ const NewProject = () => {
     const onChangeGeodata = (e) => {
         setGeo(e.target.value)
         console.log(e.target.value)
+
+        setShowNotif5(false)
+        setShowNotif6(true)
     }
 
     const onChangeTeh = (e) => {
         setTeh(e.target.value)
         setCountChar(e.target.value.length)
+        setShowNotif6(false)
     }
 //---------------------------------------------------------------------------------------
 
@@ -413,6 +425,9 @@ const NewProject = () => {
 
         setDisabled(false)
         setShowSpec(true)
+
+        setShowNotif3(false)
+        setShowNotif4(true)
     }
 
     // 2. выбор специальности
@@ -426,6 +441,10 @@ const NewProject = () => {
         //setWorker2({...worker, spec: model.name})
 
         setDisabledBtn(false)  
+
+        setShowNotif3(false)
+        setShowNotif4(false)
+        setShowNotif5(true)
     }
 
 
@@ -725,7 +744,7 @@ const NewProject = () => {
                                 color: '#26aad4',
                             }}>Добавить специалистов</p>
 
-                        <div className="text-field text-field_floating">
+                        <div className={'text-field text-field_floating ' + (showNotif3 ? 'block-anim' : '')} >
                             <CustomSelect
                                 id="category"
                                 title="Категория"
@@ -733,10 +752,11 @@ const NewProject = () => {
                                 selectedElement={selectedElement}
                                 setSelectedElement={setSelectedElement}
                                 onChange={onCategoriesSelectChange}
+                                style={{border: showNotif3 ? '2px solid red' : '2px solid #26aad4'}}
                             />
                         </div>
 
-                        <div className="text-field text-field_floating" style={{ display: showSpec ? "block" : "none" }}>
+                        <div className={'text-field text-field_floating ' + (showNotif4 ? 'block-anim' : '')} style={{ display: showSpec ? "block" : "none" }}>
                             <CustomSelect
                                 disabled={disabled}
                                 id="model"
@@ -745,6 +765,7 @@ const NewProject = () => {
                                 selectedElement={selectedElement}
                                 setSelectedElement={setSelectedElement}
                                 onChange={onSpecSelectChange}
+                                style={{border: showNotif4 ? '2px solid red' : '2px solid #26aad4'}}
                             />
                         </div>
                     </label>
@@ -864,7 +885,7 @@ const NewProject = () => {
 
 
                 {/*Адрес*/}
-                <div className="text-field text-field_floating" style={{border: '2px solid #26aad4', borderRadius: '10px'}}>
+                <div className={'text-field text-field_floating ' + (showNotif5 ? 'block-anim' : '')} style={{border: showNotif5 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                      label="Адрес"
                                      id="geo"
@@ -883,9 +904,9 @@ const NewProject = () => {
                 </div> */}
 
                 {/*Техническое задание*/}
-                <div className="text-field text-field_floating" style={{marginTop: '25px'}}>
+                <div className={'text-field text-field_floating ' + (showNotif6 ? 'block-anim' : '')} style={{marginTop: '25px'}}>
                     <RedditTextField fullWidth
-                                     style={{borderRadius: '10px', border: '2px solid #26aad4'}}
+                                     style={{borderRadius: '10px',  border: showNotif6 ? '2px solid red' : '2px solid #26aad4'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"

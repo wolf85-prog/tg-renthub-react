@@ -80,6 +80,7 @@ function Posts() {
     //кнопка Создать проект
     useEffect(() => {
         tg.MainButton.show();
+        tg.MainButton.enable();
     }, [])
 
     const onAddProject = () => {

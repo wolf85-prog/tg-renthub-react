@@ -4,7 +4,7 @@ import {BsChevronDown} from "react-icons/bs";
 
 
 
-const CustomSelect = ({id, options, title, onChange, selectedElement, disabled}) => {
+const CustomSelect = ({id, options, title, onChange, selectedElement, disabled, style}) => {
 
     return (
         <div>
@@ -15,6 +15,7 @@ const CustomSelect = ({id, options, title, onChange, selectedElement, disabled})
                     id={id} 
                     value={selectedElement} 
                     onChange={onChange}
+                    style={style}
                 >
                     <option disabled value="">{title}</option>
                     { options.map((option, index) =>
