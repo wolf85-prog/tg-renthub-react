@@ -40,7 +40,7 @@ const NewProject = () => {
     const navigate = useNavigate();
     const {tg, queryId, user} = useTelegram();
 
-    const { workers, setWorkers, count, setCount } = useUsersContext();
+    const { count, setCount } = useUsersContext();
 
     const [modal, setModal] = useState(false)
     const [modalInfo, setModalInfo] = useState(false)
@@ -88,11 +88,12 @@ const NewProject = () => {
     const [disabled2, setDisabled2] = useState(true)
     const [disabled3, setDisabled3] = useState(true)
 
-    
     //работник
     const [worker, setWorker] = useState({id: '', cat: '', spec: '', count: 1, icon: ''})
     const [worker2, setWorker2] = useState({id: '', cat: '', spec: '', count: 1, icon: ''})
 
+    //работники
+    const [workers, setWorkers] = useState([])
 
     //количество оборудования
     const [count2, setCount2] = useState(1)
@@ -628,11 +629,11 @@ const NewProject = () => {
         workers.length > 0
         ? tg.MainButton.setParams({
             text: 'Новый проект',
-            color: '#fff' //'#2e2e2e'
+            color: '#000' //'#2e2e2e'
         })
         :  tg.MainButton.setParams({
             text: 'Новый проект',
-            color: '#000' //'#2e2e2e'
+            color: '#fff' //'#2e2e2e'
         })
     }, [workers])
 

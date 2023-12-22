@@ -17,10 +17,6 @@ const UserProvider = ({ children }) => {
 
 	const arr_status = [] 
 
-
-    //работники
-    const [workers, setWorkers] = useState([])
-
     //количество работников
     const [count, setCount] = useState(1)
 
@@ -104,8 +100,6 @@ const UserProvider = ({ children }) => {
             setStatus,
             userApp,
             setUserApp,
-            workers, 
-            setWorkers,
             count,
             setCount
 		}}>
