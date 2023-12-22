@@ -120,6 +120,7 @@ const NewProject = () => {
     const [showNotif4, setShowNotif4] = useState(false)
     const [showNotif5, setShowNotif5] = useState(false)
     const [showNotif6, setShowNotif6] = useState(false)
+    const [showNotif7, setShowNotif7] = useState(false)
 
     function isEmptyObject(obj) {
         for (var i in obj) {
@@ -387,14 +388,14 @@ const NewProject = () => {
         setGeo(e.target.value)
         console.log(e.target.value)
 
-        setShowNotif5(false)
-        setShowNotif6(true)
+        setShowNotif6(false)
+        setShowNotif7(true)
     }
 
     const onChangeTeh = (e) => {
         setTeh(e.target.value)
         setCountChar(e.target.value.length)
-        setShowNotif6(false)
+        setShowNotif7(false)
     }
 //---------------------------------------------------------------------------------------
 
@@ -490,6 +491,9 @@ const NewProject = () => {
         setDisabled(true);
         setShowSpec(false)
         setDisabledBtn(true);
+
+        setShowNotif5(false)
+        setShowNotif6(true)
     }
 
     {/* Удаление работника */}
@@ -787,7 +791,7 @@ const NewProject = () => {
                     <p>
                         <MyButton
                             disabled={disabledBtn}
-                            style={{width: "103px", marginBottom: "15px"}}
+                            style={{width: "103px", marginBottom: "15px", border: showNotif5 ? '2px solid red' : '2px solid #2264D1'}}
                             onClick={addNewWorker}
                         >Добавить
                         </MyButton>
@@ -885,7 +889,7 @@ const NewProject = () => {
 
 
                 {/*Адрес*/}
-                <div className={'text-field text-field_floating ' + (showNotif5 ? 'block-anim' : '')} style={{border: showNotif5 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
+                <div className={'text-field text-field_floating ' + (showNotif6 ? 'block-anim' : '')} style={{border: showNotif6 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                      label="Адрес"
                                      id="geo"
@@ -904,9 +908,9 @@ const NewProject = () => {
                 </div> */}
 
                 {/*Техническое задание*/}
-                <div className={'text-field text-field_floating ' + (showNotif6 ? 'block-anim' : '')} style={{marginTop: '25px'}}>
+                <div className={'text-field text-field_floating ' + (showNotif7 ? 'block-anim' : '')} style={{marginTop: '25px'}}>
                     <RedditTextField fullWidth
-                                     style={{borderRadius: '10px',  border: showNotif6 ? '2px solid red' : '2px solid #26aad4'}}
+                                     style={{borderRadius: '10px',  border: showNotif7 ? '2px solid red' : '2px solid #26aad4'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"
