@@ -8,7 +8,7 @@ const RedditTextField = styled((props) => (
     <TextField InputProps={{disableUnderline: true,}} {...props} />
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
-        border: '1px solid #76A9FF',
+        border: '1px solid #26aad4',
         overflow: 'hidden',
         borderRadius: 4,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',

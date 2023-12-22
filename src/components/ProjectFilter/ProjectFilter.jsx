@@ -2,10 +2,11 @@ import React, {useMemo, useState} from 'react';
 import './ProjectFilter.css';
 import ButtonStatus from "../UI/ButtonStatus/ButtonStatus";
 import SortSelect from "../UI/SortSelect/SortSelect";
+import iconFilter from '../../img/menu.svg'
 
 const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
-    //console.log('arr_status: ', arr_status)
+    const [showFilter, setShowFilter] = useState(false)
 
     arr_status.map((item, index) => {
                         if (item.title === 'All') {
@@ -46,6 +47,10 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
         //console.log(selectedSort)
     }
 
+    const clickFilter = () => {
+        showFilter ? setShowFilter(false) : setShowFilter(true)
+    }
+
 
     return (
         <div>
@@ -56,8 +61,15 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                 )}
             </div>
 
-            <div style={{marginBottom: '15px'}}>
-                <SortSelect 
+            <div style={{marginBottom: '15px', textAlign: 'end'}}>
+                <img src={iconFilter} alt=''  onClick={clickFilter}/>
+                <div style={{display: showFilter ? 'block' : 'none'}}>
+                    <ul>
+                        <li>По дате мероприятия</li>
+                        <li>По дате создания</li>
+                    </ul>
+                </div>
+                {/* <SortSelect 
                     value={filter.sort}
                     onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
                     disabled={false}
@@ -67,7 +79,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                         {value: 'time_start', name: 'По дате мероприятия'},
                         {value: 'time_created', name: 'По дате создания'},
                     ]}
-                /> 
+                />  */}
             </div>
         </div>
     );

@@ -81,7 +81,7 @@ const ProjectWorkList = ({workers, defould}) => {
    // console.log("array3: ", worker3)
 
     return (
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'flex', justifyContent: 'flex-start', flexDirection: 'row-reverse', marginTop: '10px'}}>
 
             {worker3.length > 0 ? worker3.map((worker, index) => 
                     (worker.title != 'undefined') ? <ProjectWorkItem worker={worker} defould={defould} key={index+1}/> : ''                                   

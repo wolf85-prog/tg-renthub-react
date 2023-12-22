@@ -108,7 +108,7 @@ input {
     right: 25px;
     bottom: -4px;
     stroke-width: 2px;
-    stroke: #76A9FF;
+    stroke: #26aad4;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -167,4 +167,11 @@ input {
     100% {
         opacity: 0.3;
       }
+}
+
+.count-char {
+    position: relative;
+    display: flex;
+    margin-left: 15px;
+    font-size: 12px;
 }

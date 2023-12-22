@@ -14,6 +14,7 @@ import { getManagerIdApi, getProjectsCashApi } from './../../http/projectAPI';
 
 import iconDown from '../../img/arrow_down.png'
 
+
 function Posts() {
     const {tg, user, onClose} = useTelegram();
     const { userApp, projects, setProjects } = useUsersContext();
@@ -94,7 +95,7 @@ function Posts() {
 
     useEffect(() => {
         tg.MainButton.setParams({
-            text: 'Новая заявка',
+            text: 'Новый проект',
             color: '#000' //'#2e2e2e'
         })
     }, [])

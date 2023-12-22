@@ -71,8 +71,8 @@ const WorkerItem = (props) => {
         <div className="list_spec">
             <img style={{marginTop: "21px"}} src={image} alt='icon'/>
 
-            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} style={{border: '2px, solid, #76A9FF'}} variant="standard">
-                <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#76A9FF'}}>
+            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} style={{border: '2px, solid, #26aad4'}} variant="standard">
+                <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#26aad4'}}>
                     {props.worker.cat}
                 </InputLabel>
                 <BootstrapInput
@@ -94,7 +94,7 @@ const WorkerItem = (props) => {
             </FormControl>
 
             <DeleteIcon
-                style={{marginBottom: "10px", marginLeft: "0", color: '#76A9FF'}}
+                style={{marginBottom: "10px", marginLeft: "0", color: '#26aad4'}}
                 onClick={() => props.remove(props.worker)}
             />
         </div>
@@ -114,7 +114,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
         borderRadius: 10,
         position: 'relative',
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '2px solid #76A9FF',
+        border: '2px solid #26aad4',
         fontSize: 16,
         width: 'auto',
         padding: '10px 12px',
@@ -151,7 +151,7 @@ const BootstrapInput2 = styled(InputBase)(({ theme }) => ({
         borderRadius: 10,
         position: 'relative',
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        border: '2px solid #76A9FF',
+        border: '2px solid #26aad4',
         fontSize: 16,
         textAlign: 'center',
         width: 'auto',

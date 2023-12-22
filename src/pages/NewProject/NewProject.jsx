@@ -6,6 +6,8 @@ import MyButton from "../../components/UI/MyButton/MyButton";
 import './NewProject.css';
 import {Stack} from "@mui/material";
 import TextField from '@mui/material/TextField';
+import CalendarIcon from "@mui/icons-material/CalendarToday";
+
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { alpha, styled } from '@mui/material/styles';
@@ -626,18 +628,26 @@ const NewProject = () => {
     }, [onSendData])
 
     useEffect(() => {
-        tg.MainButton.setParams({
-            text: 'Создать проект'
+        tg.MainButton.show();
+        
+        workers.length > 0
+        ? tg.MainButton.setParams({
+            text: 'Создать проект',
+            color: '#000' //'#2e2e2e'
         })
-    }, [])
+        :  tg.MainButton.setParams({
+            text: 'Создать проект',
+            color: '#fff' //'#2e2e2e'
+        })
+    }, [workers])
 
     useEffect(() => {
-        if ((workers.length > 0) || (equipments.length > 0)) {
-            tg.MainButton.show();
+        if (workers.length > 0) {
+            tg.MainButton.enable();
         } else {
-            tg.MainButton.hide();
+            tg.MainButton.disable();
         }  
-    }, [workers, equipments])
+    }, [workers])
 
     let tex = 'Ведутся технические работы!'
     const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
@@ -680,7 +690,6 @@ const NewProject = () => {
                         variant="filled"
                         value={project}
                         onChange={onChangeProject}
-                        notif={showNotif}
                     />
                 </div>
 
@@ -701,7 +710,8 @@ const NewProject = () => {
                                 }}
                             />
                             <span className="open-button">
-                              <button type="button"><img src={Calendar} alt='calendar'/></button>
+                              {/* <button type="button"><img src={Calendar} alt='calendar'/></button> */}
+                              <CalendarIcon style={{color: '#26aad4', width: '28px', height: '28px'}}/>
                             </span>
                         </Stack>
                     </LocalizationProvider>
@@ -716,7 +726,7 @@ const NewProject = () => {
                                 margin: '20px 5px',
                                 display: 'flex',
                                 fontSize: '14px',
-                                color: '#76A9FF',
+                                color: '#26aad4',
                             }}>Добавить специалистов</p>
 
                         <div className="text-field text-field_floating">
@@ -744,7 +754,7 @@ const NewProject = () => {
                     </label>
 
 
-                    <p style={{marginTop: "15px", color: '#76A9FF'}}>
+                    <p style={{marginTop: "15px", color: '#26aad4'}}>
                         Количество
                     </p>
 
@@ -890,7 +900,9 @@ const NewProject = () => {
                                      inputProps={{maxLength :500}}
                                     //  helperText = {`${countChar}/500`}
                     />
+                    <p className='count-char'>{countChar}/500</p>
                 </div>
+                
                 
 
                 <MyModal visible={modal} setVisible={setModal}>
