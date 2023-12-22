@@ -12,6 +12,13 @@
     font-size: 14px;
 }
 
+ul { list-style: none; }
+
+li {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
 .red-btn {
     background: #C8372D;
     border: 1px solid #C8372D;

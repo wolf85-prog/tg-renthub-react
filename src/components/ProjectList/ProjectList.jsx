@@ -7,7 +7,7 @@ const ProjectList = ({posts, title, remove}) => {
     
     if (!posts.length) {
         return (
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '80vh'}}>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh'}}>
                 <h2>Проекты не найдены</h2>
             </div>       
         )

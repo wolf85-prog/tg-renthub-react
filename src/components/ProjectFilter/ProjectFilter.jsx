@@ -51,6 +51,10 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
         showFilter ? setShowFilter(false) : setShowFilter(true)
     }
 
+    const clickSort = (sort) => {
+        setFilter({...filter, query: sort})
+    }
+
 
     return (
         <div>
@@ -65,8 +69,8 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
                 <img src={iconFilter} alt=''  onClick={clickFilter}/>
                 <div style={{display: showFilter ? 'block' : 'none'}}>
                     <ul>
-                        <li>По дате мероприятия</li>
-                        <li>По дате создания</li>
+                        <li onClick={()=>clickSort('time_start')}>По дате мероприятия</li>
+                        <li onClick={()=>clickSort('time_created')}>По дате создания</li>
                     </ul>
                 </div>
                 {/* <SortSelect 
