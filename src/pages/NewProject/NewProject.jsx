@@ -134,7 +134,7 @@ const NewProject = () => {
             setIsLoading(true);
             
             //поиск менеджера в БД (кэш)
-            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
+            const manager = await getManagerApi('805436270') //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
 
             //если менеджер не найден, то искать в notion
             if (isEmptyObject(manager)) {
@@ -365,6 +365,7 @@ const NewProject = () => {
 
     const onChangeProject = (e) => {
         setProject(e.target.value)
+        setShowNotif(false)
     }
 
     const onChangeTime = (e) => {
@@ -671,33 +672,24 @@ const NewProject = () => {
                 ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}><Loader/></div>
                 : <form>
                 {/*Название*/}
-                <div onClick={onClickProject} className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')}>
-                    {showNotif 
-                    ? <RedditTextFieldNotif  
+                <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')} style={{border: '2px solid #26aad4', borderRadius: '10px'}}>
+                    <RedditTextField
                         fullWidth
                         label="Название проекта"
                         id="project_name"
                         variant="filled"
                         value={project}
                         onChange={onChangeProject}
+                        notif={showNotif}
                     />
-                    :<RedditTextField
-                        fullWidth
-                        label="Название проекта"
-                        id="project_name"
-                        variant="filled"
-                        value={project}
-                        onChange={onChangeProject}
-                    />}
                 </div>
 
                 {/*Дата начала*/}
                 <div onClick={onClickTime} className={'text-field text-field_floating ' + (showNotif2 ? 'block-anim' : '')}>
                     
                     <LocalizationProvider dateAdapter={AdapterDayjs} >
-                        <Stack spacing={3} style={{backgroundColor: '#2A2731', borderRadius: '10px'}}>
-                           {showNotif2  
-                            ?<RedditTextFieldNotif
+                        <Stack spacing={3} style={{backgroundColor: '#2A2731', border: '2px solid #26aad4', borderRadius: '10px'}}>
+                           <RedditTextField
                                 id="datetime-local"
                                 label="Дата начала"
                                 type="datetime-local"
@@ -708,17 +700,6 @@ const NewProject = () => {
                                     shrink: true,
                                 }}
                             />
-                            :<RedditTextField
-                                id="datetime-local"
-                                label="Дата начала"
-                                type="datetime-local"
-                                variant="filled"
-                                value={datestart}
-                                onChange={onChangeTime}
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                            />}
                             <span className="open-button">
                               <button type="button"><img src={Calendar} alt='calendar'/></button>
                             </span>
@@ -877,7 +858,7 @@ const NewProject = () => {
 
 
                 {/*Адрес*/}
-                <div className="text-field text-field_floating">
+                <div className="text-field text-field_floating" style={{border: '2px solid #26aad4', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
                                      label="Адрес"
                                      id="geo"
@@ -898,7 +879,7 @@ const NewProject = () => {
                 {/*Техническое задание*/}
                 <div className="text-field text-field_floating" style={{marginTop: '25px'}}>
                     <RedditTextField fullWidth
-                                     style={{borderRadius: '10px'}}
+                                     style={{borderRadius: '10px', border: '2px solid #26aad4'}}
                                      id="outlined-multiline-flexible"
                                      label="Техническое задание"
                                      variant="filled"
@@ -907,7 +888,7 @@ const NewProject = () => {
                                      multiline
                                      rows={4}
                                      inputProps={{maxLength :500}}
-                                     helperText = {`${countChar}/500`}
+                                    //  helperText = {`${countChar}/500`}
                     />
                 </div>
                 
@@ -951,31 +932,7 @@ const RedditTextField = styled((props) => (
     <TextField InputProps={{ disableUnderline: true }} {...props}  />
 ))(({ theme }) => ({
     '& .MuiFilledInput-root': {
-        border: '2px solid #26aad4',
-        overflow: 'hidden',
-        borderRadius: 10,
-        backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
-        transition: theme.transitions.create([
-            'border-color',
-            'background-color',
-            'box-shadow',
-        ]),
-        '&:hover': {
-            backgroundColor: 'transparent',
-        },
-        '&.Mui-focused': {
-            backgroundColor: 'transparent',
-            boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-            borderColor: theme.palette.primary.main,
-        },
-    },
-}));
-
-const RedditTextFieldNotif = styled((props) => (
-    <TextField InputProps={{ disableUnderline: true }} {...props}  />
-))(({ theme }) => ({
-    '& .MuiFilledInput-root': {
-        border: '2px solid red',
+        // border:  '2px solid #26aad4',
         overflow: 'hidden',
         borderRadius: 10,
         backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2A2731',
