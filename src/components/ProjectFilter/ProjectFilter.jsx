@@ -53,6 +53,7 @@ const ProjectFilter = ({filter, setFilter, arr_status}) => {
 
     const clickSort = (sort) => {
         setFilter({...filter, query: sort})
+        setShowFilter(false)
     }
 
 
