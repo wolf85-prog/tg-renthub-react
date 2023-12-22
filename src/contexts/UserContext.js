@@ -49,11 +49,6 @@ const UserProvider = ({ children }) => {
         fetchData()
 
     }, []);
-
-
-    useEffect(() => {
-        console.log("workers context: ", workers)
-    }, [workers])
     
 
 	// useEffect(() => {
