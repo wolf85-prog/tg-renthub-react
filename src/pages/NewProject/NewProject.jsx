@@ -627,12 +627,12 @@ const NewProject = () => {
         
         workers.length > 0
         ? tg.MainButton.setParams({
-            text: 'Создать проект',
-            color: '#000' //'#2e2e2e'
+            text: 'Новый проект',
+            color: '#fff' //'#2e2e2e'
         })
         :  tg.MainButton.setParams({
-            text: 'Создать проект',
-            color: '#fff' //'#2e2e2e'
+            text: 'Новый проект',
+            color: '#000' //'#2e2e2e'
         })
     }, [workers])
 
