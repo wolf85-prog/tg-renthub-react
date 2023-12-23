@@ -109,6 +109,8 @@ function Posts() {
 
             <Header header={{title: 'Мои проекты', icon: 'false'}}/>
 
+            <img src={elka} alt='' className="image-elka" />
+
             <ProjectFilter
                 filter={filter}
                 setFilter={setFilter}
@@ -122,7 +124,6 @@ function Posts() {
             : <ProjectList posts={sortedAndSearchedPosts} title=""/>
             }
 
-            <img src={elka} alt='' className="image-elka" />
 
             {/* стрелка */}
             <div className='down-icon'><img src={iconDown} className='down-image' alt='' style={{width: '80px', display: "block"}} /></div>
