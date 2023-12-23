@@ -798,7 +798,7 @@ const NewProject = () => {
                     <p>
                         <MyButton
                             disabled={disabledBtn}
-                            style={{width: "103px", marginBottom: "15px", border: showNotif5 ? '2px solid red' : '2px solid #26aad4'}}
+                            style={{width: "103px", marginBottom: "15px", border: showNotif5 ? '2px solid red' : '2px solid #26819f'}}
                             onClick={addNewWorker}
                         >Добавить
                         </MyButton>
