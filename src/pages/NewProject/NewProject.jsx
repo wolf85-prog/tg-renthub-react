@@ -176,7 +176,7 @@ const NewProject = () => {
                             setManagerId(managerId)
                             setCompanyId(companyId)
                             setIsLoading(false)
-                            setModalInfo(true) 
+                            //setModalInfo(true) 
                         }    
                         
                     }, 2000) 
@@ -255,7 +255,7 @@ const NewProject = () => {
                 setModal(true)
             } else {
                 console.log("Данные успешно сохранены!")
-                setModalInfo(true)
+                //setModalInfo(true)
 
                 setManagerId(managerId)
                 setCompanyId(companyId)
@@ -669,7 +669,7 @@ const NewProject = () => {
     }, [workers])
 
     let tex = 'Ведутся технические работы!'
-    const update_company = 'Данные о заказчике не найдены! Создание проекта без данных о заказчике невозможно!'
+    const update_company = 'Прямо сейчас мы делаем нашу систему лучше! Через 5 минут сервер будет перезагружен.'
 
 
     useEffect(()=>{
@@ -935,13 +935,13 @@ const NewProject = () => {
 
                 <MyModal visible={modal} setVisible={setModal}>
                     <div>
-                        <h2><b>Предупреждение</b></h2>
+                        <h2><b>Дорогие коллеги!</b></h2>
                         <hr/>
                         <br/>
                         {update_company}
                         <br/>
                         <br/>
-                        <MyButton onClick={clickButton}>Обновить</MyButton>
+                        <MyButton onClick={clickButton}>Вернусь позже</MyButton>
                     </div>
                     
                 </MyModal>
