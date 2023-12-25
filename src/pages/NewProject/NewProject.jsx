@@ -232,38 +232,37 @@ const NewProject = () => {
     }, []);
 
     {/* Обновить */}
-    const clickButton = async(e) => {
-        e.preventDefault();
+    const clickButton = async() => {
         setModal(false)
-        setIsLoading(true) 
+        //setIsLoading(true) 
 
-        const newManager = await createManagerApi({
-            id: user?.id, 
-            firstname: user?.first_name,
-            lastname: user?.last_name,
-        }) 
+        // const newManager = await createManagerApi({
+        //     id: user?.id, 
+        //     firstname: user?.first_name,
+        //     lastname: user?.last_name,
+        // }) 
 
         //получить данные менеджера после создания
-        setTimeout(async ()=> {
-            const managerId = await getManagerIdApi(user?.id)
-            const companyId = await getCompanyIdApi(user?.id)
-            console.log(managerId)
+        // setTimeout(async ()=> {
+        //     const managerId = await getManagerIdApi(user?.id)
+        //     const companyId = await getCompanyIdApi(user?.id)
+        //     console.log(managerId)
 
-            if (isEmptyObject(managerId)) {
-                console.log("Опять ошибка") 
-                setIsLoading(false) 
-                setModal(true)
-            } else {
-                console.log("Данные успешно сохранены!")
-                //setModalInfo(true)
+        //     if (isEmptyObject(managerId)) {
+        //         console.log("Опять ошибка") 
+        //         setIsLoading(false) 
+        //         setModal(true)
+        //     } else {
+        //         console.log("Данные успешно сохранены!")
+        //         //setModalInfo(true)
 
-                setManagerId(managerId)
-                setCompanyId(companyId)
-                setIsLoading(false) 
-                setModal(false)  
-            }    
+        //         setManagerId(managerId)
+        //         setCompanyId(companyId)
+        //         setIsLoading(false) 
+        //         setModal(false)  
+        //     }    
             
-        }, 2000) 
+        // }, 2000) 
     }
 
 
@@ -637,8 +636,8 @@ const NewProject = () => {
             }) 
             setIsLoading(false)
         } else {
-            setIsLoading(false)
-            setModal(true)
+           setIsLoading(false)
+           setModal(true)
         }
               
     }, [project, workers, equipments, datestart, geo, teh, managerId, companyId, chatId])
@@ -943,6 +942,7 @@ const NewProject = () => {
                         <hr/>
                         <br/>
                         {update_company}
+                        <p>id: {companyId}</p>
                         <br/>
                         <br/>
                         <MyButton onClick={clickButton}>Вернусь позже</MyButton>
