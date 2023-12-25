@@ -143,14 +143,14 @@ const NewProject = () => {
             setIsLoading(true);
             
             //поиск менеджера в БД (кэш)
-            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
+            const manager = await getManagerApi(user?.id ) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
 
             //если менеджер не найден, то искать в notion
             if (isEmptyObject(manager)) {
                 console.log("Менеджер не найден!")
                 
                 //поиск менеджера в notion
-                const managerId = await getManagerIdApi(user?.id)
+                const managerId = await getManagerIdApi(user?.id )
                 console.log("Менеджер из ноушен: ", managerId)
                 
                 //если менеджер не найден, то создать в notion
@@ -183,6 +183,10 @@ const NewProject = () => {
                 } else {
                     console.log("Менеджер найден в ноушене!")
                     setManagerId(managerId)
+
+                    const companyId = await getCompanyIdApi(user?.id)
+                    setCompanyId(companyId)
+
                     setIsLoading(false) 
                 }   
 
@@ -395,6 +399,20 @@ const NewProject = () => {
         setTeh(e.target.value)
         setCountChar(e.target.value.length)
         setShowNotif7(false)
+
+        const data = {
+            // projectname: project,
+            // datestart,
+            // geo,
+            // teh,
+            // worklist: workers,
+            managerId,
+            companyId,
+            // queryId,
+            // chatId,
+        }
+
+        console.log("data: ", data)
     }
 //---------------------------------------------------------------------------------------
 
@@ -616,7 +634,7 @@ const NewProject = () => {
             geo,
             teh,
             worklist: workers,
-            equipmentlist: equipments,
+            //equipmentlist: equipments,
             managerId,
             companyId,
             queryId,
