@@ -49,7 +49,7 @@ const ProjectItem = (props) => {
 
 
     props.post.specs && Object.values(JSON.parse(props.post.specs)).map((worker) =>
-        worker.fio ? count++ : count
+        worker.id ? count++ : count
     )
 
     props.post.specs && Object.values(JSON.parse(props.post.specs)).map((worker2) =>
