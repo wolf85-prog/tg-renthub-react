@@ -68,7 +68,7 @@ const ProjectItem = (props) => {
 
                 {
                     (props.post.specs && count !=0)
-                    ? <p><span className="find_span">Найдено {count} из {JSON.parse(props.post.specs).length - (JSON.parse(props.post.specs).length - count2)}</span></p> 
+                    ? <p className='find-post'><span className="find_span">Найдено {count} из {JSON.parse(props.post.specs).length - (JSON.parse(props.post.specs).length - count2)}</span></p> 
                     : <p><span className="nofind_span"></span></p>
                 }
                 

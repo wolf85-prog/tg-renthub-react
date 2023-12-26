@@ -56,7 +56,7 @@ const ProjectWorkList = ({workers, defould}) => {
         count_fio = 0; 
         Object.values(workers).map((value, index) => {    
             if (arritem.title === value.spec) {
-                if (value.fio) {
+                if (value.id) {
                     count_fio++            
                 }else {
                     count_fio;
