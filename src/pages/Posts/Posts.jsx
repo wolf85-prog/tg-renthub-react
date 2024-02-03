@@ -109,8 +109,8 @@ function Posts() {
 
             <Header header={{title: 'Мои проекты', icon: 'false'}}/>
 
-            <img src={elka} alt='' className="image-elka" />
-
+            {/* <img src={elka} alt='' className="image-elka" />*/}
+ 
             <ProjectFilter
                 filter={filter}
                 setFilter={setFilter}
