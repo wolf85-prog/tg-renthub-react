@@ -11,9 +11,11 @@ export default function ThemeContextWrapper(props) {
     useEffect(() => {
         switch (theme) {
             case themes.light:
-                document.body.classList.add('white-content');
+                document.body.classList.add('black-content');
                 break;
             case themes.dark:
+                document.body.classList.add('black-content');
+                break;
             default:
                 document.body.classList.remove('white-content');
                 break;

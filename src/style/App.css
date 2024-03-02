@@ -31,6 +31,10 @@
   background: #e4e4e4;
 }
 
+.black-content {
+  background: #121212;
+}
+
 .post {
   display: flex;
   padding: 15px;
