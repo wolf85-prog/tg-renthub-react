@@ -31,62 +31,15 @@ const specData = [
             {id: 1, name: 'Инженер VMix',},
             {id: 2, name: 'Инженер Resolume',},
             {id: 3, name: 'Оператор Zoom',},
-            {id: 4, name: 'Оператор [cameraman]',},
-            {id: 5, name: 'Техник монтажа',},
-            {id: 6, name: 'IT-специалист',},
-            {id: 7, name: 'Оператор-постановщик',},
+            {id: 4, name: 'Оператор [сameraman]',},
+            {id: 5, name: 'Оператор-постановщик',},
+            {id: 6, name: 'Режиссер эфиров',},
+            {id: 7, name: 'Техник монтажа',},
+            {id: 8, name: 'IT-специалист',},   
         ]
     },
     {
         id: 4,
-        name: 'Риггеры',
-        icon: 'Riggers',
-        models: [
-            {id: 1, name: 'Верхний Риггер',},
-            {id: 2, name: 'Нижний Риггер',},
-        ]
-    },
-    {
-        id: 5,
-        name: 'Помощники \/ Грузчики',
-        icon: 'Stagehands',
-        models: [
-            {id: 1, name: 'Помощник \/ Грузчик',},
-            {id: 2, name: 'Промоутер',},
-        ]
-    },
-    {
-        id: 6,
-        name: 'Граунд',
-        icon: 'Stage Ground',
-        models: [
-            {id: 1, name: 'Риггер [Ground]',},
-            {id: 2, name: 'Монтажник [Ground]',},
-            {id: 3, name: 'Декоратор',},
-        ]
-    },
-    {
-        id: 7,
-        name: 'Водители',
-        icon: 'Trucks',
-        models: [
-            {id: 1, name: 'C личным ТС [B\/C]',},
-            {id: 2, name: 'Без личного ТС [B\/C]',},
-            {id: 3, name: 'С гидролифтом',},
-            {id: 4, name: 'Без гидролифта',},
-        ]
-    },
-    {
-        id: 8,
-        name: 'Технический продакшн',
-        icon: 'Production',
-        models: [
-            {id: 1, name: 'Мероприятие под ключ',},
-            {id: 2, name: 'Отдельные технические задачи',},
-        ]
-    },
-    {
-        id: 9,
         name: 'Фото',
         icon: 'Photo',
         models: [
@@ -98,19 +51,61 @@ const specData = [
         ]
     },
     {
-        id: 10,
+        id: 5,
+        name: 'Промо',
+        icon: 'Promo',
+        models: [
+            {id: 1, name: 'Модель',},
+            {id: 2, name: 'Актер',},
+            {id: 3, name: 'Промоутер',},
+            {id: 4, name: 'Гример',},
+        ]
+    },
+    {
+        id: 6,
         name: 'Кейтеринг',
         icon: 'Catering',
         models: [
             {id: 1, name: 'Официант',},
             {id: 2, name: 'Бармен',},
-            {id: 3, name: 'Повар',},
+            {id: 3, name: 'Повар',}, 
             {id: 4, name: 'Хостес',},
-            {id: 5, name: 'Банкетный менеджер',},
+            {id: 5, name: 'Банкетный менеджер',},    
         ]
-    },   
+    },  
     {
-        id: 11,
+        id: 7,
+        name: 'Помощники \/ Грузчики',
+        icon: 'Stagehands',
+        models: [
+            {id: 1, name: 'Помощник \/ Грузчик',},
+        ]
+    },
+    {
+        id: 8,
+        name: 'Граунд',
+        icon: 'StageGround',
+        models: [
+            {id: 1, name: 'Riggers \/ Ground',},
+            {id: 2, name: 'Верхний Риггер',},
+            {id: 3, name: 'Нижний Риггер',},
+            {id: 4, name: 'Монтажник [Ground]',},
+            {id: 5, name: 'Декоратор',},
+        ]
+    }, 
+    {
+        id: 9,
+        name: 'Водители',
+        icon: 'Trucks',
+        models: [
+            {id: 1, name: 'C личным ТС [B\/C]',},
+            {id: 2, name: 'Без личного ТС [B\/C]',},
+            {id: 3, name: 'С гидролифтом',},
+            {id: 4, name: 'Без гидролифта',},
+        ]
+    },
+    {
+        id: 10,
         name: 'Артисты',
         icon: 'Party',
         models: [
@@ -124,8 +119,8 @@ const specData = [
         ]
     },
     {
-        id: 12,
-        name: 'Игромания',
+        id: 11,
+        name: 'Игры',
         icon: 'Games',
         models: [
             {id: 1, name: 'Квесты',},
@@ -134,6 +129,15 @@ const specData = [
             {id: 4, name: 'Настольные игры \/ игровые автоматы',},
             {id: 5, name: 'Пневмокостюмы \/ ростовые куклы',},
             {id: 6, name: 'Активности \/ аттракционы',},
+        ]
+    },
+    {
+        id: 12,
+        name: 'Технический продакшн',
+        icon: 'Production',
+        models: [
+            {id: 1, name: 'Мероприятие под ключ',},
+            {id: 2, name: 'Отдельные технические задачи',},
         ]
     },
 ];
