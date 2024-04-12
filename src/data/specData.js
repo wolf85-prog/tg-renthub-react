@@ -85,7 +85,7 @@ const specData = [
     {
         id: 8,
         name: 'Риггер \/ Граунд',
-        icon: 'StageGround',
+        icon: 'Riggers \/ Ground',
         models: [
             {id: 1, name: 'Верхний Риггер',},
             {id: 2, name: 'Нижний Риггер',},
