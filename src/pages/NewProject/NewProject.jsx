@@ -681,13 +681,13 @@ const NewProject = () => {
         })
     }, [workers])
 
-    useEffect(() => {
-        if (workers.length > 0) {
-            tg.MainButton.enable();
-        } else {
-            tg.MainButton.disable();
-        }  
-    }, [workers])
+    // useEffect(() => {
+    //     if (workers.length > 0) {
+    //         tg.MainButton.enable();
+    //     } else {
+    //         tg.MainButton.disable();
+    //     }  
+    // }, [workers])
 
     let tex = 'Ведутся технические работы!'
     const update_company = 'Прямо сейчас мы делаем нашу систему лучше! Через 5 минут север будет перезагружен и всё заработает снова!'
