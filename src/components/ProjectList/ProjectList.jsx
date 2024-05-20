@@ -8,7 +8,11 @@ const ProjectList = ({posts, title, remove}) => {
     if (!posts.length) {
         return (
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh', zIndex: 10, position: 'relative'}}>
-                <h2>Для создания первой заявки нажмите на кнопку внизу</h2>
+                <div>
+                    <h2>Для создания первой заявки нажмите на кнопку</h2>
+                    <h2>внизу</h2>
+                </div>
+                
             </div>       
         )
     } else {
