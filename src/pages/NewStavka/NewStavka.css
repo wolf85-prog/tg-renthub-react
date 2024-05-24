@@ -1,0 +1,102 @@
+.block-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+}
+
+.form-edit-stavka {
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    z-index: 6;
+}
+
+.edit-send {
+    width: 370px;
+    height: 166px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    /* margin-bottom: 15px; */
+}
+
+.button-send {
+    width: 220px;
+    height: 38px;
+    border: none;
+    background-size: cover;
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+
+/* Rectangle 4 */
+.rec1-input {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0.57%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #2B2E32;
+    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -10px -10px 15px rgba(203, 226, 251, 0.02), 1.08px 0px 5px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
+    border-radius: 21.6px;
+}
+
+/* Rectangle 5 */
+.rec2-input  {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0%;
+    right: 39.43%;
+    top: 0%;
+    bottom: 0%;
+
+    background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
+    border-radius: 21.6px;
+}
+
+/* Rectangle 16 */
+.rec3-input  {
+    position: absolute;
+    left: 53.14%;
+    right: 20.29%;
+    top: 6.98%;
+    bottom: 6.98%;
+
+    background: #2B2F33;
+    filter: blur(5px);
+}
+
+
+.input-style3 {
+    position: relative;
+    z-index: 25;
+    width: 100%;
+    margin: 0 0;
+    border: none;
+    height: 43px;
+    padding: 0 20px;
+    color: #fff;
+    border-radius: 30px;
+    margin-bottom: 0;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+}
