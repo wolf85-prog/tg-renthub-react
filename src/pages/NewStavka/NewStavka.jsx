@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header2/Header2";
 import './NewStavka.css';
 import CurrencyInput from './../../components/CurrencyInput'
 
@@ -88,7 +88,7 @@ const NewStavka = () => {
     //---------------------------------------------------------------------------------------
 
     return (
-        <div className="App">
+        <div className="App" style={{width: '100%'}}>
             <Header header={{title: 'Моё предложение', icon: 'false'}}/>
 
             {/* темный фон */}

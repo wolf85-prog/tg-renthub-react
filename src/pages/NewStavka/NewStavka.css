@@ -85,8 +85,6 @@
     margin: 0 0;
     border: none;
     height: 43px;
-    padding: 0 20px;
-    color: #fff;
     border-radius: 30px;
     margin-bottom: 0;
 
@@ -97,6 +95,8 @@
     /* identical to box height */
     letter-spacing: -0.045em;
 
-    /* ULEY Светлый */
-    color: #E8F1F9;
+
+    background-color: transparent;
+    padding: 0 20px;
+    color: #fff;
 }
