@@ -11,7 +11,7 @@ const API_URL = process.env.REACT_APP_API_URL
 
 const NewStavka = () => {
     const { id } = useParams();
-    const {tg, queryId, user} = useTelegram();
+    const {tg, queryId, user, onClose} = useTelegram();
 
     const [summaStavki, setSummaStavki] = useState()
 
@@ -84,6 +84,18 @@ const NewStavka = () => {
     }, [summaStavki])
 
 
+    //показать кнопку Назад
+    useEffect(() => {
+        tg.onEvent("backButtonClicked", onClose)
+        return () => {
+            tg.offEvent('backButtonClicked', onClose)
+        }
+    }, [onClose])
+
+    useEffect(() => {
+        tg.BackButton.show();
+    }, [])
+
 
     //---------------------------------------------------------------------------------------
 
@@ -94,6 +106,11 @@ const NewStavka = () => {
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
+
+            <div style={{color: '#f5f3f3', fontSize: '18px', zIndex: '10', position: 'absolute', padding: '15px'}}>
+                <p>Внимание!</p>
+                <p>Ставки в предаврительной смете носят рекомендательный характер. Вы может предложить свою цену за 10 часов работы на конкретном проекте.</p>
+            </div>
 
             <div style={{height: '100vh', marginTop: '50%'}}>
                 <div className='form-edit-stavka'>
