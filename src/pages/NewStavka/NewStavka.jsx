@@ -107,9 +107,10 @@ const NewStavka = () => {
             <img src={BlackFon} alt='' className='fon-black' />
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
-            <div style={{color: '#f5f3f3', fontSize: '18px', zIndex: '10', position: 'absolute', padding: '15px'}}>
+            <div style={{color: '#f5f3f3', fontFamily: 'Monserrat', fontSize: '18px', zIndex: '10', position: 'absolute', padding: '15px'}}>
                 <p>Внимание!</p>
-                <p>Ставки в предаврительной смете носят рекомендательный характер. Вы может предложить свою цену за 10 часов работы на конкретном проекте.</p>
+                <p>Ставки в предварительной смете носят рекомендательный характер. </p>
+                <p>Вы может предложить свою цену за 10 часов работы на конкретном проекте.</p>
             </div>
 
             <div style={{height: '100vh', marginTop: '50%'}}>
