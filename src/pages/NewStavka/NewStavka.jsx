@@ -101,18 +101,19 @@ const NewStavka = () => {
 
     return (
         <div className="App" style={{width: '100%'}}>
-            <Header header={{title: 'Моё предложение', icon: 'false'}}/>
+            {/* <Header header={{title: 'Моё предложение', icon: 'false'}}/> */}
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
-            <div style={{color: '#f5f3f3', fontSize: '18px', zIndex: '10', position: 'absolute', padding: '15px'}}>
+            <div style={{color: '#f5f3f3', fontFamily: 'Monserrat', fontSize: '18px', zIndex: '10', position: 'absolute', padding: '35px 20px'}}>
                 <p>Внимание!</p>
-                <p>Ставки в предаврительной смете носят рекомендательный характер. Вы может предложить свою цену за 10 часов работы на конкретном проекте.</p>
+                <p>Ставки в предварительной смете носят рекомендательный характер. </p>
+                <p>Вы может предложить свою цену за 10 часов работы на конкретном проекте.</p>
             </div>
 
-            <div style={{height: '100vh', marginTop: '50%'}}>
+            <div style={{height: '100vh', marginTop: '60%'}}>
                 <div className='form-edit-stavka'>
                     
                     <div className='rec1-input'></div>
@@ -127,6 +128,14 @@ const NewStavka = () => {
                         /> 
     
                 </div>
+            </div>
+
+            <div style={{color: '#f5f3f3', fontFamily: 'Monserrat', fontSize: '18px', zIndex: '10', position: 'absolute', top:"300px", padding: '35px 20px', textAlign: 'left'}}>
+                <p>Ваше предложение может повлиять на конверсию и оперативный поиск специалистов если:</p>
+                <p style={{paddingLeft: '10px'}}>• Ставка ниже рыночной;</p>
+                <p style={{paddingLeft: '10px'}}>• Техническое задание другой коэффициент;</p>
+                <p style={{paddingLeft: '10px'}}>• Повышенный спрос на даты проекта;</p>
+                <p>Поиск специалистов может занять больше времени. Компетенции, или качество специалистов могут оказаться низкими.</p>
             </div>
 
         </div>
