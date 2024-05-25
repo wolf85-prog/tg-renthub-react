@@ -113,7 +113,7 @@ const NewStavka = () => {
                 <p>Вы может предложить свою цену за 10 часов работы на конкретном проекте.</p>
             </div>
 
-            <div style={{height: '100vh', marginTop: '50%'}}>
+            <div style={{height: '100vh', marginTop: '60%'}}>
                 <div className='form-edit-stavka'>
                     
                     <div className='rec1-input'></div>
