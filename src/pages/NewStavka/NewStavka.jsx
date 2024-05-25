@@ -130,6 +130,14 @@ const NewStavka = () => {
                 </div>
             </div>
 
+            <div style={{color: '#f5f3f3', fontFamily: 'Monserrat', fontSize: '18px', zIndex: '10', position: 'absolute', top:"300px", padding: '35px 20px', textAlign: 'left'}}>
+                <p>Ваше предложение может повлиять на конверсию и оперативный поиск специалистов если:</p>
+                <p style={{paddingLeft: '10px'}}>• Ставка ниже рыночной;</p>
+                <p style={{paddingLeft: '10px'}}>• Техническое задание другой коэффициент;</p>
+                <p style={{paddingLeft: '10px'}}>• Повышенный спрос на даты проекта;</p>
+                <p>Поиск специалистов может занять больше времени. Компетенции, или качество специалистов могут оказаться низкими.</p>
+            </div>
+
         </div>
     );
 };
