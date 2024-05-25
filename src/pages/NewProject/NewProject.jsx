@@ -960,7 +960,7 @@ const NewProject = () => {
                         <hr/>
                         <br/>
                         {update_company}
-                        <p>id: {companyId}</p>
+                        {/* <p>id: {companyId}</p> */}
                         <br/>
                         <br/>
                         <MyButton onClick={clickButton}>Вернусь позже</MyButton>
