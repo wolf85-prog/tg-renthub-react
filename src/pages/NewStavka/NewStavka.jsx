@@ -101,13 +101,13 @@ const NewStavka = () => {
 
     return (
         <div className="App" style={{width: '100%'}}>
-            <Header header={{title: 'Моё предложение', icon: 'false'}}/>
+            {/* <Header header={{title: 'Моё предложение', icon: 'false'}}/> */}
 
             {/* темный фон */}
             <img src={BlackFon} alt='' className='fon-black' />
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
-            <div style={{color: '#f5f3f3', fontFamily: 'Monserrat', fontSize: '18px', zIndex: '10', position: 'absolute', padding: '15px'}}>
+            <div style={{color: '#f5f3f3', fontFamily: 'Monserrat', fontSize: '18px', zIndex: '10', position: 'absolute', padding: '35px 20px'}}>
                 <p>Внимание!</p>
                 <p>Ставки в предварительной смете носят рекомендательный характер. </p>
                 <p>Вы может предложить свою цену за 10 часов работы на конкретном проекте.</p>
