@@ -141,6 +141,8 @@ const NewProject = () => {
     useEffect(() => {
         const fetch = async() => {
             setIsLoading(true);
+
+            const managerNotion = await getManagerIdApi('1775583141')  // проверка доступности notion
             
             //поиск менеджера в БД (кэш)
             const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
@@ -149,46 +151,54 @@ const NewProject = () => {
             if (isEmptyObject(manager)) {
                 console.log("Менеджер не найден!")
                 
-                //поиск менеджера в notion
-                const managerId = await getManagerIdApi(user?.id )
-                console.log("Менеджер из ноушен: ", managerId)
-                
-                //если менеджер не найден, то создать в notion
-                if (isEmptyObject(managerId)) {
-                  const newManager = await createManagerApi({
-                        id: (user?.id).toString(), 
-                        firstname: user?.first_name,
-                        lastname: user?.last_name,
-                    })  
-
-                    //получить данные менеджера после создания
-                    setTimeout(async ()=> {
-                        const managerId = await getManagerIdApi(user?.id)
-                        const companyId = await getCompanyIdApi(user?.id)
-                        console.log(managerId)
+                //проверка на доступность Ноушена 
+                if (managerNotion) { 
+                    const managerId = await getManagerIdApi(user?.id ) //поиск менеджера в notion
+                    console.log("Менеджер из ноушен: ", managerId)
+                    
+                    //если менеджер не найден, то создать в notion
+                    if (isEmptyObject(managerId)) {
+                      const newManager = await createManagerApi({
+                            id: (user?.id).toString(), 
+                            firstname: user?.first_name,
+                            lastname: user?.last_name,
+                        })  
     
-                        if (isEmptyObject(managerId)) {
-                            console.log("Опять ошибка") 
-                            setIsLoading(false) 
-                            setModal(true)
-                        } else {
-                            console.log("Данные успешно сохранены!")
-                            setManagerId(managerId)
-                            setCompanyId(companyId)
-                            setIsLoading(false)
-                            //setModalInfo(true) 
-                        }    
-                        
-                    }, 2000) 
+                        //получить данные менеджера после создания
+                        setTimeout(async ()=> {
+                            const managerId = await getManagerIdApi(user?.id)
+                            const companyId = await getCompanyIdApi(user?.id)
+                            console.log(managerId)
+        
+                            if (isEmptyObject(managerId)) {
+                                console.log("Опять ошибка") 
+                                setIsLoading(false) 
+                                setModal(true)
+                            } else {
+                                console.log("Данные успешно сохранены!")
+                                setManagerId(managerId)
+                                setCompanyId(companyId)
+                                setIsLoading(false)
+                                //setModalInfo(true) 
+                            }    
+                            
+                        }, 2000) 
+                    } else {
+                        console.log("Менеджер найден в ноушене!")
+                        setManagerId(managerId)
+    
+                        const companyId = await getCompanyIdApi(user?.id)
+                        setCompanyId(companyId)
+    
+                        setIsLoading(false) 
+                    }  
                 } else {
-                    console.log("Менеджер найден в ноушене!")
-                    setManagerId(managerId)
+                    console.log("Ноушен не отвечает!")
 
-                    const companyId = await getCompanyIdApi(user?.id)
-                    setCompanyId(companyId)
-
-                    setIsLoading(false) 
-                }   
+                    setManagerId("Локальный менеджер")
+                    setCompanyId("Локальный заказчик")
+                }
+                 
 
             } else {
                 console.log(console.log("manager cash: ", manager))
