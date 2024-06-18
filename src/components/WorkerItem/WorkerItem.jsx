@@ -39,7 +39,7 @@ const WorkerItem = (props) => {
         image = Riggers;
     } else if (icon === 'Production') {
         image = Production;
-    } else if (icon === 'Stage Ground') {
+    } else if (icon === 'Riggers \/ Ground') {
         image = StageGround;
     } else if (icon === 'Video') {
         image = Video;
@@ -54,6 +54,8 @@ const WorkerItem = (props) => {
     } else if (icon === 'Photo') {
         image = Photo;
     } else if (icon === 'Party') {
+        image = Party;
+    } else if (icon === 'Promo') {
         image = Party;
     }
 
@@ -71,7 +73,7 @@ const WorkerItem = (props) => {
         <div className="list_spec">
             <img style={{marginTop: "21px"}} src={image} alt='icon'/>
 
-            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} style={{border: '2px, solid, #26aad4'}} variant="standard">
+            <FormControl sx={{marginLeft: '7px', marginBottom: '20px', width: '60%'}} variant="standard">
                 <InputLabel shrink htmlFor="bootstrap-input" style={{color: '#26aad4'}}>
                     {props.worker.cat}
                 </InputLabel>
