@@ -1,0 +1,57 @@
+.footer {
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    background: #121212; /* Цвет фона */
+    width: 100%; /* Ширина слоя */
+   }
+
+.down-icon {
+    position: absolute;
+    bottom: 0;
+    z-index: 50;
+    left: 50%;
+    transform: translate(-50%, -25%);
+}
+
+.down-image {
+    animation: mover 2s infinite alternate, showIcon 10s infinite;
+    /* animation-delay: 1s; */
+}
+
+@keyframes showIcon {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes mover {
+    0% { transform: translateY(-80px); }
+    100% { transform: translateY(20px); }
+}
+
+
+.image-elka {
+    width: 170px;
+    position: fixed;
+    bottom: 0;
+    right:0;
+    z-index: 0;
+}
+
+
+@keyframes glowing {
+    0% { background-color: rgb(83, 80, 80); box-shadow: 0 0 0 rgb(83, 80, 80); }
+    50% { background-color: rgb(50, 31, 219); box-shadow: 0 0 0 rgb(50, 31, 219); }
+    100% { background-color: rgb(83, 80, 80); box-shadow: 0 0 0 rgb(83, 80, 80); }
+}
+    
+.arroy{
+    animation: glowing 1200ms infinite;
+}
