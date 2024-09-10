@@ -112,7 +112,8 @@ function Error() {
 
                     <p className='vagno'>Внимание</p>
 
-                    <p className='text-vagno3'>Ведутся технические работы! Задайте ваш вопрос менеджеру через чат</p>
+                    <p className='text-vagno3'>Ведутся технические работы!</p>
+                    <p className='text-vagno3' style={{top: '110px'}}>Задайте ваш вопрос менеджеру через чат</p>
                 
                     <div className='button-ok'>
                         <div className='rec-button' onClick={onClose}>Чат</div>        
