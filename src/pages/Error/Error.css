@@ -181,11 +181,11 @@
     /* Здесь будет Ваш текст */
     position: absolute;
     left: 50%;
-    top: 80px;
+    top: 60px;
     transform: translate(-50%, 0);
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 18px;
     line-height: 25px;
     letter-spacing: 0em;
     /* ULEY Светлый */
