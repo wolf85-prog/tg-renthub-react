@@ -55,3 +55,124 @@
 .arroy{
     animation: glowing 1200ms infinite;
 }
+
+/* Rectangle 4 */
+.rectangle-modal {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 1.11%;
+    background: #2B2E32;
+    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -12px -15px 20px rgba(203, 226, 251, 0.03), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
+    border-radius: 21.6px; 
+  }
+  
+  
+  /* Rectangle 5 */
+  .rectangle-modal2 {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0%;
+    right: 29.43%;
+    top: 0%;
+    bottom: 1.05%;
+    background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
+    border-radius: 21.6px;
+  }
+  
+  /* Rectangle 16 */
+  .rectangle-modal3 {
+    position: absolute;
+    left: 54.39%;
+    right: 19.08%;
+    top: 1.73%;
+    bottom: 2.68%;
+    background: #2B2F33;
+    filter: blur(5px);
+  }
+
+  .info-card {
+    width: 321px;
+    height: 174px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.vagno {
+    /* Важно */
+    position: absolute;
+    left: 25px;
+    top: 20px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+}
+
+.text-vagno {
+    /* Здесь будет Ваш текст */
+    position: absolute;
+    left: 0;
+    top: 40%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0em;
+    /* ULEY Светлый */
+    /* color: #E8F1F9; */
+    color: #fff;
+    /* opacity: 0.4; */
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* Чат */
+.button-ok {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    isolation: isolate;
+
+    position: absolute;
+    width: 111px;
+    height: 31px;
+    right: 20px;
+    bottom: 20px;
+}
+
+.rec-button {
+    box-sizing: border-box;
+
+    width: 114px;
+    height: 31px;
+
+    background: linear-gradient(183.21deg, rgba(113, 113, 113, 0.2) 4.27%, rgba(53, 50, 50, 0.2) 96.9%), linear-gradient(314.64deg, #1F2021 21.78%, #242526 55.17%, #313337 96.32%);
+    /* border: 0.481481px solid rgba(44, 44, 44, 0.25); */
+    box-shadow: -2.65605px -2.32405px 8.13704px rgba(170, 170, 170, 0.11), 0.962963px 1.92593px 9.77407px rgba(0, 0, 0, 0.52), inset -3px -4px 3.9963px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+
+    padding: 5px;
+}
