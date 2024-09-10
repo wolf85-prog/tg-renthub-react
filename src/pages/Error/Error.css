@@ -176,3 +176,20 @@
 
     padding: 5px;
 }
+
+.text-vagno3 {
+    /* Здесь будет Ваш текст */
+    position: absolute;
+    left: 50%;
+    top: 80px;
+    transform: translate(-50%, 0);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 0em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.4;
+    width: 250px;
+}

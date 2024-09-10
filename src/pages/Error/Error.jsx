@@ -91,10 +91,10 @@ function Error() {
     return (
         <div className="App">
 
-            {/* <Header header={{title: 'Мои проекты', icon: 'false'}}/>
+            {/* <Header header={{title: 'Мои проекты', icon: 'false'}}/> */}
 
 
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh', zIndex: 10, position: 'relative'}}>
+            {/* <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh', zIndex: 10, position: 'relative'}}>
                 <div>
                     <h2><b>Дорогие коллеги!</b></h2>
                     <h2>Ведутся </h2>
