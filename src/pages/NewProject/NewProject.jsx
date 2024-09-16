@@ -656,7 +656,7 @@ const NewProject = () => {
         tg.MainButton.hide();
         setIsLoading(true)
 
-        if (companyId !== '') {
+        //if (companyId !== '') {
             fetch(API_URL + 'web-data', {
                 method: 'POST',
                 headers: {
@@ -665,10 +665,10 @@ const NewProject = () => {
                 body: JSON.stringify(data)
             }) 
             setIsLoading(false)
-        } else {
-           setIsLoading(false)
-           setModal(true)
-        }
+        //} else {
+        //    setIsLoading(false)
+        //    setModal(true)
+        //}
               
     }, [project, workers, equipments, datestart, geo, teh, managerId, companyId, chatId])
 
