@@ -27,21 +27,21 @@ const UserProvider = ({ children }) => {
         setUserApp(user?.id)
 
         const fetchData = async() => {
-            // const managerId = await getManagerIdApi(user?.id) //user?.id '805436270' '1408579113'
-            // setManagerId(managerId)
+           const managerId = user?.id //user?.id '805436270' '1408579113'
+            setManagerId(managerId)
 
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')
 			// } else {
 			// 	console.log('ManagerId: ', managerId) 
 				
-			// 	//const projects = await getProjectsApi(managerId)
+			const projects = await getProjectsApi(managerId)
 			// 	const res = await getProjectsCashApi()
 			// 	const projectsManager = res.filter((item) => item.manager === managerId)
 			// 	console.log("------ post: ", projectsManager)
 				
 			// 	//setProjects(projectsManager)
-            //     setProjects(projectsManager)
+            setProjects(projects)
 			// }
         }
 

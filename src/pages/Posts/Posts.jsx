@@ -27,7 +27,7 @@ function Posts() {
 	const arr_status = [] 
 
     const [filter, setFilter] = useState({sort: '', query: ''});
-    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query);
+    //const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query);
           
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const arrayPost = []
@@ -121,7 +121,7 @@ function Posts() {
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh'}}>
                <Loader/>
             </div>  
-            : <ProjectList posts={sortedAndSearchedPosts} title=""/>
+            : <ProjectList posts={projects2} title=""/>
             }
 
 

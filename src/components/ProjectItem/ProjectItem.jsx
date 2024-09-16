@@ -3,10 +3,10 @@ import './ProjectItem.css';
 import ProjectWorkList from '../ProjectWorkList/ProjectWorkList';
 
 const ProjectItem = (props) => {
-    const status = JSON.parse(props.post.status)
-    const statusColor = status === null ? 'gray' : status.color;
-    const dateProject = props.post.dateStart != null ? props.post.dateStart : '';
-    const dateProject2 = props.post.dateEnd != null ? props.post.dateEnd : '';
+    //const status = JSON.parse(props.post.status)
+    // const statusColor = status === null ? 'gray' : status.color;
+    // const dateProject = props.post.dateStart != null ? props.post.dateStart : '';
+    // const dateProject2 = props.post.dateEnd != null ? props.post.dateEnd : '';
 
     const months = {
         0: 'января',
@@ -48,27 +48,27 @@ const ProjectItem = (props) => {
     const formatted2 = `${date2} ${monthName2} ${year}`;
 
 
-    props.post.specs && Object.values(JSON.parse(props.post.specs)).map((worker) =>
+    props.post.spec && Object.values(JSON.parse(props.post.spec)).map((worker) =>
         worker.id ? count++ : count
     )
 
-    props.post.specs && Object.values(JSON.parse(props.post.specs)).map((worker2) =>
+    props.post.spec && Object.values(JSON.parse(props.post.spec)).map((worker2) =>
         worker2.spec ? count2++ : count2
     )
 
     return (
         <div className='box'>
             <div className="post__content">
-                <div className="post_title">{props.post.title}</div>
+                <div className="post_title">{props.post.name}</div>
                 <div className="subscribe">
                     {formatted}
                 </div>
 
-                <ProjectWorkList workers={JSON.parse(props.post.specs)} defould={count}/>
+                <ProjectWorkList workers={JSON.parse(props.post.spec)} defould={count}/>
 
                 {
-                    (props.post.specs && count !=0)
-                    ? <p className='find-post'><span className="find_span">Найдено {count} из {JSON.parse(props.post.specs).length - (JSON.parse(props.post.specs).length - count2)}</span></p> 
+                    (props.post.spec && count !=0)
+                    ? <p className='find-post'><span className="find_span">Найдено {count} из {JSON.parse(props.post.spec).length - (JSON.parse(props.post.spec).length - count2)}</span></p> 
                     : <p><span className="nofind_span"></span></p>
                 }
                 
