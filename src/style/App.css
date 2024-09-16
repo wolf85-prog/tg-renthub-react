@@ -25,6 +25,7 @@
   width: 350px;
   font-family: Arial;
   text-align: center;
+  margin-top: 50%;
 }
 
 .white-content {
@@ -87,3 +88,6 @@
   top: 0;
   z-index: 0;
 }
+
+
+
