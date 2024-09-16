@@ -142,71 +142,73 @@ const NewProject = () => {
         const fetch = async() => {
             setIsLoading(true);
 
-            const managerNotion = await getManagerIdApi('1775583141')  // проверка доступности notion
+            //const managerNotion = await getManagerIdApi('1775583141')  // проверка доступности notion
             
             //поиск менеджера в БД (кэш)
-            const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
+            //const manager = await getManagerApi(user?.id) //user?.id '805436270' '1408579113' '371602681' '1853131218' '6458794597' '1698411118' 6143011220
 
             //если менеджер не найден, то искать в notion
-            if (isEmptyObject(manager)) {
-                console.log("Менеджер не найден!")
+            // if (isEmptyObject(manager)) {
+            //     console.log("Менеджер не найден!")
                 
-                //проверка на доступность Ноушена 
-                if (managerNotion) { 
-                    const managerId = await getManagerIdApi(user?.id ) //поиск менеджера в notion
-                    console.log("Менеджер из ноушен: ", managerId)
+            //     //проверка на доступность Ноушена 
+            //     if (managerNotion) { 
+            //         const managerId = await getManagerIdApi(user?.id ) //поиск менеджера в notion
+            //         console.log("Менеджер из ноушен: ", managerId)
                     
-                    //если менеджер не найден, то создать в notion
-                    if (isEmptyObject(managerId)) {
-                      const newManager = await createManagerApi({
-                            id: (user?.id).toString(), 
-                            firstname: user?.first_name,
-                            lastname: user?.last_name,
-                        })  
+            //         //если менеджер не найден, то создать в notion
+            //         if (isEmptyObject(managerId)) {
+            //           const newManager = await createManagerApi({
+            //                 id: (user?.id).toString(), 
+            //                 firstname: user?.first_name,
+            //                 lastname: user?.last_name,
+            //             })  
     
-                        //получить данные менеджера после создания
-                        setTimeout(async ()=> {
-                            const managerId = await getManagerIdApi(user?.id)
-                            const companyId = await getCompanyIdApi(user?.id)
-                            console.log(managerId)
+            //             //получить данные менеджера после создания
+            //             setTimeout(async ()=> {
+            //                 const managerId = await getManagerIdApi(user?.id)
+            //                 const companyId = await getCompanyIdApi(user?.id)
+            //                 console.log(managerId)
         
-                            if (isEmptyObject(managerId)) {
-                                console.log("Опять ошибка") 
-                                setIsLoading(false) 
-                                setModal(true)
-                            } else {
-                                console.log("Данные успешно сохранены!")
-                                setManagerId(managerId)
-                                setCompanyId(companyId)
-                                setIsLoading(false)
-                                //setModalInfo(true) 
-                            }    
+            //                 if (isEmptyObject(managerId)) {
+            //                     console.log("Опять ошибка") 
+            //                     setIsLoading(false) 
+            //                     setModal(true)
+            //                 } else {
+            //                     console.log("Данные успешно сохранены!")
+            //                     setManagerId(managerId)
+            //                     setCompanyId(companyId)
+            //                     setIsLoading(false)
+            //                     //setModalInfo(true) 
+            //                 }    
                             
-                        }, 2000) 
-                    } else {
-                        console.log("Менеджер найден в ноушене!")
-                        setManagerId(managerId)
+            //             }, 2000) 
+            //         } else {
+            //             console.log("Менеджер найден в ноушене!")
+            //             setManagerId(managerId)
     
-                        const companyId = await getCompanyIdApi(user?.id)
-                        setCompanyId(companyId)
+            //             const companyId = await getCompanyIdApi(user?.id)
+            //             setCompanyId(companyId)
     
-                        setIsLoading(false) 
-                    }  
-                } else {
-                    console.log("Ноушен не отвечает!")
+            //             setIsLoading(false) 
+            //         }  
+            //     } else {
+            //         console.log("Ноушен не отвечает!")
 
-                    setManagerId("Локальный менеджер")
-                    setCompanyId("Локальный заказчик")
-                }
+            //         setManagerId("Локальный менеджер")
+            //         setCompanyId("Локальный заказчик")
+            //     }
                  
 
-            } else {
-                console.log(console.log("manager cash: ", manager))
-                setManagerId(manager.id)
-                setCompanyId(manager.companyId)
+            // } else {
+            //     console.log(console.log("manager cash: ", manager))
+            //     setManagerId(manager.id)
+            //     setCompanyId(manager.companyId)
                 
-                setIsLoading(false) 
-            }
+            //     setIsLoading(false) 
+            // }
+
+            setIsLoading(false) 
 
             setChatId(user?.id) 
 
@@ -410,19 +412,19 @@ const NewProject = () => {
         setCountChar(e.target.value.length)
         setShowNotif7(false)
 
-        const data = {
-            // projectname: project,
-            // datestart,
-            // geo,
-            // teh,
-            // worklist: workers,
-            managerId,
-            companyId,
-            // queryId,
-            // chatId,
-        }
+        // const data = {
+        //     // projectname: project,
+        //     // datestart,
+        //     // geo,
+        //     // teh,
+        //     // worklist: workers,
+        //     managerId,
+        //     companyId,
+        //     // queryId,
+        //     // chatId,
+        // }
 
-        console.log("data: ", data)
+        //console.log("data: ", data)
     }
 //---------------------------------------------------------------------------------------
 

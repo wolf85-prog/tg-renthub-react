@@ -17,7 +17,7 @@ function Load() {
 
     useEffect(() => {     
         setTimeout(()=> {
-            navigate("/error")
+            navigate("/posts")
         }, 1000)
             
     }, []);
