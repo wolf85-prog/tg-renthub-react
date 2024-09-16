@@ -5,9 +5,9 @@ import ProjectWorkList from '../ProjectWorkList/ProjectWorkList';
 const ProjectItem = (props) => {
     //const status = JSON.parse(props.post.status)
     // const statusColor = status === null ? 'gray' : status.color;
-    // const dateProject = props.post.dateStart != null ? props.post.dateStart : '';
-    // const dateProject2 = props.post.dateEnd != null ? props.post.dateEnd : '';
-
+    const dateProject = props.post.datestart != null ? props.post.datestart : '';
+    // dateProject2 = props.post.dateEnd != null ? props.post.dateEnd : '';
+    const dateProject2 = props.post.datestart != null ? props.post.datestart : '';
     const months = {
         0: 'января',
         1: 'февраля',
