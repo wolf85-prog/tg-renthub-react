@@ -40,7 +40,7 @@ function Posts() {
     }, []);
 
     useEffect(() => {
-        if (projects.length > 0) {
+        if (projects && projects.length > 0) {
             setProjects2(projects)
             setIsPostsLoading(false) 
         }
