@@ -193,19 +193,17 @@ const ProfilePage = () => {
                     <div className="star-block">
                         
                     </div>
-                    <div className='block-id'> ID 121212</div>
+                    <div className='block-id'> ID 12121212</div>
                 </article>
 
-                <div style={{display: 'flex', marginTop: '15px', justifyContent: 'space-between'}}>
+                <div style={{display: 'flex', marginTop: '40px', justifyContent: 'space-between'}}>
                 <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
                        
                        
                        
-                        {/* Компетенции */}
+                        {/* Компания */}
                         <article className='block-kompetencii' style={{display: 'block'}}> 
-                            <div className='rectangle-kompeten'></div>
-                            <div className='rectangle-kompeten2'></div>
-                            <div className='rectangle-kompeten3'></div>
+                            <div className='rectangle5'></div>
                             <div className='kompetencii-title'>
                                 <p className='text-kompetencii'>Компания</p>
                                 <img className='vector-icon' src={Vector} alt=''/>
@@ -215,23 +213,19 @@ const ProfilePage = () => {
                         {/* open */}
                         {/* Доход */}
                        <article className='block-dohod' style={{display: 'block'}}> 
-                            <div className='rectangle-dohod'></div>
-                            <div className='rectangle-dohod2'></div>
-                            <div className='rectangle-dohod3'></div>
-                            <div className='kompetencii-title'><p>Сумма к выплате</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'><Loader2 /></p>
+                            <div className='rectangle17'></div>
+                            <div className='kompetencii-title' style={{top: '25px'}}><p>Сумма к выплате</p></div>
+                            <p className='summa-dohod'>{2>1 ? '0.00' : <Loader2 />}</p>
                         </article>
 
                     </div> 
 
                     {/* Рассылка */}
                     <article className='block-merch'> 
-                            <div className='rectangle-merch'></div>
-                            <div className='rectangle-merch2'></div>
-                            <div className='rectangle-merch3'></div> 
+                            <div className='rectangle5'></div>
 
                             <div className='rectangle-circle'>
-                                <div className='rectangle-circle-on'></div>
+                                {/* <div className='rectangle-circle-on'></div> */}
                             </div>
 
                             <p className='merch-title'>Рассылка</p>
