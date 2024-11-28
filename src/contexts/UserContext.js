@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getManagerIdApi, getProjectsApi, getProjectsCashApi } from './../http/projectAPI';
+import { getManagerApi, getProjectsApi, getProjectsCashApi } from './../http/projectAPI';
 import {useTelegram} from "./../hooks/useTelegram";
 
 const UserContext = createContext();
@@ -30,7 +30,7 @@ const UserProvider = ({ children }) => {
             const managerId = user?.id //user?.id '805436270' '1408579113'
             setManagerId(managerId)
 
-            const manager = await getManagerIdApi(user?.id)
+            const manager = await getManagerApi(user?.id)
             console.log("manager profile: ", manager) 
 
             setWorkerhub(manager)

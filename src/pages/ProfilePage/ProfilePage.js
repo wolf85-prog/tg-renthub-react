@@ -39,7 +39,7 @@ import Loader from "../../components/UI/Loader/Loader";
 import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
-import { getManagerIdApi } from '../../http/projectAPI';
+import { getManagerApi } from '../../http/projectAPI';
 
 
 const ProfilePage = () => {
@@ -59,7 +59,7 @@ const ProfilePage = () => {
 
     const [status, setStatus] = useState([{title: "Новые"}, {title: "Старые"}, {title: "Все"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
-    const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, workerId); //specId '1408579113'
+    //const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, workerId); //specId '1408579113'
     const [sortProject, setSortProject] = useState([])
 
     const [showArroy, setShowArroy] = useState(true)
@@ -106,10 +106,10 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            const manager = await getManagerIdApi(user?.id)
-            console.log("manager profile: ", manager) 
+            // const manager = await getManagerIdApi(user?.id)
+            // console.log("manager profile: ", manager) 
 
-            setManagerId(manager?.id)
+            // setManagerId(manager?.id)
 
             setTimeout(()=> {      
                 setIsProfileLoading(false)

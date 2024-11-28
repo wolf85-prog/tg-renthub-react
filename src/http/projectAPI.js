@@ -3,7 +3,7 @@ import {$host} from "./index";
 export const getManagerApi = async (id) =>{
     try {
        let response = await $host.get(`api/managers/get/${id}`);
-       //console.log(response);
+       console.log(response.data);
        return response.data;
     } catch (error) {
         console.log("error while calling getManagerApi api from webapp-react", error.message);
