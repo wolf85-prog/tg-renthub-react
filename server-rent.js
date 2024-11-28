@@ -29,7 +29,7 @@ const httpsServer = https.createServer(credentials, app);
 const start = async () => {
     try {       
         httpsServer.listen(PORT, () => {
-            console.log('HTTPS Server WebApp running on port ' + PORT);
+            console.log('HTTPS Server WebApp Renthub running on port ' + PORT);
         });
 
     } catch (error) {
