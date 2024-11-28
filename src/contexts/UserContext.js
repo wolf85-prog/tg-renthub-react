@@ -31,7 +31,7 @@ const UserProvider = ({ children }) => {
             const managerId = user?.id //user?.id '805436270' '1408579113'
             setManagerId(managerId)
 
-            const manager = await getManagerApi('805436270')
+            const manager = await getManagerApi(user?.id)
             console.log("manager profile: ", manager) 
 
             setWorkerhub(manager)

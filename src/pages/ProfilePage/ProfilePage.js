@@ -183,7 +183,7 @@ const ProfilePage = () => {
 
                     </div>
                     <div>
-                        <p className="profile_fio">{workerhub?.fio}</p>
+                        <p className="profile_fio">{workerhub?.fio.split(' ')[0] + ' ' + workerhub?.fio.split(' ')[1]}</p>
 
                         <p className="profile_city">{workerhub?.city}</p>
                         <p className="profile_company">{companyManager ? companyManager : '-'}</p>
