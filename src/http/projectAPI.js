@@ -2,7 +2,7 @@ import {$host} from "./index";
 
 export const getManagerApi = async (id) =>{
     try {
-       let response = await $host.get(`managers/cash/${id}`);
+       let response = await $host.get(`api/managers/get/${id}`);
        //console.log(response);
        return response.data;
     } catch (error) {

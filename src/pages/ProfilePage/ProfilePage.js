@@ -39,6 +39,7 @@ import Loader from "../../components/UI/Loader/Loader";
 import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
+import { getManagerIdApi } from '../../http/projectAPI';
 
 
 const ProfilePage = () => {
@@ -53,7 +54,7 @@ const ProfilePage = () => {
     //специалисты
     const [workerhublist, setWorkerhublist] = useState([]);
 
-    const [workerId, setWorkerId] = useState('')
+    const [managerId, setManagerId] = useState('')
     const [projects2, setProjects2] = useState('')
 
     const [status, setStatus] = useState([{title: "Новые"}, {title: "Старые"}, {title: "Все"}]);
@@ -105,7 +106,10 @@ const ProfilePage = () => {
 
         const fetchData = async() => { 
             setIsProfileLoading(true)
-            //const worker = await getWorkerIdBD('805436270')
+            const manager = await getManagerIdApi(user?.id)
+            console.log("manager profile: ", manager) 
+
+            setManagerId(manager?.id)
 
             setTimeout(()=> {      
                 setIsProfileLoading(false)
@@ -179,9 +183,9 @@ const ProfilePage = () => {
 
                     </div>
                     <div>
-                        <p className="profile_fio">Иванов Иван</p>
+                        <p className="profile_fio">{workerhub?.fio}</p>
 
-                        <p className="profile_city">Город</p>
+                        <p className="profile_city">{workerhub?.city}</p>
                         <p className="profile_company">Название компании</p>
                         {/* <div className="card-specs bullet">
                             <ul>
@@ -193,7 +197,7 @@ const ProfilePage = () => {
                     <div className="star-block">
                         
                     </div>
-                    <div className='block-id'> ID 12121212</div>
+                    <div className='block-id'> ID {workerhub?.chatId}</div>
                 </article>
 
                 <div style={{display: 'flex', marginTop: '40px', justifyContent: 'space-between'}}>

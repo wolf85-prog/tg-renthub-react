@@ -8,7 +8,7 @@ const useUsersContext = () => useContext(UserContext);
 
 const UserProvider = ({ children }) => {
 	const {user} = useTelegram();
-
+    const [workerhub, setWorkerhub] = useState();
 	const [managerId, setManagerId] = useState("");
 	const [projects, setProjects] = useState([]);
 	const [status, setStatus] = useState([]);
@@ -27,8 +27,13 @@ const UserProvider = ({ children }) => {
         setUserApp(user?.id)
 
         const fetchData = async() => {
-           const managerId = user?.id //user?.id '805436270' '1408579113'
+            const managerId = user?.id //user?.id '805436270' '1408579113'
             setManagerId(managerId)
+
+            const manager = await getManagerIdApi(user?.id)
+            console.log("manager profile: ", manager) 
+
+            setWorkerhub(manager)
 
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')
@@ -87,6 +92,8 @@ const UserProvider = ({ children }) => {
 
     return (
 		<UserContext.Provider value={{ 
+            workerhub, 
+            setWorkerhub,
 			projects,
 			setProjects,
 			managerId,
