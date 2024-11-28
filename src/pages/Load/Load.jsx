@@ -1,12 +1,6 @@
-import React, {useEffect, useState, useMemo} from "react";
-import { useProjects } from "../../hooks/useProjects"
+import React, { useEffect } from "react";
 import { useTelegram } from "../../hooks/useTelegram";
-import { useUsersContext } from "../../contexts/UserContext";
-import ProjectList from "../../components/ProjectList/ProjectList";
-import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
-import MyButton from "../../components/UI/MyButton/MyButton";
 import { useNavigate } from "react-router-dom";
-import Header from "../../components/Header/Header";
 import Loader from "../../components/UI/Loader/Loader";
 import './Load.css';
 
@@ -17,7 +11,7 @@ function Load() {
 
     useEffect(() => {     
         setTimeout(()=> {
-            navigate("/posts")
+            navigate("/profile")
         }, 1000)
             
     }, []);
