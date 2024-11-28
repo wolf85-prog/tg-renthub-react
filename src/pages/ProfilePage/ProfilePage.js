@@ -164,7 +164,8 @@ const ProfilePage = () => {
             <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}} setShowModal={setShowMoreInfo} showModal={showMoreInfo}/>
 
             {/* темный фон */}
-            <img src={BlackFon} alt='' className='fon-black' />
+            {/* <img src={BlackFon} alt='' className='fon-black' /> */}
+            <div style={{height: '844px', background: 'linear-gradient(180deg, #343A41 0%, #222325 100%)'}} className='fon-black' />
 
             {isProfileLoading
             ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center'}}><Loader/></div>
@@ -172,13 +173,15 @@ const ProfilePage = () => {
             <div className="container">
                 {/* ФИО */}
                 <article className="card">
-                    <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
+                    <div className="rectangle4">
                     </div>
                     <div className="circle">
 
                     </div>
                     <div>
-                        <p className="profile_fio">ФИО</p>
+                        <p className="profile_fio">Иванов Иван</p>
+
+                        <p className="profile_city">Город</p>
                         <p className="profile_company">Название компании</p>
                         {/* <div className="card-specs bullet">
                             <ul>
@@ -188,11 +191,7 @@ const ProfilePage = () => {
                     </div>
                     
                     <div className="star-block">
-                        <img className='star-icon' src={StarActive} alt='' /> 
-                        <img className='star-icon' src={StarActive} alt='' />
-                        <img className='star-icon' src={StarActive} alt='' />
-                        <img className='star-icon' src={StarActive} alt='' />
-                        <img className='star-icon' src={Star} alt='' />
+                        
                     </div>
                     <div className='block-id'> ID 121212</div>
                 </article>
@@ -200,14 +199,7 @@ const ProfilePage = () => {
                 <div style={{display: 'flex', marginTop: '15px', justifyContent: 'space-between'}}>
                 <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
                        
-                       {/* Доход */}
-                       <article className='block-dohod' style={{display: 'block'}}> 
-                            <div className='rectangle-dohod'></div>
-                            <div className='rectangle-dohod2'></div>
-                            <div className='rectangle-dohod3'></div>
-                            <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'><Loader2 /></p>
-                        </article>
+                       
                        
                         {/* Компетенции */}
                         <article className='block-kompetencii' style={{display: 'block'}}> 
@@ -221,6 +213,14 @@ const ProfilePage = () => {
                         </article>
 
                         {/* open */}
+                        {/* Доход */}
+                       <article className='block-dohod' style={{display: 'block'}}> 
+                            <div className='rectangle-dohod'></div>
+                            <div className='rectangle-dohod2'></div>
+                            <div className='rectangle-dohod3'></div>
+                            <div className='kompetencii-title'><p>Сумма к выплате</p><img className='vector-icon' src={Vector} alt=''/></div>
+                            <p className='summa-dohod'><Loader2 /></p>
+                        </article>
 
                     </div> 
 

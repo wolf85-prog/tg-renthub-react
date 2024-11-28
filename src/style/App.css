@@ -83,6 +83,20 @@
   filter: blur(5px);
 }
 
+.rectangle4 {
+  /* Rectangle 4 */
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 1.11%;
+
+  background: linear-gradient(135deg, #2D3036 100%, #292C30 0%);
+  /* Неоморфизм */
+  box-shadow: -9px 9px 18px rgba(31, 33, 37, 0.2), 9px -9px 18px rgba(31, 33, 37, 0.2), -9px -9px 18px rgba(55, 59, 65, 0.9), 9px 9px 23px rgba(31, 33, 37, 0.9), inset 1px 1px 2px rgba(55, 59, 65, 0.3), inset -1px -1px 2px rgba(31, 33, 37, 0.5);
+  border-radius: 21.6px;
+}
+
 .profile_fio {
   position: absolute;
   width: 300px;
@@ -101,12 +115,30 @@
   white-space: nowrap;
 }
 
-.profile_company {
+.profile_city {
   position: absolute;
   width: 300px;
   height: 20px;
   right: 20px;
   top: 50px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  /* identical to box height */
+  letter-spacing: -0.045em;
+  text-align: right;
+  /* ULEY Светлый */
+  color: #5b626c;
+  white-space: nowrap;
+}
+
+.profile_company {
+  position: absolute;
+  width: 300px;
+  height: 20px;
+  right: 20px;
+  top: 70px;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
