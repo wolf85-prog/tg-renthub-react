@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getManagerApi, getProjectsApi, getProjectsCashApi } from './../http/projectAPI';
+import { getCompanysApi, getManagerApi, getProjectsApi, getProjectsCashApi } from './../http/projectAPI';
 import {useTelegram} from "./../hooks/useTelegram";
 
 const UserContext = createContext();
@@ -12,7 +12,8 @@ const UserProvider = ({ children }) => {
 	const [managerId, setManagerId] = useState("");
 	const [projects, setProjects] = useState([]);
 	const [status, setStatus] = useState([]);
-
+    const [companys, setCompanys] = useState([]);
+    const [companyManager, setCompanyManager] = useState('');
     const [userApp, setUserApp] = useState('');
 
 	const arr_status = [] 
@@ -30,10 +31,16 @@ const UserProvider = ({ children }) => {
             const managerId = user?.id //user?.id '805436270' '1408579113'
             setManagerId(managerId)
 
-            const manager = await getManagerApi(user?.id)
+            const manager = await getManagerApi('805436270')
             console.log("manager profile: ", manager) 
 
             setWorkerhub(manager)
+
+            const resCompany = await getCompanysApi()
+            const companyName = resCompany.find((item)=> item.id === parseInt(manager.companyId) || item.GUID === manager.companyId)
+            console.log("companyName: ", companyName)
+            
+            setCompanyManager(companyName.title)
 
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')
@@ -94,6 +101,7 @@ const UserProvider = ({ children }) => {
 		<UserContext.Provider value={{ 
             workerhub, 
             setWorkerhub,
+            companyManager,
 			projects,
 			setProjects,
 			managerId,

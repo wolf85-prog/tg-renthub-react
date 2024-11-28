@@ -50,7 +50,7 @@ const ProfilePage = () => {
     const projectsRef = useRef(null)
 
     const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
-    const { workerhub, setWorkerhub } = useUsersContext();
+    const { workerhub, setWorkerhub, companyManager } = useUsersContext();
     //специалисты
     const [workerhublist, setWorkerhublist] = useState([]);
 
@@ -186,7 +186,7 @@ const ProfilePage = () => {
                         <p className="profile_fio">{workerhub?.fio}</p>
 
                         <p className="profile_city">{workerhub?.city}</p>
-                        <p className="profile_company">Название компании</p>
+                        <p className="profile_company">{companyManager ? companyManager : '-'}</p>
                         {/* <div className="card-specs bullet">
                             <ul>
                                 <li className="bullet-title" style={{color: '#3392ff', fontWeight: 'bold'}}>Добавь свою специальность</li> 

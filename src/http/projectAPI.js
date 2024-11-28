@@ -42,6 +42,16 @@ export const getCompanyIdApi = async (id) =>{
     }
 }
 
+export const getCompanysApi = async () =>{
+    try {
+       let response = await $host.get(`api/companys/get`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getCompanysApi api from webapp-react", error.message);
+    }
+}
+
 export const getProjectsApi = async (id) =>{
     try {
        let response = await $host.get(`projects/${id}`);
