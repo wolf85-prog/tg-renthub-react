@@ -101,7 +101,19 @@ const ProfilePage = () => {
 //----------------------------------------------------------------------------------
 
     // при первой загрузке приложения выполнится код ниже   
+    useEffect(() => {
 
+        const fetchData = async() => { 
+            setIsProfileLoading(true)
+            //const worker = await getWorkerIdBD('805436270')
+
+            setTimeout(()=> {      
+                setIsProfileLoading(false)
+            }, 2000)
+        }
+
+        fetchData()   
+    }, []);
 
 //---------------------------------------------------------------------
 //1  загружаем проекты
@@ -144,37 +156,6 @@ const ProfilePage = () => {
     }, [])
 
 
-    // useEffect(() => {
-    //     if (workers.length > 0) {
-    //         tg.MainButton.setParams({
-    //             text: 'Сохранить',
-    //             color: '#000000' //'#2e2e2e'
-    //         })
-    //     } else {
-    //         tg.MainButton.setParams({
-    //             text: 'Workhub',
-    //             color: '#26292c' //'#2e2e2e'
-    //         })
-    //     }
-        
-    // }, [workers])
-
-
-    // useEffect(() => {
-    //     if (workers.length > 0) {
-    //         tg.onEvent('mainButtonClicked', onSendData)
-    //         return () => {
-    //             tg.offEvent('mainButtonClicked', onSendData)
-    //         } 
-    //     } else {
-    //         tg.onEvent('mainButtonClicked', clickWorkhub)
-    //         return () => {
-    //             tg.offEvent('mainButtonClicked', clickWorkhub)
-    //         }
-    //     }
-    // }, [workers, clickWorkhub, onSendData])
-
-
     //---------------------------------------------------------------------------------------
 
     return (
@@ -193,16 +174,17 @@ const ProfilePage = () => {
                 <article className="card">
                     <div className="rectangle"><div className="rectangle2"><div className="rectangle3"></div></div>
                     </div>
+                    <div className="circle">
+
+                    </div>
                     <div>
-                        <p className="profile_fio">{workerhub?.fio}</p>
-                        <div className="card-specs bullet">
-                            <ul onClick={()=>setShowProfileInfo(true)}>
-                                {workerhublist.length > 0 ? workerhublist.map((worker, index) => index < 8 
-                                  ?  <li key={index} className="bullet-title">{worker.spec}  {index === workerhublist.length-1 && <img src={Edit} onClick={clickAddSpec} alt='' style={{marginLeft: '20px', width: '12px'}}/> }</li>
-                                  : '')
-                                : <><li className="bullet-title" style={{color: '#3392ff', fontWeight: 'bold'}}>Добавь свою специальность</li><li> <img src={Edit2} onClick={clickAddSpec} alt='' style={{marginLeft: '90px', width: '25px'}}/> </li></> }
+                        <p className="profile_fio">ФИО</p>
+                        <p className="profile_company">Название компании</p>
+                        {/* <div className="card-specs bullet">
+                            <ul>
+                                <li className="bullet-title" style={{color: '#3392ff', fontWeight: 'bold'}}>Добавь свою специальность</li> 
                             </ul>   
-                        </div>     
+                        </div>      */}
                     </div>
                     
                     <div className="star-block">
@@ -212,87 +194,53 @@ const ProfilePage = () => {
                         <img className='star-icon' src={StarActive} alt='' />
                         <img className='star-icon' src={Star} alt='' />
                     </div>
-                    <div className='block-id' onClick={clickCopyID}> ID {user?.id}</div>
+                    <div className='block-id'> ID 121212</div>
                 </article>
 
                 <div style={{display: 'flex', marginTop: '15px', justifyContent: 'space-between'}}>
-                    {/* Мерч */}
-                    <article className='block-merch' onClick={clickInfo}> 
-                            <div className='rectangle-merch'></div>
-                            <div className='rectangle-merch2'></div>
-                            <div className='rectangle-merch3'></div> 
-
-                            <div className='rectangle-circle'>
-                                <div className={workerhub?.merch && JSON.parse(workerhub?.merch).length > 0 ? 'rectangle-circle-on' : 'rectangle-circle-off'}></div>
-                            </div>
-
-                            <p className='merch-title'>Мерч</p>
-                            <div className='perechislenie'>
-                                {workerhub?.merch && JSON.parse(workerhub?.merch).map((item, index)=> 
-                                        <p key={index} className="">{item.name}</p>
-                                )}
-                            </div>
-                    </article>
-
-                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
+                <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
+                       
+                       {/* Доход */}
+                       <article className='block-dohod' style={{display: 'block'}}> 
+                            <div className='rectangle-dohod'></div>
+                            <div className='rectangle-dohod2'></div>
+                            <div className='rectangle-dohod3'></div>
+                            <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
+                            <p className='summa-dohod'><Loader2 /></p>
+                        </article>
+                       
                         {/* Компетенции */}
-                        <article className='block-kompetencii' style={{display: !showKompet ? 'block' : 'none'}}> 
+                        <article className='block-kompetencii' style={{display: 'block'}}> 
                             <div className='rectangle-kompeten'></div>
                             <div className='rectangle-kompeten2'></div>
                             <div className='rectangle-kompeten3'></div>
-                            <div className='kompetencii-title' onClick={clickKompeten}>
-                                <p className='text-kompetencii'>Компетенции</p>
+                            <div className='kompetencii-title'>
+                                <p className='text-kompetencii'>Компания</p>
                                 <img className='vector-icon' src={Vector} alt=''/>
                             </div>
                         </article>
 
                         {/* open */}
-                        <article className='block-kompetencii-open' style={{display: showKompet ? 'block' : 'none'}}> 
-                            <div className='rectangle-kompeten'></div>
-                            <div className='rectangle-kompeten2'></div>
-                            <div className='rectangle-kompeten3'></div>
-                            <div className='kompetencii-title' onClick={clickKompeten}>
-                                <p className='text-kompetencii' >Компетенции</p>
-                                <img className='vector-icon' src={VectorUp} alt=''/>
-                            </div>
-                            <div className='kompet-list' onClick={()=>setShowKompInfo(true)}>
-                                <ul>
-                                    {workerhub?.skill && JSON.parse(workerhub?.skill).map((worker, index) => index < 6
-                                    ?   <li className="bullet-title">{worker.name} </li>
-                                    : '' )}
-                                </ul>  
-                            </div>
-                        </article>
 
-
-                        {/* Доход */}
-                        <article className='block-dohod' onClick={clickDohod} style={{display: showDohod || showKompet ? 'none' : 'block'}}> 
-                            <div className='rectangle-dohod'></div>
-                            <div className='rectangle-dohod2'></div>
-                            <div className='rectangle-dohod3'></div>
-                            <div className='kompetencii-title'><p>Доход</p><img className='vector-icon' src={Vector} alt=''/></div>
-                            <p className='summa-dohod'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
-                        </article>
                     </div> 
+
+                    {/* Рассылка */}
+                    <article className='block-merch'> 
+                            <div className='rectangle-merch'></div>
+                            <div className='rectangle-merch2'></div>
+                            <div className='rectangle-merch3'></div> 
+
+                            <div className='rectangle-circle'>
+                                <div className='rectangle-circle-on'></div>
+                            </div>
+
+                            <p className='merch-title'>Рассылка</p>
+                            <div className='perechislenie'>
+
+                            </div>
+                    </article>
+                    
                 </div>
-
-                
-
-                {/* Доход */}
-                <img src={DohodOpen} alt='' onClick={clickDohod} className='dohod-open' style={{display: showDohod ? 'block' : 'none'}}/>
-                
-                
-                <article className='block-dohod-open' onClick={clickDohod} style={{display: showDohod ? 'block' : 'none'}}>
-                    <div style={{display: 'flex', justifyContent: 'space-between'}}><p>Доход</p><img className='vector-icon2' src={Vector} alt=''/></div> 
-                    <p className='summa-dohod2'>{isLoadingSum ? <Loader2 /> : (isNaN(summa) ? "0" : parseInt(summa).toLocaleString())+".00"}</p>
-                </article>
-
-                <article className='block-dohod2' style={{display: showDohod ? 'block' : 'none'}} onClick={()=>setShowDohodInfo(true)}> 
-                    <p className='history-title'>История</p>
-                    <div className='dates-history'><p>01.2024</p><p>0.00</p></div>
-                    <div className='dates-history2'><p>02.2024</p><p>0.00</p></div>
-                    <div className='dates-history2'><p>03.2024</p><p>0.00</p></div>
-                </article> 
                 
             </div>
 
@@ -305,10 +253,7 @@ const ProfilePage = () => {
                         setFilter={setFilter}
                     />
 
-                    {isPostsLoading
-                        ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center'}}><Loader/></div>
-                        : <ProjectList posts={sortProject} title="" width={width} />
-                    }
+                    
                 </div> 
             </div>
             </>
