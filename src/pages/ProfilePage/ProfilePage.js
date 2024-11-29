@@ -20,7 +20,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 
-import Friend from "../../img/new/button_plus.png"
+import Plus from "../../img/new/button_plus.png"
 import BlackFon from "../../img/new/fon_grad.svg";
 import DohodOpen from "../../img/new/dohodOpen.png";
 import Star from "../../img/new/star.png";
@@ -199,7 +199,13 @@ const ProfilePage = () => {
     }, [])
 
 
+
 //---------------------------------------------------------------------------------------
+    
+    const onAddProject = () => {
+        navigate('/add-project')
+    }
+
     const clickKompeten = () => {
         showKompet ? setShowKompet(false) : setShowKompet(true)
     }
@@ -334,7 +340,7 @@ const ProfilePage = () => {
             }
 
             <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
-                <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
+                <img onClick={onAddProject} src={Plus} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>
                 
