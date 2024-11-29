@@ -165,6 +165,24 @@ const ProfilePage = () => {
     }, [])
 
 
+    const clickWorkhub = () => {
+        showFooter ? setShowFooter(false) : setShowFooter(true)
+    }
+
+    useEffect(() => {
+        // if (workers.length > 0) {
+        //     tg.onEvent('mainButtonClicked', onSendData)
+        //     return () => {
+        //         tg.offEvent('mainButtonClicked', onSendData)
+        //     } 
+        // } else {
+            tg.onEvent('mainButtonClicked', clickWorkhub)
+            return () => {
+                tg.offEvent('mainButtonClicked', clickWorkhub)
+            }
+        //}
+    }, [clickWorkhub])
+
     useEffect(() => {
         // if (workers.length > 0) {
         //     tg.MainButton.setParams({
