@@ -747,15 +747,6 @@ const NewProject = () => {
 
                 {/*Дата начала*/}
                 <div className={'text-field text-field_floating ' + (showNotif2 ? 'block-anim' : '')}>
-                    {/* <RedditTextField
-                        style={{backgroundColor: '#2A2731', border: showNotif2 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}
-                        fullWidth
-                        label="Дата начала"
-                        id="datetime-local"
-                        variant="filled"
-                        value={datestart}
-                        onChange={onChangeTime}
-                    /> */}
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <Stack spacing={3} style={{backgroundColor: '#2A2731', border: showNotif2 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                            <RedditTextField
@@ -843,91 +834,6 @@ const NewProject = () => {
                 <WorkerList remove={removeWorker} workers={workers} change={changeWorker}/>
 
                 
-
-                {/*Добавить оборудование*/}  
-                {/* <MyButton 
-                    onClick={clickShowEquipment} 
-                    style={{ width: '230px', borderColor: '#ecff76', backgroundColor: '#ecff76', color: '#000000', display: showButtonEquipmentadd ? "" : "none"}}
-                >
-                    {showEquipmentadd ? 'Убрать оборудование' : 'Добавить оборудование'}
-                </MyButton> */}
-            
-                {/* <div style={{ display: showEquipmentadd ? "block" : "none" }}>
-                    <label>
-                        <p style={{
-                                margin: '20px 5px',
-                                display: 'flex',
-                                fontSize: '14px',
-                                color: '#ECFF76',
-                            }}>Добавьте оборудование
-                        </p>
-
-                        <div className="text-field text-field_floating">
-                            <CustomSelect2
-                                id="category2"
-                                title="Категория"
-                                options={categories2}
-                                selectedElement={selectedElement2}
-                                setSelectedElement={setSelectedElement2}
-                                onChange={onCategoriesSelectChange2}
-                            />
-                        </div>
-
-                        <div className="text-field text-field_floating" style={{ display: showName ? "block" : "none" }}>
-                            <CustomSelect2
-                                disabled={disabled2}
-                                id="name"
-                                title="Подкатегория"
-                                options={names}
-                                selectedElement={selectedElement2}
-                                setSelectedElement={setSelectedElement2}
-                                onChange={onNameSelectChange3}
-                            />
-                        </div>
-
-                        <div className="text-field text-field_floating" style={{ display: showSubname ? "block" : "none" }}>
-                            <CustomSelect2
-                                disabled={disabled3}
-                                id="subname"
-                                title="Наименование"
-                                options={subnames}
-                                selectedElement={selectedElement2}
-                                setSelectedElement={setSelectedElement2}
-                                onChange={onSubNameSelectChange}
-                            />
-                        </div>
-                    </label> */}
-
-
-                    {/* <p style={{marginTop: "15px", color: '#ECFF76'}}>
-                        Количество
-                    </p>
-
-                    <div>
-                        <img style={{verticalAlign: 'middle', marginRight: '10px'}} src={ButtonMinus2} onClick={decrement2} alt='Минус'/>
-                        <Counter
-                            style={{borderColor: '#ECFF76'}}
-                            value={count2}
-                            onChange={e => setEquipment({...equipment, count: e.target.value})}
-                        />
-                        <img style={{verticalAlign: 'middle', marginLeft: '10px'}} src={ButtonPlus2} onClick={increment2} alt='Плюс'/>
-                    </div>
-
-                    <p>
-                        <MyButton
-                            disabled={disabledBtn2}
-                            style={{width: "103px", marginBottom: "15px", borderColor: '#ECFF76', backgroundColor: '#ECFF76', color: '#000000'}}
-                            onClick={addNewEquipment}
-                        >Добавить
-                        </MyButton>
-                    </p> 
-
-                </div>*/}
-
-                {/*список оборудования*/}
-                {/* <EquipmentList remove={removeEquipment} equipments={equipments} />  */}
-
-
                 {/*Адрес*/}
                 <div className={'text-field text-field_floating ' + (showNotif6 ? 'block-anim' : '')} style={{border: showNotif6 ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
@@ -938,14 +844,6 @@ const NewProject = () => {
                                      onChange={onChangeGeodata}
                     />
                 </div>
-                {/* <div className="text-field text-field_floating">
-                    <GeoInput
-                        add={addGeo}
-                        value={geo}
-                        //value={geodata}
-                        //onChange={onChangeGeodata}
-                    />
-                </div> */}
 
                 {/*Техническое задание*/}
                 <div className={'text-field text-field_floating ' + (showNotif7 ? 'block-anim' : '')} style={{marginTop: '25px'}}>
@@ -963,7 +861,6 @@ const NewProject = () => {
                     />
                     <p className='count-char'>{countChar}/500</p>
                 </div>
-                
                 
 
                 <MyModal visible={modal} setVisible={setModal}>
