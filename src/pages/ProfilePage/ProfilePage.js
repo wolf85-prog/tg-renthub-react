@@ -191,7 +191,7 @@ const ProfilePage = () => {
         //     })
         // } else {
             tg.MainButton.setParams({
-                text: 'Workhub',
+                text: 'Renthub',
                 color: '#26292c' //'#2e2e2e'
             })
         //}
