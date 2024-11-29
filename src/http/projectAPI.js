@@ -2,8 +2,8 @@ import {$host} from "./index";
 
 export const getManagerApi = async (id) =>{
     try {
-       let response = await $host.get(`managers/cash/${id}`);
-       //console.log(response);
+       let response = await $host.get(`api/managers/get/${id}`);
+       console.log(response.data);
        return response.data;
     } catch (error) {
         console.log("error while calling getManagerApi api from webapp-react", error.message);
@@ -39,6 +39,16 @@ export const getCompanyIdApi = async (id) =>{
        return response.data;
     } catch (error) {
         console.log("error while calling getCompanyIdApi api from webapp-react", error.message);
+    }
+}
+
+export const getCompanysApi = async () =>{
+    try {
+       let response = await $host.get(`api/companys/get`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getCompanysApi api from webapp-react", error.message);
     }
 }
 

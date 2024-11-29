@@ -194,7 +194,7 @@ input[id="cb1"] {
     width: 100%;
     height: 163px;
     position: relative;
-    flex: 0 0 42%;
+    flex: 0 0 40%;
     z-index: 10;
   }
   
@@ -283,7 +283,7 @@ input[id="cb1"] {
     position: absolute;
     width: 26px;
     height: 26px;
-    right: 10%;
+    right: 5%;
     top: 10px;
   }
   
@@ -369,8 +369,8 @@ input[id="cb1"] {
     position: absolute;
     width: 100%;
     height: 20px;
-    left: 15px;
-    top: 10px;
+    left: 20px;
+    top: 13px;
 }
 
 .text-kompetencii {
@@ -459,14 +459,10 @@ input[id="cb1"] {
 .block-dohod {
     /* Карточка */
     position: relative;
+    z-index: 0;
     width: 100%;
-    height: 114px;
-    z-index: 0;
-    /* position: absolute;
-    width: 50%;
-    z-index: 0;
-    right: 0;
-    top: 280px; */
+    height: 105px;
+    margin-top: 5px;
 }
 
 .block-dohod-open {
@@ -598,7 +594,7 @@ input[id="cb1"] {
 
 .summa-dohod {
     position: absolute;
-    left: 15px;
+    left: 20px;
     top: 55px;
     display: flex;
     width: 128px;
