@@ -166,17 +166,17 @@ const ProfilePage = () => {
 
 
     useEffect(() => {
-        if (workers.length > 0) {
-            tg.MainButton.setParams({
-                text: 'Сохранить',
-                color: '#000000' //'#2e2e2e'
-            })
-        } else {
+        // if (workers.length > 0) {
+        //     tg.MainButton.setParams({
+        //         text: 'Сохранить',
+        //         color: '#000000' //'#2e2e2e'
+        //     })
+        // } else {
             tg.MainButton.setParams({
                 text: 'Workhub',
                 color: '#26292c' //'#2e2e2e'
             })
-        }
+        //}
         
     }, [])
 
