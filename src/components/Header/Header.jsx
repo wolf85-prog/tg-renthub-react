@@ -44,7 +44,7 @@ const Header = ({filter, setFilter, header, setShowModal, showModal}) => {
                 : <img src = {Menu} alt="" onClick={onClickFilter} style={{display: showFilter ? 'none' : 'block'}}/>}
             </span>
 
-
+            {/* <p>0</p> */}
             <div className='menu-filter' style={{display: showFilter ? 'block' : 'none'}}>
                 <img src = {MenuFilter} className='menu-icon-filter' alt="" onClick={onClickFilter}/>
                 <div className='menu-rec'>

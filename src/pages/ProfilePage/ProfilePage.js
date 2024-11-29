@@ -33,6 +33,11 @@ import Workhub from "../../img/new/WorkHub.gif"
 import QRCode from "../../img/new/QR_Code.svg"
 import Close from "../../img/new/close.svg"
 import ClosePress from "../../img/new/close_press.svg"
+import Footer from "../../img/new/footer2.png"
+import VK from "../../img/new/basil_vk-outline.svg"
+import Phone from "../../img/new/ph_phone-call.svg"
+import Web from "../../img/new/dashicons_admin-site-alt3.svg"
+import Telegram from "../../img/new/telegram-computer.png"
 
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
@@ -160,7 +165,60 @@ const ProfilePage = () => {
     }, [])
 
 
-    //---------------------------------------------------------------------------------------
+    useEffect(() => {
+        if (workers.length > 0) {
+            tg.MainButton.setParams({
+                text: 'Сохранить',
+                color: '#000000' //'#2e2e2e'
+            })
+        } else {
+            tg.MainButton.setParams({
+                text: 'Workhub',
+                color: '#26292c' //'#2e2e2e'
+            })
+        }
+        
+    }, [])
+
+
+//---------------------------------------------------------------------------------------
+    const clickKompeten = () => {
+        showKompet ? setShowKompet(false) : setShowKompet(true)
+    }
+
+    
+    const clickDohod = () => {
+        showDohod ? setShowDohod(false) : setShowDohod(true)
+    }
+
+    const clickPodel = () => {
+        showModal ? setShowModal(false) : setShowModal(true)
+    }
+
+    const clickInfo = () => {
+        showInfo ? setShowInfo(false) : setShowInfo(true)
+    }
+
+    const clickMoreInfo = () => {
+        showMoreInfo ? setShowMoreInfo(false) : setShowMoreInfo(true)
+    }
+
+
+    const openInNewTab = (url) => {
+        window.open(url, '_blank', 'noreferrer');
+    };
+
+    const showPopup = () => {   
+        setModal(true)
+        //setTimeout(()=> {
+            openInNewTab('tel:+74995001411')
+        //}, 2000)
+
+        setTimeout(()=> {
+            setModal(false)       
+        }, 6000)
+    }
+//---------------------------------------------------------------------------------------
 
     return (
         <div className="App" style={{overflowX: 'hidden'}}>
@@ -257,7 +315,7 @@ const ProfilePage = () => {
             </>
             }
 
-            {/* <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
+            <div className='footer-block' style={{display: showFooter ? 'block' : 'none'}}>
                 <img onClick={clickPodel} src={Friend} alt='' width='100%' className='btn-friend' />
                 <img src={Footer} alt='' width='100%' className='footer-image' />
                 <div className='footer-rec'></div>
@@ -270,7 +328,7 @@ const ProfilePage = () => {
                     <img onClick={() =>openInNewTab('https://t.me/uley_team')} src={Telegram} alt='' width='100%' className='icon-footer' /> 
                     <img onClick={()=>openInNewTab('https://uley.team/')} src={Web} alt='' width='100%' className='icon-footer' /> 
                 </div>   
-            </div> */}
+            </div>
             
         </div>
     );
