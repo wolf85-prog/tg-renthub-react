@@ -8,6 +8,9 @@ import { useUsersContext } from "../../contexts/UserContext";
 import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
 
+import NewSelect5 from '../../components/UI/NewSelect5/NewSelect5';
+import specData from "../../data/specData"
+import btnSave from "../../img/buttons/btn_add.png"
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -38,6 +41,7 @@ import VK from "../../img/new/basil_vk-outline.svg"
 import Phone from "../../img/new/ph_phone-call.svg"
 import Web from "../../img/new/dashicons_admin-site-alt3.svg"
 import Telegram from "../../img/new/telegram-computer.png"
+import AddDistrib from "../../img/new/plus_small.svg"
 
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
@@ -123,6 +127,38 @@ const ProfilePage = () => {
 
         fetchData()   
     }, []);
+
+    useEffect(() => {
+        // устанавливаем категории
+        if (specData.length > 0 && specData) {
+            setCategories(specData);
+        }
+    }, []);
+
+    // 1. при выборе нового значения в категории
+    const onCategoriesSelectChange = (e) => {
+
+        // преобразуем выбранное значение опции списка в число - идентификатор категории
+        //const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const categoryId = e.target.value //parseInt(e.target.value);
+        // получаем из массива категорий объект категории по соответствующему идентификатору
+        const category = categories.find(item => item.id === categoryId);
+        const catSelect = category.icon; //capitalizeFirst(category.name);
+        const iconCatSelect = category.icon;
+
+        //setWorker({...worker, cat: catSelect, icon: iconCatSelect})
+
+        // выбираем все модели в категории, если таковые есть
+        const models = category.models && category.models.length > 0
+            ? category.models
+            : [{ id: 0, name: 'Нет моделей', items: [] }];
+
+        // меняем модели во втором списке
+        setModels(models);
+
+        setDisabled(false)
+        setTitleSpec("")
+    }
 
 //---------------------------------------------------------------------
 //1  загружаем проекты
@@ -242,6 +278,15 @@ const ProfilePage = () => {
             setModal(false)       
         }, 6000)
     }
+
+    const addCategory = () => {
+        setShowAddSpec(true)
+    }
+
+    const onClickClose = () => {
+        setShowAddSpec(false)
+    }
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -316,7 +361,28 @@ const ProfilePage = () => {
 
                             <p className='merch-title'>Рассылка</p>
                             <div className='perechislenie'>
-
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <img src={AddDistrib} onClick={addCategory} alt='' width={50} />
+                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px'}}>
+                                        <p style={{color: '#DBDBDB'}}>Направление</p>
+                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль и/или</p> 
+                                    </div>   
+                                </div>
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <img src={AddDistrib} onClick={addCategory} alt='' width={50} />
+                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px'}}>
+                                        <p style={{color: '#DBDBDB'}}>Направление</p>
+                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль и/или</p> 
+                                    </div>   
+                                </div>
+                                <div style={{display: 'flex', alignItems: 'center'}}>
+                                    <img src={AddDistrib} onClick={addCategory} alt='' width={50} />
+                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px'}}>
+                                        <p style={{color: '#DBDBDB'}}>Направление</p>
+                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль и/или</p> 
+                                    </div>   
+                                </div>
+                                
                             </div>
                     </article>
                     
@@ -353,6 +419,45 @@ const ProfilePage = () => {
                     <img onClick={()=>openInNewTab('https://uley.team/')} src={Web} alt='' width='100%' className='icon-footer' /> 
                 </div>   
             </div>
+
+
+            <MyModal visible={showAddSpec} setVisible={setShowAddSpec}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={onClickClose} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>Настройка рассылки</p>
+                    <div style={{position: 'relative', marginTop: '60px', marginLeft: '25px', marginRight: '25px'}}>
+                        <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Отрасль / категория</p>  
+                        <NewSelect5
+                            id="category"
+                            options={categories}
+                            titleCat={titleCat}
+                            setTitleCat={setTitleCat}
+                            onChange={onCategoriesSelectChange}
+                            heigthModal={true}
+                        /> 
+                    </div>
+
+                    <div style={{position: 'relative', marginRight: '25px', marginRight: '15px', marginTop: '10px'}}> 
+
+                        {/*кнопка Добавить*/}
+                        <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
+                            <button 
+                                disabled={disabledBtn}
+                                className="image-add-modal-button" 
+                                style={{ backgroundImage: `url(${btnSave})`}}
+                                //onClick={addNewWorker}
+                            >
+                                Подтвердить
+                            </button>
+                        </div>  
+                    </div>
+                </div>
+            </MyModal>
             
         </div>
     );
