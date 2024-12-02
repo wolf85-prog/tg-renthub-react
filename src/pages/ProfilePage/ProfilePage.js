@@ -49,7 +49,8 @@ import Loader from "../../components/UI/Loader/Loader";
 import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
-import { getManagerApi } from '../../http/projectAPI';
+
+import { getManagerApi, updateManager } from '../../http/projectAPI';
 
 
 const ProfilePage = () => {
@@ -144,7 +145,7 @@ const ProfilePage = () => {
         const categoryId = e.target.value //parseInt(e.target.value);
         // получаем из массива категорий объект категории по соответствующему идентификатору
         const category = categories.find(item => item.id === categoryId);
-        const catSelect = category.icon; //capitalizeFirst(category.name);
+        const catSelect = category.name; //capitalizeFirst(category.name);
         const iconCatSelect = category.icon;
 
         //setWorker({...worker, cat: catSelect, icon: iconCatSelect})
@@ -160,6 +161,7 @@ const ProfilePage = () => {
         setModels(models);
 
         setDisabled(false)
+        setDisabledBtn(false)
         setTitleSpec("")
     }
 
@@ -169,8 +171,9 @@ const ProfilePage = () => {
 
 useEffect(()=>{
     console.log("distribs: ", distribs)
+    console.log("distrib: ", distrib)
     
-}, [distribs])
+}, [distrib, distribs])
 
 
 
@@ -291,16 +294,22 @@ useEffect(()=>{
         setShowAddSpec(true) 
     }
 
-    const addNewDistrib = (e) => {
+    const addNewDistrib = async(e) => {
         e.preventDefault();
+        setShowAddSpec(false) 
 
         if (distrib.cat !== '' || distrib.spec !== '') {
             setDistribs([...distribs, {...distrib, id: Date.now()}])
         }
 
 
-        setDistribs({cat: '', spec: '', icon: ''})
+        const saveDate = [{name: distribs?.cat}]
 
+        console.log("save data: ", saveDate, workerhub?.chatId)
+        
+        const resUpdate = await updateManager(workerhub?.id, JSON.stringify(saveDate))
+        console.log("resUpdate: ", resUpdate)
+        
     }
 
 
@@ -382,37 +391,33 @@ useEffect(()=>{
                             </div>
 
                             <p className='merch-title'>Рассылка</p>
+                            {/* Категории */}
                             <div className='perechislenie'>
                                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                     <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
                                     <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>{distribs ? '' : 'Направление'}</p>
-                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p> 
-                                    </div>   
-                                </div>   
-                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
-                                    <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
-                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
                                         <p style={{color: '#DBDBDB', fontSize: '14px'}}>Направление</p>
                                         <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p> 
                                     </div>   
-                                </div>   
-                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
-                                    <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
-                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>Направление</p>
-                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p> 
-                                    </div>   
-                                </div>       
+                                </div>  
+                                <ul style={{fontSize: '11px', width: '100%', textAlign: 'center'}}>
+                                    <li style={{margin: '0'}}>- {distribs.cat}</li>   
+                                </ul>
+                                    
+                       
+                            </div>
 
+                            {/* Локация */}
+                            <div className='perechislenie' style={{top: '100px'}}>
                                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                     <img src={AddDistrib} alt='' width={40} />
                                     <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
                                         <p style={{color: '#DBDBDB', fontSize: '14px'}}>Локация</p>
                                         <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p> 
                                     </div>   
-                                </div>                        
+                                </div>  
                             </div>
+                            
                     </article>
                     
                 </div>
@@ -461,11 +466,11 @@ useEffect(()=>{
                     <p className='vagno'>Настройка рассылки</p>
                     <p className='vagno' style={{marginTop: '20px', fontSize: '12px', color: '#b4b4b4'}}>Направление</p>
                     <div style={{position: 'relative', marginTop: '90px', marginLeft: '25px', marginRight: '25px'}}>
-                        <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Отрасль / категория</p>  
+                        {/* <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Отрасль / категория</p>   */}
                         <NewSelect5
                             id="category"
                             options={categories}
-                            titleCat={titleCat}
+                            titleCat={titleCat ? titleCat : 'Отрасль / категория'}
                             setTitleCat={setTitleCat}
                             onChange={onCategoriesSelectChange}
                             heigthModal={true}
@@ -480,8 +485,7 @@ useEffect(()=>{
                                 disabled={disabledBtn}
                                 className="image-add-modal-button" 
                                 style={{ backgroundImage: `url(${btnSave})`}}
-                                onClick={addNewDistrib}
-                            >
+                                onClick={addNewDistrib}>
                                 Подтвердить
                             </button>
                         </div>  

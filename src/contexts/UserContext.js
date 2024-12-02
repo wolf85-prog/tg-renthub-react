@@ -40,10 +40,10 @@ const UserProvider = ({ children }) => {
             setWorkerhub(manager)
 
             const resCompany = await getCompanysApi()
-            const companyName = resCompany.find((item)=> item.id === parseInt(manager.companyId) || item.GUID === manager.companyId)
+            const companyName = resCompany.find((item)=> item.id === parseInt(manager?.companyId) || item.GUID === manager?.companyId)
             console.log("companyName: ", companyName)
             
-            setCompanyManager(companyName.title)
+            setCompanyManager(companyName?.title)
 
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')

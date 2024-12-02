@@ -31,6 +31,16 @@ export const getManagerIdApi = async (id) =>{
     }
 }
 
+export const updateManager = async (id, data) =>{
+    try {
+       let response = await $host.post(`/managers/update/${id}`, data);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling updateManager api from webapp-react", error.message);
+    }
+}
+
 
 export const getCompanyIdApi = async (id) =>{
     try {
