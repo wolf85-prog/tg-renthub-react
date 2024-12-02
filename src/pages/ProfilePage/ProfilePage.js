@@ -10,6 +10,8 @@ import './ProfilePage.css';
 
 import NewSelect5 from '../../components/UI/NewSelect5/NewSelect5';
 import specData from "../../data/specData"
+import cityData from "../../data/cityData"
+
 import btnSave from "../../img/buttons/btn_add.png"
 
 import Box from '@mui/material/Box';
@@ -91,11 +93,15 @@ const ProfilePage = () => {
     const [modal, setModal] = useState(false)
     const [showInfo, setShowInfo] = useState(false)
     const [showAddSpec, setShowAddSpec] = useState(false)
+    const [showAddCity, setShowAddCity] = useState(false)
 
     //категории
     const [categories, setCategories] = useState([]);
     //специальности
     const [models, setModels] = useState([]);
+
+    //регион
+    const [regions, setRegions] = useState([]);
 
     //select
     const [selectedElement, setSelectedElement] = useState("")
@@ -103,6 +109,8 @@ const ProfilePage = () => {
     const [disabled, setDisabled] = useState(true)
     const [titleCat, setTitleCat] = useState(false)
     const [titleSpec, setTitleSpec] = useState(false)
+
+    const [titleReg, setTitleReg] = useState(false)
 
     //const {worker, setWorker, workers, setWorkers} = useUsersContext();
     const [showSpec, setShowSpec] = useState(false) 
@@ -135,6 +143,11 @@ const ProfilePage = () => {
         if (specData.length > 0 && specData) {
             setCategories(specData);
         }
+
+        // устанавливаем регион
+        if (cityData.length > 0 && cityData) {
+            setRegions(cityData);
+        }
     }, []);
 
     // 1. при выборе нового значения в категории
@@ -155,7 +168,36 @@ const ProfilePage = () => {
             ? category.models
             : [{ id: 0, name: 'Нет моделей', items: [] }];
 
-            setDistribs({...distribs, cat: catSelect, icon: iconCatSelect})
+            setDistrib({...distrib, cat: catSelect, icon: iconCatSelect})
+
+        // меняем модели во втором списке
+        setModels(models);
+
+        setDisabled(false)
+        setDisabledBtn(false)
+        setTitleSpec("")
+    }
+
+
+    // 2. при выборе нового значения в регионе
+    const onRegionsSelectChange = (e) => {
+
+        // преобразуем выбранное значение опции списка в число - идентификатор категории
+        //const categoryId = parseInt(e.target.options[e.target.selectedIndex].value);
+        const categoryId = e.target.value //parseInt(e.target.value);
+        // получаем из массива категорий объект категории по соответствующему идентификатору
+        const region = regions.find(item => item.id === categoryId);
+        const regSelect = region.name; //capitalizeFirst(category.name);
+        const iconRegSelect = region.icon;
+
+        //setWorker({...worker, cat: catSelect, icon: iconCatSelect})
+
+        // выбираем все модели в категории, если таковые есть
+        const models = region.models && region.models.length > 0
+            ? region.models
+            : [{ id: 0, name: 'Нет моделей', items: [] }];
+
+            setDistrib({...distrib, cat: regSelect, icon: iconRegSelect})
 
         // меняем модели во втором списке
         setModels(models);
@@ -298,24 +340,57 @@ useEffect(()=>{
         e.preventDefault();
         setShowAddSpec(false) 
 
+        //console.log("distribs2: ", distribs)
+
         if (distrib.cat !== '' || distrib.spec !== '') {
             setDistribs([...distribs, {...distrib, id: Date.now()}])
         }
 
+        setDistrib({cat: '', spec: '', icon: ''})
+        setSelectedElement("");
+        setTitleCat(false)
 
-        const saveDate = [{name: distribs?.cat}]
+        let saveDate = []
+        distribs.map(item=> {
+            saveDate.push({name: item?.cat})
+        })
 
         console.log("save data: ", saveDate, workerhub?.chatId)
         
-        const resUpdate = await updateManager(workerhub?.id, JSON.stringify(saveDate))
+        //const resUpdate = await updateManager(workerhub?.id, JSON.stringify(saveDate))
         console.log("resUpdate: ", resUpdate)
         
     }
 
-
-
     const onClickClose = () => {
         setShowAddSpec(false)
+    }
+
+
+    const clickAddCity = () => {
+        setShowAddCity(true) 
+    }
+
+    const addNewDistrib2 = async(e) => {
+        e.preventDefault();
+        setShowAddCity(false) 
+
+        // if (distrib.cat !== '' || distrib.spec !== '') {
+        //     setDistribs([...distribs, {...distrib, id: Date.now()}])
+        // }
+
+
+        // const saveDate = [{name: distribs?.cat}]
+
+        // console.log("save data: ", saveDate, workerhub?.chatId)
+        
+        // const resUpdate = await updateManager(workerhub?.id, JSON.stringify(saveDate))
+        // console.log("resUpdate: ", resUpdate)
+        
+    }
+
+    const onClickClose2 = () => {
+        setShowAddCity(false)
     }
 
 //---------------------------------------------------------------------------------------
@@ -396,24 +471,29 @@ useEffect(()=>{
                                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                     <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
                                     <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>Направление</p>
-                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p> 
+                                        <p style={{color: '#bbbbbb', fontSize: '14px'}}>Направление</p>
+                                        {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p>  */}
                                     </div>   
                                 </div>  
-                                <ul style={{fontSize: '11px', width: '100%', textAlign: 'center'}}>
-                                    <li style={{margin: '0'}}>- {distribs.cat}</li>   
+                                <ul style={{fontSize: '11px', width: '100%', listStyle: 'disc'}}>
+                                {distribs ? distribs.map((item, index)=> (
+                                    <li key={index} style={{margin: '0', marginLeft: '40px', marginTop: '-5px', color: '#6c6b6b'}}>{item.cat}</li>   
+                                ))
+                                : ''    
+                                }
+                                    
                                 </ul>
                                     
                        
                             </div>
 
                             {/* Локация */}
-                            <div className='perechislenie' style={{top: '100px'}}>
+                            <div className='perechislenie' style={{top: '110px'}}>
                                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
-                                    <img src={AddDistrib} alt='' width={40} />
+                                    <img src={AddDistrib} onClick={clickAddCity}  alt='' width={40} />
                                     <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
                                         <p style={{color: '#DBDBDB', fontSize: '14px'}}>Локация</p>
-                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p> 
+                                        {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p>  */}
                                     </div>   
                                 </div>  
                             </div>
@@ -486,6 +566,45 @@ useEffect(()=>{
                                 className="image-add-modal-button" 
                                 style={{ backgroundImage: `url(${btnSave})`}}
                                 onClick={addNewDistrib}>
+                                Подтвердить
+                            </button>
+                        </div>  
+                    </div>
+                </div>
+            </MyModal>
+
+
+            <MyModal visible={showAddCity} setVisible={setShowAddCity}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={onClickClose2} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>Настройка рассылки</p>
+                    <p className='vagno' style={{marginTop: '20px', fontSize: '12px', color: '#b4b4b4'}}>Локация</p>
+                    <div style={{position: 'relative', marginTop: '90px', marginLeft: '25px', marginRight: '25px'}}>
+                        {/* <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Отрасль / категория</p>   */}
+                        <NewSelect5
+                            id="category"
+                            options={regions}
+                            titleCat={titleReg ? titleReg : 'Регион'}
+                            setTitleCat={setTitleReg}
+                            onChange={onRegionsSelectChange}
+                            heigthModal={true}
+                        /> 
+                    </div>
+
+                    <div style={{position: 'absolute', bottom: 0, right: '10px'}}> 
+
+                        {/*кнопка Добавить*/}
+                        <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
+                            <button 
+                                disabled={disabledBtn}
+                                className="image-add-modal-button" 
+                                style={{ backgroundImage: `url(${btnSave})`}}
+                                onClick={addNewDistrib2}>
                                 Подтвердить
                             </button>
                         </div>  
