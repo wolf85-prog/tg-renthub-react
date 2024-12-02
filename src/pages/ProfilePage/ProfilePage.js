@@ -429,7 +429,7 @@ useEffect(()=>{
                         {/* Доход */}
                        <article className='block-dohod' style={{display: 'block'}}> 
                             <div className='rectangle17'></div>
-                            <div className='kompetencii-title' style={{top: '25px'}}><p>Сумма к выплате</p></div>
+                            <div className='kompetencii-title' style={{top: '40px'}}><p>Сумма к выплате</p></div>
                             <p className='summa-dohod'>{2>1 ? '0.00' : <Loader2 />}</p>
                         </article>
 
