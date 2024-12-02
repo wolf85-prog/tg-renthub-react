@@ -1,81 +1,435 @@
-.box {
-    border-radius: 10px;
-    box-shadow: 0px 0px 40px -10px #26aad4;
-    padding: 15px 30px 0;
-    margin: 20px 0;
-    text-align: left;
-    height: 165px;
+.proj-card {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
 }
 
-.red {
-    border-left: 10px solid #C8372D;
-}
-.orange {
-    border-left: 10px solid #c4830c;
-}
-.yellow {
-    border-left: 10px solid #D1941A;
-}
-.green {
-    border-left: 10px solid #008000;
-}
-.blue {
-    border-left: 10px solid #236bd6;
-}
-.purple {
-    border-left: 10px solid #800080;
-}
-.gray {
-    border-left: 10px solid #808080;
-}
-.brown {
-    border-left: 10px solid #a52a2a;
-}
-.pink {
-    border-left: 10px solid #ffc0cb;
-}
-.default {
-    border-left: 10px solid #808080;
-}
-
-.post_title {
-    font-size: 20px;
-}
-
-.subscribe {
-    font-size: 16px;
-    color: #9590A0;
-}
-
-.image_comp {
-    padding-right: 5px;
-}
-
-.col_span {
-    background: #828282;
-    border-radius: 99px;
-    margin: 0 1px 0 3px;
-    padding: 2px 8px;
-    font-size: 10px;
-}
-
-.find_span {
-    background: #D1941A;
-    font-size: 10px;
-    margin: 8px 0;
-    padding: 6px 25px;
-}
-
-.nofind_span {
-    background: transition; 
-    font-size: 10px;
-    margin: 8px 0;
-    padding: 6px 35px;
-}
-
-.find-post {
+.rectangle-projcard {
+    box-sizing: border-box;
     position: absolute;
-    top: 88px;
-    bottom: 15px;
-    left: 25px;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 1.11%;
+
+    background: #2B2E32;
+    box-shadow: 20px 21px 20px rgba(25, 23, 23, 0.17), -12px -15px 20px rgba(203, 226, 251, 0.03), 1.08px 0px 5.076px rgba(0, 0, 0, 0.57), inset -2.16px 0px 4.32px rgba(0, 0, 0, 0.27), inset -2.16px 0px 2.592px rgba(0, 0, 0, 0.22), inset 0px 0px 19.24px rgba(67, 67, 67, 0.29);
+    border-radius: 21.6px;
 }
+
+.rectangle-projcard2 {
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 0%;
+    right: 29.43%;
+    top: 0%;
+    bottom: 1.05%;
+
+    background: linear-gradient(90deg, #2B2E32 12.69%, rgba(43, 46, 50, 0) 106.01%, rgba(43, 46, 50, 0) 130.57%);
+    border-radius: 21.6px;
+}
+
+.rectangle-projcard3 {
+    position: absolute;
+    left: 54.39%;
+    right: 19.08%;
+    top: 1.73%;
+    bottom: 2.68%;
+
+    background: #2B2F33;
+    filter: blur(5px);
+}
+
+/* Rectangle 4 */
+.rectangle4 {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 1.11%;
+
+    /* Градиент/Градиент_2 */
+    background: linear-gradient(135deg, #292C30 100%, #2D3036 0%);
+    /* Неоморфизм_2 */
+    box-shadow: -1px 1px 2px rgba(22, 23, 26, 0.2), 1px -1px 2px rgba(22, 23, 26, 0.2), -1px -1px 2px rgba(65, 69, 77, 0.9), 1px 1px 3px rgba(22, 23, 26, 0.9), inset 1px 1px 2px rgba(65, 69, 77, 0.3), inset -1px -1px 2px rgba(22, 23, 26, 0.5);
+    border-radius: 21.6px;
+}
+
+.project-text {
+    position: relative;
+    width: 94%;
+    height: 120px;
+    left: 20px;
+    top: 18px;
+    text-align: left;
+    z-index: 8;
+}
+
+.project_title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+}
+
+.project_subtitle {
+    /* 06.12.2023 | 20:00 */
+    position: absolute;
+    left: 0;
+    top: 25px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+
+    /* ULEY Светлый */
+    color: #E8F1F9;
+
+    opacity: 0.4;
+}
+
+.project_money {
+    /* 6 000.00 */
+    position: relative;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.6;
+    padding-left: 25px;
+    padding-bottom: 25px;
+}
+
+.project_money2 {
+    /* 0.00 */
+    position: relative;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: left;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.6;
+    padding-bottom: 25px;
+    left: 20px;
+}
+
+.chat-button {
+    box-sizing: border-box;
+    width: 73px;
+    height: 31px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 10px;
+    font-size: 14px;
+
+    background: linear-gradient(183.21deg, rgba(113, 113, 113, 0.2) 4.27%, rgba(53, 50, 50, 0.2) 96.9%), linear-gradient(314.64deg, #1F2021 21.78%, #242526 55.17%, #313337 96.32%);
+    /* border: 0.481481px solid rgba(44, 44, 44, 0.25); */
+    box-shadow: -2.65605px -2.32405px 8.13704px rgba(170, 170, 170, 0.11), 0.962963px 1.92593px 9.77407px rgba(0, 0, 0, 0.52), inset -3px -4px 3.9963px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.card-footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    position: relative;
+    z-index: 50;
+}
+
+.vector {
+    position: absolute;
+    right: 13px;
+    top: 20px;
+    z-index: 8;
+}
+
+.progress {
+    position: absolute;
+    left: 1%;
+    top: 0%
+    /* margin-left: 5px;
+    margin-right: 0px; */
+}
+
+/* .shkala {
+    position: absolute;
+    top: 90px;
+    left: 15px;
+    width: 100%;
+} */
+
+.shkala-line1 {
+    /* Line 3 */
+    position: absolute;
+    height: 0px;
+    left: 0%;
+    top: 1px;
+    border: 1px solid #3392FF;
+    box-shadow: inset 0px 2px 2px #232222;
+    z-index: 6;
+}
+
+.shkala-line2 {
+    /* Line 2 */
+    position: absolute;
+    width: 90%;
+    height: 0px;
+    left: 0%;
+    top: 0px;
+
+    border: 1px solid #1B1E21;
+    box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
+}
+
+
+.begunok {
+    position: absolute;
+    top: -15px;
+    left: 6px;
+    z-index: 7;
+}
+
+
+/* Шкала 0-1 */
+.shkala1 {
+    position: absolute;
+    top: 95px;
+    z-index: 3;
+    right: -10px;
+    left: 0;
+    width: 100%;
+}
+
+.shkala-click {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    right: -10px;
+    width: 90%;
+    height: 20px;
+    z-index: 50;
+}
+
+.shkala-img {
+    width: 91%;
+    position: relative;
+    height: 180px;
+    margin-top: -60px;
+    z-index: 0;
+}
+
+
+
+
+/* Line 11 */
+.shkala1-line {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 42px;
+    top: 12px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 12 */
+.shkala1-line2 {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 62px;
+    top: 12px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 13 */
+.shkala1-line3 {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 82px;
+    top: 12px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 15 */
+.shkala1-line4 {
+    position: absolute;
+    width: 20px;
+    height: 0px;
+    left: 102px;
+    top: 17px;
+
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+
+
+
+.line-one {
+    /* Line 3 */
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    top: 107px;
+
+    border: 1px solid #3392FF;
+    box-shadow: inset 0px 2px 2px #232222;
+}
+
+/* Line 2 */
+.line-two {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    top: 108px;
+
+    border: 1px solid #1B1E21;
+    box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
+}
+
+.smeta {
+    position: relative;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 25px;
+}
+
+/* Line 3 */
+.proj-card .line3{
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    opacity: 0.6;
+    border: 1px solid #25272A;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.smeta-text {
+    margin-top: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.4;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0px;
+    margin-bottom: 5px;
+}
+
+.block-button {
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+}
+
+.button1 {
+    /* Rectangle 6 */
+    box-sizing: border-box;
+    width: 35%;
+    min-width: 130px;
+    height: 44px;
+    /* ULEY Светлый */
+    border: 0.481481px solid #E8F1F9;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.button2 {
+    /* Rectangle 6 */
+    box-sizing: border-box;
+    width: 35%;
+    min-width: 130px;
+    height: 44px;
+    background: linear-gradient(183.21deg, rgba(113, 113, 113, 0.2) 4.27%, rgba(53, 50, 50, 0.2) 96.9%), linear-gradient(314.64deg, #1F2021 21.78%, #242526 55.17%, #313337 96.32%);
+    border: 0.481481px solid rgba(44, 44, 44, 0.25);
+    box-shadow: -2.65605px -2.32405px 8.13704px rgba(170, 170, 170, 0.11), 0.962963px 1.92593px 9.77407px rgba(0, 0, 0, 0.52), inset -3px -4px 3.9963px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+
+
+/* Карточка */
+.modal-card {
+    width: 350px;
+    height: 130px; 
+    z-index: 70;
+}
+
+.block-text {
+    margin: 75px 25px;
+}
+
+.block-text li {
+    list-style-type: none;
+    /* Убираем маркеры */
+    margin-bottom: 3px;
+}
+
+.text-modal-list {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;   
+    opacity: 0.4;
+    text-align: left;
+}
+
+.block-close {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+

@@ -450,7 +450,7 @@ useEffect(()=>{
                                     <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                         <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
                                         <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-                                            <p style={{color: '#bbbbbb', fontSize: '14px'}}>Направление</p>
+                                            <p style={{color: '#bbbbbb', fontSize: '14px'}}>Категория</p>
                                             {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p>  */}
                                         </div>   
                                     </div>  
@@ -464,7 +464,7 @@ useEffect(()=>{
                                 </div>
 
                                 {/* Локация */}
-                                <div className='perechislenie' style={{top: '110px'}}>
+                                <div className='perechislenie' style={{top: '90px'}}>
                                     <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                         <img src={AddDistrib} onClick={clickAddCity}  alt='' width={40} />
                                         <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
@@ -515,7 +515,29 @@ useEffect(()=>{
                         setFilter={setFilter}
                     />
 
-                    
+                    {isPostsLoading
+                        ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center'}}><Loader/></div>
+                        : 
+                        <div className='container'>
+                            <div className='proj-card'>
+                                <div className='rectangle4'></div>
+
+                                <div>
+                                    <div className='project-text'>
+                                        <p className="project_title">Здесь будут ваши проекты</p>
+                                        
+                                    </div>
+                                    <img className='vector' src={Vector} alt=''/>  
+                                </div>
+
+                                
+                                <div className='card-footer'>
+                                    <div><p className='project_money2'>0.00</p></div>
+                                    <div className='chat-button'>Чат</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div> 
             </div>
             </>
@@ -546,13 +568,15 @@ useEffect(()=>{
                     <img onClick={onClickClose} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
                     <p className='vagno'>Настройка рассылки</p>
-                    <p className='vagno' style={{marginTop: '20px', fontSize: '12px', color: '#b4b4b4'}}>Направление</p>
-                    <div style={{position: 'relative', marginTop: '90px', marginLeft: '25px', marginRight: '25px'}}>
+                    <p className='vagno' style={{marginTop: '20px', fontSize: '12px', color: '#b4b4b4', paddingRight: '15px', textAlign: 'left'}}>
+                        Хочу получать рассылку по выбранной категории
+                    </p>
+                    <div style={{position: 'relative', marginTop: '100px', marginLeft: '25px', marginRight: '25px'}}>
                         {/* <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Отрасль / категория</p>   */}
                         <NewSelect5
                             id="category"
                             options={categories}
-                            titleCat={titleCat ? titleCat : 'Отрасль / категория'}
+                            titleCat={titleCat ? titleCat : 'Категория'}
                             setTitleCat={setTitleCat}
                             onChange={onCategoriesSelectChange}
                             heigthModal={true}

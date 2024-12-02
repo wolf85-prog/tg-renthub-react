@@ -1,0 +1,256 @@
+.range-slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    /* color: #fff;
+    margin: 4em auto; */
+}
+
+.slider-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    width: 92%;
+    /* max-width: 30em; */
+    margin-bottom: 15px;
+    z-index: 100;
+}
+
+
+
+/* input[type="range"] {
+    -webkit-appearance: none;
+} */
+
+
+/* Input Thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 40px;
+    width: 60px;
+    background: transparent;
+    border: 0px solid #f3f3f3;
+    border: none;
+    opacity: 0;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    height: 40px;
+    width: 60px;
+    background: transparent;
+    border: 0px solid #f3f3f3;
+    border: none;
+    opacity: 0;
+  }
+  
+  input[type="range"]::-ms-thumb {
+    -webkit-appearance: none;
+    height: 40px;
+    width: 60px;
+    background: transparent;
+    border: 0px solid #f3f3f3;
+    border: none;
+    opacity: 0;
+  } 
+
+
+  /* Android */
+.slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 1px;
+    outline: none;
+    background: transparent;
+    border: 0px solid #f3f3f3;
+    opacity: 0;
+}
+
+
+  /* iOS */
+.slider2  {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 1px;
+    outline: none;
+    background: transparent;
+    border: 0px solid #f3f3f3;
+    opacity: 0;
+}
+
+
+
+.slider-thumb {
+    position: absolute;
+    top: 30%;
+    transform: translateY(-50%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+/* .range-slider:hover .progress {
+    box-shadow: 0 0 1em #55e0ff;
+} */
+
+
+.shkala {
+    position: absolute;
+    width: 100%;
+    /* height: 0; */
+    left: 10px;
+    top: 80px;
+    z-index: 0;
+
+    /* noselect */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+/* Блоки */
+.blocks{
+    position: absolute;
+    width: 90%;
+    left: -10px;
+    top: -10px;
+}
+
+
+/* 1 */
+.block1{
+    position: absolute;
+    width: 4.01px;
+    height: 12px;
+    left: 0;
+    top: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    letter-spacing: -0.045em;
+    /* ULEY Светлый */
+    color: #E8F1F9;
+    opacity: 0.15;
+}
+
+.block-active{
+    color: #3392FF !important;
+    opacity: 0.8 !important;
+}
+
+
+
+/* Шкала 0-1 */
+.shkala01{
+    position: absolute;
+    width: 20%;
+    height: 20px;
+    left: 0;
+    top: 7px;
+}
+
+
+/* Line 11 */
+.shk-line11 {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 25%;
+    top: 12px;
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 12 */
+.shk-line12 {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 50%;
+    top: 12px;
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 13 */
+.shk-line13 {
+    position: absolute;
+    width: 10px;
+    height: 0px;
+    left: 75%;
+    top: 12px;
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+/* Line 15 */
+.shk-line15 {
+    position: absolute;
+    width: 20px;
+    height: 0px;
+    left: 100%;
+    top: 12px;
+    border: 1px solid #424548;
+    transform: rotate(-90deg);
+}
+
+.progress {
+    width: 0;
+    height: 1px;
+    background: #f3f3f3;
+    border: 1px solid #3392FF;
+    box-shadow: inset 0px 2px 2px #232222;
+    position: absolute;
+    top: -20px;
+    transform: translateY(-50%);
+    left: 0;
+    pointer-events: none;
+    transition-property: box-shadow;
+    transition-duration: 0.2s;
+    border-radius: 5px;
+}
+
+
+/* back */
+.shkala2 {
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    left: 0px;
+    top: -21px;
+    border: 1px solid #1B1E21;
+    box-shadow: inset 0px -1px 2px rgba(255, 255, 255, 0.13);
+    z-index: 0;
+    border-radius: 5px;
+}
+
+/* Line 3 */
+.shkala3 {
+    position: absolute;
+    width: 311px;
+    height: 0px;
+    left: 10px;
+    top: 20px;
+    border: 1px solid #3392FF;
+    box-shadow: inset 0px 2px 2px #232222;
+}
+
+.begun {
+    width: 259px;
+    position: absolute;
+    top: -123px;
+    left: 0;
+}
