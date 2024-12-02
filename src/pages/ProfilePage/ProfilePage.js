@@ -63,7 +63,7 @@ const ProfilePage = () => {
     const projectsRef = useRef(null)
 
     const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
-    const { workerhub, setWorkerhub, companyManager, distrib, setDistrib, distribs, setDistribs } = useUsersContext();
+    const { workerhub, setWorkerhub, companyManager, distrib, setDistrib, distribs, setDistribs, distrib2, setDistrib2, distribs2, setDistribs2 } = useUsersContext();
     //специалисты
     const [workerhublist, setWorkerhublist] = useState([]);
 
@@ -197,7 +197,7 @@ const ProfilePage = () => {
             ? region.models
             : [{ id: 0, name: 'Нет моделей', items: [] }];
 
-            setDistrib({...distrib, cat: regSelect, icon: iconRegSelect})
+            setDistrib2({...distrib2, cat: regSelect, icon: iconRegSelect})
 
         // меняем модели во втором списке
         setModels(models);
@@ -295,27 +295,6 @@ useEffect(()=>{
         navigate('/add-project')
     }
 
-    const clickKompeten = () => {
-        showKompet ? setShowKompet(false) : setShowKompet(true)
-    }
-
-    
-    const clickDohod = () => {
-        showDohod ? setShowDohod(false) : setShowDohod(true)
-    }
-
-    const clickPodel = () => {
-        showModal ? setShowModal(false) : setShowModal(true)
-    }
-
-    const clickInfo = () => {
-        showInfo ? setShowInfo(false) : setShowInfo(true)
-    }
-
-    const clickMoreInfo = () => {
-        showMoreInfo ? setShowMoreInfo(false) : setShowMoreInfo(true)
-    }
-
 
     const openInNewTab = (url) => {
         window.open(url, '_blank', 'noreferrer');
@@ -375,9 +354,9 @@ useEffect(()=>{
         e.preventDefault();
         setShowAddCity(false) 
 
-        // if (distrib.cat !== '' || distrib.spec !== '') {
-        //     setDistribs([...distribs, {...distrib, id: Date.now()}])
-        // }
+        if (distrib2.cat !== '' || distrib2.spec !== '') {
+            setDistribs2([...distribs2, {...distrib2, id: Date.now()}])
+        }
 
 
         // const saveDate = [{name: distribs?.cat}]
@@ -434,15 +413,14 @@ useEffect(()=>{
                 </article>
 
                 <div style={{display: 'flex', marginTop: '40px', justifyContent: 'space-between'}}>
-                <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
-                       
-                       
-                       
-                        {/* Компания */}
+                
+                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
+
+                        {/* Цена услуги */}
                         <article className='block-kompetencii' style={{display: 'block'}}> 
                             <div className='rectangle5'></div>
                             <div className='kompetencii-title'>
-                                <p className='text-kompetencii'>Компания</p>
+                                <p className='text-kompetencii'>Цена услуги</p>
                                 <img className='vector-icon' src={Vector} alt=''/>
                             </div>
                         </article>
@@ -457,52 +435,76 @@ useEffect(()=>{
 
                     </div> 
 
-                    {/* Рассылка */}
-                    <article className='block-merch'> 
+                    <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 40%'}}>
+                        {/* Рассылка */}
+                        <article className='block-merch'> 
+                                <div className='rectangle5'></div>
+
+                                <div className='rectangle-circle'>
+                                    {/* <div className='rectangle-circle-on'></div> */}
+                                </div>
+
+                                <p className='merch-title'>Рассылка</p>
+                                {/* Категории */}
+                                <div className='perechislenie'>
+                                    <div style={{display: 'flex', alignItems: 'flex-start'}}>
+                                        <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
+                                        <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
+                                            <p style={{color: '#bbbbbb', fontSize: '14px'}}>Направление</p>
+                                            {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p>  */}
+                                        </div>   
+                                    </div>  
+                                    <ul style={{fontSize: '11px', width: '100%', listStyle: 'disc'}}>
+                                        {distribs ? distribs.map((item, index)=> (
+                                            <li key={index} style={{margin: '0', marginLeft: '40px', marginTop: '-5px', color: '#6c6b6b'}}>{item.cat}</li>   
+                                        ))
+                                        : ''    
+                                        }    
+                                    </ul>
+                                </div>
+
+                                {/* Локация */}
+                                <div className='perechislenie' style={{top: '110px'}}>
+                                    <div style={{display: 'flex', alignItems: 'flex-start'}}>
+                                        <img src={AddDistrib} onClick={clickAddCity}  alt='' width={40} />
+                                        <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
+                                            <p style={{color: '#DBDBDB', fontSize: '14px'}}>Локация</p>
+                                            {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p>  */}
+                                        </div>   
+                                    </div> 
+                                    <ul style={{fontSize: '11px', width: '100%', listStyle: 'disc'}}>
+                                        {distribs2 ? distribs2.map((item, index)=> (
+                                            <li key={index} style={{margin: '0', marginLeft: '40px', marginTop: '-5px', color: '#6c6b6b'}}>{item.cat}</li>   
+                                        ))
+                                        : ''    
+                                        }    
+                                    </ul> 
+                                </div>
+                                
+                        </article>
+
+                        {/* Компания */}
+                        <article className='block-kompetencii' style={{display: 'block', marginTop: '10px'}}> 
                             <div className='rectangle5'></div>
-
-                            <div className='rectangle-circle'>
-                                {/* <div className='rectangle-circle-on'></div> */}
+                            <div className='kompetencii-title'>
+                                <p className='text-kompetencii'>Компания</p>
+                                <img className='vector-icon' src={Vector} alt=''/>
                             </div>
+                        </article>
+                    </div>
 
-                            <p className='merch-title'>Рассылка</p>
-                            {/* Категории */}
-                            <div className='perechislenie'>
-                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
-                                    <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
-                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-                                        <p style={{color: '#bbbbbb', fontSize: '14px'}}>Направление</p>
-                                        {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p>  */}
-                                    </div>   
-                                </div>  
-                                <ul style={{fontSize: '11px', width: '100%', listStyle: 'disc'}}>
-                                {distribs ? distribs.map((item, index)=> (
-                                    <li key={index} style={{margin: '0', marginLeft: '40px', marginTop: '-5px', color: '#6c6b6b'}}>{item.cat}</li>   
-                                ))
-                                : ''    
-                                }
-                                    
-                                </ul>
-                                    
-                       
-                            </div>
-
-                            {/* Локация */}
-                            <div className='perechislenie' style={{top: '110px'}}>
-                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
-                                    <img src={AddDistrib} onClick={clickAddCity}  alt='' width={40} />
-                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>Локация</p>
-                                        {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p>  */}
-                                    </div>   
-                                </div>  
-                            </div>
-                            
-                    </article>
+                    
                     
                 </div>
+
+                <article onClick={onAddProject} className="card" style={{height: '60px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '15px'}}>
+                    <div className='rectangle5'></div>   
+                    <div className='show-border'></div>   
+                    <p style={{zIndex: '10'}}>Новый проект</p>  
+                </article> 
                 
             </div>
+
 
             <div  ref={projectsRef}>
 

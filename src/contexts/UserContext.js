@@ -19,6 +19,10 @@ const UserProvider = ({ children }) => {
     const [distrib, setDistrib] = useState({id: '', cat: '', spec: '', icon: ''})
     const [distribs, setDistribs] = useState([])
 
+    //регион рассылки
+    const [distrib2, setDistrib2] = useState({id: '', cat: '', spec: '', icon: ''})
+    const [distribs2, setDistribs2] = useState([])
+
 	const arr_status = [] 
 
     //количество работников
@@ -118,7 +122,11 @@ const UserProvider = ({ children }) => {
             distrib, 
             setDistrib,
             distribs, 
-            setDistribs
+            setDistribs,
+            distrib2, 
+            setDistrib2,
+            distribs2, 
+            setDistribs2
 		}}>
 			{children}
 		</UserContext.Provider>

@@ -194,7 +194,7 @@ input[id="cb1"] {
     width: 100%;
     height: 163px;
     position: relative;
-    flex: 0 0 40%;
+    /* flex: 0 0 40%; */
     z-index: 10;
   }
   
@@ -463,7 +463,7 @@ input[id="cb1"] {
     position: relative;
     z-index: 0;
     width: 100%;
-    height: 105px;
+    height: 162px;
     margin-top: 5px;
 }
 
@@ -926,6 +926,46 @@ input[id="cb1"] {
     color: #ffffff;
     font-size: 14px;
     cursor: pointer;
+}
+
+
+
+.show-border {
+    border: 1px solid #175acd;
+    background: transparent;
+    animation: showIcon2 2s infinite;
+    /* animation-delay: 1s; */
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 1.11%;
+      
+    border-radius: 21.6px;
+}
+
+@keyframes showIcon {
+    0% {
+      border: 1px solid #175acd;
+    }
+    50% {
+        border: none;
+    }
+    100% {
+        border: 1px solid #175acd;
+    }
+}
+
+@keyframes showIcon2 {
+    0% {
+      opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 
