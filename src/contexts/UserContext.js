@@ -15,6 +15,9 @@ const UserProvider = ({ children }) => {
     const [companys, setCompanys] = useState([]);
     const [companyManager, setCompanyManager] = useState('');
     const [userApp, setUserApp] = useState('');
+    //категории рассылки
+    const [distrib, setDistrib] = useState({id: '', cat: '', spec: '', icon: ''})
+    const [distribs, setDistribs] = useState([])
 
 	const arr_status = [] 
 
@@ -111,7 +114,11 @@ const UserProvider = ({ children }) => {
             userApp,
             setUserApp,
             count,
-            setCount
+            setCount,
+            distrib, 
+            setDistrib,
+            distribs, 
+            setDistribs
 		}}>
 			{children}
 		</UserContext.Provider>

@@ -1,5 +1,5 @@
 .myModal {
-    position: relative;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
@@ -19,6 +19,7 @@
     color: #fff;
     margin-left: 25px;
     margin-right: 25px;
+    position: relative;
 }
 
 .myModal.active {

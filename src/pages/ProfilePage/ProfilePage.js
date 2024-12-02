@@ -33,6 +33,7 @@ import Edit2 from "../../img/new/edit2.svg"
 import Vector from "../../img/new/vector.svg"
 import VectorUp from "../../img/new/vector_up.svg"
 import Workhub from "../../img/new/WorkHub.gif"
+import Renthub from "../../img/new/renthub.jpeg"
 import QRCode from "../../img/new/QR_Code.svg"
 import Close from "../../img/new/close.svg"
 import ClosePress from "../../img/new/close_press.svg"
@@ -59,7 +60,7 @@ const ProfilePage = () => {
     const projectsRef = useRef(null)
 
     const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
-    const { workerhub, setWorkerhub, companyManager } = useUsersContext();
+    const { workerhub, setWorkerhub, companyManager, distrib, setDistrib, distribs, setDistribs } = useUsersContext();
     //специалисты
     const [workerhublist, setWorkerhublist] = useState([]);
 
@@ -153,6 +154,8 @@ const ProfilePage = () => {
             ? category.models
             : [{ id: 0, name: 'Нет моделей', items: [] }];
 
+            setDistribs({...distribs, cat: catSelect, icon: iconCatSelect})
+
         // меняем модели во втором списке
         setModels(models);
 
@@ -163,6 +166,11 @@ const ProfilePage = () => {
 //---------------------------------------------------------------------
 //1  загружаем проекты
 
+
+useEffect(()=>{
+    console.log("distribs: ", distribs)
+    
+}, [distribs])
 
 
 
@@ -279,9 +287,23 @@ const ProfilePage = () => {
         }, 6000)
     }
 
-    const addCategory = () => {
-        setShowAddSpec(true)
+    const clickAddSpec = () => {
+        setShowAddSpec(true) 
     }
+
+    const addNewDistrib = (e) => {
+        e.preventDefault();
+
+        if (distrib.cat !== '' || distrib.spec !== '') {
+            setDistribs([...distribs, {...distrib, id: Date.now()}])
+        }
+
+
+        setDistribs({cat: '', spec: '', icon: ''})
+
+    }
+
+
 
     const onClickClose = () => {
         setShowAddSpec(false)
@@ -361,28 +383,35 @@ const ProfilePage = () => {
 
                             <p className='merch-title'>Рассылка</p>
                             <div className='perechislenie'>
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <img src={AddDistrib} onClick={addCategory} alt='' width={50} />
-                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px'}}>
-                                        <p style={{color: '#DBDBDB'}}>Направление</p>
-                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль и/или</p> 
+                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
+                                    <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
+                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
+                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>{distribs ? '' : 'Направление'}</p>
+                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p> 
                                     </div>   
-                                </div>
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <img src={AddDistrib} onClick={addCategory} alt='' width={50} />
-                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px'}}>
-                                        <p style={{color: '#DBDBDB'}}>Направление</p>
-                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль и/или</p> 
+                                </div>   
+                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
+                                    <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
+                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
+                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>Направление</p>
+                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p> 
                                     </div>   
-                                </div>
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <img src={AddDistrib} onClick={addCategory} alt='' width={50} />
-                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px'}}>
-                                        <p style={{color: '#DBDBDB'}}>Направление</p>
-                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль и/или</p> 
+                                </div>   
+                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
+                                    <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
+                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
+                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>Направление</p>
+                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p> 
                                     </div>   
-                                </div>
-                                
+                                </div>       
+
+                                <div style={{display: 'flex', alignItems: 'flex-start'}}>
+                                    <img src={AddDistrib} alt='' width={40} />
+                                    <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
+                                        <p style={{color: '#DBDBDB', fontSize: '14px'}}>Локация</p>
+                                        <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p> 
+                                    </div>   
+                                </div>                        
                             </div>
                     </article>
                     
@@ -430,7 +459,8 @@ const ProfilePage = () => {
                     <img onClick={onClickClose} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
                     <p className='vagno'>Настройка рассылки</p>
-                    <div style={{position: 'relative', marginTop: '60px', marginLeft: '25px', marginRight: '25px'}}>
+                    <p className='vagno' style={{marginTop: '20px', fontSize: '12px', color: '#b4b4b4'}}>Направление</p>
+                    <div style={{position: 'relative', marginTop: '90px', marginLeft: '25px', marginRight: '25px'}}>
                         <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Отрасль / категория</p>  
                         <NewSelect5
                             id="category"
@@ -442,7 +472,7 @@ const ProfilePage = () => {
                         /> 
                     </div>
 
-                    <div style={{position: 'relative', marginRight: '25px', marginRight: '15px', marginTop: '10px'}}> 
+                    <div style={{position: 'absolute', bottom: 0, right: '10px'}}> 
 
                         {/*кнопка Добавить*/}
                         <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
@@ -450,7 +480,7 @@ const ProfilePage = () => {
                                 disabled={disabledBtn}
                                 className="image-add-modal-button" 
                                 style={{ backgroundImage: `url(${btnSave})`}}
-                                //onClick={addNewWorker}
+                                onClick={addNewDistrib}
                             >
                                 Подтвердить
                             </button>

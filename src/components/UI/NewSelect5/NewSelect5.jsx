@@ -35,9 +35,7 @@ const NewSelect5 = ({id, options, titleCat, setTitleCat, onChange, disabled, hei
     return (
         <div>
             {!open ? (<div className={classes.dropdown}>
-                <div className={classes.rec1}></div>
-                <div className={classes.rec2}></div>
-                <div className={classes.rec3}></div>
+                <div className={classes.rectangle5}></div>
                 <div className={classes.dropdownWrapper} ref={menuRef}>
                     <div className={classes.dropdownContainer}>
                         <div
