@@ -482,7 +482,7 @@ useEffect(()=>{
                                     <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                         <img src={AddDistrib} onClick={clickAddCity}  alt='' width={40} />
                                         <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-                                            <p style={{color: '#DBDBDB', fontSize: '14px'}}>Локация</p>
+                                            <p style={{color: '#DBDBDB', fontSize: '14px'}}>Регион</p>
                                             {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p>  */}
                                         </div>   
                                     </div> 
