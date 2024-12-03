@@ -393,6 +393,15 @@ useEffect(()=>{
         setShowListRegion(true)
     }
 
+
+    const clickKompeten = () => {
+        showKompet ? setShowKompet(false) : setShowKompet(true)
+    }
+
+    const clickPrice = (name) => {
+        
+    }
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -438,17 +447,34 @@ useEffect(()=>{
                     <div style={{position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', flex: '0 0 56%'}}>
 
                         {/* Цена услуги */}
-                        <article className='block-kompetencii' style={{display: 'block'}}> 
+                        <article className='block-kompetencii' style={{display: !showKompet ? 'block' : 'none'}}> 
                             <div className='rectangle5'></div>
-                            <div className='kompetencii-title'>
+                            <div className='kompetencii-title' onClick={clickKompeten}>
                                 <p className='text-kompetencii'>Цена услуги</p>
                                 <img className='vector-icon' src={Vector} alt=''/>
                             </div>
                         </article>
 
                         {/* open */}
+                        <article className='block-kompetencii-open' style={{display: showKompet ? 'block' : 'none'}}> 
+                            <div className='rectangle-kompeten'></div>
+                            <div className='rectangle-kompeten2'></div>
+                            <div className='rectangle-kompeten3'></div>
+                            <div className='kompetencii-title' onClick={clickKompeten}>
+                                <p className='text-kompetencii' >Цена услуги</p>
+                                <img className='vector-icon' src={VectorUp} alt=''/>
+                            </div>
+                            <div className='kompet-list'>
+                                <ul>
+                                    {categories.map((item, index) => index < 6
+                                    ?   <li className="bullet-title" onClick={()=>clickPrice(item.name)}>{item.name} </li>
+                                    : '' )}
+                                </ul>  
+                            </div>
+                        </article>    
+
                         {/* Доход */}
-                       <article className='block-dohod' style={{display: 'block'}}> 
+                       <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
                             <div className='rectangle17'></div>
                             <div className='kompetencii-title' style={{top: '40px'}}><p>Сумма к выплате</p></div>
                             <p className='summa-dohod'>{2>1 ? '0.00' : <Loader2 />}</p>
