@@ -432,22 +432,24 @@ input[id="cb1"] {
 
 .kompet-list {
     position: absolute;
-    left: 15%;
+    left: 10%;
     top: 25%;
-    width: 90%;
+    width: 80%;
     height: 125px;
+    overflow: auto;
 }
 
 .kompet-list li {
     font-style: normal;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 17px;
     letter-spacing: -0.045em;
     /* ULEY Светлый */
     color: #E8F1F9;
     opacity: 0.4;
     text-align: left;
+    margin-bottom: 5px;
 }
 
 .dohod {

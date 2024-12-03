@@ -97,6 +97,9 @@ const ProfilePage = () => {
     const [showAddCity, setShowAddCity] = useState(false)
     const [showListCategoty, setShowListCategoty] = useState(false)
     const [showListRegion, setShowListRegion] = useState(false)
+    const [showList, setShowList] = useState(false)
+    const [showRazrab, setShowRazrab] = useState(false)
+    const [price, setPrice] = useState('')
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -352,7 +355,8 @@ useEffect(()=>{
 
     const clickAddCity = (e) => {
         e.stopPropagation();
-        setShowAddCity(true) 
+        //setShowAddCity(true) 
+        setShowRazrab(true)
     }
 
     const addNewDistrib2 = async(e) => {
@@ -399,7 +403,12 @@ useEffect(()=>{
     }
 
     const clickPrice = (name) => {
-        
+        setShowList(true)
+        setPrice(name)
+    }
+
+    const onClickCloseList3 = () => {
+        setShowList(false)
     }
 
 //---------------------------------------------------------------------------------------
@@ -465,8 +474,8 @@ useEffect(()=>{
                                 <img className='vector-icon' src={VectorUp} alt=''/>
                             </div>
                             <div className='kompet-list'>
-                                <ul>
-                                    {categories.map((item, index) => index < 6
+                                <ul style={{listStyle: 'disc'}}>
+                                    {categories.map((item, index) => index < 13
                                     ?   <li className="bullet-title" onClick={()=>clickPrice(item.name)}>{item.name} </li>
                                     : '' )}
                                 </ul>  
@@ -524,7 +533,7 @@ useEffect(()=>{
                         </article>
 
                         {/* Компания */}
-                        <article className='block-kompetencii' style={{display: 'block', marginTop: '10px'}}> 
+                        <article className='block-kompetencii' style={{display: 'block', marginTop: '10px'}} onClick={()=>setShowRazrab(true)}> 
                             <div className='rectangle5'></div>
                             <div className='kompetencii-title'>
                                 <p className='text-kompetencii'>Компания</p>
@@ -710,7 +719,7 @@ useEffect(()=>{
 
                     <img onClick={onClickCloseList2} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
-                    <p className='vagno'>Локации</p>
+                    <p className='vagno'>Регион</p>
                     
 
                     <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
@@ -720,6 +729,44 @@ useEffect(()=>{
                         : ''    
                         }    
                     </ul>
+                </div>
+            </MyModal>
+
+
+            <MyModal visible={showList} setVisible={setShowList}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={onClickCloseList3} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>{price}</p>
+                    
+
+                    <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
+                        {distribs2 ? distribs2.map((item, index)=> (
+                            <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>{item.reg}</li>   
+                        ))
+                        : ''    
+                        }    
+                    </ul>
+                </div>
+            </MyModal>
+
+
+            <MyModal visible={showRazrab} setVisible={setShowRazrab}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    {/* <p className='vagno'>Важно</p> */}
+                    <p className='text-vagno'>Функция находится в разработке</p>
+                    <div className='button-ok' onClick={()=>setShowRazrab(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
                 </div>
             </MyModal>
             
