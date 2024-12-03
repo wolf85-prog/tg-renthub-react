@@ -94,6 +94,8 @@ const ProfilePage = () => {
     const [showInfo, setShowInfo] = useState(false)
     const [showAddSpec, setShowAddSpec] = useState(false)
     const [showAddCity, setShowAddCity] = useState(false)
+    const [showListCategoty, setShowListCategoty] = useState(false)
+    const [showListRegion, setShowListRegion] = useState(false)
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -311,7 +313,8 @@ useEffect(()=>{
         }, 6000)
     }
 
-    const clickAddSpec = () => {
+    const clickAddSpec = (e) => {
+        e.stopPropagation();
         setShowAddSpec(true) 
     }
 
@@ -346,7 +349,8 @@ useEffect(()=>{
     }
 
 
-    const clickAddCity = () => {
+    const clickAddCity = (e) => {
+        e.stopPropagation();
         setShowAddCity(true) 
     }
 
@@ -370,6 +374,22 @@ useEffect(()=>{
 
     const onClickClose2 = () => {
         setShowAddCity(false)
+    }
+
+    const onClickCloseList = () => {
+        setShowListCategoty(false)
+    }
+
+    const onClickCloseList2 = () => {
+        setShowListRegion(false)
+    }
+
+    const clickDistrib = () => {
+        setShowListCategoty(true)
+    }
+
+    const clickDistrib2 = () => {
+        setShowListRegion(true)
     }
 
 //---------------------------------------------------------------------------------------
@@ -446,7 +466,7 @@ useEffect(()=>{
 
                                 <p className='merch-title'>Рассылка</p>
                                 {/* Категории */}
-                                <div className='perechislenie'>
+                                <div className='perechislenie' onClick={clickDistrib}>
                                     <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                         <img src={AddDistrib} onClick={clickAddSpec} alt='' width={40} />
                                         <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
@@ -454,17 +474,10 @@ useEffect(()=>{
                                             {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранная отрасль</p>  */}
                                         </div>   
                                     </div>  
-                                    <ul style={{fontSize: '11px', width: '100%', listStyle: 'disc'}}>
-                                        {distribs ? distribs.map((item, index)=> (
-                                            <li key={index} style={{margin: '0', marginLeft: '40px', marginTop: '-5px', color: '#6c6b6b'}}>{item.cat}</li>   
-                                        ))
-                                        : ''    
-                                        }    
-                                    </ul>
                                 </div>
 
                                 {/* Локация */}
-                                <div className='perechislenie' style={{top: '90px'}}>
+                                <div className='perechislenie' onClick={clickDistrib2} style={{top: '90px'}}>
                                     <div style={{display: 'flex', alignItems: 'flex-start'}}>
                                         <img src={AddDistrib} onClick={clickAddCity}  alt='' width={40} />
                                         <div style={{display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
@@ -472,13 +485,13 @@ useEffect(()=>{
                                             {/* <p style={{fontSize: '9px', color: '#a79f9f'}}>Выбранные регион/город</p>  */}
                                         </div>   
                                     </div> 
-                                    <ul style={{fontSize: '11px', width: '100%', listStyle: 'disc'}}>
+                                    {/* <ul style={{fontSize: '11px', width: '100%', listStyle: 'disc'}}>
                                         {distribs2 ? distribs2.map((item, index)=> (
                                             <li key={index} style={{margin: '0', marginLeft: '40px', marginTop: '-5px', color: '#6c6b6b'}}>{item.cat}</li>   
                                         ))
                                         : ''    
                                         }    
-                                    </ul> 
+                                    </ul>  */}
                                 </div>
                                 
                         </article>
@@ -600,6 +613,29 @@ useEffect(()=>{
             </MyModal>
 
 
+
+            <MyModal visible={showListCategoty} setVisible={setShowListCategoty}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={onClickCloseList} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>Категории</p>
+                    
+
+                    <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
+                        {distribs ? distribs.map((item, index)=> (
+                            <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>{item.cat}</li>   
+                        ))
+                        : ''    
+                        }    
+                    </ul>
+                </div>
+            </MyModal>
+
+
             <MyModal visible={showAddCity} setVisible={setShowAddCity}>
                 <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
                     <div className='rectangle-modal'></div>
@@ -635,6 +671,28 @@ useEffect(()=>{
                             </button>
                         </div>  
                     </div>
+                </div>
+            </MyModal>
+
+
+            <MyModal visible={showListRegion} setVisible={setShowListRegion}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={onClickCloseList2} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>Локации</p>
+                    
+
+                    <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
+                        {distribs2 ? distribs2.map((item, index)=> (
+                            <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>{item.reg}</li>   
+                        ))
+                        : ''    
+                        }    
+                    </ul>
                 </div>
             </MyModal>
             
