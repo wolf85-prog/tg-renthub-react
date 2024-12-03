@@ -11,6 +11,7 @@ import './ProfilePage.css';
 import NewSelect5 from '../../components/UI/NewSelect5/NewSelect5';
 import specData from "../../data/specData"
 import cityData from "../../data/cityData"
+import specPriceData from "../../data/specPriceData"
 
 import btnSave from "../../img/buttons/btn_add.png"
 
@@ -109,6 +110,8 @@ const ProfilePage = () => {
     //регион
     const [regions, setRegions] = useState([]);
 
+    const [categoriesPrice, setCategoriesPrice] = useState([]);
+
     //select
     const [selectedElement, setSelectedElement] = useState("")
     const [disabledBtn, setDisabledBtn] = useState(true)
@@ -148,6 +151,10 @@ const ProfilePage = () => {
         // устанавливаем категории
         if (specData.length > 0 && specData) {
             setCategories(specData);
+        }
+
+        if (specPriceData.length > 0 && specPriceData) {
+            setCategoriesPrice(specPriceData);
         }
 
         // устанавливаем регион
@@ -475,8 +482,8 @@ useEffect(()=>{
                             </div>
                             <div className='kompet-list'>
                                 <ul style={{listStyle: 'disc'}}>
-                                    {categories.map((item, index) => index < 13
-                                    ?   <li className="bullet-title" onClick={()=>clickPrice(item.name)}>{item.name} </li>
+                                    {categoriesPrice.map((item, index) => index < 13
+                                    ?   <li className="bullet-title" onClick={()=>clickPrice(item.name)}><span style={{fontSize: '20px'}}>• </span>{item.name} </li>
                                     : '' )}
                                 </ul>  
                             </div>
