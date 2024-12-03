@@ -63,7 +63,8 @@ const ProfilePage = () => {
     const projectsRef = useRef(null)
 
     const { projects, setProjects, specId, setSpecId, flag, summa, setSumma } = useUsersContext();
-    const { workerhub, setWorkerhub, companyManager, distrib, setDistrib, distribs, setDistribs, distrib2, setDistrib2, distribs2, setDistribs2 } = useUsersContext();
+    const { workerhub, setWorkerhub, companyManager, companyProfile, distrib, 
+        setDistrib, distribs, setDistribs, distrib2, setDistrib2, distribs2, setDistribs2 } = useUsersContext();
     //специалисты
     const [workerhublist, setWorkerhublist] = useState([]);
 
@@ -412,7 +413,7 @@ useEffect(()=>{
                     <div className="rectangle4">
                     </div>
                     <div className="circle">
-
+                        <img src={companyProfile} style={{width: '124px', borderRadius: '50%', marginTop: '2px', marginRight: '2px'}} alt='' />
                     </div>
                     <div>
                         <p className="profile_fio">{workerhub?.fio.split(' ')[0] + ' ' + workerhub?.fio.split(' ')[1]}</p>

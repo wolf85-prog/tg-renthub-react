@@ -14,6 +14,7 @@ const UserProvider = ({ children }) => {
 	const [status, setStatus] = useState([]);
     const [companys, setCompanys] = useState([]);
     const [companyManager, setCompanyManager] = useState('');
+    const [companyProfile, setCompanyProfile] = useState('');
     const [userApp, setUserApp] = useState('');
     //категории рассылки
     const [distrib, setDistrib] = useState({id: '', cat: '', spec: '', icon: ''})
@@ -44,10 +45,14 @@ const UserProvider = ({ children }) => {
             setWorkerhub(manager)
 
             const resCompany = await getCompanysApi()
-            const companyName = resCompany.find((item)=> item.id === parseInt(manager?.companyId) || item.GUID === manager?.companyId)
-            console.log("companyName: ", companyName)
+            const company = resCompany.find((item)=> item.id === parseInt(manager?.companyId) || item.GUID === manager?.companyId)
+            //console.log("companyName: ", company)
+
+            console.log("companyProfile: ", company?.profile)
             
-            setCompanyManager(companyName?.title)
+            setCompanyManager(company?.title)
+
+            setCompanyProfile(company?.profile)
 
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')
@@ -109,6 +114,7 @@ const UserProvider = ({ children }) => {
             workerhub, 
             setWorkerhub,
             companyManager,
+            companyProfile,
 			projects,
 			setProjects,
 			managerId,
