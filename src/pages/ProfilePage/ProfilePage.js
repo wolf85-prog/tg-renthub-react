@@ -343,14 +343,18 @@ useEffect(()=>{
         setSelectedElement("");
         setTitleCat(false)
 
-        let saveDate = []
+        let worklist = []
         distribs.map(item=> {
-            saveDate.push({name: item?.cat})
+            worklist.push({cat: item?.cat})
         })
 
-        console.log("save data: ", saveDate, workerhub?.chatId)
+        const saveData = {
+            worklist: JSON.stringify(worklist)
+        }
+
+        console.log("save data: ", saveData, workerhub?.chatId)
         
-        const resUpdate = await updateManager(workerhub?.id, JSON.stringify(saveDate))
+        const resUpdate = await updateManager(workerhub?.id, saveData)
         console.log("resUpdate: ", resUpdate)
         
     }

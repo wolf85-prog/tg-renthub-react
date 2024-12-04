@@ -54,6 +54,8 @@ const UserProvider = ({ children }) => {
 
             setCompanyProfile(company?.profile)
 
+            setDistribs(manager.worklist ? JSON.parse(manager.worklist) : [])
+
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')
 			// } else {
