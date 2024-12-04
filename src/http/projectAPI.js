@@ -33,7 +33,7 @@ export const getManagerIdApi = async (id) =>{
 
 export const updateManager = async (id, data) =>{
     try {
-       let response = await $host_old.post(`/managers/update/${id}`, data);
+       let response = await $host_old.patch(`api/managers/update/${id}`, data);
        //console.log(response);
        return response.data;
     } catch (error) {
