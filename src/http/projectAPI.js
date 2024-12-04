@@ -1,4 +1,4 @@
-import {$host} from "./index";
+import {$host, $host_old} from "./index";
 
 export const getManagerApi = async (id) =>{
     try {
@@ -33,7 +33,7 @@ export const getManagerIdApi = async (id) =>{
 
 export const updateManager = async (id, data) =>{
     try {
-       let response = await $host.post(`/managers/update/${id}`, data);
+       let response = await $host_old.post(`/managers/update/${id}`, data);
        //console.log(response);
        return response.data;
     } catch (error) {

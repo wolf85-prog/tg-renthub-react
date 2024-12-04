@@ -350,7 +350,7 @@ useEffect(()=>{
 
         console.log("save data: ", saveDate, workerhub?.chatId)
         
-        //const resUpdate = await updateManager(workerhub?.id, JSON.stringify(saveDate))
+        const resUpdate = await updateManager(workerhub?.id, JSON.stringify(saveDate))
         console.log("resUpdate: ", resUpdate)
         
     }
