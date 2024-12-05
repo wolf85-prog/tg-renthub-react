@@ -53,7 +53,7 @@ import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
-import { getManagerApi, updateManager } from '../../http/projectAPI';
+import { getManagerApi, updateManager, getSpecStavka } from '../../http/projectAPI';
 
 
 const ProfilePage = () => {
@@ -177,6 +177,7 @@ const ProfilePage = () => {
         }
 
         let arr = []
+        
         // specPriceData.map((item)=> {
         //     item.models.map((model)=> {
         //         const obj = {
@@ -187,6 +188,24 @@ const ProfilePage = () => {
         // })
 
         //setSoundTable()
+
+        const fetchStavka = async() => {
+            const data = {
+                "names": [
+                    "Звукорежиссер",
+                    "Системный инженер",
+                    "RF-Менеджер",
+                    "Backline",
+                    "Roadie",
+                    "Техник по звуку"
+                ]
+            }
+
+            const res = await getSpecStavka(data)
+            console.log("res: ", res)
+        }
+
+        fetchStavka()
     }, []);
 
     // 1. при выборе нового значения в категории
