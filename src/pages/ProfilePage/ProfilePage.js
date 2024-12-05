@@ -866,8 +866,8 @@ useEffect(()=>{
                     
                     <table style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)', borderCollapse: 'collapse', border: 'none', position: 'relative', marginTop: '50px'}}>
                         <tr>
-                            <th style={{textAlign: 'left', paddingLeft: '15px', width: '190px'}}>Специальность</th>
-                            <th style={{width: '60px'}}>Часы</th>
+                            <th style={{textAlign: 'left', paddingLeft: '15px', width: '220px'}}>Специальность</th>
+                            <th style={{width: '40px'}}>Часы</th>
                             <th>Ставка</th>
                         </tr>
                         {
