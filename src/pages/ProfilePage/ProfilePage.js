@@ -124,6 +124,20 @@ const ProfilePage = () => {
     //const {worker, setWorker, workers, setWorkers} = useUsersContext();
     const [showSpec, setShowSpec] = useState(false) 
 
+
+    const [soundTable, setSoundTable] = useState([]);
+    const [lightTable, setLightTable] = useState([]);
+    const [videoTable, setVideoTable] = useState([]);
+    const [photoTable, setPhotoTable] = useState([]);
+    const [promoTable, setPromoTable] = useState([]);
+    const [cateringTable, setCateringTable] = useState([]);
+    const [stagehandsTable, setStagehandsTable] = useState([]);
+    const [riggersTable, setRiggersTable] = useState([]);
+    const [trucksTable, setTrucksTable] = useState([]);
+    const [partyTable, setPartyTable] = useState([]);
+    const [gamesTable, setGamesTable] = useState([]);
+    const [productionTable, setProductionTable] = useState([]);
+
     const API_URL = process.env.REACT_APP_API_URL
 
     
@@ -161,6 +175,18 @@ const ProfilePage = () => {
         if (cityData.length > 0 && cityData) {
             setRegions(cityData);
         }
+
+        let arr = []
+        // specPriceData.map((item)=> {
+        //     item.models.map((model)=> {
+        //         const obj = {
+        //             name: model.name
+        //         }
+        //         arr.push(obj)
+        //     })
+        // })
+
+        //setSoundTable()
     }, []);
 
     // 1. при выборе нового значения в категории
@@ -803,10 +829,10 @@ useEffect(()=>{
 
                     <p className='vagno'>{price}</p>
                     
-                    <table style={{color: '#DBDBDB', borderCollapse: 'collapse', border: 'none', position: 'absolute', top: '55px', left: '10px'}}>
+                    <table style={{fontSize: '13px', color: '#DBDBDB', borderCollapse: 'collapse', border: 'none', position: 'absolute', top: '55px', left: '10px'}}>
                         <tr>
-                            <th style={{textAlign: 'left', width: '160px'}}>Специальность</th>
-                            <th>Часы</th>
+                            <th style={{textAlign: 'left', width: '180px'}}>Специальность</th>
+                            <th style={{width: '60px'}}>Часы</th>
                             <th>Ставка</th>
                         </tr>
                         <tr>
