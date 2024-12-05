@@ -875,7 +875,7 @@ useEffect(()=>{
                             <tr key={index}>
                                 <td style={{textAlign: 'left', paddingLeft: '15px'}}>{item.title}</td>
                                 <td>{item.smena}</td>
-                                <td>{item.stavka} + '.00'</td>
+                                <td>{item.stavka}.00</td>
                             </tr>
                         ))
                         }                    
