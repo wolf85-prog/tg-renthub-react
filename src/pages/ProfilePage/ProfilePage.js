@@ -415,7 +415,56 @@ useEffect(()=>{
 
     const clickPrice = (name) => {
         setShowList(true)
-        setPrice(name)
+
+        switch(name) {
+            case 'Звук':  // if (x === 'value1')
+                setPrice('Специалист по звуку');
+                break;
+          
+            case 'Свет':  // if (x === 'value2')
+                setPrice('Специалист по свету');
+                break;
+
+            case 'Видео':  // if (x === 'value2')
+                setPrice('Специалист по видео');
+                break;
+
+            case 'Промо \/ Кастинг':  // if (x === 'value2')
+                setPrice('Специалист по промо / кастингу');
+                break;
+
+            case 'Кейтеринг':  // if (x === 'value2')
+                setPrice('Специалист по кейтерингу');
+                break;
+                
+            case 'Помощники \/ Грузчики':  // if (x === 'value2')
+                setPrice('Специалист помощник / грузчик');
+                break;
+
+            case 'Риггер \/ Граунд':  // if (x === 'value2')
+                setPrice('Специалист риггер / граунд');
+                break;
+
+            case 'Водители':  // if (x === 'value2')
+                setPrice('Специалист водитель');
+                break;
+
+            case 'Артисты':  // if (x === 'value2')
+                setPrice('Специалист артист');
+                break;
+
+            case 'Игры':  // if (x === 'value2')
+                setPrice('Специалист по играм');
+                break;
+
+            case 'Технический продакшн':  // if (x === 'value2')
+                setPrice('Специалист по техническому продакшену');
+                break;
+          
+            default:
+                setPrice('Специалист');
+                break;
+          }
     }
 
     const onClickCloseList3 = () => {
@@ -743,7 +792,7 @@ useEffect(()=>{
                 </div>
             </MyModal>
 
-
+             {/* Прайс цен на услуги специалиста */}       
             <MyModal visible={showList} setVisible={setShowList}>
                 <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
                     <div className='rectangle-modal'></div>
@@ -754,14 +803,61 @@ useEffect(()=>{
 
                     <p className='vagno'>{price}</p>
                     
+                    <table style={{color: '#DBDBDB', borderCollapse: 'collapse', border: 'none', position: 'absolute', top: '55px', left: '10px'}}>
+                        <tr>
+                            <th style={{textAlign: 'left', width: '160px'}}>Специальность</th>
+                            <th>Часы</th>
+                            <th>Ставка</th>
+                        </tr>
+                        <tr>
+                            <td style={{textAlign: 'left'}}>Звукорежессер</td>
+                            <td>10</td>
+                            <td>12 000.00</td>
+                        </tr>
+                        <tr>
+                            <td style={{textAlign: 'left'}}>Системный инженер</td>
+                            <td>10</td>
+                            <td>10 000.00</td>
+                        </tr>
+                        <tr>
+                            <td style={{textAlign: 'left'}}>RF-Менеджер</td>
+                            <td>10</td>
+                            <td>12 000.00</td>
+                        </tr>
+                        <tr>
+                            <td style={{textAlign: 'left'}}>Backline</td>
+                            <td>10</td>
+                            <td>10 000.00</td>
+                        </tr>
+                        <tr>
+                            <td style={{textAlign: 'left'}}>Roadie</td>
+                            <td>10</td>
+                            <td>12 000.00</td>
+                        </tr>
+                        <tr>
+                            <td style={{textAlign: 'left'}}>Техник по звуку</td>
+                            <td>10</td>
+                            <td>8 000.00</td>
+                        </tr>
+                    </table>
 
-                    <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
+                    <div style={{position: 'relative', marginTop: '220px', marginBottom: '15px'}}>
+                        <p>Внимание!</p>
+                        <p style={{fontSize: '13px', color: '#DBDBDB'}}>
+                            Здесь отображена актуальная «средняя» ставка по рынку. Ставка часто зависит от множества факторов и вы всегда можете предложить свою «адекватную» цену за конкретный проект. 
+                        </p>
+                        <p style={{marginTop: '20px'}}>Важно помнить!</p>
+                        <p style={{fontSize: '13px', color: '#DBDBDB'}}>
+                            Понижение ставки отрицательно влияет на конверсию и качество потенциальных кандидатов.</p>
+                    </div>
+
+                    {/* <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
                         {distribs2 ? distribs2.map((item, index)=> (
                             <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>{item.reg}</li>   
                         ))
                         : ''    
                         }    
-                    </ul>
+                    </ul> */}
                 </div>
             </MyModal>
 
