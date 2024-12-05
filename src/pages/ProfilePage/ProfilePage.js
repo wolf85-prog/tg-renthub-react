@@ -125,7 +125,7 @@ const ProfilePage = () => {
     const [showSpec, setShowSpec] = useState(false) 
 
 
-    const [soundTable, setSoundTable] = useState([]);
+    const [soundTable, setSoundTable] = useState();
     const [lightTable, setLightTable] = useState([]);
     const [videoTable, setVideoTable] = useState([]);
     const [photoTable, setPhotoTable] = useState([]);
@@ -204,7 +204,9 @@ const ProfilePage = () => {
             const res = await getSpecStavka(data)
             const smena = Object.keys(res["Звукорежиссер"])[0]
             console.log("res: ", smena)
-            console.log("res2: ", res["Звукорежиссер"][smena]["№1"])
+            console.log("res2: ", res["Звукорежиссер"][Object.keys(res["Звукорежиссер"])[0]]["№1"])
+
+            setSoundTable(res)
         }
 
         fetchStavka()
