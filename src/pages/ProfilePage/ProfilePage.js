@@ -864,7 +864,7 @@ useEffect(()=>{
 
                     <p className='vagno'>{price}</p>
                     
-                    <table style={{fontSize: '13px', color: '#DBDBDB', borderCollapse: 'collapse', border: 'none', position: 'relative', marginTop: '50px'}}>
+                    <table style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)', borderCollapse: 'collapse', border: 'none', position: 'relative', marginTop: '50px'}}>
                         <tr>
                             <th style={{textAlign: 'left', paddingLeft: '15px', width: '180px'}}>Специальность</th>
                             <th style={{width: '60px'}}>Часы</th>
@@ -883,11 +883,11 @@ useEffect(()=>{
 
                     <div style={{position: 'relative', marginTop: '40px', marginBottom: '15px'}}>
                         <p>Внимание!</p>
-                        <p style={{fontSize: '13px', color: '#DBDBDB'}}>
+                        <p style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)'}}>
                             Здесь отображена актуальная «средняя» ставка по рынку. Ставка часто зависит от множества факторов и вы всегда можете предложить свою «адекватную» цену за конкретный проект. 
                         </p>
                         <p style={{marginTop: '20px'}}>Важно помнить!</p>
-                        <p style={{fontSize: '13px', color: '#DBDBDB'}}>
+                        <p style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)'}}>
                             Понижение ставки отрицательно влияет на конверсию и качество потенциальных кандидатов.</p>
                     </div>
 
