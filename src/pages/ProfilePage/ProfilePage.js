@@ -202,7 +202,8 @@ const ProfilePage = () => {
             }
 
             const res = await getSpecStavka(data)
-            console.log("res: ", res)
+            console.log("res: ", res["Звукорежиссер"])
+            console.log("res2: ", res["Звукорежиссер"]["10"]["№1"])
         }
 
         fetchStavka()
