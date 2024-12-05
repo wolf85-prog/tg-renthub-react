@@ -479,51 +479,51 @@ useEffect(()=>{
 
         switch(name) {
             case 'Звук':  // if (x === 'value1')
-                setPrice('Специалист по звуку');
+                setPrice('Специалисты по звуку');
                 break;
           
             case 'Свет':  // if (x === 'value2')
-                setPrice('Специалист по свету');
+                setPrice('Специалисты по свету');
                 break;
 
             case 'Видео':  // if (x === 'value2')
-                setPrice('Специалист по видео');
+                setPrice('Специалисты по видео');
                 break;
 
             case 'Промо \/ Кастинг':  // if (x === 'value2')
-                setPrice('Специалист по промо / кастингу');
+                setPrice('Специалисты по промо / кастингу');
                 break;
 
             case 'Кейтеринг':  // if (x === 'value2')
-                setPrice('Специалист по кейтерингу');
+                setPrice('Специалисты по кейтерингу');
                 break;
                 
             case 'Помощники \/ Грузчики':  // if (x === 'value2')
-                setPrice('Специалист помощник / грузчик');
+                setPrice('Специалисты помощники / грузчики');
                 break;
 
             case 'Риггер \/ Граунд':  // if (x === 'value2')
-                setPrice('Специалист риггер / граунд');
+                setPrice('Специалисты риггер / граунд');
                 break;
 
             case 'Водители':  // if (x === 'value2')
-                setPrice('Специалист водитель');
+                setPrice('Специалисты водители');
                 break;
 
             case 'Артисты':  // if (x === 'value2')
-                setPrice('Специалист артист');
+                setPrice('Специалисты артисты');
                 break;
 
             case 'Игры':  // if (x === 'value2')
-                setPrice('Специалист по играм');
+                setPrice('Специалисты по играм');
                 break;
 
             case 'Технический продакшн':  // if (x === 'value2')
-                setPrice('Специалист по техническому продакшену');
+                setPrice('Специалисты по техническому продакшену');
                 break;
           
             default:
-                setPrice('Специалист');
+                setPrice('Специалисты');
                 break;
           }
     }
@@ -777,7 +777,7 @@ useEffect(()=>{
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <img onClick={onClickCloseList} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+                    {/* <img onClick={onClickCloseList} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/> */}
 
                     <p className='vagno'>Категории</p>
                     
@@ -855,7 +855,7 @@ useEffect(()=>{
 
              {/* Прайс цен на услуги специалиста */}       
             <MyModal visible={showList} setVisible={setShowList}>
-                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start', width: '340px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
@@ -875,7 +875,7 @@ useEffect(()=>{
                             <tr key={index}>
                                 <td style={{textAlign: 'left', paddingLeft: '15px'}}>{item.title}</td>
                                 <td>{item.smena}</td>
-                                <td>{item.stavka}.00</td>
+                                <td>{parseInt(item.stavka).toLocaleString()}</td>
                             </tr>
                         ))
                         }                    
