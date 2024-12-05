@@ -870,36 +870,15 @@ useEffect(()=>{
                             <th style={{width: '60px'}}>Часы</th>
                             <th>Ставка</th>
                         </tr>
-                        <tr>
-                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Звукорежессер</td>
-                            <td>10</td>
-                            <td>12 000.00</td>
-                        </tr>
-                        <tr>
-                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Системный инженер</td>
-                            <td>10</td>
-                            <td>10 000.00</td>
-                        </tr>
-                        <tr>
-                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>RF-Менеджер</td>
-                            <td>10</td>
-                            <td>12 000.00</td>
-                        </tr>
-                        <tr>
-                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Backline</td>
-                            <td>10</td>
-                            <td>10 000.00</td>
-                        </tr>
-                        <tr>
-                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Roadie</td>
-                            <td>10</td>
-                            <td>12 000.00</td>
-                        </tr>
-                        <tr>
-                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Техник по звуку</td>
-                            <td>10</td>
-                            <td>8 000.00</td>
-                        </tr>
+                        {
+                        soundTable && soundTable.map((item, index)=> (
+                            <tr key={index}>
+                                <td style={{textAlign: 'left', paddingLeft: '15px'}}>{item.title}</td>
+                                <td>{item.smena}</td>
+                                <td>{item.stavka} + '.00'</td>
+                            </tr>
+                        ))
+                        }                    
                     </table>
 
                     <div style={{position: 'relative', marginTop: '40px', marginBottom: '15px'}}>
