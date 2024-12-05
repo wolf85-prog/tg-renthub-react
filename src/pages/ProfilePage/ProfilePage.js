@@ -831,7 +831,7 @@ useEffect(()=>{
                     
                     <table style={{fontSize: '13px', color: '#DBDBDB', borderCollapse: 'collapse', border: 'none', position: 'relative', marginTop: '50px'}}>
                         <tr>
-                            <th style={{textAlign: 'left', width: '180px'}}>Специальность</th>
+                            <th style={{textAlign: 'left', paddingLeft: '15px', width: '180px'}}>Специальность</th>
                             <th style={{width: '60px'}}>Часы</th>
                             <th>Ставка</th>
                         </tr>
