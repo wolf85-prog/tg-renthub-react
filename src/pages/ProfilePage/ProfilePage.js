@@ -777,7 +777,7 @@ useEffect(()=>{
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    {/* <img onClick={onClickCloseList} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/> */}
+                    <img onClick={onClickCloseList} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
                     <p className='vagno'>Категории</p>
                     
@@ -860,13 +860,13 @@ useEffect(()=>{
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
 
-                    <img onClick={onClickCloseList3} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+                    {/* <img onClick={onClickCloseList3} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/> */}
 
                     <p className='vagno'>{price}</p>
                     
                     <table style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)', borderCollapse: 'collapse', border: 'none', position: 'relative', marginTop: '50px'}}>
                         <tr>
-                            <th style={{textAlign: 'left', paddingLeft: '15px', width: '180px'}}>Специальность</th>
+                            <th style={{textAlign: 'left', paddingLeft: '15px', width: '190px'}}>Специальность</th>
                             <th style={{width: '60px'}}>Часы</th>
                             <th>Ставка</th>
                         </tr>
@@ -883,7 +883,7 @@ useEffect(()=>{
 
                     <div style={{position: 'relative', marginTop: '40px', marginBottom: '15px'}}>
                         <p>Внимание!</p>
-                        <p style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)'}}>
+                        <p style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)', paddingLeft: '15px', paddingRight: '15px'}}>
                             Здесь отображена актуальная «средняя» ставка по рынку. Ставка часто зависит от множества факторов и вы всегда можете предложить свою «адекватную» цену за конкретный проект. 
                         </p>
                         <p style={{marginTop: '20px'}}>Важно помнить!</p>
