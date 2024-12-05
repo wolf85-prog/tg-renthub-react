@@ -829,45 +829,45 @@ useEffect(()=>{
 
                     <p className='vagno'>{price}</p>
                     
-                    <table style={{fontSize: '13px', color: '#DBDBDB', borderCollapse: 'collapse', border: 'none', position: 'absolute', top: '55px', left: '10px'}}>
+                    <table style={{fontSize: '13px', color: '#DBDBDB', borderCollapse: 'collapse', border: 'none', position: 'relative', marginTop: '50px'}}>
                         <tr>
                             <th style={{textAlign: 'left', width: '180px'}}>Специальность</th>
                             <th style={{width: '60px'}}>Часы</th>
                             <th>Ставка</th>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'left'}}>Звукорежессер</td>
+                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Звукорежессер</td>
                             <td>10</td>
                             <td>12 000.00</td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'left'}}>Системный инженер</td>
+                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Системный инженер</td>
                             <td>10</td>
                             <td>10 000.00</td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'left'}}>RF-Менеджер</td>
+                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>RF-Менеджер</td>
                             <td>10</td>
                             <td>12 000.00</td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'left'}}>Backline</td>
+                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Backline</td>
                             <td>10</td>
                             <td>10 000.00</td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'left'}}>Roadie</td>
+                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Roadie</td>
                             <td>10</td>
                             <td>12 000.00</td>
                         </tr>
                         <tr>
-                            <td style={{textAlign: 'left'}}>Техник по звуку</td>
+                            <td style={{textAlign: 'left', paddingLeft: '15px'}}>Техник по звуку</td>
                             <td>10</td>
                             <td>8 000.00</td>
                         </tr>
                     </table>
 
-                    <div style={{position: 'relative', marginTop: '220px', marginBottom: '15px'}}>
+                    <div style={{position: 'relative', marginTop: '40px', marginBottom: '15px'}}>
                         <p>Внимание!</p>
                         <p style={{fontSize: '13px', color: '#DBDBDB'}}>
                             Здесь отображена актуальная «средняя» ставка по рынку. Ставка часто зависит от множества факторов и вы всегда можете предложить свою «адекватную» цену за конкретный проект. 
