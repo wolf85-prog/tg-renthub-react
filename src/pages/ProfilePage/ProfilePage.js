@@ -337,7 +337,7 @@ useEffect(()=>{
     }, [clickWorkhub])
 
     useEffect(() => {
-        if (workers.length > 0) {
+        if (distribs.length > 0) {
             tg.MainButton.setParams({
                 text: 'Сохранить',
                 color: '#000000' //'#2e2e2e'
@@ -354,7 +354,7 @@ useEffect(()=>{
 
 
     useEffect(() => {
-        if (workers.length > 0) {
+        if (distribs.length > 0) {
             tg.onEvent('mainButtonClicked', onSendData)
             return () => {
                 tg.offEvent('mainButtonClicked', onSendData)
@@ -365,16 +365,30 @@ useEffect(()=>{
                 tg.offEvent('mainButtonClicked', clickWorkhub)
             }
         }
-    }, [workers, clickWorkhub, onSendData])
+    }, [distribs, clickWorkhub])
 
     //отправка данных в telegram-бот
-    const onSendData = useCallback(() => {
+    const onSendData = useCallback(async() => {
 
-        // const data = {
-        //     worklist: workers, 
-        //     user,
-        //     queryId,
-        // }
+        const data = {
+            worklist: workers, 
+            user,
+            queryId,
+        }
+
+        let worklist = []
+        distribs.map(item=> {
+            worklist.push({cat: item?.cat})
+        })
+
+        const saveData = {
+            worklist: JSON.stringify(worklist)
+        }
+
+        console.log("save data: ", saveData, workerhub?.chatId)
+        
+        const resUpdate = await updateManager(workerhub?.id, saveData)
+        console.log("resUpdate: ", resUpdate)
 
         tg.MainButton.hide();
 
@@ -429,21 +443,9 @@ useEffect(()=>{
         setSelectedElement("");
         setTitleCat(false)
 
-        let worklist = []
-        distribs.map(item=> {
-            worklist.push({cat: item?.cat})
-        })
-
-        const saveData = {
-            worklist: JSON.stringify(worklist)
-        }
-
-        console.log("save data: ", saveData, workerhub?.chatId)
         
-        // const resUpdate = await updateManager(workerhub?.id, saveData)
-        // console.log("resUpdate: ", resUpdate)
 
-        setShowSpec(true)
+        //setShowSpec(true)
         
     }
 
@@ -923,7 +925,7 @@ useEffect(()=>{
                     <p className='vagno' style={{marginTop: '20px', fontSize: '12px', color: '#b4b4b4', paddingRight: '15px', textAlign: 'left'}}>
                         Хочу получать рассылку по выбранной категории
                     </p>
-                    <div style={{position: 'relative', marginTop: '100px', marginLeft: '25px', marginRight: '25px'}}>
+                    <div style={{position: 'relative', marginTop: '100px', marginLeft: '25px', marginRight: '25px', marginBottom: 'auto'}}>
                         {/* <p className='cat-title' style={{display: titleCat ? 'none' : 'block'}}>Отрасль / категория</p>   */}
                         <NewSelect5
                             id="category"
@@ -940,7 +942,6 @@ useEffect(()=>{
                         <div style={{
                             boxSizing: 'border-box', 
                             height: 'auto', 
-                            zIndex: 20,
                         }}>
                             {
                             showSpec && 
