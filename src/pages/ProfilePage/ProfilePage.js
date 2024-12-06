@@ -103,6 +103,8 @@ const ProfilePage = () => {
     const [showRazrab, setShowRazrab] = useState(false)
     const [price, setPrice] = useState('')
 
+    const [showSaveButton, setShowSaveButton] = useState(false)
+
     //категории
     const [categories, setCategories] = useState([]);
     //специальности
@@ -337,19 +339,19 @@ useEffect(()=>{
     }, [clickWorkhub])
 
     useEffect(() => {
-        if (distribs.length > 0) {
-            tg.MainButton.setParams({
-                text: 'Сохранить',
-                color: '#000000' //'#2e2e2e'
-            })
-        } else {
+        // if (distribs.length > 0) {
+        //     tg.MainButton.setParams({
+        //         text: 'Сохранить',
+        //         color: '#000000' //'#2e2e2e'
+        //     })
+        // } else {
             tg.MainButton.setParams({
                 text: 'Renthub',
                 color: '#26292c' //'#2e2e2e'
             })
-        }
+        //}
         
-    }, [distribs])
+    }, [])
 
 
 
@@ -427,6 +429,7 @@ useEffect(()=>{
     const clickAddSpec = (e) => {
         e.stopPropagation();
         setShowAddSpec(true) 
+        setShowSpec(true)
     }
 
     const addNewDistrib = async(e) => {
@@ -445,8 +448,29 @@ useEffect(()=>{
 
         
 
-        //setShowSpec(true)
+        setShowSpec(true)
+
+        setShowSaveButton(true)
         
+    }
+
+    const saveNewDistrib = async(e) => {
+        e.preventDefault();
+        setShowAddSpec(false) 
+
+        let worklist = []
+        distribs.map(item=> {
+            worklist.push({cat: item?.cat})
+        })
+
+        const saveData = {
+            worklist: JSON.stringify(worklist)
+        }
+
+        console.log("save data: ", saveData, workerhub?.chatId)
+        
+        const resUpdate = await updateManager(workerhub?.id, saveData)
+        console.log("resUpdate: ", resUpdate)   
     }
 
     const onClickClose = () => {
@@ -959,6 +983,14 @@ useEffect(()=>{
 
                         {/*кнопка Добавить*/}
                         <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
+                            <button 
+                                disabled={disabledBtn}
+                                className="image-add-modal-button" 
+                                style={{ display: showSaveButton ? 'block' : 'none', backgroundImage: `url(${btnSave})`}}
+                                onClick={saveNewDistrib}
+                            >
+                                Сохранить
+                            </button>
                             <button 
                                 disabled={disabledBtn}
                                 className="image-add-modal-button" 
