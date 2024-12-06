@@ -126,17 +126,6 @@ const ProfilePage = () => {
 
 
     const [soundTable, setSoundTable] = useState([]);
-    const [lightTable, setLightTable] = useState([]);
-    const [videoTable, setVideoTable] = useState([]);
-    const [photoTable, setPhotoTable] = useState([]);
-    const [promoTable, setPromoTable] = useState([]);
-    const [cateringTable, setCateringTable] = useState([]);
-    const [stagehandsTable, setStagehandsTable] = useState([]);
-    const [riggersTable, setRiggersTable] = useState([]);
-    const [trucksTable, setTrucksTable] = useState([]);
-    const [partyTable, setPartyTable] = useState([]);
-    const [gamesTable, setGamesTable] = useState([]);
-    const [productionTable, setProductionTable] = useState([]);
 
     const API_URL = process.env.REACT_APP_API_URL
 
@@ -189,39 +178,39 @@ const ProfilePage = () => {
 
         //setSoundTable()
 
-        const fetchStavka = async() => {
-            const data = {
-                "names": [
-                    "Звукорежиссер",
-                    "Системный инженер",
-                    "RF-Менеджер",
-                    "Backline",
-                    "Roadie",
-                    "Техник по звуку"
-                ]
-            }
+        // const fetchStavka = async() => {
+        //     const data = {
+        //         "names": [
+        //             "Звукорежиссер",
+        //             "Системный инженер",
+        //             "RF-Менеджер",
+        //             "Backline",
+        //             "Roadie",
+        //             "Техник по звуку"
+        //         ]
+        //     }
 
-            const res = await getSpecStavka(data)
+        //     const res = await getSpecStavka(data)
 
-            const smena = Object.keys(res["Звукорежиссер"])[0]
-            console.log("res: ", smena)
-            console.log("res2: ", res["Звукорежиссер"][smena]["№1"])
+        //     const smena = Object.keys(res["Звукорежиссер"])[0]
+        //     console.log("res: ", smena)
+        //     console.log("res2: ", res["Звукорежиссер"][smena]["№1"])
 
-            let arrSpec = []
-            Object.keys(res).map((item)=> {
-                const obj = {
-                    title: item,
-                    smena: Object.keys(res[item])[0],
-                    stavka: res[item][Object.keys(res[item])[0]]["№1"]
-                }
-                arrSpec.push(obj)
-            })
-            console.log("arrSpec: ", arrSpec)
+        //     let arrSpec = []
+        //     Object.keys(res).map((item)=> {
+        //         const obj = {
+        //             title: item,
+        //             smena: Object.keys(res[item])[0],
+        //             stavka: res[item][Object.keys(res[item])[0]]["№1"]
+        //         }
+        //         arrSpec.push(obj)
+        //     })
+        //     console.log("arrSpec: ", arrSpec)
 
-            setSoundTable(arrSpec)
-        }
+        //     setSoundTable(arrSpec)
+        // }
 
-        fetchStavka()
+        // fetchStavka()
     }, []);
 
     // 1. при выборе нового значения в категории
@@ -474,52 +463,207 @@ useEffect(()=>{
         showKompet ? setShowKompet(false) : setShowKompet(true)
     }
 
+
+    const fetchStavka = async(data) => {
+
+        const res = await getSpecStavka(data)
+
+        let arrSpec = []
+        Object.keys(res).map((item)=> {
+            const obj = {
+                title: item,
+                smena: Object.keys(res[item])[0],
+                stavka: res[item][Object.keys(res[item])[0]]["№1"]
+            }
+            arrSpec.push(obj)
+        })
+
+        setSoundTable(arrSpec)
+    }
+
     const clickPrice = (name) => {
         setShowList(true)
 
         switch(name) {
             case 'Звук':  // if (x === 'value1')
                 setPrice('Специалисты по звуку');
+
+                const data = {
+                    "names": [
+                        "Звукорежиссер",
+                        "Системный инженер",
+                        "RF-Менеджер",
+                        "Backline",
+                        "Roadie",
+                        "Техник по звуку"
+                    ]
+                }
+        
+                fetchStavka(data)
                 break;
           
             case 'Свет':  // if (x === 'value2')
                 setPrice('Специалисты по свету');
+                const data2 = {
+                    "names": [
+                        "Художник по свету",
+                        "Оператор световой пушки",
+                        "Гафер",
+                        "Техник по свету",
+                    ]
+                }
+        
+                fetchStavka(data2)
                 break;
 
             case 'Видео':  // if (x === 'value2')
-                setPrice('Специалисты по видео');
+                setPrice('Видеоинженеры');
+                const data3 = {
+                    "names": [
+                        "Инженер VMix",
+                        "Инженер Resolume",
+                        "Оператор Zoom",
+                        "Оператор [cameraman]",
+                        "Оператор Action съемки",
+                        "Оператор-постановщик",
+                        "Режиссер эфиров",
+                        "Техник монтажа",
+                        "IT-специалист",
+                    ]
+                }
+        
+                fetchStavka(data3)
+                break;
+            
+            case 'Фото':  // if (x === 'value2')
+                setPrice('Фотографы');
+                const data4 = {
+                    "names": [
+                        "Свадебная съемка",
+                        "Репортажная съемка",
+                        "Портретная съемка",
+                        "Предметная съемка",
+                        "Документальная съемка",
+                    ]
+                }
+        
+                fetchStavka(data4)
                 break;
 
             case 'Промо \/ Кастинг':  // if (x === 'value2')
                 setPrice('Специалисты по промо / кастингу');
+                const data5 = {
+                    "names": [
+                        "Модель",
+                        "Актер",
+                        "Промоутер",
+                        "Визажист",
+                        "Гример",
+                        "Костюмер",
+                    ]
+                }
+        
+                fetchStavka(data5)
                 break;
 
             case 'Кейтеринг':  // if (x === 'value2')
-                setPrice('Специалисты по кейтерингу');
+                setPrice('Кейтеринг');
+                const data6 = {
+                    "names": [
+                        "Официант",
+                        "Бармен",
+                        "Повар",
+                        "Хостес",
+                        "Банкетный менеджер",
+                    ]
+                }
+        
+                fetchStavka(data6)
                 break;
                 
             case 'Помощники \/ Грузчики':  // if (x === 'value2')
-                setPrice('Специалисты помощники / грузчики');
+                setPrice('Отдел силы и помощи');
+                const data7 = {
+                    "names": [
+                        "Помощник / Грузчик",
+                    ]
+                }
+        
+                fetchStavka(data7)
                 break;
 
             case 'Риггер \/ Граунд':  // if (x === 'value2')
-                setPrice('Специалисты риггер / граунд');
+                setPrice('Конструктив сцены и альпинисты');
+                const data8 = {
+                    "names": [
+                        "Верхний Риггер",
+                        "Нижний Риггер",
+                        "Монтажник [Ground]",
+                        "Декоратор",
+                    ]
+                }
+        
+                fetchStavka(data8)
                 break;
 
             case 'Водители':  // if (x === 'value2')
-                setPrice('Специалисты водители');
+                setPrice('Водители [Грузоперевозки]');
+                const data9 = {
+                    "names": [
+                        "Мотокурьер",
+                        "C личным ТС [B\/C]",
+                        "Без личного ТС [B\/C]",
+                        "С гидролифтом",
+                        "Без гидролифта",
+                    ]
+                }
+        
+                fetchStavka(data9)
                 break;
 
             case 'Артисты':  // if (x === 'value2')
-                setPrice('Специалисты артисты');
+                setPrice('Артисты');
+                const data10 = {
+                    "names": [
+                        "Кавер-бенд",
+                        "Танцевальный коллектив",
+                        "Диджей",
+                        "Ведущий",
+                        "Певец \/ певица",
+                        "Артист оригинального жанра",
+                        "Go-Go",
+                    ]
+                }
+        
+                fetchStavka(data10)
                 break;
 
             case 'Игры':  // if (x === 'value2')
-                setPrice('Специалисты по играм');
+                setPrice('Игры');
+                const data11 = {
+                    "names": [
+                        "Квесты",
+                        "Квизы",
+                        "Аниматоры",
+                        "Настольные игры \/ игровые автоматы",
+                        "Пневмокостюмы \/ ростовые куклы",
+                        "Активности \/ аттракционы",
+                    ]
+                }
+        
+                fetchStavka(data11)
                 break;
 
             case 'Технический продакшн':  // if (x === 'value2')
-                setPrice('Специалисты по техническому продакшену');
+                setPrice('Технический продакшн');
+                const data12 = {
+                    "names": [
+                        "Мероприятие под ключ",
+                        "Отдельные технические задачи",
+                    ]
+                }
+        
+                fetchStavka(data12)
                 break;
           
             default:
@@ -855,7 +999,7 @@ useEffect(()=>{
 
              {/* Прайс цен на услуги специалиста */}       
             <MyModal visible={showList} setVisible={setShowList}>
-                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start', width: '340px'}}>
+                <div className='info-card' style={{height: '480px', minHeight: '250px', justifyContent: 'flex-start', width: '340px'}}>
                     <div className='rectangle-modal'></div>
                     <div className='rectangle-modal2'></div>
                     <div className='rectangle-modal3'></div>
@@ -881,7 +1025,7 @@ useEffect(()=>{
                         }                    
                     </table>
 
-                    <div style={{position: 'relative', marginTop: '40px', marginBottom: '15px'}}>
+                    <div style={{position: 'absolute', bottom: '25px'}}>
                         <p>Внимание!</p>
                         <p style={{fontSize: '13px', color: 'rgb(219 219 219 / 41%)', paddingLeft: '15px', paddingRight: '15px'}}>
                             Здесь отображена актуальная «средняя» ставка по рынку. Ставка часто зависит от множества факторов и вы всегда можете предложить свою «адекватную» цену за конкретный проект. 
