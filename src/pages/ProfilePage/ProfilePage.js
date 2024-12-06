@@ -54,6 +54,7 @@ import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
 import { getManagerApi, updateManager, getSpecStavka } from '../../http/projectAPI';
+import WorkerList2 from '../../components/WorkerList2/WorkerList2';
 
 
 const ProfilePage = () => {
@@ -336,21 +337,56 @@ useEffect(()=>{
     }, [clickWorkhub])
 
     useEffect(() => {
-        // if (workers.length > 0) {
-        //     tg.MainButton.setParams({
-        //         text: 'Сохранить',
-        //         color: '#000000' //'#2e2e2e'
-        //     })
-        // } else {
+        if (workers.length > 0) {
+            tg.MainButton.setParams({
+                text: 'Сохранить',
+                color: '#000000' //'#2e2e2e'
+            })
+        } else {
             tg.MainButton.setParams({
                 text: 'Renthub',
                 color: '#26292c' //'#2e2e2e'
             })
-        //}
+        }
         
-    }, [])
+    }, [distribs])
 
 
+
+    useEffect(() => {
+        if (workers.length > 0) {
+            tg.onEvent('mainButtonClicked', onSendData)
+            return () => {
+                tg.offEvent('mainButtonClicked', onSendData)
+            } 
+        } else {
+            tg.onEvent('mainButtonClicked', clickWorkhub)
+            return () => {
+                tg.offEvent('mainButtonClicked', clickWorkhub)
+            }
+        }
+    }, [workers, clickWorkhub, onSendData])
+
+    //отправка данных в telegram-бот
+    const onSendData = useCallback(() => {
+
+        // const data = {
+        //     worklist: workers, 
+        //     user,
+        //     queryId,
+        // }
+
+        tg.MainButton.hide();
+
+        // fetch(API_URL + 'web-addspec', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify(data)
+        // })
+              
+    }, [ distribs, user ])   
 
 //---------------------------------------------------------------------------------------
     
@@ -381,7 +417,7 @@ useEffect(()=>{
 
     const addNewDistrib = async(e) => {
         e.preventDefault();
-        setShowAddSpec(false) 
+        //setShowAddSpec(false) 
 
         //console.log("distribs2: ", distribs)
 
@@ -404,8 +440,10 @@ useEffect(()=>{
 
         console.log("save data: ", saveData, workerhub?.chatId)
         
-        const resUpdate = await updateManager(workerhub?.id, saveData)
-        console.log("resUpdate: ", resUpdate)
+        // const resUpdate = await updateManager(workerhub?.id, saveData)
+        // console.log("resUpdate: ", resUpdate)
+
+        setShowSpec(true)
         
     }
 
@@ -701,8 +739,8 @@ useEffect(()=>{
                     <div>
                         <p className="profile_fio">{workerhub?.fio.split(' ')[0] + ' ' + workerhub?.fio.split(' ')[1]}</p>
 
-                        <p className="profile_city">{workerhub?.city}</p>
-                        <p className="profile_company">{companyManager ? companyManager : '-'}</p>
+                        <p className="profile_city">{companyManager ? companyManager : '-'}</p>
+                        <p className="profile_company">{workerhub?.city}</p>
                         {/* <div className="card-specs bullet">
                             <ul>
                                 <li className="bullet-title" style={{color: '#3392ff', fontWeight: 'bold'}}>Добавь свою специальность</li> 
@@ -897,9 +935,42 @@ useEffect(()=>{
                         /> 
                     </div>
 
-                    <div style={{position: 'absolute', bottom: 0, right: '10px'}}> 
+                    <div style={{position: 'relative', marginRight: '25px', marginRight: '15px', marginTop: '10px'}}>
+                        {/*список категорий*/}
+                        <div style={{
+                            boxSizing: 'border-box', 
+                            height: 'auto', 
+                            zIndex: 20,
+                        }}>
+                            {
+                            showSpec && 
+                            <div className='fio-text'>
+                                <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '10px', textAlign: 'left'}}>
+                                    {distribs ? distribs.map((item, index)=> (
+                                        <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>{item.cat}</li>   
+                                    ))
+                                    : ''    
+                                    }    
+                                </ul>
+                            </div>
+                            }
+                        </div>  
 
                         {/*кнопка Добавить*/}
+                        <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
+                            <button 
+                                disabled={disabledBtn}
+                                className="image-add-modal-button" 
+                                style={{ backgroundImage: `url(${btnSave})`}}
+                                onClick={addNewDistrib}
+                            >
+                                Добавить
+                            </button>
+                        </div>  
+                    </div>
+
+                    {/* <div style={{position: 'absolute', bottom: 0, right: '10px'}}> 
+
                         <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
                             <button 
                                 disabled={disabledBtn}
@@ -909,7 +980,7 @@ useEffect(()=>{
                                 Подтвердить
                             </button>
                         </div>  
-                    </div>
+                    </div> */}
                 </div>
             </MyModal>
 
