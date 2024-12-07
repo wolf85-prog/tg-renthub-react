@@ -316,6 +316,14 @@ input[id="cb1"] {
     border-radius: 100px;
   }
 
+  .rectangle-circle2 {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    right: 5%;
+    top: 10px;
+  }
+
 
 .block-kompetencii {
     position: relative;

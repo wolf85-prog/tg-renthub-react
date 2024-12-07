@@ -102,6 +102,7 @@ const ProfilePage = () => {
     const [showList, setShowList] = useState(false)
     const [showRazrab, setShowRazrab] = useState(false)
     const [price, setPrice] = useState('')
+    const [showInfoMoney, setShowInfoMoney] = useState(false)
 
     const [showSaveButton, setShowSaveButton] = useState(false)
 
@@ -812,7 +813,7 @@ useEffect(()=>{
                         </article>    
 
                         {/* Доход */}
-                       <article className='block-dohod' style={{display: showKompet ? 'none' : 'block'}}> 
+                       <article className='block-dohod' onClick={()=>setShowInfoMoney(true)} style={{display: showKompet ? 'none' : 'block'}}> 
                             <div className='rectangle17'></div>
                             <div className='kompetencii-title' style={{top: '40px'}}><p>Сумма к выплате</p></div>
                             <p className='summa-dohod'>{2>1 ? '0.00' : <Loader2 />}</p>
@@ -825,7 +826,7 @@ useEffect(()=>{
                         <article className='block-merch'> 
                                 <div className='rectangle5'></div>
 
-                                <div className='rectangle-circle'>
+                                <div className={`${distribs.length > 0 ? 'rectangle-circle2' : 'rectangle-circle'}`}>
                                     {/* <div className='rectangle-circle-on'></div> */}
                                 </div>
 
@@ -982,11 +983,11 @@ useEffect(()=>{
                         </div>  
 
                         {/*кнопка Добавить*/}
-                        <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
+                        <div style={{display: 'flex', justifyContent: 'space-between', marginLeft: '15px', marginBottom: '15px'}}>
                             <button 
                                 disabled={disabledBtn}
                                 className="image-add-modal-button" 
-                                style={{ display: showSaveButton ? 'block' : 'none', backgroundImage: `url(${btnSave})`}}
+                                style={{ visibility: showSaveButton ? 'visible' : 'hidden', backgroundImage: `url(${btnSave})`}}
                                 onClick={saveNewDistrib}
                             >
                                 Сохранить
@@ -1001,19 +1002,6 @@ useEffect(()=>{
                             </button>
                         </div>  
                     </div>
-
-                    {/* <div style={{position: 'absolute', bottom: 0, right: '10px'}}> 
-
-                        <div style={{display: 'flex', justifyContent: 'flex-end', marginBottom: '15px'}}>
-                            <button 
-                                disabled={disabledBtn}
-                                className="image-add-modal-button" 
-                                style={{ backgroundImage: `url(${btnSave})`}}
-                                onClick={addNewDistrib}>
-                                Подтвердить
-                            </button>
-                        </div>  
-                    </div> */}
                 </div>
             </MyModal>
 
@@ -1159,6 +1147,23 @@ useEffect(()=>{
                     {/* <p className='vagno'>Важно</p> */}
                     <p className='text-vagno'>Функция находится в разработке</p>
                     <div className='button-ok' onClick={()=>setShowRazrab(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
+
+            <MyModal visible={showInfoMoney} setVisible={setShowInfoMoney}>
+                <div className='info-card' style={{height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowInfoMoney(false)} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>Информация</p>
+                    
+                    <div className='button-ok' onClick={()=>setShowInfoMoney(false)}>
                         <div className='rec-button'>Хорошо</div>
                         
                     </div>

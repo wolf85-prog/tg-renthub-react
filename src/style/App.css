@@ -189,6 +189,14 @@
   border-radius: 21.6px;
 }
 
+.rectangle-circle2 {
+  /* Градиент/Градиент_2 */
+  background: linear-gradient(136.22deg, rgba(210, 231, 255, 0.2) 20.92%, rgba(11, 65, 127, 0.2) 54.26%, rgba(3, 57, 118, 0.2) 64.46%), linear-gradient(316.46deg, #00132F 15.24%, #023076 31.68%, #3B6EBB 66.26%, #9DC4FF 96.2%);
+  border: 0.5px solid rgba(24, 45, 82, 0.87);
+  box-shadow: -2px -1px 3.5px rgba(0, 0, 0, 0.25), -5.51642px -4.82687px 14px rgba(255, 255, 255, 0.11), 2px 4px 20.3px rgba(0, 0, 0, 0.7), inset 0px 4px 100px rgba(176, 207, 242, 0.1), inset 1px 1px 0px rgba(255, 255, 255, 0.07), inset 0px 0px 37px rgba(67, 67, 67, 0.29);
+  border-radius: 100px;
+}
+
 .circle {
   /* Ellipse 11 */
   position: absolute;
