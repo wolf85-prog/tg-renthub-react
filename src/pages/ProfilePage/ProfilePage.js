@@ -826,7 +826,9 @@ const handleFileChange = (e) => {
                             <img src={ULEYLogo} style={{width: '85px', marginTop: '50px', marginRight: '2px'}} alt='' />
                             <p style={{fontSize: '7px', padding: '3px 25px', color: '#ada7a7'}}>Здесь будет лого вашей компании</p>
                         </div>
-                        :<img src={companyProfile} style={{width: '124px', borderRadius: '50%', marginTop: '2px', marginRight: '2px'}} alt='' />
+                        : <div onClick={clickLogo}>
+                            <img src={companyProfile} style={{width: '124px', borderRadius: '50%', marginTop: '2px', marginRight: '2px'}} alt='' />
+                          </div>
                         }
                     </div>
                     <div>

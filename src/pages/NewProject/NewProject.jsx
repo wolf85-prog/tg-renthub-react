@@ -26,7 +26,7 @@ import GeoInput from "../../components/UI/GeoInput/GeoInput";
 
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
-import specData from "../../data/specData"
+import specData from "../../data/specPriceData"
 import dataEquipment from "../../data/dataEquipment"
 
 import { createManagerApi, getManagerApi, getManagerIdApi, getCompanyIdApi } from './../../http/projectAPI';
