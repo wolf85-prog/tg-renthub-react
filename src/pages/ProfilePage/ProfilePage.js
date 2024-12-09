@@ -77,6 +77,8 @@ const ProfilePage = () => {
     const [managerId, setManagerId] = useState('')
     const [projects2, setProjects2] = useState('')
 
+    const [statusMoney, setStatusMoney] = useState('Фактически')
+
     const [status, setStatus] = useState([{title: "Новые"}, {title: "Старые"}, {title: "Все"}]);
     const [filter, setFilter] = useState({sort: 'date_start', query: 'Все'});
     //const sortedAndSearchedPosts = useProjects(projects2, filter.sort, filter.query, workerId); //specId '1408579113'
@@ -801,6 +803,41 @@ const handleFileChange = (e) => {
         // }, 1500)
     }
 
+
+    
+    useEffect(()=> {
+
+        //1
+        if (statusMoney === 1) {
+            setStatusMoney('Предварительно')
+
+            setValueShkala(1650) //1
+        } 
+        //2
+        else if(statusMoney === 'Фактически') {
+            //setStatusMoney('Фактически')
+
+            setValueShkala(3800) 
+        } 
+        //4
+        else if(statusMoney === 4) {
+            setStatusMoney('На оплате')
+            setValueShkala(8400)
+        }
+        //5
+        else if(statusMoney === 5) {
+            setStatusMoney('Оплачено')
+            setValueShkala(10000)
+        }
+        
+        //3
+        // if (finalSmeta === 'Подтверждена') {
+        //     setStatusMoney('Подтверждено')
+
+        //     setValueShkala(5900)
+        // }
+    }, [])
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -1180,7 +1217,7 @@ const handleFileChange = (e) => {
                         {
                         soundTable && soundTable.map((item, index)=> (
                             <tr key={index}>
-                                <td style={{textAlign: 'left', paddingLeft: '15px'}}>{item.title}</td>
+                                <td style={{textAlign: 'left', paddingLeft: '15px'}}>{item.title.length > 25 ? item.title.slice(0,25) + '...' : item.title }</td>
                                 <td>{item.smena}</td>
                                 <td>{parseInt(item.stavka).toLocaleString()}</td>
                             </tr>
