@@ -46,6 +46,8 @@ import Phone from "../../img/new/ph_phone-call.svg"
 import Web from "../../img/new/dashicons_admin-site-alt3.svg"
 import Telegram from "../../img/new/telegram-computer.png"
 import AddDistrib from "../../img/new/plus_small.svg"
+import ULEYLogo from "../../img/new/uley.svg"
+import uploadImg from "./../../img/new/iconUpload.png";
 
 import MyModal from "../../components/MyModal/MyModal";
 import Loader from "../../components/UI/Loader/Loader";
@@ -104,6 +106,8 @@ const ProfilePage = () => {
     const [price, setPrice] = useState('')
     const [showInfoMoney, setShowInfoMoney] = useState(false)
 
+    const [showUploadLogo, setShowUploadLogo] = useState(false)
+
     const [showSaveButton, setShowSaveButton] = useState(false)
 
     //категории
@@ -131,6 +135,11 @@ const ProfilePage = () => {
 
     const [soundTable, setSoundTable] = useState([]);
 
+
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedName, setSelectedName] = useState("");
+    const [image, setImage]= useState("");
+
     const API_URL = process.env.REACT_APP_API_URL
 
     
@@ -142,7 +151,7 @@ const ProfilePage = () => {
         const fetchData = async() => { 
             setIsProfileLoading(true)
             // const manager = await getManagerIdApi(user?.id)
-            // console.log("manager profile: ", manager) 
+            console.log("manager profile: ", companyProfile) 
 
             // setManagerId(manager?.id)
 
@@ -284,6 +293,34 @@ useEffect(()=>{
     
 }, [distrib, distribs])
 
+
+useEffect(() => {
+    const getImage = async () => {
+        if (selectedFile) {
+          console.log("file:", selectedFile)
+          const data = new FormData();
+          data.append("name", selectedName);
+          data.append("photo", selectedFile);
+          
+          let response = await uploadFile(data);
+          console.log("response: ", response.data.path)
+
+          setImage(API_URL_HOST + response.data.path.split('.team')[1]);
+          //сообщение с ссылкой на файл
+          console.log(API_URL_HOST + response.data.path.split('.team')[1])
+          //setValue(host + response.data.path)
+        }
+    }
+    getImage();
+}, [selectedFile])
+
+{/* Добавление файла */}
+const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+    setSelectedName(file.name);
+    // Additional validation logic
+};
 
 
 //---------------------------------------------------------------------
@@ -741,6 +778,10 @@ useEffect(()=>{
         setShowList(false)
     }
 
+    const clickLogo = ()=> {
+        setShowUploadLogo(true)
+    }
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -761,7 +802,13 @@ useEffect(()=>{
                     <div className="rectangle4">
                     </div>
                     <div className="circle">
-                        <img src={companyProfile} style={{width: '124px', borderRadius: '50%', marginTop: '2px', marginRight: '2px'}} alt='' />
+                        {!companyProfile ?
+                        <div onClick={clickLogo}>
+                            <img src={ULEYLogo} style={{width: '85px', marginTop: '50px', marginRight: '2px'}} alt='' />
+                            <p style={{fontSize: '7px', padding: '3px 25px', color: '#ada7a7'}}>Здесь будет лого вашей компании</p>
+                        </div>
+                        :<img src={companyProfile} style={{width: '124px', borderRadius: '50%', marginTop: '2px', marginRight: '2px'}} alt='' />
+                        }
                     </div>
                     <div>
                         <p className="profile_fio">{workerhub?.fio.split(' ')[0] + ' ' + workerhub?.fio.split(' ')[1]}</p>
@@ -806,7 +853,7 @@ useEffect(()=>{
                             <div className='kompet-list'>
                                 <ul style={{listStyle: 'disc'}}>
                                     {categoriesPrice.map((item, index) => index < 13
-                                    ?   <li className="bullet-title" onClick={()=>clickPrice(item.name)}><span style={{fontSize: '20px'}}>• </span>{item.name} </li>
+                                    ?   <li className="bullet-title" style={{ whiteSpace: 'nowrap'}} onClick={()=>clickPrice(item.name)}><span style={{fontSize: '20px'}}>• </span>{item.name} </li>
                                     : '' )}
                                 </ul>  
                             </div>
@@ -1165,6 +1212,39 @@ useEffect(()=>{
                     
                     <div className='button-ok' onClick={()=>setShowInfoMoney(false)}>
                         <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
+
+            <MyModal visible={showUploadLogo} setVisible={setShowUploadLogo}>
+                <div className='info-card' style={{padding: '0 15px', height: 'auto', minHeight: '250px', justifyContent: 'flex-start'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowUploadLogo(false)} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
+
+                    <p className='vagno'>Загрузка логотипа</p>
+
+                    {/* Фото  */}
+                    <div style={{position: 'relative', marginTop: '90px', width: '100%', height: '43px'}}>
+                        <div className='rec1-input'></div>
+                        <div className='rec2-input'></div>
+                        <div className='rec3-input'></div>
+                        <div className="file-upload">
+                            <p>{selectedName || "Логотип"}</p><img src={uploadImg} alt="upload" width={30} height={30} />
+                            <input
+                                className='input-style3'
+                                type="file" 
+                                name="photo" 
+                                onChange={handleFileChange}
+                            /> 
+                        </div> 
+                    </div>  
+                    
+                    <div className='button-ok' onClick={()=>setShowUploadLogo(false)}>
+                        <div className='rec-button'>Добавить</div>
                         
                     </div>
                 </div>
