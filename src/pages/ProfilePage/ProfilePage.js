@@ -8,6 +8,8 @@ import { useUsersContext } from "../../contexts/UserContext";
 import {useProjects} from "../../hooks/useProjects"
 import './ProfilePage.css';
 
+import RangeSlider from '../../components/UI/RangeSlider/RangeSlider';
+
 import NewSelect5 from '../../components/UI/NewSelect5/NewSelect5';
 import specData from "../../data/specData"
 import cityData from "../../data/cityData"
@@ -81,6 +83,11 @@ const ProfilePage = () => {
     const [sortProject, setSortProject] = useState([])
 
     const [showArroy, setShowArroy] = useState(true)
+
+    const [valueShkala, setValueShkala] = useState(0);
+    const [stavka, setStavka] = useState()
+    const [showModalEtap, setShowModalEtap] = useState(false);
+    const [stavkaPlus, setStavkaPlus] = useState(0);
 
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const [isProfileLoading, setIsProfileLoading] = useState(true);
@@ -782,6 +789,18 @@ const handleFileChange = (e) => {
         setShowUploadLogo(true)
     }
 
+
+    const clickShkala = () => {
+        showModalEtap ? setShowModalEtap(false) : setShowModalEtap(true)
+    }
+
+    const clickInfo = () => {
+        showInfo ? setShowInfo(false) : setShowInfo(true)
+        // setTimeout(()=> {
+        //     setShowInfo(false)
+        // }, 1500)
+    }
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -950,16 +969,19 @@ const handleFileChange = (e) => {
 
                                 <div>
                                     <div className='project-text'>
-                                        <p className="project_title">Здесь будут ваши проекты</p>
-                                        
+                                        <p className="project_title">Здесь будут ваши проекты</p>    
                                     </div>
                                     <img className='vector' src={Vector} alt=''/>  
                                 </div>
 
+                                <div className='shkala-click' onClick={clickShkala} ></div>
+
+                                <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
+                
                                 
                                 <div className='card-footer'>
                                     <div><p className='project_money2'>0.00</p></div>
-                                    <div className='chat-button'>Чат</div>
+                                    {/* <div className='chat-button'>Чат</div> */}
                                 </div>
                             </div>
                         </div>
@@ -1248,6 +1270,50 @@ const handleFileChange = (e) => {
                         
                     </div>
                 </div>
+            </MyModal>
+
+
+            <MyModal visible={showModalEtap} setVisible={setShowModalEtap}>
+                <div className='modal-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    {/* <img src={Question} alt='' style={{position: 'absolute', top: '20px', left: '20px'}}/> */}
+                    <div className='block-close' onClick={()=>setShowModalEtap(false)}>
+                    <img src={Close} alt=''/> 
+                    </div>
+
+                    <p style={{position: 'absolute', width: '100%', top: '45px'}}>
+                        Этапы передвижения ваших средств
+                    </p>
+
+                    <div className='block-text'>
+                        <ul className='text-modal-list'>
+                            <li>01. Предварительно</li>
+                            <li>02. Фактически</li>
+                            <li>03. Подтверждено</li>
+                            <li>04. В процессе [на оплате]</li>
+                            <li>05. Оплачено</li>
+                        </ul>
+                    </div>
+                </div>
+                {/* <img src={BackModal} alt=''/> */}
+            </MyModal>
+
+            <MyModal visible={showInfo} setVisible={setShowInfo}>
+                    <div className='info-card'>
+                        <div className='rectangle-modal'></div>
+                        <div className='rectangle-modal2'></div>
+                        <div className='rectangle-modal3'></div>
+
+                        {/* <p className='vagno'>Важно</p> */}
+                        <p className='text-vagno'>Функция находится в разработке</p>
+                        <div className='button-ok' onClick={()=>setShowInfo(false)}>
+                            <div className='rec-button'>Хорошо</div>
+                            
+                        </div>
+                    </div>
             </MyModal>
             
         </div>
