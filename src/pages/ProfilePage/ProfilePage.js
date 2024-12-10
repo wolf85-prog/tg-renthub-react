@@ -838,6 +838,25 @@ const handleFileChange = (e) => {
         // }
     }, [])
 
+    const delDistrib = async(id)=> {
+        const res = [...distribs].filter((item, index)=> item.id !== id)
+        setDistribs(res)
+
+        let worklist = []
+        res.map(item=> {
+            worklist.push({cat: item?.cat})
+        })
+
+        const saveData = {
+            worklist: JSON.stringify(worklist)
+        }
+
+        console.log("save data: ", saveData, workerhub?.chatId)
+        
+        const resUpdate = await updateManager(workerhub?.id, saveData)
+        console.log("resUpdate: ", resUpdate)  
+    }
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -1128,11 +1147,15 @@ const handleFileChange = (e) => {
 
                     <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
                         {distribs ? distribs.map((item, index)=> (
-                            <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>{item.cat}</li>   
+                            <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>
+                                {item.cat} 
+                                <img onClick={()=>delDistrib(item.id)} src={Close} alt='' style={{position: 'absolute', right: '25px', top: '3px', width: '12px'}}/>
+                            </li>   
                         ))
                         : ''    
                         }    
                     </ul>
+
                 </div>
             </MyModal>
 
@@ -1217,7 +1240,7 @@ const handleFileChange = (e) => {
                         {
                         soundTable && soundTable.map((item, index)=> (
                             <tr key={index}>
-                                <td style={{textAlign: 'left', paddingLeft: '15px'}}>{item.title.length > 25 ? item.title.slice(0,25) + '...' : item.title }</td>
+                                <td style={{textAlign: 'left', paddingLeft: '15px'}}>{item.title.length > 22 ? item.title.slice(0,22) + '...' : item.title }</td>
                                 <td>{item.smena}</td>
                                 <td>{parseInt(item.stavka).toLocaleString()}</td>
                             </tr>
