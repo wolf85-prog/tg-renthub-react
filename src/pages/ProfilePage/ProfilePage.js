@@ -868,7 +868,10 @@ const handleFileChange = (e) => {
     }
 
     const clickUpload = async() => {
-        const res = await sendManagerAvatar(user?.id)
+        const data = {
+            avatar: image,
+        }
+        const res = await sendManagerAvatar(user?.id, data)
         console.log("res upload: ", res)
         setShowUploadLogo(false)
     }

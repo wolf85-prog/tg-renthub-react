@@ -94,9 +94,9 @@ export const getSpecStavka = async (data) =>{
     }
 }
 
-export const sendManagerAvatar = async (id) =>{
+export const sendManagerAvatar = async (id, data) =>{
     try {
-       let response = await $host_bot.get(`managers/send/${id}`);
+       let response = await $host_bot.post(`managers/send/${id}`, data);
        return response.data;
     } catch (error) {
         console.log("error while calling sendManagerAvatar api", error.message);
