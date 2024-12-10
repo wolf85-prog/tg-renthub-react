@@ -151,6 +151,7 @@ const ProfilePage = () => {
     const [image, setImage]= useState("");
 
     const API_URL = process.env.REACT_APP_API_URL
+    const API_URL_HOST = process.env.REACT_APP_HOST
 
     
 //----------------------------------------------------------------------------------
@@ -323,6 +324,10 @@ useEffect(() => {
     }
     getImage();
 }, [selectedFile])
+
+useEffect(() => {
+    console.log("image: ", image)
+}, [image])
 
 {/* Добавление файла */}
 const handleFileChange = (e) => {
