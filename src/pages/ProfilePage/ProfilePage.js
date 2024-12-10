@@ -57,7 +57,7 @@ import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
-import { getManagerApi, updateManager, getSpecStavka, sendManagerAvatar } from '../../http/projectAPI';
+import { getManagerApi, updateManager, getSpecStavka, sendManagerAvatar, uploadFile } from '../../http/projectAPI';
 import WorkerList2 from '../../components/WorkerList2/WorkerList2';
 
 

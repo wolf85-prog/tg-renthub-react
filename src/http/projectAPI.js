@@ -94,6 +94,20 @@ export const getSpecStavka = async (data) =>{
     }
 }
 
+//file
+export const uploadFile = async (data) =>{
+    try {
+        return await $host_old.post(`api/file/upload`, data, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
+    } catch (error) {
+        console.log("error while calling uploadFile api",error.message);
+        
+    }
+}
+
 export const sendManagerAvatar = async (id, data) =>{
     try {
        let response = await $host_bot.post(`managers/send/${id}`, data);
