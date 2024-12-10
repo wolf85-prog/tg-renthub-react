@@ -12,9 +12,14 @@ const $host_stavka = axios.create({
     baseURL: process.env.REACT_APP_API_URL_STAVKA
 })
 
+const $host_bot = axios.create({
+    baseURL: process.env.REACT_APP_API_URL
+})
+
 
 export {
     $host,
     $host_old,
     $host_stavka,
+    $host_bot,
 }

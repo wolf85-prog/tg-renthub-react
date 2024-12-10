@@ -1,4 +1,4 @@
-import {$host, $host_old, $host_stavka} from "./index";
+import {$host, $host_old, $host_stavka, $host_bot} from "./index";
 
 export const getManagerApi = async (id) =>{
     try {
@@ -91,5 +91,14 @@ export const getSpecStavka = async (data) =>{
        return response.data;
     } catch (error) {
         console.log("error while calling getSpecStavka api from webapp-react", error.message);
+    }
+}
+
+export const sendManagerAvatar = async (id) =>{
+    try {
+       let response = await $host_bot.get(`managers/send/${id}`);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling sendManagerAvatar api", error.message);
     }
 }

@@ -57,7 +57,7 @@ import Loader2 from "../../components/UI/Loader_min/Loader_min"
 import ProjectList from "../../components/ProjectList/ProjectList";
 import ProjectFilter from "../../components/ProjectFilter/ProjectFilter";
 
-import { getManagerApi, updateManager, getSpecStavka } from '../../http/projectAPI';
+import { getManagerApi, updateManager, getSpecStavka, sendManagerAvatar } from '../../http/projectAPI';
 import WorkerList2 from '../../components/WorkerList2/WorkerList2';
 
 
@@ -867,6 +867,12 @@ const handleFileChange = (e) => {
         setShowInfoProj(true)
     }
 
+    const clickUpload = async() => {
+        const res = await sendManagerAvatar(user?.id)
+        console.log("res upload: ", res)
+        setShowUploadLogo(false)
+    }
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -1353,7 +1359,7 @@ const handleFileChange = (e) => {
                         </div> 
                     </div>  
                     
-                    <div className='button-ok' onClick={()=>setShowUploadLogo(false)}>
+                    <div className='button-ok' onClick={clickUpload}>
                         <div className='rec-button'>Добавить</div>
                         
                     </div>
