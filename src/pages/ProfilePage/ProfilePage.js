@@ -116,8 +116,9 @@ const ProfilePage = () => {
     const [showInfoMoney, setShowInfoMoney] = useState(false)
 
     const [showUploadLogo, setShowUploadLogo] = useState(false)
-
+    const [showSaveLogo, setShowSaveLogo] = useState(false)
     const [showSaveButton, setShowSaveButton] = useState(false)
+    const [showDelCat, setShowDelCat] = useState(false)
 
     //категории
     const [categories, setCategories] = useState([]);
@@ -145,6 +146,7 @@ const ProfilePage = () => {
 
     const [soundTable, setSoundTable] = useState([]);
 
+    const [delCat, setDelCat] = useState(null);
 
     const [selectedFile, setSelectedFile] = useState(null);
     const [selectedName, setSelectedName] = useState("");
@@ -845,6 +847,9 @@ const handleFileChange = (e) => {
     }, [])
 
     const delDistrib = async(id)=> {
+
+        setShowDelCat(false)
+
         const res = [...distribs].filter((item, index)=> item.id !== id)
         setDistribs(res)
 
@@ -863,6 +868,12 @@ const handleFileChange = (e) => {
         console.log("resUpdate: ", resUpdate)  
     }
 
+    const clickDel = async(id)=> {
+        setShowDelCat(true)
+        setDelCat(id)
+    }
+
+
     const clickProject = () => {
         showProject ? setShowProject(false) : setShowProject(true)
     }
@@ -873,11 +884,12 @@ const handleFileChange = (e) => {
     }
 
     const clickUpload = async() => {
+        setShowSaveLogo(true)
         const data = {
             avatar: image,
         }
         const res = await sendManagerAvatar(user?.id, data)
-        console.log("res upload: ", res)
+        // console.log("res upload: ", res)
         setShowUploadLogo(false)
     }
 
@@ -1182,20 +1194,51 @@ const handleFileChange = (e) => {
 
                     <img onClick={onClickCloseList} src={Close} alt='' style={{position: 'absolute', right: '20px', top: '20px', width: '15px'}}/>
 
-                    <p className='vagno'>Категории</p>
-                    
+                    <p className='vagno'>Категории</p>                  
 
                     <ul style={{fontSize: '14px', width: '100%', listStyle: 'disc', position: 'relative', marginTop: '70px', textAlign: 'left'}}>
                         {distribs ? distribs.map((item, index)=> (
-                            <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b'}}>
+                            <li key={index} style={{margin: '0', marginLeft: '40px', marginBottom: '5px', color: '#6c6b6b', position: 'relative'}}>
                                 {item.cat} 
-                                <img onClick={()=>delDistrib(item.id)} src={Close} alt='' style={{position: 'absolute', right: '25px', top: '3px', width: '12px'}}/>
+                                <img onClick={()=>clickDel(item.id)} src={Close} alt='' style={{position: 'absolute', right: '22px', top: '3px', width: '12px'}}/>
                             </li>   
                         ))
                         : ''    
                         }    
                     </ul>
+                </div>
+            </MyModal>
 
+            <MyModal visible={showDelCat} setVisible={setShowDelCat}>
+                <div className='info-card' style={{height: '200px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowDelCat(false)} src={Close} alt='' style={{position: 'absolute', right: '18px', top: '18px', width: '15px'}}/>
+                    <div>
+                        <p className='vagno'>Предупреждение</p>
+                        <p className='text-promo' style={{top: '80px'}}>Категория рассылки будет удалена!</p>
+                    </div>
+
+                    <div style={{display: 'flex', justifyContent: 'space-between', marginLeft: '15px', marginBottom: '15px', marginTop: '150px', marginRight: '15px'}}>
+                            <button 
+                                disabled={disabledBtn}
+                                className="image-add-modal-button" 
+                                style={{ backgroundImage: `url(${btnSave})`}}
+                                onClick={()=>setShowDelCat(false)}
+                            >
+                                Отмена
+                            </button>
+                            <button 
+                                disabled={disabledBtn}
+                                className="image-add-modal-button" 
+                                style={{ backgroundImage: `url(${btnSave})`}}
+                                onClick={()=>delDistrib(delCat)}
+                            >
+                                Подтвердить
+                            </button>
+                    </div>  
                 </div>
             </MyModal>
 
@@ -1368,8 +1411,26 @@ const handleFileChange = (e) => {
                     </div>  
                     
                     <div className='button-ok' onClick={clickUpload}>
-                        <div className='rec-button'>Добавить</div>
+                        <div className='rec-button'>Отправить</div>
                         
+                    </div>
+                </div>
+            </MyModal>
+
+            <MyModal visible={showSaveLogo} setVisible={setShowSaveLogo}>
+                <div className='info-card' style={{height: '200px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowSaveLogo(false)} src={Close} alt='' style={{position: 'absolute', right: '18px', top: '18px', width: '15px'}}/>
+
+                    {/* <p className='vagno'>Информация</p> */}
+                    <p className='text-promo'>Ваш файл отправлен на обработку нашему дизайнеру. Как только всё будет готово, мы обновим ваш логотип в профиле. </p>
+                    <p className='text-promo' style={{top: '115px'}}>Спасибо за сотрудничество</p>
+
+                    <div className='button-ok' onClick={()=>setShowSaveLogo(false)}>
+                        <div className='rec-button'>Хорошо</div>         
                     </div>
                 </div>
             </MyModal>
