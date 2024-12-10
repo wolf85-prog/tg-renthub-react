@@ -140,7 +140,8 @@ const ProfilePage = () => {
 
     //const {worker, setWorker, workers, setWorkers} = useUsersContext();
     const [showSpec, setShowSpec] = useState(false) 
-
+    const [showProject, setShowProject] = useState(false);
+    const [showInfoProj, setShowInfoProj] = useState(false)
 
     const [soundTable, setSoundTable] = useState([]);
 
@@ -857,6 +858,15 @@ const handleFileChange = (e) => {
         console.log("resUpdate: ", resUpdate)  
     }
 
+    const clickProject = () => {
+        showProject ? setShowProject(false) : setShowProject(true)
+    }
+
+    const clickShowInfoProj = () => {
+        //e.stopPropagation();
+        setShowInfoProj(true)
+    }
+
 //---------------------------------------------------------------------------------------
 
     return (
@@ -1027,9 +1037,9 @@ const handleFileChange = (e) => {
 
                                 <div>
                                     <div className='project-text'>
-                                        <p className="project_title">Здесь будут ваши проекты</p>    
+                                        <p className="project_title" onClick={clickProject}>Здесь будут ваши проекты</p>    
                                     </div>
-                                    <img className='vector' src={Vector} alt=''/>  
+                                    <img className='vector' onClick={clickProject} src={showProject ? VectorUp : Vector}  alt=''/>  
                                 </div>
 
                                 <div className='shkala-click' onClick={clickShkala} ></div>
@@ -1037,10 +1047,26 @@ const handleFileChange = (e) => {
                                 <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
                 
                                 
-                                <div className='card-footer'>
+                                <div className='card-footer' onClick={clickShowInfoProj}>
                                     <div><p className='project_money2'>0.00</p></div>
                                     {/* <div className='chat-button'>Чат</div> */}
                                 </div>
+
+                                <div className='smeta' style={{display: showProject ? 'block' : 'none'}}>
+                                    <div className='line3'></div>
+                                    <div className='smeta-text'>
+                                        <ul>
+                                            <li className='item-list'><div>Специальность</div>-</li>
+                                            <li className='item-list'><div>Вид работ</div>-</li>
+                                            <li className='item-list'><div>Часы</div>-</li> 
+                                            <li className='item-list'><div>Ставка</div>0.00</li>    
+                                        </ul>
+                                    </div>
+                                    {/* <div className='block-button'>
+                                        <div className='button1' onClick={clickInfo}>Уточнить</div>
+                                        <div className='button2' onClick={clickInfo}>Подтвердить</div>
+                                    </div> */}
+                                </div> 
                             </div>
                         </div>
                     }
@@ -1376,6 +1402,25 @@ const handleFileChange = (e) => {
                             
                         </div>
                     </div>
+            </MyModal>
+
+            <MyModal visible={showInfoProj} setVisible={setShowInfoProj}>
+                <div className='info-card' style={{height: '200px'}}>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    <img onClick={()=>setShowInfoProj(false)} src={Close} alt='' style={{position: 'absolute', right: '18px', top: '18px', width: '15px'}}/>
+
+                    <p className='vagno'>Информация</p>
+                    <p className='text-promo'></p>
+                    {/* <div className='button-more' onClick={()=>setShowInfoProj(false)}>
+                        <div className='rec-button'>Подробнее</div>         
+                    </div> */}
+                    <div className='button-ok' onClick={()=>setShowInfoProj(false)}>
+                        <div className='rec-button'>Хорошо</div>         
+                    </div>
+                </div>
             </MyModal>
             
         </div>
