@@ -102,8 +102,8 @@ const specData = [
     },
     {
         id: 10,
-        name: 'Промо / рекламное агентство',
-        icon: 'Promo',
+        name: 'Спецэффекты',
+        icon: 'Speceffect',
         models: [
             {id: 1, name: 'Модель',},
             {id: 2, name: 'Актер',},
@@ -113,20 +113,6 @@ const specData = [
     },
     {
         id: 11,
-        name: 'Event-агенство',
-        icon: 'Party',
-        models: [
-            {id: 1, name: 'Кавер-бенд',},
-            {id: 2, name: 'Танцевальный коллектив',},
-            {id: 3, name: 'Диджей',},
-            {id: 4, name: 'Ведущий',},
-            {id: 5, name: 'Певец \/ певица',},
-            {id: 6, name: 'Артист оригинального жанра',},
-            {id: 7, name: 'Go-Go',},
-        ]
-    },
-    {
-        id: 12,
         name: 'Модельное агентство',
         icon: 'Models',
         models: [
@@ -140,7 +126,32 @@ const specData = [
         ]
     },
     {
+        id: 12,
+        name: 'Event-агентство',
+        icon: 'Party',
+        models: [
+            {id: 1, name: 'Кавер-бенд',},
+            {id: 2, name: 'Танцевальный коллектив',},
+            {id: 3, name: 'Диджей',},
+            {id: 4, name: 'Ведущий',},
+            {id: 5, name: 'Певец \/ певица',},
+            {id: 6, name: 'Артист оригинального жанра',},
+            {id: 7, name: 'Go-Go',},
+        ]
+    },
+    {
         id: 13,
+        name: 'Промо / рекламное агентство',
+        icon: 'Promo',
+        models: [
+            {id: 1, name: 'Модель',},
+            {id: 2, name: 'Актер',},
+            {id: 3, name: 'Промоутер',},
+            {id: 4, name: 'Гример',},
+        ]
+    },
+    {
+        id: 14,
         name: 'Технический продакшн',
         icon: 'Production',
         models: [
@@ -149,7 +160,7 @@ const specData = [
         ]
     },
    {
-       id: 14,
+       id: 15,
        name: 'Продакшн артистов',
        icon: 'Trucks',
        models: [

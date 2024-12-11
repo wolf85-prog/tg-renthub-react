@@ -38,7 +38,7 @@ import Edit2 from "../../img/new/edit2.svg"
 import Vector from "../../img/new/vector.svg"
 import VectorUp from "../../img/new/vector_up.svg"
 import Workhub from "../../img/new/WorkHub.gif"
-import Renthub from "../../img/new/renthub.jpeg"
+import Renthub from "../../img/new/renthub.png"
 import QRCode from "../../img/new/QR_Code.svg"
 import Close from "../../img/new/close.svg"
 import ClosePress from "../../img/new/close_press.svg"
@@ -888,7 +888,7 @@ const handleFileChange = (e) => {
         const data = {
             avatar: image,
         }
-        const res = await sendManagerAvatar(user?.id, data)
+        //const res = await sendManagerAvatar(user?.id, data)
         // console.log("res upload: ", res)
         setShowUploadLogo(false)
     }
@@ -898,7 +898,7 @@ const handleFileChange = (e) => {
     return (
         <div className="App" style={{overflowX: 'hidden'}}>
 
-            <Header header={{title: `${headerName}`, icon: 'false', menu: `${Workhub}`}} setShowModal={setShowMoreInfo} showModal={showMoreInfo}/>
+            <Header header={{title: `${headerName}`, icon: 'false', menu: `${Renthub}`}} setShowModal={setShowMoreInfo} showModal={showMoreInfo}/>
 
             {/* темный фон */}
             {/* <img src={BlackFon} alt='' className='fon-black' /> */}
@@ -1084,14 +1084,17 @@ const handleFileChange = (e) => {
                                         <ul>
                                             <li className='item-list'><div>Специальность</div>-</li>
                                             <li className='item-list'><div>Вид работ</div>-</li>
-                                            <li className='item-list'><div>Часы</div>-</li> 
-                                            <li className='item-list'><div>Ставка</div>0.00</li>    
+                                            <li className='item-list'><div>Часы</div>0</li>
+                                            <li className='item-list'><div>Ставка</div>0.00</li>
+                                            <li className='item-list'><div>Смена</div>0.00</li>
+                                            <li className='item-list'><div>Переработка</div>0.00</li>
+                                            <li className='item-list'><div>Доп. расходы</div>0.00</li>
                                         </ul>
                                     </div>
-                                    {/* <div className='block-button'>
+                                    <div className='block-button'>
                                         <div className='button1' onClick={clickInfo}>Уточнить</div>
                                         <div className='button2' onClick={clickInfo}>Подтвердить</div>
-                                    </div> */}
+                                    </div>
                                 </div> 
                             </div>
                         </div>
@@ -1426,8 +1429,9 @@ const handleFileChange = (e) => {
                     <img onClick={()=>setShowSaveLogo(false)} src={Close} alt='' style={{position: 'absolute', right: '18px', top: '18px', width: '15px'}}/>
 
                     {/* <p className='vagno'>Информация</p> */}
-                    <p className='text-promo'>Ваш файл отправлен на обработку нашему дизайнеру. Как только всё будет готово, мы обновим ваш логотип в профиле. </p>
-                    <p className='text-promo' style={{top: '115px'}}>Спасибо за сотрудничество</p>
+                    <p className='text-promo'>Файл отправлен.</p>
+                    <p className='text-promo' style={{top: '60px'}}>После обработки логотип вашей компании будет обновлен в профиле.</p>
+                    <p className='text-promo' style={{top: '120px'}}>Спасибо за вашу активность.</p>
 
                     <div className='button-ok' onClick={()=>setShowSaveLogo(false)}>
                         <div className='rec-button'>Хорошо</div>         
