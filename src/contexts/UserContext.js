@@ -39,7 +39,7 @@ const UserProvider = ({ children }) => {
             const managerId = user?.id //user?.id '805436270' '1408579113'
             setManagerId(managerId)
 
-            const manager = await getManagerApi(user?.id)
+            const manager = await getManagerApi('805436270')
             console.log("manager profile: ", manager) 
 
             setWorkerhub(manager)
@@ -54,7 +54,21 @@ const UserProvider = ({ children }) => {
 
             setCompanyProfile(company?.profile)
 
-            setDistribs(manager.worklist ? JSON.parse(manager.worklist) : [])
+            let arr = []
+            if (manager.worklist) {
+                JSON.parse(manager.worklist).map((item, index)=> {
+                    const obj = {
+                        id: Date.now()+index,
+                        cat: item.cat,
+                        icon: '',
+                        spec: '',
+                    }
+                    arr.push(obj)
+                })
+                setDistribs(arr)
+            }
+
+            //setDistribs(manager.worklist ? JSON.parse(manager.worklist) : [])
 
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')

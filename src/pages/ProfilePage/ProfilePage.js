@@ -846,11 +846,13 @@ const handleFileChange = (e) => {
         // }
     }, [])
 
-    const delDistrib = async(id)=> {
+    const delDistrib = async()=> {
+        //e.preventDefault();
+        console.log("Подтверждено: ", delCat)
 
         setShowDelCat(false)
 
-        const res = [...distribs].filter((item, index)=> item.id !== id)
+        const res = [...distribs].filter((item, index)=> item.id !== delCat)
         setDistribs(res)
 
         let worklist = []
@@ -868,7 +870,8 @@ const handleFileChange = (e) => {
         console.log("resUpdate: ", resUpdate)  
     }
 
-    const clickDel = async(id)=> {
+    const clickDel = (id)=> {
+        console.log("id: ", id)
         setShowDelCat(true)
         setDelCat(id)
     }
@@ -966,7 +969,7 @@ const handleFileChange = (e) => {
                             <div className='kompet-list'>
                                 <ul style={{listStyle: 'disc'}}>
                                     {categoriesPrice.map((item, index) => index < 13
-                                    ?   <li className="bullet-title" style={{ whiteSpace: 'nowrap'}} onClick={()=>clickPrice(item.name)}><span style={{fontSize: '20px'}}>• </span>{item.name} </li>
+                                    ?   <li key={item.id} className="bullet-title" style={{ whiteSpace: 'nowrap'}} onClick={()=>clickPrice(item.name)}><span style={{fontSize: '20px'}}>• </span>{item.name} </li>
                                     : '' )}
                                 </ul>  
                             </div>
@@ -1226,7 +1229,7 @@ const handleFileChange = (e) => {
 
                     <div style={{display: 'flex', justifyContent: 'space-between', marginLeft: '15px', marginBottom: '15px', marginTop: '150px', marginRight: '15px'}}>
                             <button 
-                                disabled={disabledBtn}
+                                //disabled={disabledBtn}
                                 className="image-add-modal-button" 
                                 style={{ backgroundImage: `url(${btnSave})`}}
                                 onClick={()=>setShowDelCat(false)}
@@ -1234,10 +1237,10 @@ const handleFileChange = (e) => {
                                 Отмена
                             </button>
                             <button 
-                                disabled={disabledBtn}
+                                //disabled={disabledBtn}
                                 className="image-add-modal-button" 
                                 style={{ backgroundImage: `url(${btnSave})`}}
-                                onClick={()=>delDistrib(delCat)}
+                                onClick={delDistrib}
                             >
                                 Подтвердить
                             </button>
