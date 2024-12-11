@@ -888,7 +888,7 @@ const handleFileChange = (e) => {
         const data = {
             avatar: image,
         }
-        //const res = await sendManagerAvatar(user?.id, data)
+        const res = await sendManagerAvatar(user?.id, data)
         // console.log("res upload: ", res)
         setShowUploadLogo(false)
     }
