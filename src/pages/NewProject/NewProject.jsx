@@ -40,7 +40,7 @@ const NewProject = () => {
     const navigate = useNavigate();
     const {tg, queryId, user} = useTelegram();
 
-    const { count, setCount } = useUsersContext();
+    const { count, setCount, managerId, companyId } = useUsersContext();
 
     const [modal, setModal] = useState(false)
     const [modalInfo, setModalInfo] = useState(false)
@@ -106,8 +106,6 @@ const NewProject = () => {
     //select3
     const [selectedElement3, setSelectedElement3] = useState("")
 
-    const [managerId, setManagerId] = useState('')
-    const [companyId, setCompanyId] = useState('')
     const [chatId, setChatId] = useState('')
 
     const [isLoading, setIsLoading] = useState(false);

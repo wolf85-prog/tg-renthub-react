@@ -13,6 +13,7 @@ const UserProvider = ({ children }) => {
 	const [projects, setProjects] = useState([]);
 	const [status, setStatus] = useState([]);
     const [companys, setCompanys] = useState([]);
+    const [companyId, setCompanyId] = useState('');
     const [companyManager, setCompanyManager] = useState('');
     const [companyProfile, setCompanyProfile] = useState('');
     const [userApp, setUserApp] = useState('');
@@ -42,13 +43,14 @@ const UserProvider = ({ children }) => {
             const manager = await getManagerApi(user?.id)
             console.log("manager profile: ", manager) 
 
+            setManagerId(manager?.id)
+
             setWorkerhub(manager)
 
             const resCompany = await getCompanysApi()
             const company = resCompany.find((item)=> item.id === parseInt(manager?.companyId) || item.GUID === manager?.companyId)
-            //console.log("companyName: ", company)
 
-            console.log("companyProfile: ", company?.profile)
+            setCompanyId(manager?.companyId)
             
             setCompanyManager(company?.title)
 
@@ -130,6 +132,7 @@ const UserProvider = ({ children }) => {
 		<UserContext.Provider value={{ 
             workerhub, 
             setWorkerhub,
+            companyId,
             companyManager,
             companyProfile,
 			projects,

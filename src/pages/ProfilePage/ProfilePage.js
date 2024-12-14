@@ -196,53 +196,7 @@ const ProfilePage = () => {
         if (cityData.length > 0 && cityData) {
             setRegions(cityData);
         }
-
-        let arr = []
         
-        // specPriceData.map((item)=> {
-        //     item.models.map((model)=> {
-        //         const obj = {
-        //             name: model.name
-        //         }
-        //         arr.push(obj)
-        //     })
-        // })
-
-        //setSoundTable()
-
-        // const fetchStavka = async() => {
-        //     const data = {
-        //         "names": [
-        //             "Звукорежиссер",
-        //             "Системный инженер",
-        //             "RF-Менеджер",
-        //             "Backline",
-        //             "Roadie",
-        //             "Техник по звуку"
-        //         ]
-        //     }
-
-        //     const res = await getSpecStavka(data)
-
-        //     const smena = Object.keys(res["Звукорежиссер"])[0]
-        //     console.log("res: ", smena)
-        //     console.log("res2: ", res["Звукорежиссер"][smena]["№1"])
-
-        //     let arrSpec = []
-        //     Object.keys(res).map((item)=> {
-        //         const obj = {
-        //             title: item,
-        //             smena: Object.keys(res[item])[0],
-        //             stavka: res[item][Object.keys(res[item])[0]]["№1"]
-        //         }
-        //         arrSpec.push(obj)
-        //     })
-        //     console.log("arrSpec: ", arrSpec)
-
-        //     setSoundTable(arrSpec)
-        // }
-
-        // fetchStavka()
     }, []);
 
     // 1. при выборе нового значения в категории
