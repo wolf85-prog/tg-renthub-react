@@ -141,7 +141,7 @@ const ProfilePage = () => {
 
     //const {worker, setWorker, workers, setWorkers} = useUsersContext();
     const [showSpec, setShowSpec] = useState(false) 
-    const [showProject, setShowProject] = useState(false);
+    
     const [showInfoProj, setShowInfoProj] = useState(false)
 
     const [soundTable, setSoundTable] = useState([]);
@@ -168,13 +168,19 @@ const ProfilePage = () => {
 
             // setManagerId(manager?.id)
 
+            if (projects.length > 0) {
+                setProjects2(projects)
+                setIsPostsLoading(false) 
+            }
+
             setTimeout(()=> {      
                 setIsProfileLoading(false)
             }, 2000)
         }
 
         fetchData()   
-    }, []);
+    }, [projects]);
+
 
     useEffect(() => {
         // устанавливаем категории
@@ -877,9 +883,7 @@ const handleFileChange = (e) => {
     }
 
 
-    const clickProject = () => {
-        showProject ? setShowProject(false) : setShowProject(true)
-    }
+    
 
     const clickShowInfoProj = () => {
         //e.stopPropagation();
@@ -1057,50 +1061,12 @@ const handleFileChange = (e) => {
                         setFilter={setFilter}
                     />
 
-                    {isPostsLoading
-                        ? <div style={{width: '100vw', display: 'flex', justifyContent: 'center'}}><Loader/></div>
-                        : 
-                        <div className='container'>
-                            <div className='proj-card'>
-                                <div className='rectangle4'></div>
 
-                                <div>
-                                    <div className='project-text'>
-                                        <p className="project_title" onClick={clickProject}>Здесь будут ваши проекты</p>    
-                                    </div>
-                                    <img className='vector' onClick={clickProject} src={showProject ? VectorUp : Vector}  alt=''/>  
-                                </div>
-
-                                <div className='shkala-click' onClick={clickShkala} ></div>
-
-                                <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
-                
-                                
-                                <div className='card-footer' onClick={clickShowInfoProj}>
-                                    <div><p className='project_money2'>0.00</p></div>
-                                    {/* <div className='chat-button'>Чат</div> */}
-                                </div>
-
-                                <div className='smeta' style={{display: showProject ? 'block' : 'none'}}>
-                                    <div className='line3'></div>
-                                    <div className='smeta-text'>
-                                        <ul>
-                                            <li className='item-list'><div>Специальность</div>-</li>
-                                            <li className='item-list'><div>Вид работ</div>-</li>
-                                            <li className='item-list'><div>Часы</div>0</li>
-                                            <li className='item-list'><div>Ставка</div>0.00</li>
-                                            <li className='item-list'><div>Смена</div>0.00</li>
-                                            <li className='item-list'><div>Переработка</div>0.00</li>
-                                            <li className='item-list'><div>Доп. расходы</div>0.00</li>
-                                        </ul>
-                                    </div>
-                                    <div className='block-button'>
-                                        <div className='button1' onClick={clickInfo}>Уточнить</div>
-                                        <div className='button2' onClick={clickInfo}>Подтвердить</div>
-                                    </div>
-                                </div> 
-                            </div>
-                        </div>
+                    {isPostsLoading ? 
+                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh'}}>
+                        <Loader/>
+                    </div>  
+                    : <ProjectList posts={projects2} title=""/>
                     }
                 </div> 
             </div>

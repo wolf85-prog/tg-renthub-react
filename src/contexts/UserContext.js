@@ -76,6 +76,7 @@ const UserProvider = ({ children }) => {
 			// 	console.log('ManagerId: ', managerId) 
 				
 			const projects = await getProjectsApi(managerId)
+
 			// 	const res = await getProjectsCashApi()
 			// 	const projectsManager = res.filter((item) => item.manager === managerId)
 			// 	console.log("------ post: ", projectsManager)

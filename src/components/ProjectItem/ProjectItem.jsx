@@ -66,8 +66,49 @@ const ProjectItem = (props) => {
 
     return (
     <>
-        <div className='container'>
-            
+
+        {/* <div className='container'>
+                <div className='proj-card'>
+                    <div className='rectangle4'></div>
+
+                        <div>
+                                     <div className='project-text'>
+                                         <p className="project_title" onClick={clickProject}>Здесь будут ваши проекты</p>    
+                                     </div>
+                                     <img className='vector' onClick={clickProject} src={showProject ? VectorUp : Vector}  alt=''/>  
+                        </div>
+
+                                 <div className='shkala-click' onClick={clickShkala} ></div>
+
+                                 <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
+                
+                                
+                                 <div className='card-footer' onClick={clickShowInfoProj}>
+                                     <div><p className='project_money2'>0.00</p></div>
+                                 </div>
+
+                                 <div className='smeta' style={{display: showProject ? 'block' : 'none'}}>
+                                     <div className='line3'></div>
+                                     <div className='smeta-text'>
+                                         <ul>
+                                             <li className='item-list'><div>Специальность</div>-</li>
+                                             <li className='item-list'><div>Вид работ</div>-</li>
+                                             <li className='item-list'><div>Часы</div>0</li>
+                                             <li className='item-list'><div>Ставка</div>0.00</li>
+                                             <li className='item-list'><div>Смена</div>0.00</li>
+                                             <li className='item-list'><div>Переработка</div>0.00</li>
+                                             <li className='item-list'><div>Доп. расходы</div>0.00</li>
+                                         </ul>
+                                     </div>
+                                     <div className='block-button'>
+                                         <div className='button1' onClick={clickInfo}>Уточнить</div>
+                                         <div className='button2' onClick={clickInfo}>Подтвердить</div>
+                                     </div>
+                                 </div> 
+                             </div>
+        </div> */}
+
+        <div className='container'>           
             <div className='proj-card'>
                 <div className='rectangle-projcard'></div>
                 <div className='rectangle-projcard2'></div>
@@ -81,8 +122,6 @@ const ProjectItem = (props) => {
                 <img  className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
                 
                 <div className='shkala-click' ></div>
-
-
             </div> 
         </div>
 
