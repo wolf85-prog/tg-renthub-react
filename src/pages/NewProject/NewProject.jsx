@@ -140,6 +140,9 @@ const NewProject = () => {
         const fetch = async() => {
             setIsLoading(true);
 
+            console.log("Менеджер id: ", managerId)
+            console.log("Компания id: ", companyId)
+
             //const managerNotion = await getManagerIdApi('1775583141')  // проверка доступности notion
             
             //поиск менеджера в БД (кэш)
@@ -654,7 +657,7 @@ const NewProject = () => {
         tg.MainButton.hide();
         setIsLoading(true)
 
-        //if (companyId !== '') {
+        if (companyId !== '') {
             fetch(API_URL + 'web-data', {
                 method: 'POST',
                 headers: {
@@ -663,10 +666,10 @@ const NewProject = () => {
                 body: JSON.stringify(data)
             }) 
             setIsLoading(false)
-        //} else {
-        //    setIsLoading(false)
-        //    setModal(true)
-        //}
+        } else {
+            setIsLoading(false)
+            setModal(true)
+        }
               
     }, [project, workers, equipments, datestart, geo, teh, managerId, companyId, chatId])
 
