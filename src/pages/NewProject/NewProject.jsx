@@ -644,14 +644,14 @@ const NewProject = () => {
         const data = {
             projectname: project,
             datestart,
-            geo,
-            teh,
+            //geo,
+            //teh,
             worklist: workers,
             //equipmentlist: equipments,
-            managerId: managerId.toString(),
-            companyId: companyId.toString(),
+            //managerId: managerId.toString(),
+            //companyId: companyId.toString(),
             queryId,
-            chatId,
+            //chatId,
         }
 
         tg.MainButton.hide();
