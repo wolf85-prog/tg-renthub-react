@@ -74,7 +74,7 @@ const ProfilePage = () => {
     //специалисты
     const [workerhublist, setWorkerhublist] = useState([]);
 
-    const [managerId, setManagerId] = useState('')
+    //const [managerId, setManagerId] = useState('')
     const [projects2, setProjects2] = useState('')
 
     const [statusMoney, setStatusMoney] = useState('Фактически')
