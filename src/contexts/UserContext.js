@@ -38,7 +38,7 @@ const UserProvider = ({ children }) => {
 
         const fetchData = async() => {
             const managerId = user?.id //user?.id '805436270' '1408579113'
-            setManagerId(managerId)
+            //setManagerId(managerId)
 
             const manager = await getManagerApi(user?.id)
             console.log("manager profile: ", manager) 
@@ -70,24 +70,16 @@ const UserProvider = ({ children }) => {
                 setDistribs(arr)
             }
 
-            //setDistribs(manager.worklist ? JSON.parse(manager.worklist) : [])
-
 			// if (!managerId) {
 			// 	console.log('Данные о менеджере отсутствуют БД!')
 			// } else {
 			// 	console.log('ManagerId: ', managerId) 
 				
-			const projects = await getProjectsApi(managerId)
+			const projects = await getProjectsApi(manager?.chatId)
+            console.log("projects: ", projects)
 
-			// 	const res = await getProjectsCashApi()
-			// 	const projectsManager = res.filter((item) => item.manager === managerId)
-			// 	console.log("------ post: ", projectsManager)
-				
-			// 	//setProjects(projectsManager)
             setProjects(projects)
-			// }
         }
-
 
         fetchData()
 

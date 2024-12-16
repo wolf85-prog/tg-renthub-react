@@ -64,7 +64,7 @@ export const getCompanysApi = async () =>{
 
 export const getProjectsApi = async (id) =>{
     try {
-       let response = await $host.get(`projects/${id}`);
+       let response = await $host_old.get(`api/projectnew/chat/get/${id}`);
        //console.log(response);
        return response.data;
     } catch (error) {
