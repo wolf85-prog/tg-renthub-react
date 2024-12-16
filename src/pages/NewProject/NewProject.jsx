@@ -40,7 +40,10 @@ const NewProject = () => {
     const navigate = useNavigate();
     const {tg, queryId, user} = useTelegram();
 
-    const { count, setCount, managerId, companyId } = useUsersContext();
+    const { count, setCount } = useUsersContext();
+
+    const [managerId, setManagerId] = useState('')
+    const [companyId, setCompanyId] = useState('')
 
     const [modal, setModal] = useState(false)
     const [modalInfo, setModalInfo] = useState(false)
@@ -644,14 +647,14 @@ const NewProject = () => {
         const data = {
             projectname: project,
             datestart,
-            //geo,
-            //teh,
+            geo,
+            teh,
             worklist: workers,
             //equipmentlist: equipments,
-            //managerId: managerId.toString(),
-            //companyId: companyId.toString(),
+            managerId: managerId.toString(),
+            companyId: companyId.toString(),
             queryId,
-            //chatId,
+            chatId,
         }
 
         tg.MainButton.hide();

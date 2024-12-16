@@ -9,7 +9,7 @@ const useUsersContext = () => useContext(UserContext);
 const UserProvider = ({ children }) => {
 	const {user} = useTelegram();
     const [workerhub, setWorkerhub] = useState();
-	const [managerId, setManagerId] = useState("");
+	const [managerId, setManagerId] = useState('');
 	const [projects, setProjects] = useState([]);
 	const [status, setStatus] = useState([]);
     const [companys, setCompanys] = useState([]);
@@ -38,7 +38,7 @@ const UserProvider = ({ children }) => {
 
         const fetchData = async() => {
             const managerId = user?.id //user?.id '805436270' '1408579113'
-            //setManagerId(managerId)
+            setManagerId(managerId)
 
             const manager = await getManagerApi('805436270')
             console.log("manager profile: ", manager) 
@@ -75,10 +75,10 @@ const UserProvider = ({ children }) => {
 			// } else {
 			// 	console.log('ManagerId: ', managerId) 
 				
-			const projects = await getProjectsApi(manager?.chatId)
-            console.log("projects: ", projects)
+			// const projects = await getProjectsApi(manager?.chatId)
+            // console.log("projects: ", projects)
 
-            setProjects(projects)
+            // setProjects(projects)
         }
 
         fetchData()
