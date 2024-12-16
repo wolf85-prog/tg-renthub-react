@@ -648,8 +648,8 @@ const NewProject = () => {
             teh,
             worklist: workers,
             //equipmentlist: equipments,
-            managerId,
-            companyId,
+            managerId: managerId.toString(),
+            companyId: companyId.toString(),
             queryId,
             chatId,
         }
