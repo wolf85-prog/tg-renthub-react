@@ -160,13 +160,11 @@
     z-index: 8;
 }
 
-.progress {
+/* .progress {
     position: absolute;
     left: 1%;
     top: 0%
-    /* margin-left: 5px;
-    margin-right: 0px; */
-}
+} */
 
 /* .shkala {
     position: absolute;

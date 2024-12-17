@@ -75,7 +75,7 @@ const ProfilePage = () => {
     const [workerhublist, setWorkerhublist] = useState([]);
 
     //const [managerId, setManagerId] = useState('')
-    const [projects2, setProjects2] = useState('')
+    const [projects2, setProjects2] = useState([])
 
     const [statusMoney, setStatusMoney] = useState('Фактически')
 
@@ -86,8 +86,6 @@ const ProfilePage = () => {
 
     const [showArroy, setShowArroy] = useState(true)
 
-    const [valueShkala, setValueShkala] = useState(0);
-    const [stavka, setStavka] = useState()
     const [showModalEtap, setShowModalEtap] = useState(false);
     const [stavkaPlus, setStavkaPlus] = useState(0);
 
@@ -772,39 +770,6 @@ const handleFileChange = (e) => {
     }
 
 
-    
-    useEffect(()=> {
-
-        //1
-        if (statusMoney === 1) {
-            setStatusMoney('Предварительно')
-
-            setValueShkala(1650) //1
-        } 
-        //2
-        else if(statusMoney === 'Фактически') {
-            //setStatusMoney('Фактически')
-
-            setValueShkala(3800) 
-        } 
-        //4
-        else if(statusMoney === 4) {
-            setStatusMoney('На оплате')
-            setValueShkala(8400)
-        }
-        //5
-        else if(statusMoney === 5) {
-            setStatusMoney('Оплачено')
-            setValueShkala(10000)
-        }
-        
-        //3
-        // if (finalSmeta === 'Подтверждена') {
-        //     setStatusMoney('Подтверждено')
-
-        //     setValueShkala(5900)
-        // }
-    }, [])
 
     const delDistrib = async()=> {
         //e.preventDefault();

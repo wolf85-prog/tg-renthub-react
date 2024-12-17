@@ -23,8 +23,7 @@ const ProjectItem = (props) => {
 
     const {specId} = useUsersContext();
 
-    const [statusMoney, setStatusMoney] = useState("")
-    const [stavka, setStavka] = useState()
+    const [stavka, setStavka] = useState(0)
     const [cashStavka, setCashStavka] = useState({})
 
     const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +45,7 @@ const ProjectItem = (props) => {
 
     const sliderRef = useRef(null)
 
-    let statusMoney2 = 2
+    const [statusMoney, setStatusMoney] = useState('Фактически')
 
     const [chasiView, setChasiView] = useState(0);
     const [smenaView, setSmenaView] = useState(0);
@@ -58,55 +57,50 @@ const ProjectItem = (props) => {
     const [comtag, setComtag] = useState([]);
 
     useEffect(()=> {
-        
+    
+        //1
+        if (statusMoney === 1) {
+            setStatusMoney('Предварительно')
 
+            setValueShkala(1650) //1
+        } 
+        //2
+        else if(statusMoney === 'Фактически') {
+            //setStatusMoney('Фактически')
+
+            setValueShkala(3800) 
+        } 
+        //4
+        else if(statusMoney === 4) {
+            setStatusMoney('На оплате')
+            setValueShkala(8400)
+        }
+        //5
+        else if(statusMoney === 5) {
+            setStatusMoney('Оплачено')
+            setValueShkala(10000)
+        }
+        
+        //3
+        // if (finalSmeta === 'Подтверждена') {
+        //     setStatusMoney('Подтверждено')
+
+        //     setValueShkala(5900)
+        // }
     }, [])
 
-    
+    const clickProject = () => {
+        showProject ? setShowProject(false) : setShowProject(true)
+    }
+
+    //сумма денег для показа при движении фейдера
+    useEffect(()=> {
+        setStavkaPlus(stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
+        //console.log("stavka: ", stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0, props.post.title)
+    }, [stavka])
 
     return (
     <>
-
-        {/* <div className='container'>
-                <div className='proj-card'>
-                    <div className='rectangle4'></div>
-
-                        <div>
-                                     <div className='project-text'>
-                                         <p className="project_title" onClick={clickProject}>Здесь будут ваши проекты</p>    
-                                     </div>
-                                     <img className='vector' onClick={clickProject} src={showProject ? VectorUp : Vector}  alt=''/>  
-                        </div>
-
-                                 <div className='shkala-click' onClick={clickShkala} ></div>
-
-                                 <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
-                
-                                
-                                 <div className='card-footer' onClick={clickShowInfoProj}>
-                                     <div><p className='project_money2'>0.00</p></div>
-                                 </div>
-
-                                 <div className='smeta' style={{display: showProject ? 'block' : 'none'}}>
-                                     <div className='line3'></div>
-                                     <div className='smeta-text'>
-                                         <ul>
-                                             <li className='item-list'><div>Специальность</div>-</li>
-                                             <li className='item-list'><div>Вид работ</div>-</li>
-                                             <li className='item-list'><div>Часы</div>0</li>
-                                             <li className='item-list'><div>Ставка</div>0.00</li>
-                                             <li className='item-list'><div>Смена</div>0.00</li>
-                                             <li className='item-list'><div>Переработка</div>0.00</li>
-                                             <li className='item-list'><div>Доп. расходы</div>0.00</li>
-                                         </ul>
-                                     </div>
-                                     <div className='block-button'>
-                                         <div className='button1' onClick={clickInfo}>Уточнить</div>
-                                         <div className='button2' onClick={clickInfo}>Подтвердить</div>
-                                     </div>
-                                 </div> 
-                             </div>
-        </div> */}
 
         <div className='container'>           
             <div className='proj-card'>
@@ -115,13 +109,45 @@ const ProjectItem = (props) => {
                 <div className='rectangle-projcard3'></div>
                 
                 <div className='project-text'>
-                    <p className="project_title">Назваине проекта</p>
+                    <p className="project_title" onClick={clickProject}>{props.post.name}</p>
                     <p className="project_subtitle"></p>
                 </div>
 
-                <img  className='vector' src={showProject ? VectorUp : Vector} alt=''/>   
+                <img className='vector' onClick={clickProject} src={showProject ? VectorUp : Vector} alt=''/>   
                 
-                <div className='shkala-click' ></div>
+                <div className='shkala-click'></div>
+
+                <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
+                
+                <div className='card-footer'>
+                    {/* деньги */}
+                    <p className='project_money'>{!isLoading ? <Loader /> : (stavkaPlus ? parseInt(stavkaPlus).toLocaleString()+".00" : parseInt(stavka).toLocaleString()+".00")}</p>
+                    {/* <p className='project_money'>{isLoading ? <Loader /> : (parseInt(stavkaPlus ? stavkaPlus.replace(/\s/g, "").split('.')[0] : stavka.replace(/\s/g, "").split('.')[0]).toLocaleString()+".00")}</p> */}
+                    {/* кнопка Чат */}
+                    {props.post.tgURL_chat && <div onClick={goToChat} className='chat-button'>Чат</div>}
+                </div>
+
+                
+
+                <div className='smeta' style={{display: showProject ? 'block' : 'none'}}>
+                    <div className='line3'></div>
+                    <div className='smeta-text'>
+                        <ul>
+                            <li className='item-list'><div>Специальность</div>-</li>
+                            <li className='item-list'><div>Вид работ</div>-</li>
+                            <li className='item-list'><div>Часы</div>{chasiView ? chasiView : "0"}</li>
+                            {/* <li className='item-list'><div>Ставка</div>{isNaN(stavkaView) || stavkaView === null ? "0.00" : parseInt(stavkaView).toLocaleString()+".00"}</li> */}
+                            <li className='item-list'><div>Ставка</div>{stavkaView ? (parseInt(stavkaView).toLocaleString()+ '.00') : '0.00'}</li>
+                            <li className='item-list'><div>Смена</div>{smenaView ? (parseInt(smenaView).toLocaleString()+ '.00') : '0.00'}</li>
+                            <li className='item-list'><div>Переработка</div>{pererabotkaView ? (parseInt(pererabotkaView).toLocaleString()+ '.00') : '0.00'}</li>
+                            <li className='item-list'><div>Доп. расходы</div>{parseInt((transportView ? transportView : 0) + (gsmView ? gsmView : 0) + (taxiView ? (comtag.find(item => item.name === 'Такси [корпоративное]') ? 0 : taxiView) : 0)).toLocaleString() + '.00'}</li>
+                        </ul>
+                    </div>
+                    <div className='block-button'>
+                        <div className='button1'>Уточнить</div>
+                        <div className='button2'>Подтвердить</div>
+                    </div>
+                </div> 
             </div> 
         </div>
 
