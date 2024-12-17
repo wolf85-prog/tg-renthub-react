@@ -38,7 +38,6 @@ const UserProvider = ({ children }) => {
 
         const fetchData = async() => {
             const managerId = user?.id //user?.id '805436270' '1408579113'
-            setManagerId(managerId)
 
             const manager = await getManagerApi(user?.id)
             console.log("manager profile: ", manager) 
@@ -50,10 +49,8 @@ const UserProvider = ({ children }) => {
             const resCompany = await getCompanysApi()
             const company = resCompany.find((item)=> item.id === parseInt(manager?.companyId) || item.GUID === manager?.companyId)
 
-            setCompanyId(manager?.companyId)
-            
+            setCompanyId(manager?.companyId)          
             setCompanyManager(company?.title)
-
             setCompanyProfile(company?.profile)
 
             let arr = []
@@ -69,22 +66,25 @@ const UserProvider = ({ children }) => {
                 })
                 setDistribs(arr)
             }
+		
+			const projects = await getProjectsApi(manager?.chatId)
+            console.log("projects: ", projects)
 
-			// if (!managerId) {
-			// 	console.log('Данные о менеджере отсутствуют БД!')
-			// } else {
-			// 	console.log('ManagerId: ', managerId) 
-				
-			// const projects = await getProjectsApi(manager?.chatId)
-            // console.log("projects: ", projects)
-
-            // setProjects(projects)
+            setProjects(projects)
         }
 
         fetchData()
 
     }, []);
     
+
+    useEffect(() => {
+        if (!managerId) {
+			console.log('Данные о менеджере отсутствуют БД!')
+		} else {
+			console.log('ManagerId: ', managerId) 
+        }
+    }, [managerId])
 
 	// useEffect(() => {
     //     const countItems = {}; // здесь будет храниться промежуточный результат
