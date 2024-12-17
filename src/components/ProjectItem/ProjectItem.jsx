@@ -93,6 +93,14 @@ const ProjectItem = (props) => {
         showProject ? setShowProject(false) : setShowProject(true)
     }
 
+    const clickShkala = () => {
+        showModalEtap ? setShowModalEtap(false) : setShowModalEtap(true)
+    }
+
+    const clickInfo = () => {
+        showInfo ? setShowInfo(false) : setShowInfo(true)
+    }
+
     //сумма денег для показа при движении фейдера
     useEffect(()=> {
         setStavkaPlus(stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
@@ -115,7 +123,7 @@ const ProjectItem = (props) => {
 
                 <img className='vector' onClick={clickProject} src={showProject ? VectorUp : Vector} alt=''/>   
                 
-                <div className='shkala-click'></div>
+                <div className='shkala-click' onClick={clickShkala}></div>
 
                 <RangeSlider min={0} max={10000} value={valueShkala} step={5} stavka={stavka} setStavka={setStavkaPlus} range={10000} distance={valueShkala} percentage={valueShkala/100}/>
                 
@@ -144,13 +152,55 @@ const ProjectItem = (props) => {
                         </ul>
                     </div>
                     <div className='block-button'>
-                        <div className='button1'>Уточнить</div>
-                        <div className='button2'>Подтвердить</div>
+                        <div className='button1' onClick={clickInfo}>Уточнить</div>
+                        <div className='button2' onClick={clickInfo}>Подтвердить</div>
                     </div>
                 </div> 
             </div> 
         </div>
 
+        <MyModal visible={showModalEtap} setVisible={setShowModalEtap}>
+            <div className='modal-card'>
+                <div className='rectangle-modal'></div>
+                <div className='rectangle-modal2'></div>
+                <div className='rectangle-modal3'></div>
+
+                {/* <img src={Question} alt='' style={{position: 'absolute', top: '20px', left: '20px'}}/> */}
+                <div className='block-close' onClick={()=>setShowModalEtap(false)}>
+                   <img src={Close} alt=''/> 
+                </div>
+
+                <p style={{position: 'absolute', width: '100%', top: '45px'}}>
+                    Этапы передвижения ваших средств
+                </p>
+
+                <div className='block-text'>
+                    <ul className='text-modal-list'>
+                        <li>01. Предварительно</li>
+                        <li>02. Фактически</li>
+                        <li>03. Подтверждено</li>
+                        <li>04. В процессе [на оплате]</li>
+                        <li>05. Оплачено</li>
+                    </ul>
+                </div>
+            </div>
+            {/* <img src={BackModal} alt=''/> */}
+        </MyModal>
+
+        <MyModal visible={showInfo} setVisible={setShowInfo}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    {/* <p className='vagno'>Важно</p> */}
+                    <p className='text-vagno'>Функция находится в разработке</p>
+                    <div className='button-ok' onClick={()=>setShowInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+        </MyModal>
     </>
     );
 };

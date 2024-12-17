@@ -4,6 +4,9 @@ import ProjectItem from "../ProjectItem/ProjectItem";
 import Vector from "../../img/new/vector.svg"
 import VectorUp from "../../img/new/vector_up.svg"
 import RangeSlider from '../UI/RangeSlider/RangeSlider';
+import MyModal from "../../components/MyModal/MyModal";
+
+import Close from "../../img/new/close.svg"
 
 const ProjectList = ({posts, title, remove}) => {
     
@@ -16,6 +19,7 @@ const ProjectList = ({posts, title, remove}) => {
     const [valueShkala, setValueShkala] = useState(0);
     const [stavka, setStavka] = useState()
     const [stavkaPlus, setStavkaPlus] = useState(0);
+    const [showInfo, setShowInfo] = useState(false)
 
     useEffect(()=> {
     
@@ -117,7 +121,48 @@ const ProjectList = ({posts, title, remove}) => {
                 </div>
             </div>
 
-    
+            <MyModal visible={showModalEtap} setVisible={setShowModalEtap}>
+                <div className='modal-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    {/* <img src={Question} alt='' style={{position: 'absolute', top: '20px', left: '20px'}}/> */}
+                    <div className='block-close' onClick={()=>setShowModalEtap(false)}>
+                    <img src={Close} alt=''/> 
+                    </div>
+
+                    <p style={{position: 'absolute', width: '100%', top: '45px'}}>
+                        Этапы передвижения ваших средств
+                    </p>
+
+                    <div className='block-text'>
+                        <ul className='text-modal-list'>
+                            <li>01. Предварительно</li>
+                            <li>02. Фактически</li>
+                            <li>03. Подтверждено</li>
+                            <li>04. В процессе [на оплате]</li>
+                            <li>05. Оплачено</li>
+                        </ul>
+                    </div>
+                </div>
+                {/* <img src={BackModal} alt=''/> */}
+            </MyModal>
+
+            <MyModal visible={showInfo} setVisible={setShowInfo}>
+                <div className='info-card'>
+                    <div className='rectangle-modal'></div>
+                    <div className='rectangle-modal2'></div>
+                    <div className='rectangle-modal3'></div>
+
+                    {/* <p className='vagno'>Важно</p> */}
+                    <p className='text-vagno'>Функция находится в разработке</p>
+                    <div className='button-ok' onClick={()=>setShowInfo(false)}>
+                        <div className='rec-button'>Хорошо</div>
+                        
+                    </div>
+                </div>
+            </MyModal>
             </>
         )
     } else {
