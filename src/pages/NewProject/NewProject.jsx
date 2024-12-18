@@ -385,6 +385,8 @@ const NewProject = () => {
 
     const onChangeProject = (e) => {
         setProject(e.target.value)
+        //console.log(e.target.value)
+
         setShowNotif(false)
         setShowNotif2(true)
     }
@@ -402,7 +404,7 @@ const NewProject = () => {
 
     const onChangeGeodata = (e) => {
         setGeo(e.target.value)
-        console.log(e.target.value)
+        //console.log(e.target.value)
 
         setShowNotif6(false)
         setShowNotif7(true)
@@ -734,6 +736,18 @@ const NewProject = () => {
             {isLoading
                 ? <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}><Loader/></div>
                 : <form>
+
+
+                <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')} style={{border: showNotif ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
+                    <RedditTextField fullWidth
+                                     label="Нзвание"
+                                     id="fsdfsdf"
+                                     variant="filled"
+                                     value={geo}
+                                     onChange={onChangeGeodata}
+                    />
+                </div>
+
                 {/*Название*/}
                 <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')} style={{border: showNotif ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                     <RedditTextField
