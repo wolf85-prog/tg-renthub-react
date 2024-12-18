@@ -740,16 +740,16 @@ const NewProject = () => {
 
                 <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')} style={{border: showNotif ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                     <RedditTextField fullWidth
-                                     label="Нзвание"
+                                     label="Нзвание проекта"
                                      id="fsdfsdf"
                                      variant="filled"
-                                     value={geo}
-                                     onChange={onChangeGeodata}
+                                     value={project}
+                                     onChange={onChangeProject}
                     />
                 </div>
 
                 {/*Название*/}
-                <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')} style={{border: showNotif ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
+                {/* <div className={'text-field text-field_floating ' + (showNotif ? 'block-anim' : '')} style={{border: showNotif ? '2px solid red' : '2px solid #26aad4', borderRadius: '10px'}}>
                     <RedditTextField
                         fullWidth
                         label="Название проекта"
@@ -758,7 +758,7 @@ const NewProject = () => {
                         value={project}
                         onChange={onChangeProject}
                     />
-                </div>
+                </div> */}
 
                 {/*Дата начала*/}
                 <div className={'text-field text-field_floating ' + (showNotif2 ? 'block-anim' : '')}>
