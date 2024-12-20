@@ -852,7 +852,7 @@ const handleFileChange = (e) => {
                     <div>
                         <p className="profile_fio">{(workerhub?.fio.split(' ')[0] + ' ' + workerhub?.fio.split(' ')[1]).replace(/\[.+\]/,'')}</p>
 
-                        <p className="profile_city">{companyManager ? companyManager : '-'}</p>
+                        <p className="profile_city">{companyManager ? companyManager.replace(/\[.+\]/,'') : '-'}</p>
                         <p className="profile_company">{workerhub?.city}</p>
                         {/* <div className="card-specs bullet">
                             <ul>
