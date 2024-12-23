@@ -186,6 +186,7 @@ const ProfilePage = () => {
             setCategories(specData);
         }
 
+        //console.log("specPriceData: ", specPriceData.length)
         if (specPriceData.length > 0 && specPriceData) {
             setCategoriesPrice(specPriceData);
         }
@@ -545,7 +546,7 @@ const handleFileChange = (e) => {
 
         const res = await getSpecStavka(data)
 
-        console.log("res: ", res)
+        //console.log("res: ", res)
 
         let arrSpec = []
         Object.keys(res).map((item, index)=> {
@@ -947,7 +948,7 @@ const handleFileChange = (e) => {
                             </div>
                             <div className='kompet-list'>
                                 <ul style={{listStyle: 'disc'}}>
-                                    {categoriesPrice.map((item, index) => index < 13
+                                    {categoriesPrice.map((item, index) => index < 15
                                     ?   <li key={item.id} className="bullet-title" style={{ whiteSpace: 'nowrap'}} onClick={()=>clickPrice(item.name)}><span style={{fontSize: '20px'}}>• </span>{item.name} </li>
                                     : '' )}
                                 </ul>  

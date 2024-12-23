@@ -156,7 +156,7 @@ const specData = [
     {
         id: 14,
         name: 'Декорации',
-        icon: 'Production',
+        icon: 'Decor',
         models: [
             {id: 1, name: 'Мероприятие под ключ',},
             {id: 2, name: 'Отдельные технические задачи',},
