@@ -54,7 +54,15 @@ const specData = [
     },
     {
         id: 5,
-        name: 'Промо \/ Кастинг',
+        name: 'Кино / Театр',
+        icon: 'Kino',
+        models: [
+
+        ]
+    },
+    {
+        id: 6,
+        name: 'Промо',
         icon: 'Promo',
         models: [
             {id: 1, name: 'Модель',},
@@ -66,7 +74,7 @@ const specData = [
         ]
     },
     {
-        id: 6,
+        id: 7,
         name: 'Кейтеринг',
         icon: 'Catering',
         models: [
@@ -78,16 +86,16 @@ const specData = [
         ]
     },  
     {
-        id: 7,
-        name: 'Помощники \/ Грузчики',
+        id: 8,
+        name: 'Помощники',
         icon: 'Stagehands',
         models: [
             {id: 1, name: 'Помощник \/ Грузчик',},
         ]
     },
     {
-        id: 8,
-        name: 'Риггер \/ Граунд',
+        id: 9,
+        name: 'Риггеры \/ Сцена',
         icon: 'Riggers \/ Ground',
         models: [
             {id: 1, name: 'Верхний Риггер',},
@@ -97,8 +105,8 @@ const specData = [
         ]
     },  
     {
-        id: 9,
-        name: 'Водители',
+        id: 10,
+        name: 'Грузоперевозки',
         icon: 'Trucks',
         models: [
             {id: 1, name: 'Мотокурьер',},
@@ -110,7 +118,7 @@ const specData = [
         ]
     },
     {
-        id: 10,
+        id: 11,
         name: 'Артисты',
         icon: 'Party',
         models: [
@@ -124,7 +132,7 @@ const specData = [
         ]
     },
     {
-        id: 11,
+        id: 12,
         name: 'Игры',
         icon: 'Games',
         models: [
@@ -137,8 +145,17 @@ const specData = [
         ]
     },
     {
-        id: 12,
-        name: 'Технический продакшн',
+        id: 13,
+        name: 'Продакшн',
+        icon: 'Production',
+        models: [
+            {id: 1, name: 'Мероприятие под ключ',},
+            {id: 2, name: 'Отдельные технические задачи',},
+        ]
+    },
+    {
+        id: 14,
+        name: 'Декорации',
         icon: 'Production',
         models: [
             {id: 1, name: 'Мероприятие под ключ',},
