@@ -545,14 +545,33 @@ const handleFileChange = (e) => {
 
         const res = await getSpecStavka(data)
 
+        console.log("res: ", res)
+
         let arrSpec = []
-        Object.keys(res).map((item)=> {
+        Object.keys(res).map((item, index)=> {
             const obj = {
                 title: item,
                 smena: Object.keys(res[item])[0],
                 stavka: res[item][Object.keys(res[item])[0]]["№1"]
             }
             arrSpec.push(obj)
+
+            if (item === 'Помощник / Грузчик') {
+                const obj2 = {
+                    title: item,
+                    smena: Object.keys(res[item])[1],
+                    stavka: res[item][Object.keys(res[item])[1]]["№1"]
+                }
+                arrSpec.push(obj2)
+
+                const obj3 = {
+                    title: item,
+                    smena: Object.keys(res[item])[2],
+                    stavka: res[item][Object.keys(res[item])[2]]["№1"]
+                }
+                arrSpec.push(obj3)
+            }
+            
         })
 
         setSoundTable(arrSpec)
