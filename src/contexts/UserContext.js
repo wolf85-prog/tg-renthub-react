@@ -47,7 +47,7 @@ const UserProvider = ({ children }) => {
             setWorkerhub(manager)
 
             const resCompany = await getCompanysApi()
-            const company = resCompany.find((item)=> item.id === parseInt(manager?.companyId) || item.GUID === manager?.companyId)
+            const company = resCompany.find((item)=> item.id === parseInt(manager?.companyId) || item.GUID === manager?.companyId && manager?.companyId !== null)
 
             setCompanyId(manager?.companyId)          
             setCompanyManager(company?.title)
