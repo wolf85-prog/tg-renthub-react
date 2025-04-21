@@ -10,6 +10,8 @@ import Posts from "./pages/Posts/Posts";
 import NewProject from "./pages/NewProject/NewProject";
 import NewStavka from "./pages/NewStavka/NewStavka";
 import ProfilePage from "./pages/ProfilePage/ProfilePage"
+import Reytings from "./pages/Reytings/Reytings";
+import EditReyting from "./pages/EditReyting/EditReyting";
 
 function App() { 
 
@@ -30,6 +32,8 @@ function App() {
                     <Route path={'error'} element={<Error />}/>
                     <Route path={'add-project'} element={<NewProject />}/>
                     <Route path={'add-stavka/:id'} element={<NewStavka />}/>
+                    <Route path={'list-reyting'} element={<Reytings />}/>
+                    <Route path={'edit-reyting'} element={<EditReyting />}/>
                 </Routes>
         </ThemeProvider>
     );
