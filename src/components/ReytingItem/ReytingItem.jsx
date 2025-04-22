@@ -6,6 +6,8 @@ import Slider from '@mui/material/Slider';
 
 import MyModal from "../MyModal/MyModal";
 import BackModal from "../../img/new/card.svg"
+import Star from "./../../img/star.png";
+import StarActive from "./../../img/star_activ.svg";
 
 import { useUsersContext } from "../../contexts/UserContext";
 //import { getStavka, addStavka, addFactStavka, getSpecStavka } from '../../http/stavkaAPI';
@@ -54,6 +56,12 @@ const ReytingItem = (props) => {
     const [gsmView, setGsmView] = useState(0);
     const [taxiView, setTaxiView] = useState(0);
     const [comtag, setComtag] = useState([]);
+
+    const [starActive1, setStarActive1] = useState(false)
+    const [starActive2, setStarActive2] = useState(false)
+    const [starActive3, setStarActive3] = useState(false)
+    const [starActive4, setStarActive4] = useState(false)
+    const [starActive5, setStarActive5] = useState(false)
 
     useEffect(()=> {
     
@@ -118,7 +126,16 @@ const ReytingItem = (props) => {
                 <div className='project-text'>
                     <p className="project_title" onClick={clickProject}>{props.post.name}</p>
                     <p className="project_subtitle"></p>
-                </div>  
+                    <div className="star-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
+                        <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
+                        <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
+                        <img className='star-icon' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
+                        <img className='star-icon' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
+                        <img className='star-icon' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
+                    </div> 
+                </div> 
+
+                
             </div> 
         </div>
 
