@@ -109,10 +109,10 @@ const ReytingItem = (props) => {
     return (
     <>
 
-        <div className='container grid-item' style={{zIndex: 10}}>           
+        <div className='grid-item' style={{zIndex: 10}}>           
             <div className='proj-card'>
-                <svg className="rounded me-2" width="250" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style={{float:'left', margin: '4px 10px 2px 0px'}}>
-                    <rect width="250px" height="250px" fill="#007aff" rx="40"></rect> 
+                <svg className="rounded me-2" width="200" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style={{float:'left', margin: '4px 10px 2px 0px'}}>
+                    <rect width="200px" height="200px" fill="#007aff" rx="40"></rect> 
                 </svg>
                 
                 <div className='project-text'>

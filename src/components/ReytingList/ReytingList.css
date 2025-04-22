@@ -11,4 +11,5 @@
     border: solid 2px #000;
     display: grid;
     grid-template-columns: 18em 18em;
+    /* grid-template-rows: 5em 5em; */
 }

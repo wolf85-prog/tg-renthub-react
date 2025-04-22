@@ -39,6 +39,12 @@ const Reytings = () => {
             reyting: 0,
             spec: '',
         },
+        {
+            avatar: '',
+            name: 'ФИО5',
+            reyting: 0,
+            spec: '',
+        },
     ]);
 
     const [widthD, setWidthD] = useState(0)
