@@ -1,0 +1,14 @@
+.status_el {
+    text-align: left;
+    margin-left: 10px;
+}
+
+.list-item {
+    margin-bottom: 50px;
+}
+
+.grid-container {
+    border: solid 2px #000;
+    display: grid;
+    grid-template-columns: 18em 18em;
+}
