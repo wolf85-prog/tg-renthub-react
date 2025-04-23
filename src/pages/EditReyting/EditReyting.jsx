@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
+import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header2/Header2";
 import './EditReyting.css';
 
@@ -13,6 +14,7 @@ const API_URL = process.env.REACT_APP_API_URL
 
 const EditReyting = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const {tg, queryId, user, onClose} = useTelegram();
 
     const [starActive1, setStarActive1] = useState(false)
@@ -45,7 +47,7 @@ const EditReyting = () => {
     //     }
     // }, [onSendData])
 
-    const handleClick = () => navigate('/list-reyting');
+    const handleClick = () => navigate('list-reyting');
 
     //показать кнопку Назад
     useEffect(() => {
