@@ -17,33 +17,33 @@ const Reytings = () => {
     const [projects2, setProjects2] = useState([
         {
             avatar: '',
-            name: 'ФИО',
+            name: 'Иван',
             reyting: 0,
-            spec: '',
+            spec: 'Звукорежиссер',
         },
         {
             avatar: '',
-            name: 'ФИО2',
+            name: 'Сергей',
             reyting: 0,
-            spec: '',
+            spec: 'Системный инженер',
         },
         {
             avatar: '',
-            name: 'ФИО3',
+            name: 'Михаил',
             reyting: 0,
-            spec: '',
+            spec: 'RF-Менеджер',
         },
         {
             avatar: '',
-            name: 'ФИО4',
+            name: 'Владимир',
             reyting: 0,
-            spec: '',
+            spec: 'Backline',
         },
         {
             avatar: '',
-            name: 'ФИО5',
+            name: 'Алексей',
             reyting: 0,
-            spec: '',
+            spec: 'Roadie',
         },
     ]);
 

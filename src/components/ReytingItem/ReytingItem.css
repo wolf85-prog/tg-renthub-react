@@ -1,4 +1,4 @@
-.proj-card {
+.reyting-card {
     position: relative;
     width: 100%;
     height: auto;
@@ -14,10 +14,10 @@
     box-sizing: border-box;
     text-align: center;
     font-size: 1.1em;
-    padding: 1.1em;
+    padding: 1.4em;
 }
 
-.project-text {
+.reyting-text {
     position: relative;
     height: 20px;
     left: 0px;
@@ -26,7 +26,7 @@
     z-index: 8;
 }
 
-.project_title {
+.reyting_title {
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -38,11 +38,11 @@
     color: #E8F1F9;
 }
 
-.project_subtitle {
+.reyting_subtitle {
     /* 06.12.2023 | 20:00 */
-    position: absolute;
+    /* position: absolute;
     left: 0;
-    top: 25px;
+    top: 25px; */
 
     font-style: normal;
     font-weight: 400;
@@ -58,7 +58,7 @@
 }
 
 
-.star-block {
+.reyting-block {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

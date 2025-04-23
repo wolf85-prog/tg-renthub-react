@@ -18,6 +18,7 @@ import VectorUp from "../../img/new/vector_up.svg"
 import Ukazatel from "../../img/new/ukazatel.png"
 import Close from "../../img/new/close.svg"
 import ClosePress from "../../img/new/close_press.svg"
+import AvatarDefault from "./../../img/blank-avatar.png";
 
 
 const ReytingItem = (props) => {
@@ -46,7 +47,6 @@ const ReytingItem = (props) => {
 
     const sliderRef = useRef(null)
 
-    const [statusMoney, setStatusMoney] = useState('Фактически')
 
     const [chasiView, setChasiView] = useState(0);
     const [smenaView, setSmenaView] = useState(0);
@@ -63,38 +63,6 @@ const ReytingItem = (props) => {
     const [starActive4, setStarActive4] = useState(false)
     const [starActive5, setStarActive5] = useState(false)
 
-    useEffect(()=> {
-    
-        //1
-        if (statusMoney === 1) {
-            setStatusMoney('Предварительно')
-
-            setValueShkala(1650) //1
-        } 
-        //2
-        else if(statusMoney === 'Фактически') {
-            //setStatusMoney('Фактически')
-
-            setValueShkala(3800) 
-        } 
-        //4
-        else if(statusMoney === 4) {
-            setStatusMoney('На оплате')
-            setValueShkala(8400)
-        }
-        //5
-        else if(statusMoney === 5) {
-            setStatusMoney('Оплачено')
-            setValueShkala(10000)
-        }
-        
-        //3
-        // if (finalSmeta === 'Подтверждена') {
-        //     setStatusMoney('Подтверждено')
-
-        //     setValueShkala(5900)
-        // }
-    }, [])
 
     const clickProject = () => {
         showProject ? setShowProject(false) : setShowProject(true)
@@ -118,15 +86,16 @@ const ReytingItem = (props) => {
     <>
 
         <div className='grid-item' style={{zIndex: 10}}>           
-            <div className='proj-card'>
-                <svg className="rounded me-2" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style={{float:'left', margin: '4px 10px 2px 0px'}}>
+            <div className='reyting-card'>
+                {/* <svg className="rounded me-2" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style={{float:'left', margin: '4px 10px 2px 0px'}}>
                     <rect width="100%" height="100%" fill="#007aff" rx="40"></rect> 
-                </svg>
+                </svg> */}
+                <img className="rounded me-2" width="100%" height="100%" src={AvatarDefault} alt='' style={{borderRadius: '20px'}}/>
                 
-                <div className='project-text'>
-                    <p className="project_title" onClick={clickProject}>{props.post.name}</p>
-                    <p className="project_subtitle"></p>
-                    <div className="star-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
+                <div className='reyting-text'>
+                    <p className="reyting_title" onClick={clickProject}>{props.post.name}</p>
+                    <p className="reyting_subtitle">{props.post.spec}</p>
+                    <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
                         <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
                         <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
                         <img className='star-icon' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
