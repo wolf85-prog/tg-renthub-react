@@ -23,11 +23,7 @@ const ReytingList = ({posts}) => {
 
     return (
         <div className="list-item grid-container">
-            <h1>
-                Список
-            </h1>
-                     
-                     
+    
             {posts.map((post, index) =>
                 <ReytingItem number={index + 1} post={post} key={post.id}/>      
             )}
