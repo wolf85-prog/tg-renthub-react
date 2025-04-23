@@ -45,15 +45,15 @@ const EditReyting = () => {
     //     }
     // }, [onSendData])
 
-
+    const handleClick = () => navigate('/list-reyting');
 
     //показать кнопку Назад
     useEffect(() => {
-        tg.onEvent("backButtonClicked", onClose)
+        tg.onEvent("backButtonClicked", handleClick)
         return () => {
-            tg.offEvent('backButtonClicked', onClose)
+            tg.offEvent('backButtonClicked', handleClick)
         }
-    }, [onClose])
+    }, [handleClick])
 
     useEffect(() => {
         tg.BackButton.show();
