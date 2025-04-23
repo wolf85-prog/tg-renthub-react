@@ -47,7 +47,7 @@ const EditReyting = () => {
     //     }
     // }, [onSendData])
 
-    const handleClick = () => navigate('list-reyting');
+    const handleClick = () => navigate('/list-reyting');
 
     //показать кнопку Назад
     useEffect(() => {
