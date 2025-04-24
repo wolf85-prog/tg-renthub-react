@@ -18,7 +18,7 @@ const ReytingList = ({posts}) => {
             </>
         )
     } else {
-        console.log("Кол-во проектов: ", posts.length)
+        console.log("Кол-во специалистов: ", posts.length)
     }
 
     return (
