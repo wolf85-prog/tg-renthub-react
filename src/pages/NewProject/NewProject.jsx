@@ -56,7 +56,7 @@ const NewProject = () => {
     // текущая дата
     const dateNow = new Date();
     const month = String(dateNow.getMonth()+1).padStart(2, "0");
-    const date = dateNow.getFullYear() + "-" + month + "-01 10:00:00"
+    const date = dateNow.getFullYear() + "-" + month + "-01T10:00"
 
     //проект
     const [project, setProject] = useState('');
