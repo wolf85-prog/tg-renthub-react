@@ -72,6 +72,38 @@ export const getProjectsApi = async (id) =>{
     }
 }
 
+export const getProjectCrmId = async (id) =>{
+    try {
+       let response = await $host_old.get(`api/projectnew/crmId/get/${id}`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getProjectCrmId api from webapp-react", error.message);
+    }
+}
+
+
+export const getMainSpecId = async (id) =>{
+    try {
+       let response = await $host_old.get(`api/mainspec/project/get/${id}`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getMainSpecId api from webapp-react", error.message);
+    }
+}
+
+
+export const getSpecId = async (id) =>{
+    try {
+       let response = await $host_old.get(`api/specialist/${id}`);
+       //console.log(response);
+       return response.data;
+    } catch (error) {
+        console.log("error while calling getSpecId api from webapp-react", error.message);
+    }
+}
+
 
 export const getProjectsCashApi = async () =>{
     try {

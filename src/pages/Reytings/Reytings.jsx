@@ -8,45 +8,17 @@ import './Reytings.css';
 
 import BlackFon from "./../../img/fon_grad.svg";
 
+import { getProjectCrmId, getMainSpecId, getSpecId } from '../../http/projectAPI';
+
 const API_URL = process.env.REACT_APP_API_URL
 
 const Reytings = () => {
     const { id } = useParams();
     const {tg, queryId, user, onClose} = useTelegram();
     const [isPostsLoading, setIsPostsLoading] = useState(false);
-    const [project, setProject] = useState()
-    const [projects2, setProjects2] = useState([
-        {
-            avatar: '',
-            name: 'Иван',
-            reyting: 0,
-            spec: 'Звукорежиссер',
-        },
-        {
-            avatar: '',
-            name: 'Сергей',
-            reyting: 0,
-            spec: 'Системный инженер',
-        },
-        {
-            avatar: '',
-            name: 'Михаил',
-            reyting: 0,
-            spec: 'RF-Менеджер',
-        },
-        {
-            avatar: '',
-            name: 'Владимир',
-            reyting: 0,
-            spec: 'Backline',
-        },
-        {
-            avatar: '',
-            name: 'Алексей',
-            reyting: 0,
-            spec: 'Roadie',
-        },
-    ]);
+    const [projectName, setProjectName] = useState('')
+    const [projectId, setProjectId] = useState('')
+    const [mainSpec, setMainSpec] = useState([])
 
     const [widthD, setWidthD] = useState(0)
 
@@ -55,6 +27,38 @@ const Reytings = () => {
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
         setIsPostsLoading(false)
+
+        const fetch = async()=> {
+            const recProj = await getProjectCrmId('3779')
+            console.log("recProj: ", recProj)
+            setProjectName(recProj?.name)
+            setProjectId(recProj?.id)
+
+            const resSpec = await getMainSpecId(recProj?.id)
+            console.log("resSpec: ", resSpec)
+
+            let arrSpec = []
+            resSpec.map(async(item)=> {
+                const spec = await getSpecId(item.specId)
+                console.log("spec", spec)
+                if (spec) {
+                    const obj = {
+                        name: spec?.fio?.split(' ')[1],
+                        profile: spec?.profile,
+                        date: item.date,
+                        spec: item.specialization,
+                    }
+                    arrSpec.push(obj)
+                }          
+            })
+
+            setTimeout(()=> {
+                console.log("arrSpec: ", arrSpec)
+                setMainSpec(arrSpec)
+            }, 2000)
+              
+        }
+        fetch()
     }, []);
 
 
@@ -97,7 +101,7 @@ const Reytings = () => {
             {/* <Header header={{title: 'Специалисты', icon: 'false'}}/> */}
 
             <div className='project-header'>
-                <p><span style={{color: '#7f7f7f'}}>01.01.2025 00:00</span> <span style={{position: 'absolute', right: '25px'}}>Название проекта</span></p>
+                <p><span style={{color: '#7f7f7f'}}>{mainSpec[0]?.date?.split('T')[0]} {mainSpec[0]?.date?.split('T')[1]}</span> <span style={{position: 'absolute', right: '25px'}}>{projectName}</span></p>
             </div>
 
             {/* темный фон */}
@@ -109,7 +113,7 @@ const Reytings = () => {
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh'}}>
                <Loader/>
             </div>  
-            : <ReytingList posts={projects2}/>
+            : <ReytingList posts={mainSpec}/>
             }
 
         </div>
