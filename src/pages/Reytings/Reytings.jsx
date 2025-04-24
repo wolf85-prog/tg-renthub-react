@@ -94,12 +94,10 @@ const Reytings = () => {
 
     return (
         <div className="App" style={{width: '100%'}}>
-            <Header header={{title: 'Специалисты', icon: 'false'}}/>
+            {/* <Header header={{title: 'Специалисты', icon: 'false'}}/> */}
 
             <div className='project-header'>
-                <p><span style={{color: '#7f7f7f'}}>Дата / Время:</span> <span style={{position: 'absolute', right: '25px'}}>01.01.2025 00:00</span></p>
-                <p><span style={{color: '#7f7f7f'}}>Проект:</span> <span style={{position: 'absolute', right: '25px'}}>Название проекта</span></p>
-                <p><span style={{color: '#7f7f7f'}}>Старший:</span> <span style={{position: 'absolute', right: '25px'}}>Имя</span></p>
+                <p><span style={{color: '#7f7f7f'}}>01.01.2025 00:00</span> <span style={{position: 'absolute', right: '25px'}}>Название проекта</span></p>
             </div>
 
             {/* темный фон */}
