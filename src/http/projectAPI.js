@@ -85,7 +85,7 @@ export const getProjectCrmId = async (id) =>{
 
 export const getMainSpecId = async (id) =>{
     try {
-       let response = await $host_old.get(`api/mainspec/project/get/${id}`);
+       let response = await $host_old.get(`api/mainspec/project/webapp/get/${id}`);
        //console.log(response);
        return response.data;
     } catch (error) {
