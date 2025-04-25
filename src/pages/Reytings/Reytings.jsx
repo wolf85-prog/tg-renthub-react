@@ -29,7 +29,7 @@ const Reytings = () => {
         setIsPostsLoading(false)
 
         const fetch = async()=> {
-            const recProj = await getProjectCrmId('3779')
+            const recProj = await getProjectCrmId(id)
             console.log("recProj: ", recProj)
             setProjectName(recProj?.name)
             setProjectId(recProj?.id)
