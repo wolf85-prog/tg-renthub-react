@@ -53,7 +53,7 @@
 
     /* ULEY Светлый */
     color: #E8F1F9;
-
+    width: 150px;
     opacity: 0.4;
 }
 
@@ -71,9 +71,10 @@
   }
 
   .star-icon {
-    width: 40px;
+    width: 20px;
   }
 
+  
 
 
 

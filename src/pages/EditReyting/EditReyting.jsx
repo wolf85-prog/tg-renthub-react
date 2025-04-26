@@ -83,11 +83,12 @@ const EditReyting = () => {
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
 
-            <div style={{zIndex: '10', position: 'relative', padding: '15px'}}>
+            <div style={{zIndex: '10', position: 'relative', padding: '15px', textAlign: '-webkit-center'}}>
                 <img className="rounded me-2" width="100%" height="100%" src={AvatarDefault} alt='' style={{borderRadius: '20px'}}/>
 
                 <div className='reyting-text'>
                     <p className="reyting_title">Имя</p>
+                </div>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div>
                             <p>Возраст</p>
@@ -101,11 +102,11 @@ const EditReyting = () => {
                         </div>
                         
                         <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px', marginTop: '25px'}}>
-                            <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
-                            <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
-                            <img className='star-icon' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
-                            <img className='star-icon' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
-                            <img className='star-icon' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
+                            <img className='star-icon_profile' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
+                            <img className='star-icon_profile' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
+                            <img className='star-icon_profile' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
+                            <img className='star-icon_profile' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
+                            <img className='star-icon_profile' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
                         </div> 
                         <div>
                             <p>Проекты</p>
@@ -120,7 +121,7 @@ const EditReyting = () => {
                     </div>
 
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div style={{width: '100%'}}>
+                        <div style={{width: '47%'}}>
                             <p>Старт</p>
                             <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                 style={{
@@ -130,7 +131,7 @@ const EditReyting = () => {
                                 }}>...
                             </div>
                         </div>
-                        <div style={{width: '100%'}}>
+                        <div style={{width: '47%'}}>
                             <p>Стоп</p>
                             <div className="text-field">
                                 <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
@@ -184,7 +185,10 @@ const EditReyting = () => {
                                 textAlign: 'left', 
                                 marginBottom: '20px',
                                 backgroundColor: 'transparent',
-                                border: '1px solid #4f4f55'
+                                border: '1px solid #4f4f55',
+                                color: '#fff',
+                                padding: '10px',
+                                fontSize: '16px',
                             }}
                         />
                     </div> 
@@ -195,7 +199,7 @@ const EditReyting = () => {
                             Сохранить
                         </span>
                     </div> 
-                </div> 
+                {/* </div>  */}
             </div>
             
                 
