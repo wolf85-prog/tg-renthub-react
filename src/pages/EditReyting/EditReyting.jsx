@@ -100,7 +100,7 @@ const EditReyting = () => {
                             </div>
                         </div>
                         
-                        <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
+                        <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px', marginTop: '25px'}}>
                             <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
                             <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
                             <img className='star-icon' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
@@ -108,7 +108,7 @@ const EditReyting = () => {
                             <img className='star-icon' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
                         </div> 
                         <div>
-                            <p>Возраст</p>
+                            <p>Проекты</p>
                             <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                 style={{
                                     backgroundColor: 'transparent', 
