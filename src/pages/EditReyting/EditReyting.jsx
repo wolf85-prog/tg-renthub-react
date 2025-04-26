@@ -73,7 +73,7 @@ const EditReyting = () => {
     //     }
     // }, [onSendData])
 
-    const handleClick = () => navigate('/list-reyting');
+    const handleClick = () => navigate(-1);
 
     //показать кнопку Назад
     useEffect(() => {
@@ -89,7 +89,7 @@ const EditReyting = () => {
 
 
     const saveProfile = () => {
-
+        navigate(-1);
     }
 
     //---------------------------------------------------------------------------------------
