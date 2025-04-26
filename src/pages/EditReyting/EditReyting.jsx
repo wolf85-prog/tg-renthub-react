@@ -23,6 +23,8 @@ const EditReyting = () => {
     const [starActive4, setStarActive4] = useState(false)
     const [starActive5, setStarActive5] = useState(false)
 
+    const [comment, setComment] = useState('')
+
     const [widthD, setWidthD] = useState(0)
 
 
@@ -62,6 +64,10 @@ const EditReyting = () => {
     }, [])
 
 
+    const saveProfile = () => {
+
+    }
+
     //---------------------------------------------------------------------------------------
 
     return (
@@ -73,18 +79,65 @@ const EditReyting = () => {
             <img src={BlackFon} alt='' className='fon-black' style={{left: `${widthD}px`, zIndex: '1'}} />
 
 
-            <div style={{zIndex: '10', position: 'relative'}}>
+            <div style={{zIndex: '10', position: 'relative', padding: '15px'}}>
                 <img className="rounded me-2" width="100%" height="100%" src={AvatarDefault} alt='' style={{borderRadius: '20px'}}/>
 
                 <div className='reyting-text'>
                     <p className="reyting_title">Имя</p>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <p>Возраст</p>
+                        <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
+                            <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
+                            <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
+                            <img className='star-icon' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
+                            <img className='star-icon' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
+                            <img className='star-icon' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
+                        </div> 
+                        <p>Проекты</p>
+                    </div>
+
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <div>
+                            <p>Старт</p>
+                        </div>
+                        <div>
+                            <p>Стоп</p>
+                        </div>
+                        
+                    </div>
+                    
                     <p className="reyting_subtitle">Специальность</p>
-                    <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
-                        <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
-                        <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
-                        <img className='star-icon' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
-                        <img className='star-icon' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
-                        <img className='star-icon' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
+
+
+                    <p className="reyting_subtitle">Комтег</p>
+
+
+                    <p className="reyting_subtitle">Комментарий</p>
+                    <div className="text-field" style={{marginBottom: '0px'}}>
+                        <textarea 
+                            type="text" 
+                            name="comment" 
+                            id="comment"
+                            value={comment}
+                            onChange={(e)=>setComment(e.target.value)}
+                            style={{
+                                resize: 'none', 
+                                width: '100%', 
+                                height: '100px', 
+                                whiteSpace: 'pre-line', 
+                                borderRadius: '6px', 
+                                textAlign: 'left', 
+                                marginBottom: '20px',
+                                backgroundColor: 'transparent'
+                            }}
+                        />
+                    </div> 
+                    
+
+                    <div onClick={saveProfile} style={{width: '100%', padding: '7px', height: '40px', border: '1px solid green', borderRadius: '10px'}}>
+                        <span style={{fontSize: '16px', color: 'green'}}>
+                            Сохранить
+                        </span>
                     </div> 
                 </div> 
             </div>
