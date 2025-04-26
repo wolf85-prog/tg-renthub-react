@@ -26,7 +26,7 @@ const Reytings = () => {
 //----------------------------------------------------------------------------------
     // при первой загрузке приложения выполнится код ниже
     useEffect(() => {
-        setIsPostsLoading(false)
+        setIsPostsLoading(true)
 
         const fetch = async()=> {
             const recProj = await getProjectCrmId(id)
@@ -56,6 +56,7 @@ const Reytings = () => {
             setTimeout(()=> {
                 console.log("arrSpec: ", arrSpec)
                 setMainSpec(arrSpec)
+                setIsPostsLoading(false)
             }, 2000)
               
         }
