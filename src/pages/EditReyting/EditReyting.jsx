@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import Header from "../../components/Header2/Header2";
 import MyDropdown2 from '../../components/Dropdown2/Dropdown2';
 import './EditReyting.css';
@@ -13,10 +13,15 @@ import AvatarDefault from "./../../img/blank-avatar.png";
 import Star from "./../../img/star.png";
 import StarActive from "./../../img/star_activ.svg";
 
+import { getSpecId } from '../../http/projectAPI';
+
 const API_URL = process.env.REACT_APP_API_URL
 
 const EditReyting = () => {
-    const { id } = useParams();
+    const { id, spec } = useParams();
+    //const { spec } = useParams();
+    const location = useLocation();
+
     const navigate = useNavigate();
     const {tg, queryId, user, onClose} = useTelegram();
 
@@ -26,14 +31,29 @@ const EditReyting = () => {
     const [starActive4, setStarActive4] = useState(false)
     const [starActive5, setStarActive5] = useState(false)
 
+    const [name, setName] = useState('')
+    const [age, setAge] = useState('')
+    const [projectCount, setProjectCount] = useState(0)
     const [comment, setComment] = useState('')
     const [comteg, setComteg] = useState([]);
+    const [profile, setProfile] = useState('')
 
     const [widthD, setWidthD] = useState(0)
 
 
 //----------------------------------------------------------------------------------
+    useEffect(()=> {
+        const fetch = async() => {
+            const resSpec = await getSpecId(id)
+            console.log("resSpec: ", resSpec, )
+            setName(resSpec?.fio.split(' ')[1])
+            setAge(parseInt(new Date().getFullYear())-parseInt(resSpec?.age.split('-')[0]))
+            setProjectCount(resSpec?.projectAll ? resSpec?.projectAll : 0)
+            setProfile(resSpec?.profile)
+        }
 
+        fetch()
+    }, [])
 
 
     useEffect(()=>{
@@ -84,10 +104,10 @@ const EditReyting = () => {
 
 
             <div style={{zIndex: '10', position: 'relative', padding: '15px', textAlign: '-webkit-center'}}>
-                <img className="rounded me-2" width="100%" height="100%" src={AvatarDefault} alt='' style={{borderRadius: '20px'}}/>
+                <img className="rounded me-2" width="100%" height="100%" src={profile ? profile : AvatarDefault} alt='' style={{borderRadius: '20px'}}/>
 
                 <div className='reyting-text'>
-                    <p className="reyting_title">Имя</p>
+                    <p className="reyting_title">{name}</p>
                 </div>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div>
@@ -97,7 +117,7 @@ const EditReyting = () => {
                                     backgroundColor: 'transparent', 
                                     color: '#fff',
                                     border: '1px solid #4f4f55'
-                                }}>...
+                                }}>{age}
                             </div>
                         </div>
                         
@@ -115,7 +135,7 @@ const EditReyting = () => {
                                     backgroundColor: 'transparent', 
                                     color: '#fff',
                                     border: '1px solid #4f4f55'
-                                }}>...
+                                }}>{projectCount}
                             </div>
                         </div>
                     </div>
@@ -153,7 +173,7 @@ const EditReyting = () => {
                                 backgroundColor: 'transparent', 
                                 color: '#fff',
                                 border: '1px solid #4f4f55'
-                            }}>Специальность
+                            }}>{spec}
                         </div>
                     </div>
 

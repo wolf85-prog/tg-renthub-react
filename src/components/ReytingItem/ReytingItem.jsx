@@ -64,8 +64,15 @@ const ReytingItem = (props) => {
     const [starActive5, setStarActive5] = useState(false)
 
 
-    const clickProject = () => {
-        navigate('/edit-reyting')
+    const clickProject = (id, spec) => {
+        console.log("id: ", id, spec)
+        navigate(`/edit-reyting/${id}/spec/${spec.replace('/', '|')}`)
+        // navigate('/edit-reyting', {
+        //     state: {
+        //       id: id,
+        //       spec: spec
+        //     }
+        //   });
     }
 
 
@@ -83,10 +90,10 @@ const ReytingItem = (props) => {
                 {/* <svg className="rounded me-2" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" style={{float:'left', margin: '4px 10px 2px 0px'}}>
                     <rect width="100%" height="100%" fill="#007aff" rx="40"></rect> 
                 </svg> */}
-                <img onClick={clickProject} className="rounded me-2" width="150" height="150" src={props.post.profile ? props.post.profile : AvatarDefault} alt='' style={{borderRadius: '20px', objectFit: 'cover'}}/>
+                <img onClick={()=>clickProject(props.post.id, props.post.spec)} className="rounded me-2" width="150" height="150" src={props.post.profile ? props.post.profile : AvatarDefault} alt='' style={{borderRadius: '20px', objectFit: 'cover'}}/>
                 
                 <div className='reyting-text'>
-                    <p className="reyting_title" onClick={clickProject}>{props.post.name}</p>
+                    <p className="reyting_title" onClick={()=>clickProject(props.post.id, props.post.spec)}>{props.post.name}</p>
                     <p className="reyting_subtitle">{props.post.spec}</p>
                     <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
                         <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 

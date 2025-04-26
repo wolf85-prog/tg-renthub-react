@@ -43,6 +43,7 @@ const Reytings = () => {
                 console.log("spec", spec)
                 if (spec) {
                     const obj = {
+                        id: spec?.id,
                         name: spec?.fio?.split(' ')[1],
                         profile: spec?.profile,
                         date: item.date,

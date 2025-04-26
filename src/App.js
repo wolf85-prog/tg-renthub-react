@@ -33,7 +33,7 @@ function App() {
                     <Route path={'add-project'} element={<NewProject />}/>
                     <Route path={'add-stavka/:id'} element={<NewStavka />}/>
                     <Route path={'list-reyting/:id'} element={<Reytings />}/>
-                    <Route path={'edit-reyting'} element={<EditReyting />}/>
+                    <Route path={'edit-reyting/:id/spec/:spec'} element={<EditReyting />}/>
                 </Routes>
         </ThemeProvider>
     );
