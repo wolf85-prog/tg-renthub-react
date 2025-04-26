@@ -3,7 +3,10 @@ import {useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useNavigate} from "react-router-dom";
 import Header from "../../components/Header2/Header2";
+import MyDropdown2 from '../../components/Dropdown2/Dropdown2';
 import './EditReyting.css';
+
+import comtegs from './../../data/comtegs';
 
 import BlackFon from "./../../img/fon_grad.svg";
 import AvatarDefault from "./../../img/blank-avatar.png";
@@ -24,6 +27,7 @@ const EditReyting = () => {
     const [starActive5, setStarActive5] = useState(false)
 
     const [comment, setComment] = useState('')
+    const [comteg, setComteg] = useState([]);
 
     const [widthD, setWidthD] = useState(0)
 
@@ -85,7 +89,17 @@ const EditReyting = () => {
                 <div className='reyting-text'>
                     <p className="reyting_title">Имя</p>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <p>Возраст</p>
+                        <div>
+                            <p>Возраст</p>
+                            <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
+                                style={{
+                                    backgroundColor: 'transparent', 
+                                    color: '#fff',
+                                    border: '1px solid #4f4f55'
+                                }}>...
+                            </div>
+                        </div>
+                        
                         <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
                             <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
                             <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
@@ -93,23 +107,64 @@ const EditReyting = () => {
                             <img className='star-icon' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
                             <img className='star-icon' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
                         </div> 
-                        <p>Проекты</p>
+                        <div>
+                            <p>Возраст</p>
+                            <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
+                                style={{
+                                    backgroundColor: 'transparent', 
+                                    color: '#fff',
+                                    border: '1px solid #4f4f55'
+                                }}>...
+                            </div>
+                        </div>
                     </div>
 
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                        <div>
+                        <div style={{width: '100%'}}>
                             <p>Старт</p>
+                            <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
+                                style={{
+                                    backgroundColor: 'transparent', 
+                                    color: '#fff',
+                                    border: '1px solid #4f4f55'
+                                }}>...
+                            </div>
                         </div>
-                        <div>
+                        <div style={{width: '100%'}}>
                             <p>Стоп</p>
+                            <div className="text-field">
+                                <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
+                                    style={{
+                                        backgroundColor: 'transparent', 
+                                        color: '#fff',
+                                        border: '1px solid #4f4f55'
+                                    }}>...
+                                </div>
+                            </div>
                         </div>
                         
                     </div>
                     
                     <p className="reyting_subtitle">Специальность</p>
+                    <div className="text-field">
+                        <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
+                            style={{
+                                backgroundColor: 'transparent', 
+                                color: '#fff',
+                                border: '1px solid #4f4f55'
+                            }}>Специальность
+                        </div>
+                    </div>
 
 
                     <p className="reyting_subtitle">Комтег</p>
+                    <div className="text-field"> 
+                        <MyDropdown2
+                            tags={comteg}
+                            setTags={setComteg}
+                            options={comtegs}
+                        />
+                    </div>
 
 
                     <p className="reyting_subtitle">Комментарий</p>
@@ -128,7 +183,8 @@ const EditReyting = () => {
                                 borderRadius: '6px', 
                                 textAlign: 'left', 
                                 marginBottom: '20px',
-                                backgroundColor: 'transparent'
+                                backgroundColor: 'transparent',
+                                border: '1px solid #4f4f55'
                             }}
                         />
                     </div> 

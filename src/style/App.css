@@ -799,7 +799,7 @@ input {
   color: #ffffff;
   background-color: transparent;
   background-clip: padding-box;
-  border: 1px solid #2d2e38;
+  border: 1px solid #4f4f55;
   border-radius: 6px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
