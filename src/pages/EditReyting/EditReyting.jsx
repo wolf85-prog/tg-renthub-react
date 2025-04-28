@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useNavigate, useLocation} from "react-router-dom";
 import Header from "../../components/Header2/Header2";
-import MyDropdown2 from '../../components/Dropdown2/Dropdown2';
+import DropdownClient from '../../components/DropdownClient/DropdownClient';
 import './EditReyting.css';
 
 import comtegs from './../../data/comtegs';
@@ -121,13 +121,44 @@ const EditReyting = () => {
                             </div>
                         </div>
                         
-                        <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px', marginTop: '25px'}}>
+                        {/* <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px', marginTop: '25px'}}>
                             <img className='star-icon_profile' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
                             <img className='star-icon_profile' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
                             <img className='star-icon_profile' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
                             <img className='star-icon_profile' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
                             <img className='star-icon_profile' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
-                        </div> 
+                        </div>  */}
+                        <div class="full-stars">
+                            <div class="rating-group">
+                                <input name="fst" value="0" type="radio" disabled checked />
+                                 
+                                <label for="fst-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                </label>
+                                <input name="fst" id="fst-1" value="1" type="radio" />
+                                
+                                <label for="fst-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                </label>
+                                <input name="fst" id="fst-2" value="2" type="radio" />
+                                  
+                                <label for="fst-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                </label>
+                                <input name="fst" id="fst-3" value="3" type="radio" />
+                                      
+                                <label for="fst-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                </label>
+                                <input name="fst" id="fst-4" value="4" type="radio" />
+                                  
+                                <label for="fst-5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
+                                </label>
+                                <input name="fst" id="fst-5" value="5" type="radio" />
+                            </div>
+                        </div>
+
                         <div>
                             <p>Проекты</p>
                             <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
@@ -180,10 +211,11 @@ const EditReyting = () => {
 
                     <p className="reyting_subtitle">Комтег</p>
                     <div className="text-field"> 
-                        <MyDropdown2
+                        <DropdownClient
+                            style={{backgroundColor: '#282b2e', left: '186px'}}
+                            options={comtegs}
                             tags={comteg}
                             setTags={setComteg}
-                            options={comtegs}
                         />
                     </div>
 

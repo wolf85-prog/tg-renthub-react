@@ -1,0 +1,26 @@
+.select {
+    background: 'transparent';
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px #4f4f55 solid;
+    border-radius: 6px;
+    padding: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+    height: 40px;
+    font-size: 1rem;
+}
+
+.selectClicked {
+    border: 2px #26489a solid;
+    /* box-shadow: 0 0 0.8em #26489a; */
+}
+
+.select hover {
+    background: #323741;
+}
+
+
+
