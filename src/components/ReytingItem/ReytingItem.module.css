@@ -74,6 +74,37 @@
     width: 20px;
   }
 
+
+  .fullStars2 {
+    text-align: center;
+  }
+  .fullStars2 .ratingGroup {
+    display: inline-flex;
+  }
+  .fullStars2 input {
+    position: absolute;
+    left: -9999px;
+  }
+  .fullStars2 label {
+    margin: 0;
+    cursor: pointer;
+  }
+  .fullStars2 label svg {
+    margin: 2px;
+    height: 25px;
+    width: 25px;
+    fill: #3392FF;
+    transition: fill 0.3s;
+  }
+  .fullStars2 input:checked ~ label svg {
+    fill: #4F5358;
+  }
+  .fullStars2 .rating-group:hover label svg {
+    fill: #3392FF;
+  }
+  .fullStars2 .rating-group input:hover ~ label svg {
+    fill: #4F5358;
+  }
   
 
 
