@@ -96,15 +96,15 @@ const ReytingItem = (props) => {
                 <div className='reyting-text'>
                     <p className="reyting_title" onClick={()=>clickProject(props.post.id, props.post.spec)}>{props.post.name}</p>
                     <p className="reyting_subtitle">{props.post.spec}</p>
-                    {/* <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
+                    <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
                         <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 
                         <img className='star-icon' onClick={()=>setStarActive2(!starActive2)} src={starActive2 ? StarActive : Star} alt='' />
                         <img className='star-icon' onClick={()=>setStarActive3(!starActive3)} src={starActive3 ? StarActive : Star} alt='' />
                         <img className='star-icon' onClick={()=>setStarActive4(!starActive4)} src={starActive4 ? StarActive : Star} alt='' />
                         <img className='star-icon' onClick={()=>setStarActive5(!starActive5)} src={starActive5 ? StarActive : Star} alt='' />
-                    </div>  */}
+                    </div> 
 
-                        <div className={cl.fullStars2}>
+                        {/* <div className={cl.fullStars2}>
                             <div className={cl.ratingGroup}>
                                 <input name="fst" value="0" type="radio" disabled checked />
                                  
@@ -305,7 +305,7 @@ const ReytingItem = (props) => {
                                 </label>
                                 <input name="fst" id="fst-5" value="5" type="radio" />
                             </div>
-                        </div>
+                        </div> */}
                 </div> 
 
                 
