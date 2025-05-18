@@ -28,6 +28,21 @@ const Reytings = () => {
     useEffect(() => {
         setIsPostsLoading(true)
 
+        function getUnique(arr, index) {
+
+            const unique = arr
+                .map(e => e[index])
+
+                // store the keys of the unique objects
+                .map((e, i, final) => final.indexOf(e) === i && i)
+            
+                // eliminate the dead keys & store unique objects
+                .filter(e => arr[e]).map(e => arr[e]);      
+
+            return unique;
+        }
+
+
         const fetch = async()=> {
             const recProj = await getProjectCrmId(id)
             console.log("recProj: ", recProj)
@@ -37,8 +52,12 @@ const Reytings = () => {
             const resSpec = await getMainSpecId(recProj?.id)
             console.log("resSpec: ", resSpec)
 
+
+            const newResSpec = getUnique(resSpec,'specId')
+            console.log("newResSpec: ", getUnique(resSpec,'specId'))
+
             let arrSpec = []
-            resSpec.map(async(item)=> {
+            newResSpec.map(async(item)=> {
                 const spec = await getSpecId(item.specId)
                 console.log("spec", spec)
                 if (spec) {
