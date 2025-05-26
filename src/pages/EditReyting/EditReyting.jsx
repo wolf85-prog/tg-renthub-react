@@ -66,6 +66,27 @@ const EditReyting = () => {
         
     }, [])
 
+    //отправка данных в telegram-бот
+    const onSendData = () => {
+        const data = {
+            reyting,
+            comteg,
+            comment,
+        }
+
+        setIsLoading(true)
+
+        fetch('https://uley.company:5000/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }) 
+        setIsLoading(false)
+              
+    }
+
     // useEffect(() => {
     //     tg.onEvent('mainButtonClicked', onSendData)
     //     return () => {
@@ -89,6 +110,7 @@ const EditReyting = () => {
 
 
     const saveProfile = () => {
+        onSendData()
         navigate(-1);
     }
 
