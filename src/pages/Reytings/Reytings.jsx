@@ -19,7 +19,7 @@ const Reytings = () => {
     const [projectName, setProjectName] = useState('')
     const [projectId, setProjectId] = useState('')
     const [mainSpec, setMainSpec] = useState([])
-
+    const [reyting, setReyting] = useState(0)
     const [widthD, setWidthD] = useState(0)
 
 
@@ -82,6 +82,26 @@ const Reytings = () => {
         fetch()
     }, []);
 
+    //отправка данных в telegram-бот
+    const onSendData = useCallback(() => {
+        const data = {
+            reyting,
+            projectname: projectName,
+        }
+
+        setIsLoading(true)
+
+        fetch('https://proj.uley.team:8002/web-reyting', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }) 
+        setIsLoading(false)
+              
+    }, [reyting, projectName])
+
 
     useEffect(()=>{
         tg.setHeaderColor('#343A41') // установка цвета хедера
@@ -93,12 +113,26 @@ const Reytings = () => {
         
     }, [])
 
-    // useEffect(() => {
-    //     tg.onEvent('mainButtonClicked', onSendData)
-    //     return () => {
-    //         tg.offEvent('mainButtonClicked', onSendData)
-    //     }
-    // }, [onSendData])
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+    useEffect(() => {
+            tg.MainButton.show();
+                
+            2 > 0
+            ? tg.MainButton.setParams({
+                text: 'Отправить',
+                color: '#000' //'#2e2e2e'
+            })
+            :  tg.MainButton.setParams({
+                text: 'Отправить',
+                color: '#fff' //'#2e2e2e'
+            })
+    }, [])
 
 
 

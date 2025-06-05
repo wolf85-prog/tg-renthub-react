@@ -34,6 +34,7 @@ const EditReyting = () => {
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
     const [projectCount, setProjectCount] = useState(0)
+    const [reyting, setReyting] = useState(0)
     const [comment, setComment] = useState('')
     const [comteg, setComteg] = useState([]);
     const [profile, setProfile] = useState('')
