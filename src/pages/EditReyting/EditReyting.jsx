@@ -77,7 +77,7 @@ const EditReyting = () => {
 
         setIsLoading(true)
 
-        fetch('https://uley.company:5000/web-data', {
+        fetch('https://proj.uley.team:8002/reytings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
