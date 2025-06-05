@@ -75,6 +75,8 @@ const EditReyting = () => {
             comment,
         }
 
+        console.log("data: ", data)
+
         setIsLoading(true)
 
         fetch('https://proj.uley.team:8002/reytings', {
