@@ -83,7 +83,7 @@ const Reytings = () => {
     }, []);
 
     //отправка данных в telegram-бот
-    const onSendData = useCallback(() => {
+    const onSendData = () => {
         const data = {
             reyting,
             projectname: projectName,
@@ -100,7 +100,7 @@ const Reytings = () => {
         }) 
         setIsLoading(false)
               
-    }, [reyting, projectName])
+    }
 
 
     useEffect(()=>{
