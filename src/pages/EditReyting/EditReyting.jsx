@@ -87,12 +87,27 @@ const EditReyting = () => {
               
     }
 
-    // useEffect(() => {
-    //     tg.onEvent('mainButtonClicked', onSendData)
-    //     return () => {
-    //         tg.offEvent('mainButtonClicked', onSendData)
-    //     }
-    // }, [onSendData])
+    useEffect(() => {
+        tg.onEvent('mainButtonClicked', onSendData)
+        return () => {
+            tg.offEvent('mainButtonClicked', onSendData)
+        }
+    }, [onSendData])
+
+
+    useEffect(() => {
+        tg.MainButton.show();
+            
+        2 > 0
+        ? tg.MainButton.setParams({
+            text: 'Отправить',
+            color: '#000' //'#2e2e2e'
+        })
+        :  tg.MainButton.setParams({
+            text: 'Отправить',
+            color: '#fff' //'#2e2e2e'
+        })
+    }, [])
 
     const handleClick = () => navigate(-1);
 
