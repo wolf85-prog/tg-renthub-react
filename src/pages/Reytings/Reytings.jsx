@@ -91,7 +91,7 @@ const Reytings = () => {
 
         setIsLoading(true)
 
-        fetch('https://proj.uley.team:8002/web-reyting', {
+        fetch('https://proj.uley.team:8002/reytings', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
