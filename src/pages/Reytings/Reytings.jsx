@@ -50,7 +50,7 @@ const Reytings = () => {
             setProjectId(recProj?.id)
 
             const resSpec = await getMainSpecId(recProj?.id)
-            console.log("resSpec: ", resSpec)
+            //console.log("resSpec: ", resSpec)
 
 
             const newResSpec = getUnique(resSpec,'specId')
@@ -59,7 +59,7 @@ const Reytings = () => {
             let arrSpec = []
             newResSpec.map(async(item)=> {
                 const spec = await getSpecId(item.specId)
-                console.log("spec", spec)
+                //console.log("spec", spec)
                 if (spec) {
                     const obj = {
                         id: spec?.id,
@@ -85,19 +85,30 @@ const Reytings = () => {
     //отправка данных в telegram-бот
     const onSendData = () => {
         const data = {
+            projectname: projId,
+            workerId: id,
             reyting,
-            projectname: projectName,
+            comteg: '',
+            comment: '',
         }
+
+        console.log("data: ", data)
 
         setIsLoading(true)
 
-        fetch('https://proj.uley.team:8002/reytings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        }) 
+        try {
+            fetch('https://proj.uley.team:8002/reytings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }) 
+        } catch (error) {
+            console.log(error.message)
+        }
+
+        
         setIsLoading(false)
               
     }
@@ -113,26 +124,26 @@ const Reytings = () => {
         
     }, [])
 
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
+    // useEffect(() => {
+    //     tg.onEvent('mainButtonClicked', onSendData)
+    //     return () => {
+    //         tg.offEvent('mainButtonClicked', onSendData)
+    //     }
+    // }, [onSendData])
 
-    useEffect(() => {
-            tg.MainButton.show();
+    // useEffect(() => {
+    //         tg.MainButton.show();
                 
-            2 > 0
-            ? tg.MainButton.setParams({
-                text: 'Отправить',
-                color: '#000' //'#2e2e2e'
-            })
-            :  tg.MainButton.setParams({
-                text: 'Отправить',
-                color: '#fff' //'#2e2e2e'
-            })
-    }, [])
+    //         2 > 0
+    //         ? tg.MainButton.setParams({
+    //             text: 'Отправить',
+    //             color: '#000' //'#2e2e2e'
+    //         })
+    //         :  tg.MainButton.setParams({
+    //             text: 'Отправить',
+    //             color: '#fff' //'#2e2e2e'
+    //         })
+    // }, [])
 
 
 
@@ -147,6 +158,10 @@ const Reytings = () => {
     useEffect(() => {
         tg.BackButton.show();
     }, [])
+
+    const saveProfile = () => {
+        onSendData()
+    }
 
 
     //---------------------------------------------------------------------------------------
@@ -168,7 +183,15 @@ const Reytings = () => {
             <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '70vh'}}>
                <Loader/>
             </div>  
-            : <ReytingList posts={mainSpec}/>
+            : 
+            <>
+                <ReytingList posts={mainSpec} projectname={projectName} projectId={projectId} projectCrmId={id} />
+                {/* <div onClick={saveProfile} style={{zIndex: '100', position: 'relative', margin: '35px', padding: '7px', height: '40px', border: '1px solid green', borderRadius: '10px'}}>
+                    <span style={{fontSize: '16px', color: 'green'}}>
+                        Сохранить
+                    </span>
+                </div>  */}
+            </>
             }
 
         </div>

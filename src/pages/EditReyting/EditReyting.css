@@ -33,3 +33,7 @@
 .full-stars .rating-group input:hover ~ label svg {
   fill: #4F5358;
 }
+
+.reyting_subtitle {
+  color: #777777;
+}

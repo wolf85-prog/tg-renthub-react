@@ -18,12 +18,14 @@ import { getSpecId } from '../../http/projectAPI';
 const API_URL = process.env.REACT_APP_API_URL
 
 const EditReyting = () => {
-    const { id, spec } = useParams();
+    const { id, spec, projId } = useParams();
     //const { spec } = useParams();
     const location = useLocation();
 
     const navigate = useNavigate();
     const {tg, queryId, user, onClose} = useTelegram();
+
+    const [isPostsLoading, setIsLoading] = useState(false)
 
     const [starActive1, setStarActive1] = useState(false)
     const [starActive2, setStarActive2] = useState(false)
@@ -70,6 +72,8 @@ const EditReyting = () => {
     //отправка данных в telegram-бот
     const onSendData = () => {
         const data = {
+            projectname: projId,
+            workerId: id,
             reyting,
             comteg,
             comment,
@@ -79,38 +83,44 @@ const EditReyting = () => {
 
         setIsLoading(true)
 
-        fetch('https://proj.uley.team:8002/reytings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-        }) 
+        try {
+            fetch('https://proj.uley.team:8002/reytings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }) 
+        } catch (error) {
+            console.log(error.message)
+        }
+
+        
         setIsLoading(false)
               
     }
 
-    useEffect(() => {
-        tg.onEvent('mainButtonClicked', onSendData)
-        return () => {
-            tg.offEvent('mainButtonClicked', onSendData)
-        }
-    }, [onSendData])
+    // useEffect(() => {
+    //     tg.onEvent('mainButtonClicked', onSendData)
+    //     return () => {
+    //         tg.offEvent('mainButtonClicked', onSendData)
+    //     }
+    // }, [onSendData])
 
 
-    useEffect(() => {
-        tg.MainButton.show();
+    // useEffect(() => {
+    //     tg.MainButton.show();
             
-        2 > 0
-        ? tg.MainButton.setParams({
-            text: 'Отправить',
-            color: '#000' //'#2e2e2e'
-        })
-        :  tg.MainButton.setParams({
-            text: 'Отправить',
-            color: '#fff' //'#2e2e2e'
-        })
-    }, [])
+    //     2 > 0
+    //     ? tg.MainButton.setParams({
+    //         text: 'Отправить',
+    //         color: '#000' //'#2e2e2e'
+    //     })
+    //     :  tg.MainButton.setParams({
+    //         text: 'Отправить',
+    //         color: '#fff' //'#2e2e2e'
+    //     })
+    // }, [])
 
     const handleClick = () => navigate(-1);
 
@@ -151,7 +161,7 @@ const EditReyting = () => {
                 </div>
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div>
-                            <p>Возраст</p>
+                            <p className="reyting_subtitle">Возраст</p>
                             <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                 style={{
                                     backgroundColor: 'transparent', 
@@ -211,7 +221,7 @@ const EditReyting = () => {
 
   
                                 </label>
-                                <input name="fst" id="fst-1" value="1" type="radio" />
+                                <input name="fst" id="fst-1" value="1" type="radio" onChange={()=>setReyting(1)}/>
                                 
                                 <label for="fst-2">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -220,7 +230,7 @@ const EditReyting = () => {
                                         </g>
                                     </svg>
                                 </label>
-                                <input name="fst" id="fst-2" value="2" type="radio" />
+                                <input name="fst" id="fst-2" value="2" type="radio" onChange={()=>setReyting(2)}/>
                                   
                                 <label for="fst-3">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -229,7 +239,7 @@ const EditReyting = () => {
                                         </g>
                                     </svg> 
                                 </label>
-                                <input name="fst" id="fst-3" value="3" type="radio" />
+                                <input name="fst" id="fst-3" value="3" type="radio" onChange={()=>setReyting(3)}/>
                                       
                                 <label for="fst-4">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -238,7 +248,7 @@ const EditReyting = () => {
                                         </g>
                                     </svg>
                                 </label>
-                                <input name="fst" id="fst-4" value="4" type="radio" />
+                                <input name="fst" id="fst-4" value="4" type="radio" onChange={()=>setReyting(4)}/>
                                   
                                 <label for="fst-5">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -247,12 +257,12 @@ const EditReyting = () => {
                                         </g>
                                     </svg>
                                 </label>
-                                <input name="fst" id="fst-5" value="5" type="radio" />
+                                <input name="fst" id="fst-5" value="5" type="radio" onChange={()=>setReyting(5)}/>
                             </div>
                         </div>
 
                         <div>
-                            <p>Проекты</p>
+                            <p className="reyting_subtitle">Проекты</p>
                             <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                 style={{
                                     backgroundColor: 'transparent', 
@@ -265,7 +275,7 @@ const EditReyting = () => {
 
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
                         <div style={{width: '47%'}}>
-                            <p>Старт</p>
+                            <p className="reyting_subtitle">Старт</p>
                             <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                 style={{
                                     backgroundColor: 'transparent', 
@@ -275,7 +285,7 @@ const EditReyting = () => {
                             </div>
                         </div>
                         <div style={{width: '47%'}}>
-                            <p>Стоп</p>
+                            <p className="reyting_subtitle">Стоп</p>
                             <div className="text-field">
                                 <div className="text-field__input" type="text" name="dateReg" id="dateReg" 
                                     style={{
