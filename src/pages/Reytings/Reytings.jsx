@@ -171,7 +171,10 @@ const Reytings = () => {
             {/* <Header header={{title: 'Специалисты', icon: 'false'}}/> */}
 
             <div className='project-header'>
-                <p><span style={{color: '#7f7f7f'}}>{mainSpec[0]?.date?.split('.')[0]}.{mainSpec[0]?.date?.split('.')[1]} | {mainSpec[0]?.date?.split('T')[1]}</span> <span style={{position: 'absolute', right: '25px'}}>{projectName}</span></p>
+                <p>
+                    <span style={{color: '#7f7f7f'}}>{mainSpec[0]?.date?.split('.')[0]}.{mainSpec[0]?.date?.split('.')[1]} | {mainSpec[0]?.date?.split('T')[1]}</span> 
+                    <span style={{position: 'absolute', right: '25px', color: '#7f7f7f'}}>{projectName}</span>
+                </p>
             </div>
 
             {/* темный фон */}
