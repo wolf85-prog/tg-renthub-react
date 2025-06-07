@@ -59,6 +59,12 @@ const EditReyting = () => {
     }, [])
 
 
+    useEffect(() => {
+        console.log("Reyting: ", reyting)
+    }, [reyting])
+
+
+
     useEffect(()=>{
         tg.setHeaderColor('#343A41') // установка цвета хедера
         tg.setBackgroundColor('#26292c') // установка цвета бэкграунда
@@ -221,7 +227,7 @@ const EditReyting = () => {
 
   
                                 </label>
-                                <input name="fst" id="fst-1" value="1" type="radio" onChange={()=>setReyting(1)}/>
+                                <input name="fst" id="fst-1" value="1" type="radio" checked={reyting === 1 ? true : false} onChange={()=>setReyting(1)}/>
                                 
                                 <label for="fst-2">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -230,7 +236,7 @@ const EditReyting = () => {
                                         </g>
                                     </svg>
                                 </label>
-                                <input name="fst" id="fst-2" value="2" type="radio" onChange={()=>setReyting(2)}/>
+                                <input name="fst" id="fst-2" value="2" type="radio" checked={reyting === 2 ? true : false} onChange={()=>setReyting(2)}/>
                                   
                                 <label for="fst-3">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +245,7 @@ const EditReyting = () => {
                                         </g>
                                     </svg> 
                                 </label>
-                                <input name="fst" id="fst-3" value="3" type="radio" onChange={()=>setReyting(3)}/>
+                                <input name="fst" id="fst-3" value="3" type="radio" checked={reyting === 3 ? true : false} onChange={()=>setReyting(3)}/>
                                       
                                 <label for="fst-4">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -248,7 +254,7 @@ const EditReyting = () => {
                                         </g>
                                     </svg>
                                 </label>
-                                <input name="fst" id="fst-4" value="4" type="radio" onChange={()=>setReyting(4)}/>
+                                <input name="fst" id="fst-4" value="4" type="radio" checked={reyting === 4 ? true : false} onChange={()=>setReyting(4)}/>
                                   
                                 <label for="fst-5">
                                     <svg width="201" height="190" viewBox="0 0 201 190" fill="#337AB7" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +263,7 @@ const EditReyting = () => {
                                         </g>
                                     </svg>
                                 </label>
-                                <input name="fst" id="fst-5" value="5" type="radio" onChange={()=>setReyting(5)}/>
+                                <input name="fst" id="fst-5" value="5" type="radio" checked={reyting === 5 ? true : false} onChange={()=>setReyting(5)}/>
                             </div>
                         </div>
 
