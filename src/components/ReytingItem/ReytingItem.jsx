@@ -24,7 +24,7 @@ import AvatarDefault from "./../../img/blank-avatar.png";
 
 const ReytingItem = (props) => {
     const navigate = useNavigate();
-    const {specId} = useUsersContext();
+    const {specId, projectDate, setProjectDate} = useUsersContext();
 
     const [stavka, setStavka] = useState(0)
     const [cashStavka, setCashStavka] = useState({})
@@ -66,8 +66,9 @@ const ReytingItem = (props) => {
 
 
     const clickProject = (id, spec) => {
-        console.log("id: ", id, spec, props.project, props.projectCrmId)
-        navigate(`/edit-reyting/proj/${props.projectCrmId}/${id}/spec/${spec.replace('/', '|')}`)
+        console.log("id: ", id, spec, props.project, props.projectCrmId, props.post.date)
+        setProjectDate(props.post.date)
+        navigate(`/edit-reyting/proj/${props.project}/${id}/spec/${spec.replace('/', '|')}`)
         // navigate('/edit-reyting', {
         //     state: {
         //       id: id,

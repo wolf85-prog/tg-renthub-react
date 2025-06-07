@@ -15,6 +15,8 @@ const API_URL = process.env.REACT_APP_API_URL
 const Reytings = () => {
     const { id } = useParams();
     const {tg, queryId, user, onClose} = useTelegram();
+    
+
     const [isPostsLoading, setIsPostsLoading] = useState(false);
     const [projectName, setProjectName] = useState('')
     const [projectId, setProjectId] = useState('')

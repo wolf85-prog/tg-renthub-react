@@ -17,6 +17,9 @@ const UserProvider = ({ children }) => {
     const [companyManager, setCompanyManager] = useState('');
     const [companyProfile, setCompanyProfile] = useState('');
     const [userApp, setUserApp] = useState('');
+
+    const [projectDate, setProjectDate] = useState('');
+
     //категории рассылки
     const [distrib, setDistrib] = useState({id: '', cat: '', spec: '', icon: ''})
     const [distribs, setDistribs] = useState([])
@@ -54,7 +57,7 @@ const UserProvider = ({ children }) => {
             setCompanyProfile(company?.profile)
 
             let arr = []
-            if (manager.worklist) {
+            if (manager?.worklist) {
                 JSON.parse(manager.worklist).map((item, index)=> {
                     const obj = {
                         id: Date.now()+index,
@@ -144,7 +147,9 @@ const UserProvider = ({ children }) => {
             distrib2, 
             setDistrib2,
             distribs2, 
-            setDistribs2
+            setDistribs2,
+            projectDate, 
+            setProjectDate,
 		}}>
 			{children}
 		</UserContext.Provider>

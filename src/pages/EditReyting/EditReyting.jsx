@@ -5,6 +5,7 @@ import {useNavigate, useLocation} from "react-router-dom";
 import Header from "../../components/Header2/Header2";
 import DropdownClient from '../../components/DropdownClient/DropdownClient';
 import './EditReyting.css';
+import { useUsersContext } from "../../contexts/UserContext";
 
 import comtegs from './../../data/comtegs';
 
@@ -21,6 +22,8 @@ const EditReyting = () => {
     const { id, spec, projId } = useParams();
     //const { spec } = useParams();
     const location = useLocation();
+
+    const { projectDate } = useUsersContext();
 
     const navigate = useNavigate();
     const {tg, queryId, user, onClose} = useTelegram();
@@ -79,6 +82,7 @@ const EditReyting = () => {
     const onSendData = () => {
         const data = {
             projectname: projId,
+            projectdata: projectDate,
             workerId: id,
             reyting,
             comteg,
