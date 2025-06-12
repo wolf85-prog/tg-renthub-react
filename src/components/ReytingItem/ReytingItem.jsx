@@ -95,7 +95,7 @@ const ReytingItem = (props) => {
                 <img onClick={()=>clickProject(props.post.id, props.post.spec)} className="rounded me-2" width="150" height="150" src={props.post.profile ? props.post.profile : AvatarDefault} alt='' style={{borderRadius: '20px', objectFit: 'cover'}}/>
                 
                 <div className='reyting-text'>
-                    <p className="reyting_title" onClick={()=>clickProject(props.post.id, props.post.spec)}>{props.post.name}</p>
+                    <p className="reyting_title" onClick={()=>clickProject(props.post.id, props.post.spec)}>{props.post.name.replace(/\[.+\]/,'')}</p>
                     <p className="reyting_subtitle">{props.post.spec}</p>
                     <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
                         <img className='star-icon' onClick={()=>setStarActive1(!starActive1)} src={starActive1 ? StarActive : Star} alt='' /> 

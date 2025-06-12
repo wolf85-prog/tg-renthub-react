@@ -52,7 +52,7 @@ const EditReyting = () => {
         const fetch = async() => {
             const resSpec = await getSpecId(id)
             console.log("resSpec: ", resSpec, )
-            setName(resSpec?.fio.split(' ')[1])
+            setName(resSpec?.fio.replace(/\[.+\]/,'').split(' ')[1])
             setAge(parseInt(new Date().getFullYear())-parseInt(resSpec?.age.split('-')[0]))
             setProjectCount(resSpec?.projectAll ? resSpec?.projectAll : 0)
             setProfile(resSpec?.profile)
