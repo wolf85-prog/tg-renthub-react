@@ -18,6 +18,8 @@ const UserProvider = ({ children }) => {
     const [companyProfile, setCompanyProfile] = useState('');
     const [userApp, setUserApp] = useState('');
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const [projectDate, setProjectDate] = useState('');
 
     //категории рассылки
@@ -150,6 +152,8 @@ const UserProvider = ({ children }) => {
             setDistribs2,
             projectDate, 
             setProjectDate,
+            isLoading, 
+            setIsLoading,
 		}}>
 			{children}
 		</UserContext.Provider>

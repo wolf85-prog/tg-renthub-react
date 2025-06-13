@@ -28,7 +28,7 @@ const EditReyting = () => {
     const navigate = useNavigate();
     const {tg, queryId, user, onClose} = useTelegram();
 
-    const [isPostsLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const [starActive1, setStarActive1] = useState(false)
     const [starActive2, setStarActive2] = useState(false)
