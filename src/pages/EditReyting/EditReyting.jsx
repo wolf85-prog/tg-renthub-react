@@ -23,7 +23,7 @@ const EditReyting = () => {
     //const { spec } = useParams();
     const location = useLocation();
 
-    const { projectDate } = useUsersContext();
+    const { projectDate, reyting, setReyting } = useUsersContext();
 
     const navigate = useNavigate();
     const {tg, queryId, user, onClose} = useTelegram();
@@ -39,7 +39,7 @@ const EditReyting = () => {
     const [name, setName] = useState('')
     const [age, setAge] = useState('')
     const [projectCount, setProjectCount] = useState(0)
-    const [reyting, setReyting] = useState(0)
+    //const [reyting, setReyting] = useState(0)
     const [comment, setComment] = useState('')
     const [comteg, setComteg] = useState([]);
     const [profile, setProfile] = useState('')

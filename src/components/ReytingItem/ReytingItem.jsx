@@ -24,7 +24,7 @@ import AvatarDefault from "./../../img/blank-avatar.png";
 
 const ReytingItem = (props) => {
     const navigate = useNavigate();
-    const {specId, projectDate, setProjectDate, setIsLoading} = useUsersContext();
+    const {specId, projectDate, setProjectDate, setIsLoading, reyting, setReyting} = useUsersContext();
 
     const [stavka, setStavka] = useState(0)
     const [cashStavka, setCashStavka] = useState({})
@@ -55,7 +55,7 @@ const ReytingItem = (props) => {
     const [gsmView, setGsmView] = useState(0);
     const [taxiView, setTaxiView] = useState(0);
     const [comtag, setComtag] = useState([]);
-    const [reyting, setReyting] = useState(0)
+    //const [reyting, setReyting] = useState(0)
     const [workerId, setWorkerId] = useState(0)
 
     const [starActive1, setStarActive1] = useState(false)
@@ -90,17 +90,17 @@ const ReytingItem = (props) => {
 
         setIsLoading(true)
 
-        try {
-            fetch('https://proj.uley.team:8002/reytingsonly', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            }) 
-        } catch (error) {
-            console.log(error.message)
-        }
+        // try {
+        //     fetch('https://proj.uley.team:8002/reytingsonly', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify(data)
+        //     }) 
+        // } catch (error) {
+        //     console.log(error.message)
+        // }
         
         setIsLoading(false)
               
@@ -108,10 +108,10 @@ const ReytingItem = (props) => {
 
 
     //сумма денег для показа при движении фейдера
-    useEffect(()=> {
-        setStavkaPlus(stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
+    //useEffect(()=> {
+        //setStavkaPlus(stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
         //console.log("stavka: ", stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0, props.post.title)
-    }, [stavka])
+    // }, [stavka])
 
     const pressStar = (star) => {
         if (star === 1) {

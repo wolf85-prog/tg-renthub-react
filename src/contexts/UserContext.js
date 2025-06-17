@@ -21,6 +21,7 @@ const UserProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const [projectDate, setProjectDate] = useState('');
+    const [reyting, setReyting] = useState(0)
 
     //категории рассылки
     const [distrib, setDistrib] = useState({id: '', cat: '', spec: '', icon: ''})
@@ -154,6 +155,8 @@ const UserProvider = ({ children }) => {
             setProjectDate,
             isLoading, 
             setIsLoading,
+            reyting, 
+            setReyting,
 		}}>
 			{children}
 		</UserContext.Provider>
