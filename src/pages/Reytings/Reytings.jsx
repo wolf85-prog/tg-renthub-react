@@ -65,11 +65,13 @@ const Reytings = () => {
                 if (spec) {
                     const obj = {
                         id: spec?.id,
-                        name: spec?.fio?.split(' ')[1],
+                        name: spec?.fio.replace(/\[.+\]/,'').replace(/\s+/g, ' ').split(' ')[1],
                         profile: spec?.profile,
                         date: item.date,
                         spec: item.specialization,
                     }
+                    //console.log("spec", spec?.fio.replace(/\[.+\]/,'').replace(/\s+/g, ' '))
+
                     arrSpec.push(obj)
                 }          
             })

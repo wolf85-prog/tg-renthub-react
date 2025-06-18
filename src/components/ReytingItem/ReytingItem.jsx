@@ -64,6 +64,10 @@ const ReytingItem = (props) => {
     const [starActive4, setStarActive4] = useState(false)
     const [starActive5, setStarActive5] = useState(false)
 
+    const [countPress, setCountPress] = useState(0)
+
+    const countRef = useRef(reyting);
+    countRef.current = reyting;
 
     const clickProject = (id, spec) => {
         console.log("id: ", id, spec, props.project, props.projectCrmId, props.post.date)
@@ -78,43 +82,52 @@ const ReytingItem = (props) => {
     }
 
     //отправка данных в telegram-бот
-    const onSendData = (rey) => {
-        const data = {
-            projectname: props.project,
-            projectdata: props.post.date,
-            workerId: props.post.id,
-            reyting: rey,
-        }
-
-        console.log("data: ", data)
-
+    const onSendData = () => {
         setIsLoading(true)
 
-        // try {
-        //     fetch('https://proj.uley.team:8002/reytingsonly', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(data)
-        //     }) 
-        // } catch (error) {
-        //     console.log(error.message)
-        // }
-        
-        setIsLoading(false)
-              
+        if (countPress === 1) {
+
+            setTimeout(()=> {   
+                const data = {
+                    projectname: props.project,
+                    projectdata: props.post.date,
+                    workerId: props.post.id,
+                    reyting: countRef.current,
+                }
+                console.log("data: ", data)
+
+                try {
+                    fetch('https://proj.uley.team:8002/reytingsonly', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    }) 
+                } catch (error) {
+                    console.log(error.message)
+                }
+                
+                setIsLoading(false)
+                
+            }, 5000)
+        }      
     }
 
 
-    //сумма денег для показа при движении фейдера
-    //useEffect(()=> {
-        //setStavkaPlus(stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0)
-        //console.log("stavka: ", stavka ? stavka.replace(/\s/g, "").split('.')[0] : 0, props.post.title)
-    // }, [stavka])
+    useEffect(()=> {
+        //console.log("countPress: ", countPress)
+        //onSendData()
+    }, [countPress])
+
+    useEffect(()=> {
+        //console.log("reyting: ", reyting)
+        onSendData()
+    }, [countPress, reyting])
 
     const pressStar = (star) => {
         if (star === 1) {
+            setCountPress(countPress+1)
            setStarActive1(true) 
            setStarActive2(false) 
            setStarActive3(false) 
@@ -123,43 +136,47 @@ const ReytingItem = (props) => {
 
            setReyting(1)
 
-           onSendData(1)
+           //onSendData(1)
         } 
         else if (star === 2) {
+            setCountPress(countPress+1)
            setStarActive2(true) 
            setStarActive1(true) 
            setStarActive3(false) 
            setStarActive4(false) 
            setStarActive5(false) 
            setReyting(2)
-           onSendData(2)
+           //onSendData(2)
         } 
         else if (star === 3) {
+            setCountPress(countPress+1)
            setStarActive3(true) 
            setStarActive1(true) 
            setStarActive2(true) 
            setStarActive4(false) 
            setStarActive5(false) 
            setReyting(3)
-           onSendData(3)
+           //onSendData(3)
         } 
         else if (star === 4) {
+            setCountPress(countPress+1)
            setStarActive4(true) 
            setStarActive1(true) 
            setStarActive2(true) 
            setStarActive3(true) 
            setStarActive5(false) 
            setReyting(4)
-           onSendData(4)
+          // onSendData(4)
         } 
         else if (star === 5) {
+            setCountPress(countPress+1)
            setStarActive5(true) 
            setStarActive1(true) 
            setStarActive2(true) 
            setStarActive3(true) 
            setStarActive4(true) 
            setReyting(5)
-           onSendData(5)
+           //onSendData(5)
         }
 
     }
@@ -175,7 +192,10 @@ const ReytingItem = (props) => {
                 <img onClick={()=>clickProject(props.post.id, props.post.spec)} className="rounded me-2" width="150" height="150" src={props.post.profile ? props.post.profile : AvatarDefault} alt='' style={{borderRadius: '20px', objectFit: 'cover'}}/>
                 
                 <div className='reyting-text'>
-                    <p className="reyting_title" onClick={()=>clickProject(props.post.id, props.post.spec)}>{props.post.name.replace(/\[.+\]/,'')}</p>
+                    {/* Имя */}
+                    <p className="reyting_title" onClick={()=>clickProject(props.post.id, props.post.spec)}>
+                        {props.post.name}
+                    </p>
                     <p className="reyting_subtitle">{props.post.spec}</p>
                     <div className="reyting-block" style={{cursor: 'pointer', marginBottom: '8px'}}>
                         <img className='star-icon' onClick={()=>pressStar(1)} src={starActive1 ? StarActive : Star} alt='' /> 

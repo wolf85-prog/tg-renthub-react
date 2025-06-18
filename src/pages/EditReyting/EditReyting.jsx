@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import {useParams} from "react-router-dom";
 import {useTelegram} from "../../hooks/useTelegram";
 import {useNavigate, useLocation} from "react-router-dom";
@@ -22,6 +22,8 @@ const EditReyting = () => {
     const { id, spec, projId } = useParams();
     //const { spec } = useParams();
     const location = useLocation();
+
+    const h2ref = useRef(null);
 
     const { projectDate, reyting, setReyting } = useUsersContext();
 
@@ -52,7 +54,7 @@ const EditReyting = () => {
         const fetch = async() => {
             const resSpec = await getSpecId(id)
             console.log("resSpec: ", resSpec, )
-            setName(resSpec?.fio.replace(/\[.+\]/,'').split(' ')[1])
+            setName(resSpec?.fio.replace(/\[.+\]/,'').replace(/\s+/g, ' ').split(' ')[1])
             setAge(parseInt(new Date().getFullYear())-parseInt(resSpec?.age.split('-')[0]))
             setProjectCount(resSpec?.projectAll ? resSpec?.projectAll : 0)
             setProfile(resSpec?.profile)
@@ -67,6 +69,12 @@ const EditReyting = () => {
     }, [reyting])
 
 
+    useEffect(() => {
+        window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+    });
 
     useEffect(()=>{
         tg.setHeaderColor('#343A41') // установка цвета хедера
