@@ -70,10 +70,13 @@ const EditReyting = () => {
 
 
     useEffect(() => {
-        window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth'
-        });
+        setTimeout(()=> {
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: 'smooth'
+            });
+        }, 2000)
+        
     });
 
     useEffect(()=>{
